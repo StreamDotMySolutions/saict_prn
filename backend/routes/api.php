@@ -24,8 +24,8 @@ Route::post('/test' , function(Request $request){
     // header 200
     // message = success
     return response()->json([
-        'message' => 'Request Success',
-    ],200);
+        'message' => 'validation error',
+    ],422);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -24,22 +24,32 @@ const Login = () => {
         }
 
         fetch(url,options)
-        .then(response => {
-            console.log(response.status)
+            .then(response => {
 
-            // response.ok status 200-299
-            if(response.ok) {
-                console.log('response is ok')
-                return response.json()
-            }
-        })
-        .then(json => {
-            console.log(json)
-            setMessage(json.message)
-        })
-        .catch( error=>{
-            console.log(error.message)
-        })
+                // response.ok status 200-299
+                if(response.ok) {
+                    console.log('response is ok')
+                    return response.json()
+                } 
+                return Promise.reject(response); // reject the promise
+            })
+            .then(json => {
+                console.log(json)
+                setMessage(json.message)
+            })
+            .catch( error =>{
+    
+                // if status code 422
+                // laravel validations error
+                if(error.status === 422){
+                    console.log(error.status)
+                    error.json().then((json) => {
+                        console.log(json.message);
+                        setMessage(json.message)
+                    })
+                }
+
+            })
 
     }
 
