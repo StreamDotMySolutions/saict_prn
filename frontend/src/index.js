@@ -3,8 +3,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import ProtectedRoute from "./Helpers/ProtectedRoute"
 
+/** Layouts */
+import Layout1 from "./Layouts/Layout1";
+import Layout2 from "./Layouts/Layout2";
+
 /** Pages */
-import Layout from "./Pages/Layout";
 import Home from "./Pages/Home";
 import Blogs from "./Pages/Blogs";
 import Login from "./Pages/Login";
@@ -18,7 +21,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
+
+        <Route element={<Layout1 />}>
           <Route index element={<Home />} />
           <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />
@@ -28,8 +32,14 @@ export default function App() {
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/protected" element={<Protected />} />
           </Route>
-
         </Route>
+
+        <Route element={<Layout2 />}>
+          <Route path="contact2" element={<Contact />} />
+          <Route path="login2" element={<Login />} />
+        </Route>
+
+
       </Routes>
     </BrowserRouter>
   );
