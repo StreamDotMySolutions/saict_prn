@@ -28,9 +28,28 @@ Route::post('/test' , function(Request $request){
     ],422);
 });
 
+Route::get('/clients' , function(Request $request){
+
+    // to test submitted form
+    // from Reactjs
+    \Log::info($request);
+
+    // return clients array for dropdown list
+    $clients = \App\Models\Client::all(['id','name']);
+
+    // Return success message
+    // header 200
+    // message = success
+    return response()->json([
+        'message' => 'list of clients',
+        'clients' => $clients
+    ],200);
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 
 
 // to test authentication

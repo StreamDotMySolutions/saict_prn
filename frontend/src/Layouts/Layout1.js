@@ -14,6 +14,10 @@ const Layout1 = () => {
           <li>
             <Link to="/contact">Contact</Link>
           </li>
+
+          <li>
+            <Link to="/clients">Client</Link>
+          </li>
           <li>
             <Link to="/login">Login</Link>
           </li>

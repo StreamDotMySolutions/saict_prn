@@ -11,6 +11,7 @@ import Layout2 from "./Layouts/Layout2";
 import Home from "./Pages/Home";
 import Blogs from "./Pages/Blogs";
 import Login from "./Pages/Login";
+import Client from "./Pages/Client";
 import Protected from "./Pages/Protected";
 import Contact from "./Pages/Contact";
 
@@ -26,6 +27,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />
+          <Route path="/clients" element={<Client />} />
           <Route path="*" element={<Home />} />
 
           <Route element={<ProtectedRoute user={user} />}>
