@@ -14,6 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/test' , function(Request $request){
+
+    // to test submitted form
+    // from Reactjs
+    \Log::info($request);
+
+    // Return success message
+    // header 200
+    // message = success
+    return response()->json([
+        'message' => 'Request Success',
+    ],200);
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
