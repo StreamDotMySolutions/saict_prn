@@ -12,12 +12,12 @@ import Layout2 from "./Layouts/Layout2"
 import Home from "./Pages/Home"
 import Blogs from "./Pages/Blogs"
 import Login from "./Pages/Login"
-import Client from "./Pages/MyAccount"
 import Contact from "./Pages/Contact"
 
 /** Pages - PRIVATE */
 import Dashboard from "./Pages/Dashboard"
 import MyAccount from "./Pages/MyAccount"
+import Client from "./Pages/Client"
 
 export default function App() {
   const [user, setUser] = useState(false); // simulate user object
