@@ -38,6 +38,8 @@ const Client = () => {
                         console.log(json.message);
                         setMessage(json.message)
                     })
+                } else {
+                    setMessage(`Error ${error.status} - ${error.statusText}`)
                 }
 
             })
@@ -49,12 +51,12 @@ const Client = () => {
     },[])
 
     const listItems = clients?.map((client) =>
-        <li>{client.id} - {client.name}</li>
-    );
+                <li key={client.id}>{client.id} - {client.name}</li>
+            );
 
     const selectOptions = clients?.map((client) =>
-    <option value={client.id}>{client.name}</option>
-);
+                <option key={client.id} value={client.id}>{client.name}</option>
+            );
 
 
     return (

@@ -1,15 +1,26 @@
 import React from 'react'
+import { Navigate } from 'react-router-dom'
+import { useStore } from "../Helpers/Store";
 
 const Login = () => {
 
     // set system variables
     const [message, setMessage] = React.useState('default message'); // system message
+    const [errors, setErrors] = React.useState([]); // validation errors
+
+
+    const isLoggedIn = useStore( (state) => state.isLoggedIn ) // get state
+    const setIsLoggedIn = useStore((state) => state.setIsLoggedIn) // set state
 
     // 1. add event listenr
     // 2. user click submit
     function handleSubmit(event){
+
+        // clear the message & errors
+        setMessage(null)
+        setErrors(null)
+
         event.preventDefault()
-        console.log('form submit')
         setMessage('form submitted')
 
         // use fetch to send
@@ -19,59 +30,74 @@ const Login = () => {
         // back at dom id = message
 
         const url = 'http://localhost:8000/api/test'
+        const data = new FormData(event.target);
         const options = {
-            method: 'post'
+            method: 'post',
+            body: data
         }
 
         fetch(url,options)
-            .then(response => {
+        .then(response => {
 
-                // response.ok status 200-299
-                if(response.ok) {
-                    console.log('response is ok')
-                    return response.json()
-                } 
-                return Promise.reject(response); // reject the promise
-            })
-            .then(json => {
-                console.log(json)
-                setMessage(json.message)
-            })
-            .catch( error =>{
-    
-                // if status code 422
-                // laravel validations error
-                if(error.status === 422){
-                    console.log(error.status)
-                    error.json().then((json) => {
-                        console.log(json.message);
-                        setMessage(json.message)
-                    })
-                }
+            // response.ok status 200-299
+            if(response.ok) {
+                return response.json()
+            } 
+            return Promise.reject(response); // reject the promise
+        })
+        .then(json => {
+            // authentication success
+            setMessage(json.message)
 
-            })
+            //save token to localstorage
+            localStorage.setItem('token', json.token)
 
+            // update the global store
+            setIsLoggedIn(true)
+        })
+        .catch( error =>{
+
+            // if status code 422
+            // laravel validations error
+            if(error.status === 422){
+                error.json().then((json) => {                  
+                    // validation errors
+                    // errors set in Laravel JSON
+                    if('errors' in json){
+                        setErrors(json.errors)
+                    }
+                    // server message 
+                    setMessage(json.message)
+                })
+            }
+        })
     }
+
+    if (isLoggedIn === true) {
+        return <Navigate to='/dashboard' replace />
+    }
+
 
 
     return (
         <>
             <h1>Login</h1>
-            <h2>Message from server : <span id="message">{message}</span></h2>
+            <h3>Message from server : <span id="message" style={{ color:'green' }}>{message}</span></h3>
             <form onSubmit={handleSubmit}> 
                 <label>E-mail</label>
-                <input type='text' name='email' id='email 'placeholder='Your email' required />
+                <input type='text' name='email' id='email 'placeholder='Your email'  />
                 <br />
-                <span id='email_error' style={{ color:'red' }}>validation error for email</span>
+                <span id='email_error' style={{ color:'red' }}>{errors?.email}</span>
 
                 <br />
                 <br />
 
                 <label>Password</label>
-                <input type='password' name='password' id='password 'placeholder='Your password' required />
+                <input type='password' name='password' id='password 'placeholder='Your password'/>
                 <br />
-                <span id='password_error' style={{ color:'red' }}>validation error for password</span>
-
+                <span id='password_error' style={{ color:'red' }}>{errors?.password}</span>
+                <br />
+                <br />
                 <input id='submit' type='submit' value='submit' />
             </form>
         </>
