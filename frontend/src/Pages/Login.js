@@ -46,6 +46,7 @@ const Login = () => {
             return Promise.reject(response); // reject the promise
         })
         .then(json => {
+
             // authentication success
             setMessage(json.message)
 
@@ -57,13 +58,16 @@ const Login = () => {
         })
         .catch( error =>{
 
-            // if status code 422
+            //console.log(error)
+            // field validations at 422
+            // wrong username/password at 401
             // laravel validations error
-            if(error.status === 422){
+            if(error.status === 422 || error.status === 401 ){
                 error.json().then((json) => {                  
                     // validation errors
                     // errors set in Laravel JSON
                     if('errors' in json){
+                        console.log(json)
                         setErrors(json.errors)
                     }
                     // server message 
