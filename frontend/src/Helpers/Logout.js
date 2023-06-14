@@ -3,8 +3,6 @@ import { Navigate } from 'react-router-dom'
 import { useStore } from "../Helpers/Store";
 
 
-
-
 export function handleLogout({setIsLoggedIn}) {
 
     // set store isLoggedIn to false

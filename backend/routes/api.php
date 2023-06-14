@@ -147,7 +147,7 @@ Route::middleware('auth:sanctum')->get('/logout', function () {
 Route::middleware('guest')->get('/login', function () {
     return response()->json([
         'message' => 'Sanctum Login',
-    ],200);
+    ],401);
 })->name('login');
 
 

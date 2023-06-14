@@ -1,4 +1,5 @@
 import React from 'react'
+import { useStore } from "../Helpers/Store";
 
 const MyAccount = () => {
 
@@ -7,6 +8,7 @@ const MyAccount = () => {
     const [data, setData] = React.useState([]) // dat from server
     const [errors, setErrors] = React.useState([]) // validation errors
     const token =  localStorage.getItem('token')
+    const setIsLoggedIn = useStore((state) => state.setIsLoggedIn) // set state
 
     function fetchData(){
        
@@ -21,6 +23,7 @@ const MyAccount = () => {
 
         fetch(url,options)
         .then(response => {
+            console.log(response)
             // response.ok status 200-299
             if(response.ok) {
                 return response.json()
@@ -32,7 +35,12 @@ const MyAccount = () => {
             setData(json)
         })
         .catch( error =>{
-            console.log(error)
+            //console.log(error)
+            if(error.status === 401){
+                //console.log('401')
+                setIsLoggedIn(false)
+                localStorage.removeItem('token');
+            }
         })
     }
 
