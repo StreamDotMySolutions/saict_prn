@@ -8,6 +8,9 @@ import { useStore } from "./Helpers/Store"
 import Layout1 from "./Layouts/Layout1"
 import Layout2 from "./Layouts/Layout2"
 
+/** Error */
+import Error404 from "./Pages/Error404"
+
 /** Pages - PUBLIC */
 import Home from "./Pages/Home"
 import Blogs from "./Pages/Blogs"
@@ -31,10 +34,9 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
       
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<Error404 />} />
 
           <Route element={<ProtectedRoute user={isLoggedIn} />}>
-
               <Route path="/my_account" element={<MyAccount />} />
               <Route path="/clients" element={<Client />} />
               <Route path="/blogs" element={<Blogs />} />
