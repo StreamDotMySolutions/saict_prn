@@ -39,11 +39,11 @@ const AdminLayout = () => {
 
   return (
     <>
-    
-    <main>
-        <SideBar />
 
-        <div className="container-fluid">
+
+    <main>
+        <SideBar handleLogout={handleLogout} />
+        <div className="container-fluid py-4 ">
             <Outlet />
         </div>
 

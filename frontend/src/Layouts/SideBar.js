@@ -1,45 +1,32 @@
-import { Link } from "react-router-dom"
+import {NavLink, Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-const SideBar = ({ handleLogout }) => {
+const SideBar = ( props ) => {
+
+    const currDate = {
+        show : new Date().toLocaleString(),
+      }
+
     return (
         
     <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style={{'height':'100vh', 'width': '280px'}}>
     <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-    <span className="fs-4">Sidebar</span>
+    <span className="fs-4">CMS Administration</span>
     </a>
+
+    <span style={{'color' : 'green'}}><small>{currDate.show}</small></span>
     <hr />
     <ul className="nav nav-pills flex-column mb-auto">
-    <li className="nav-item">
-        <a href="#" className="nav-link active" aria-current="page">
-        
-        Home
-        </a>
-    </li>
+
+
     <li>
-        <a href="#" className="nav-link text-white">
-        
-        Dashboard
-        </a>
+        <NavLink className="nav-link text-white" to="/dashboard"  ><FontAwesomeIcon icon="fas fa-dashboard" /> Dashboard </NavLink>
     </li>
+
     <li>
-        <a href="#" className="nav-link text-white">
-        
-        Users
-        </a>
+        <NavLink className="nav-link text-white"  to="/blogs"  ><FontAwesomeIcon icon="fas fa-home" /> Blogs </NavLink>
     </li>
-    <li>
-        <a href="#" className="nav-link text-white">
-        
-        Gallery
-        </a>
-    </li>
-    <li>
-        <a href="#" className="nav-link text-white">
-        
-        Directory
-        </a>
-    </li>
+   
     </ul>
     <hr />
     <div className="dropdown">
@@ -52,7 +39,7 @@ const SideBar = ({ handleLogout }) => {
         <li><a className="dropdown-item" href="#">Settings</a></li>
         <li><a className="dropdown-item" href="#">Profile</a></li>
         <li><hr className="dropdown-divider" /></li>
-        <Link className="dropdown-item"  onClick={handleLogout}><FontAwesomeIcon icon="fas fa-sign-out" /> Logout </Link>
+        <Link className="dropdown-item"  onClick={props.handleLogout}><FontAwesomeIcon icon="fas fa-sign-out" /> Logout </Link>
     </ul>
     </div>
 </div>
