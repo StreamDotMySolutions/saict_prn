@@ -41,10 +41,16 @@ const AdminLayout = () => {
     <>
 
 
-    <main>
+    <main className="bg-light">
         <SideBar handleLogout={handleLogout} />
-        <div className="container-fluid py-4 ">
-            <Outlet />
+        <div className="container-fluid py-4"  >
+           
+            <div className="card " style={{'height':'95vh'}}>
+   
+                <div className="card-body" >
+                    <Outlet />
+                </div>
+            </div>
         </div>
 
     </main>   

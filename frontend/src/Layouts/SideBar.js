@@ -18,14 +18,17 @@ const SideBar = ( props ) => {
     <hr />
     <ul className="nav nav-pills flex-column mb-auto">
 
+        <li>
+            <NavLink className="nav-link text-white" to="/dashboard"  ><FontAwesomeIcon icon="fas fa-dashboard" /> Dashboard </NavLink>
+        </li>
 
-    <li>
-        <NavLink className="nav-link text-white" to="/dashboard"  ><FontAwesomeIcon icon="fas fa-dashboard" /> Dashboard </NavLink>
-    </li>
+        <li>
+            <NavLink className="nav-link text-white"  to="/blogs"  ><FontAwesomeIcon icon="fas fa-book" /> Contents </NavLink>
+        </li>
 
-    <li>
-        <NavLink className="nav-link text-white"  to="/blogs"  ><FontAwesomeIcon icon="fas fa-home" /> Blogs </NavLink>
-    </li>
+        <li>
+            <NavLink className="nav-link text-white"  to="/users"  ><FontAwesomeIcon icon="fas fa-users" /> Users </NavLink>
+        </li>
    
     </ul>
     <hr />
