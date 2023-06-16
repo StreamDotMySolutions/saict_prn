@@ -6,6 +6,7 @@ import { useStore } from "./Helpers/Store"
 
 /** Layouts */
 import Layout1 from "./Layouts/Layout1"
+import AdminLayout from "./Layouts/Admin"
 import Layout2 from "./Layouts/Layout2"
 
 /** Error */
@@ -40,12 +41,10 @@ export default function App() {
       <Routes>
 
       <Route path="sign-in" element={<SignIn />} />
+      <Route index element={<Home />} />
+      <Route path="*" element={<Error404 />} />
 
-        <Route element={<Layout1 />}>
-          <Route index element={<Home />} />
-          <Route path="login" element={<Login />} />
-          <Route path="*" element={<Error404 />} />
-
+        <Route element={<AdminLayout />}>
           <Route element={<ProtectedRoute user={isLoggedIn} />}>
               <Route path="/my_account" element={<MyAccount />} />
               <Route path="/clients" element={<Client />} />
