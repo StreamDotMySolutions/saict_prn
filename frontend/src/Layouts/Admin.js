@@ -1,7 +1,7 @@
-import { Outlet } from "react-router-dom"
-import SideBar from "./SideBar"
-import { useStore } from "../Helpers/Store"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Outlet, Link } from "react-router-dom";
+import { useStore } from "../Helpers/Store";
+import './style.css'
+import SideBar from "./SideBar";
 
 const AdminLayout = () => {
 
@@ -39,12 +39,18 @@ const AdminLayout = () => {
 
   return (
     <>
+    
     <main>
-        <SideBar handleLogout={handleLogout} />
+        <SideBar />
+
         <div className="container-fluid">
             <Outlet />
         </div>
-    </main>       
+
+    </main>   
+
+   
+    
     </>
   )
 };

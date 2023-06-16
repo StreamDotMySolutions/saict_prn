@@ -25,19 +25,19 @@ const SideBar = ({ handleLogout }) => {
     <li>
         <a href="#" className="nav-link text-white">
         
-        Orders
+        Users
         </a>
     </li>
     <li>
         <a href="#" className="nav-link text-white">
         
-        Products
+        Gallery
         </a>
     </li>
     <li>
         <a href="#" className="nav-link text-white">
         
-        Customers
+        Directory
         </a>
     </li>
     </ul>
