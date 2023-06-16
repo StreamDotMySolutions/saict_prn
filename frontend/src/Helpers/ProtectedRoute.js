@@ -3,7 +3,7 @@ import { Navigate, Outlet} from 'react-router-dom'
 
 const ProtectedRoute = ({
     user,
-    redirectPath = '/login'
+    redirectPath = '/sign-in'
 }) => {
 
     if(!user){

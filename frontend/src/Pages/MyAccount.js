@@ -7,7 +7,7 @@ const MyAccount = () => {
     const [message, setMessage] = React.useState('default message') // system message
     const [data, setData] = React.useState([]) // dat from server
     const [errors, setErrors] = React.useState([]) // validation errors
-    const token =  localStorage.getItem('token')
+    const token =  localStorage.getItem('token') // API token
     const setIsLoggedIn = useStore((state) => state.setIsLoggedIn) // set state
 
     function fetchData(){
@@ -23,7 +23,7 @@ const MyAccount = () => {
 
         fetch(url,options)
         .then(response => {
-            console.log(response)
+            //console.log(response)
             // response.ok status 200-299
             if(response.ok) {
                 return response.json()
@@ -43,7 +43,6 @@ const MyAccount = () => {
             }
         })
     }
-
 
     // getdata when page load
     React.useEffect(() => {

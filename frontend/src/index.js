@@ -17,10 +17,19 @@ import Blogs from "./Pages/Blogs"
 import Login from "./Pages/Login"
 import Contact from "./Pages/Contact"
 
+/** Auth */
+import SignIn from "./Pages/SignIn"
+
+
 /** Pages - PRIVATE */
 import Dashboard from "./Pages/Dashboard"
 import MyAccount from "./Pages/MyAccount"
 import Client from "./Pages/Client"
+
+/** Font Awesome **/
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas)
 
 export default function App() {
   const [user, setUser] = useState(false); // simulate user object
@@ -30,10 +39,11 @@ export default function App() {
     <BrowserRouter>
       <Routes>
 
+      <Route path="sign-in" element={<SignIn />} />
+
         <Route element={<Layout1 />}>
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
-      
           <Route path="*" element={<Error404 />} />
 
           <Route element={<ProtectedRoute user={isLoggedIn} />}>
@@ -44,10 +54,7 @@ export default function App() {
           </Route>
         </Route>
 
-        <Route element={<Layout2 />}>
-          <Route path="contact2" element={<Contact />} />
-          <Route path="login2" element={<Login />} />
-        </Route>
+
 
       </Routes>
     </BrowserRouter>

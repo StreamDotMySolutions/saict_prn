@@ -56,7 +56,7 @@ const Layout1 = () => {
             </li>
 
             <li>
-              <Link onClick={handleLogout} to="/home">Logout</Link>
+              <Link onClick={handleLogout}>Logout</Link>
             </li>
           </>
 
@@ -67,7 +67,7 @@ const Layout1 = () => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/login">Login</Link>
+                <Link to="/sign-in">Sign In</Link>
               </li>
           </>
         }

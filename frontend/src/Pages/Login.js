@@ -67,7 +67,7 @@ const Login = () => {
                     // validation errors
                     // errors set in Laravel JSON
                     if('errors' in json){
-                        console.log(json)
+                        //console.log(json)
                         setErrors(json.errors)
                     }
                     // server message 
