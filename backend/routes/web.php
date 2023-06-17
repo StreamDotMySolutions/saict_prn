@@ -17,5 +17,10 @@ Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
 
-// custom route
-// require __DIR__.'/auth.php';
+Route::post('/auth/signin', function () {
+    return ['Laravel' => app()->version()];
+});
+
+
+// auth
+//require __DIR__.'/auth.php';
