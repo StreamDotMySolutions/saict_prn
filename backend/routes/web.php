@@ -17,9 +17,13 @@ Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
 
-Route::post('/auth/signin', function () {
-    return ['Laravel' => app()->version()];
+Route::get('/token', function () { 
+    return csrf_token();
 });
+
+Route::post('/protected', function () {
+   return 'You can post data';
+})->middleware(['responseInJson']);
 
 
 // auth
