@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "react-router-dom"
 import { Avatar } from './avatar'
 
+
 export const ProfileEdit = () => {
 
     // set system variables
@@ -11,10 +12,15 @@ export const ProfileEdit = () => {
     const [data, setData] = React.useState([]) // data from server
     const [errors, setErrors] = React.useState([]) // validation errors
     const token =  localStorage.getItem('token') // API token
+
+    // form field
+    const [name, setName] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
   
     // 👇️ fetch protected data from API server
     function fetchData(){
-       
+        console.log('fetching...')
         const url =   process.env.REACT_APP_BACKEND_URL + '/user'
 
         const options = {
@@ -144,10 +150,11 @@ export const ProfileEdit = () => {
                         </div>
                         <div className="col-sm-9">
                             <input 
+                                onChange={e => setName(e.target.value)}
                                 className="form-control" 
                                 type="text" 
                                 name="name" 
-                                value={data?.name}
+                                value={ data?.name? data.name : ''}
         
                             />
                         </div>
@@ -159,7 +166,12 @@ export const ProfileEdit = () => {
                             <p className="mb-0">Email</p>
                         </div>
                         <div className="col-sm-9">
-                            <input className="form-control" type="text" name="email" value={data?.email} />
+                            <input 
+                                onChange={e => setEmail(e.target.value)}
+                                className="form-control" 
+                                type="text" 
+                                name="email" 
+                                value={ data?.email? data.email : ''} />
                         </div>
                     </div>
                 </div>

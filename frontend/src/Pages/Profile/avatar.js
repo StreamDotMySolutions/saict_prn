@@ -44,7 +44,13 @@ export const Avatar = () => {
             className="rounded-circle img-fluid" 
             style={{ 'width': '150px' }} 
         />
-        <img   style={{ 'width': '30px' }}  onClick={handleClick} src={camera1}></img>
+        <img
+            src={camera1}
+            alt="camera"   
+            style={{ 'width': '30px' }}  
+            onClick={handleClick} 
+          
+        />
         </>
     )
 }

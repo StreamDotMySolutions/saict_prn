@@ -161,16 +161,16 @@ Route::middleware('auth:sanctum')->get('/protected', function () {
     ],200);
 });
 
-Route::middleware('auth:sanctum')->post('/profile/store', function () {
-    return response()->json([
-        'message' => 'This is protected page',
-        // 'id' => Auth::user()->id,
-        // 'name' => Auth::user()->name,
-        // 'email' => Auth::user()->email,
-    ],200);
-});
+// Route::middleware('auth:sanctum')->post('/profile/store', function () {
+//     return response()->json([
+//         'message' => 'This is protected page',
+//         // 'id' => Auth::user()->id,
+//         // 'name' => Auth::user()->name,
+//         // 'email' => Auth::user()->email,
+//     ],200);
+// });
 
 
 // profile
-//require __DIR__.'/profile.php';
+require __DIR__.'/profile.php';
 
