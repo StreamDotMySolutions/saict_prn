@@ -1,12 +1,10 @@
 import React from 'react'
-import { useStore } from "../Helpers/Store"
-import Cookies from 'js-cookie'
-import axios from '../Libs/axios'
-import env from "react-dotenv";
-import { BreadCrumb } from '../Components/BreadCrumb';
+import { Link } from "react-router-dom"
+import { useStore } from "../../Helpers/Store"
+import { BreadCrumb } from '../../Components/BreadCrumb';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-const MyAccount = () => {
+const ProfileShow = () => {
 
     // set system variables
     const [message, setMessage] = React.useState('default message') // system message
@@ -123,7 +121,9 @@ const MyAccount = () => {
       </div>
       
     </div>
-    <button className='btn btn-primary'><FontAwesomeIcon icon="fas fa-edit" /> Edit</button>
+    <Link to='/profile/edit'>
+        <button className='btn btn-primary'><FontAwesomeIcon icon="fas fa-edit" /> Edit</button>
+    </Link>    
   </div>
 
 </section>
@@ -131,4 +131,4 @@ const MyAccount = () => {
     )
 } 
 
-export default MyAccount
+export default ProfileShow

@@ -29,7 +29,7 @@ const Form = () => {
         // message and display
         // back at dom id = message
 
-        const url = 'http://localhost:8000/api/test'
+        const url =   process.env.REACT_APP_BACKEND_URL + '/test'
         const data = new FormData(event.target);
         const options = {
             method: 'post',

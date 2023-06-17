@@ -21,11 +21,14 @@ import Contact from "./Pages/Contact"
 /** Auth */
 import SignIn from "./Pages/SignIn"
 
-
 /** Pages - PRIVATE */
 import Dashboard from "./Pages/Dashboard"
 import MyAccount from "./Pages/MyAccount"
 import Client from "./Pages/Client"
+
+/** Profile */
+import ProfileShow from "./Pages/Profile/show"
+import ProfileEdit from "./Pages/Profile/edit"
 
 /** Font Awesome **/
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -47,7 +50,8 @@ export default function App() {
 
         <Route element={<AdminLayout />}>
           <Route element={<ProtectedRoute user={isLoggedIn} />}>
-              <Route path="/my_account" element={<MyAccount />} />
+              <Route path="/profile" element={<ProfileShow />} />
+              <Route path="/profile/edit" element={<ProfileEdit />} />
               <Route path="/clients" element={<Client />} />
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/dashboard" element={<Dashboard />} />

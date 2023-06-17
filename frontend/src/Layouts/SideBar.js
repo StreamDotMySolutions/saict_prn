@@ -38,7 +38,7 @@ const SideBar = ( props ) => {
         <strong>Webmaster</strong>
     </a>
     <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-        <li><NavLink className="dropdown-item" to="/my_account">Profile</NavLink></li>
+        <li><NavLink className="dropdown-item" to="/profile">Profile</NavLink></li>
         <li><hr className="dropdown-divider" /></li>
         <Link className="dropdown-item"  onClick={props.handleLogout}><FontAwesomeIcon icon="fas fa-sign-out" /> Logout </Link>
     </ul>
