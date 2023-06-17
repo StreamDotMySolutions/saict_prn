@@ -1,4 +1,4 @@
-import {NavLink, Link } from "react-router-dom"
+import { NavLink, Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const SideBar = ( props ) => {
