@@ -1,9 +1,8 @@
 import React from 'react'
 import { BreadCrumb } from '../../Components/BreadCrumb';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Avatar } from './avatar'
-
 
 export const ProfileEdit = () => {
 
@@ -12,15 +11,16 @@ export const ProfileEdit = () => {
     const [data, setData] = React.useState([]) // data from server
     const [errors, setErrors] = React.useState([]) // validation errors
     const token =  localStorage.getItem('token') // API token
+    const navigate = useNavigate() // useNavigate
 
     // form field
     const [form, setForm] = React.useState({
         name: '',
         email: '',
         password: '',
+        confirm_password: '',
     })
 
-  
     // 👇️ fetch protected data from API server
     function fetchData(){
         console.log('fetching...')
@@ -98,6 +98,7 @@ export const ProfileEdit = () => {
         })
         .then(json => {
             console.log(json)
+            navigate('/profile');
 
         })
         .catch( error =>{
@@ -125,104 +126,100 @@ export const ProfileEdit = () => {
 
      // 👇️ JSX element ( HTML )
     return (
-    <>
-    <BreadCrumb title='Update Profile'/>    
-    <form onSubmit={handleSubmit}>
-    <section>
-    <div className="container py-5">
-
-
-        <div className="row">
-        <div className="col-lg-4">
-            <div className="card mb-4">
-            <div className="card-body text-center">
-                <Avatar />
-                <h5 className="my-3">{data?.name}</h5>
-                <p className="text-muted mb-1">{data?.email}</p>
-                <p className="text-muted mb-4">{data?.created_at}</p>
-                <div className="d-flex justify-content-center mb-2">
-                </div>
-            </div>
-            </div>
-      
-        </div>
-  
-        <div className="col-lg-8">
-            <div className="card mb-4">
-                <div className="card-body bg-light">
-
-               
+    <React.Fragment>
+        <BreadCrumb title='Update Profile'/>    
+        <section>
+            <div className="container py-5">
+                <form onSubmit={handleSubmit}>
                     <div className="row">
-
-                        <div className="col-sm-3">
-                            <p className="mb-0">Full Name</p>
+                        {/* FORM - Avatar */}
+                        <div className="col-lg-4">
+                            <div className="card mb-4">
+                                <div className="card-body text-center">
+                                    <Avatar />
+                                    <h5 className="my-3">{form?.name}</h5>
+                                    <p className="text-muted mb-1">{form?.email}</p>
+                                    <p className="text-muted mb-4">{form?.created_at}</p>
+                                    <div className="d-flex justify-content-center mb-2">
+                                    </div>
+                                </div>
+                            </div>
+                    
                         </div>
-                        <div className="col-sm-9">
-                            <input 
-                                onChange={e => {
-                                    setForm({
-                                        ...form,
-                                        name: e.target.value
-                                    });
-                                }}
-                                
-                                className="form-control" 
-                                type="text" 
-                                name="name" 
-                                value={ form.name }
-        
-                            />
-                        </div>
-
-                    </div>
-                    <hr />
-                    <div className="row">
-                        <div className="col-sm-3">
-                            <p className="mb-0">Email</p>
-                        </div>
-                        <div className="col-sm-9">
-                            <input 
-                                onChange={e => {
-                                    setForm({
-                                        ...form,
-                                        email: e.target.value
-                                    });
-                                }}
-                                className="form-control" 
-                                type="text" 
-                                name="email" 
-                                value={ form.email}
-                                />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-      
             
-            <div className="row">
+                        {/* FORM - Profile */}
+                        <div className="col-lg-8">
+                            <div className="card mb-4">
+                                <div className="card-header text-white" style={{ 'background-color' : '#999'}}>
+                                    <h4>Profile</h4>
+                                </div>
+                                <div className="card-body bg-light">
+                                    <div className="row">
 
-                <div className="col">
-                    <button type="submit" className='btn btn-primary'><FontAwesomeIcon icon="fas fa-save" /> Save</button>
-                    &nbsp;
-                    <Link to='/profile'>
-                    <button className='btn btn-danger'><FontAwesomeIcon icon="fa fa-times" /> Cancel</button>
-                    </Link>
-                </div>
+                                        <div className="col-sm-3">
+                                            <p className="mb-0">Full Name</p>
+                                        </div>
+                                        <div className="col-sm-9">
+                                            <input 
+                                                onChange={e => {
+                                                    setForm({
+                                                        ...form,
+                                                        name: e.target.value
+                                                    });
+                                                }}
+                                                
+                                                className="form-control" 
+                                                type="text" 
+                                                name="name" 
+                                                value={ form.name }
+                                            />
+                                        </div>
 
-                
-           
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <p className="mb-0">Email</p>
+                                        </div>
+                                        <div className="col-sm-9">
+                                            <input 
+                                                onChange={e => {
+                                                    setForm({
+                                                        ...form,
+                                                        email: e.target.value
+                                                    });
+                                                }}
+                                                className="form-control" 
+                                                type="text" 
+                                                name="email" 
+                                                value={ form.email}
+                                                />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                    
+                            
+                            <div className="row">
+
+                                <div className="col">
+                                    <button type="submit" className='btn btn-primary'><FontAwesomeIcon icon="fas fa-save" /> Save</button>
+                                    &nbsp;
+                                    <Link to='/profile'>
+                                    <button className='btn btn-danger'><FontAwesomeIcon icon="fa fa-times" /> Cancel</button>
+                                    </Link>
+                                </div>
+
+                                
+                        
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-      </div>
-      
-    </div>
-   
-    </div>
-
-    </section>
-    </form>
-    </>
+        </section>
+    </React.Fragment>
     )
 } 
-
 export default ProfileEdit
