@@ -12,7 +12,11 @@ const axios = Axios.create({
 axios.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('token'); // get the token set by signin
-        config.headers.Authorization =  `Bearer ${token}`; // set the header according to Sanctum format
+
+        // custom headers
+        config.headers['Authorization'] =  `Bearer ${token}` // Authorization
+        config.headers['Accept'] = 'application/json' // return reesponse in JSON
+
         return config; // return back config()
     },
     (error) => {

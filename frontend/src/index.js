@@ -38,16 +38,14 @@ library.add(fas)
 
 export default function App() {
   const [user, setUser] = useState(false); // simulate user object
-  const isLoggedIn = useStore(state => state.isLoggedIn)
+  const isLoggedIn = useStore(state => state.isLoggedIn) // using zustand
 
   return (
     <BrowserRouter>
       <Routes>
-
-      <Route path="sign-in" element={<SignIn />} />
-      <Route index element={<Home />} />
-      <Route path="*" element={<Error404 />} />
-
+        <Route path="sign-in" element={<SignIn />} />
+        <Route index element={<Home />} />
+        <Route path="*" element={<Error404 />} />
         <Route element={<AdminLayout />}>
           <Route element={<ProtectedRoute user={isLoggedIn} />}>
               <Route path="/profile" element={<ProfileShow />} />
@@ -57,9 +55,6 @@ export default function App() {
               <Route path="/dashboard" element={<Dashboard />} />
           </Route>
         </Route>
-
-
-
       </Routes>
     </BrowserRouter>
   );

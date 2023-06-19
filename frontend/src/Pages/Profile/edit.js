@@ -14,9 +14,12 @@ export const ProfileEdit = () => {
     const token =  localStorage.getItem('token') // API token
 
     // form field
-    const [name, setName] = React.useState('');
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
+    const [form, setForm] = React.useState({
+        name: '',
+        email: '',
+        password: '',
+    })
+
   
     // 👇️ fetch protected data from API server
     function fetchData(){
@@ -39,7 +42,13 @@ export const ProfileEdit = () => {
         })
         .then(json => {
             // authentication success
-            setData(json)
+
+            // set formdata with JSON object
+            setForm({
+                ...form,
+                name: json.name,
+                email: json.email,
+            });
         })
         .catch( error =>{
             //console.log(error)
@@ -150,11 +159,17 @@ export const ProfileEdit = () => {
                         </div>
                         <div className="col-sm-9">
                             <input 
-                                onChange={e => setName(e.target.value)}
+                                onChange={e => {
+                                    setForm({
+                                        ...form,
+                                        name: e.target.value
+                                    });
+                                }}
+                                
                                 className="form-control" 
                                 type="text" 
                                 name="name" 
-                                value={ data?.name? data.name : ''}
+                                value={ form.name }
         
                             />
                         </div>
@@ -167,11 +182,17 @@ export const ProfileEdit = () => {
                         </div>
                         <div className="col-sm-9">
                             <input 
-                                onChange={e => setEmail(e.target.value)}
+                                onChange={e => {
+                                    setForm({
+                                        ...form,
+                                        email: e.target.value
+                                    });
+                                }}
                                 className="form-control" 
                                 type="text" 
                                 name="email" 
-                                value={ data?.email? data.email : ''} />
+                                value={ form.email}
+                                />
                         </div>
                     </div>
                 </div>
