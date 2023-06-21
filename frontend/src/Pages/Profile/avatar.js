@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import camera1 from './camera1.svg'
 import avatar from './avatar.webp'
+import axios from '../../Libs/axios'
 
 export const Avatar = () => {
     const inputRef = useRef(null)
@@ -10,23 +11,47 @@ export const Avatar = () => {
         inputRef.current.click();
     }
 
-    const handleFileChange = event => {
-        const fileObj = event.target.files && event.target.files[0];
+    const handleFileChange = (event) => {
+
+        // target the avatar file input
+        const fileObj = event.target.files[0];
         if (!fileObj) {
           return;
         }
     
-        console.log('fileObj is', fileObj);
+        // test the object
+        //console.log('fileObj is', fileObj);
     
         // 👇️ reset file input
         event.target.value = null;
     
         // 👇️ is now empty
-        console.log(event.target.files);
+        //console.log(event.target.files);
     
         // 👇️ can still access file object here
-        console.log(fileObj);
-        console.log(fileObj.name);
+        // console.log(fileObj);
+        // console.log(fileObj.name);
+
+        // get the Formdata
+        const formData = new FormData()
+        formData.append('file', fileObj) // selected file
+
+        // submit as POST to API
+        axios({
+                url:  process.env.REACT_APP_BACKEND_URL + '/profile/avatar/store',   
+                method: 'post',
+                data: formData,
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            .then( function(response){
+                console.log(response)
+            })
+            .catch ( function(error){
+                console.log(error)
+            })
+
       };
 
     return (

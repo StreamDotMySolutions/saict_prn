@@ -150,7 +150,7 @@ export const ProfileEdit = () => {
                         {/* FORM - Profile */}
                         <div className="col-lg-8">
                             <div className="card mb-4">
-                                <div className="card-header text-white" style={{ 'background-color' : '#999'}}>
+                                <div className="card-header text-white" style={{ 'backgroundColor' : '#999'}}>
                                     <h4>Profile</h4>
                                 </div>
                                 <div className="card-body bg-light">

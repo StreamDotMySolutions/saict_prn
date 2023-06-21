@@ -37,5 +37,19 @@ class ProfileController extends Controller
         ],200);
 
     }
+
+    /**
+     * Store Submitted Avatar
+     */
+    public function storeAvatar(Request $request)
+    {
+        \Log::info($request);
+
+        // update user profile
+        return Response::json([
+            'message' => 'Profile updated ',
+            'id' => Auth::user('auth:sanctum')->id,
+        ],200);
+    }
    
 }
