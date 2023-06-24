@@ -21,6 +21,9 @@ import Contact from "./Pages/Contact"
 /** Auth */
 import SignIn from "./Pages/SignIn"
 
+/** Users Management - ADMIN */
+import UsersIndex from "./Pages/Users"
+
 /** Pages - PRIVATE */
 import Dashboard from "./Pages/Dashboard"
 import MyAccount from "./Pages/MyAccount"
@@ -48,6 +51,7 @@ export default function App() {
         <Route path="*" element={<Error404 />} />
         <Route element={<AdminLayout />}>
           <Route element={<ProtectedRoute user={isLoggedIn} />}>
+              <Route path="/users" element={<UsersIndex />} />
               <Route path="/profile" element={<ProfileShow />} />
               <Route path="/profile/edit" element={<ProfileEdit />} />
               <Route path="/clients" element={<Client />} />

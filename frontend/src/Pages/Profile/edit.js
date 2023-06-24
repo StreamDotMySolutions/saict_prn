@@ -77,7 +77,7 @@ export const ProfileEdit = () => {
 
         event.preventDefault()
 
-        const url =   process.env.REACT_APP_BACKEND_URL + '/profile/store'
+        const url =   process.env.REACT_APP_BACKEND_URL + '/profile/avatar/store'
         const data = new FormData(event.target);
         const options = {
             method: 'post',

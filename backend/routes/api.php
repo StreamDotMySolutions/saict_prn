@@ -174,3 +174,6 @@ Route::middleware('auth:sanctum')->get('/protected', function () {
 // profile
 require __DIR__.'/profile.php';
 
+// users
+require __DIR__.'/users.php';
+

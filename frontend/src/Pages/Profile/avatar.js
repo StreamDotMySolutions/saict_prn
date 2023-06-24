@@ -49,13 +49,13 @@ export const Avatar = () => {
                 console.log(response)
             })
             .catch ( function(error){
-                console.log(error)
+                console.log(error.response.data)
             })
 
       };
 
     return (
-        <>
+    <>
         <input
             style={{display: 'none'}}
             ref={inputRef}
@@ -76,6 +76,6 @@ export const Avatar = () => {
             onClick={handleClick} 
           
         />
-        </>
+    </>
     )
 }
