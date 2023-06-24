@@ -1,16 +1,15 @@
 import axios from '../../Libs/axios'
-const loadUsers = (props) => {
+const LoadUsers = (props) => {
 
-    // destructure the props passed to the component
-    //const { data, setData } = props;
-    
     // load users 
     // api/users/index
-    console.log('load users from API server')
+    //console.log('load users from API server is')
+    //console.log(props.page)
 
     // submit as POST to API
     axios({
-        url:  process.env.REACT_APP_BACKEND_URL + '/users/index',   
+       // url:  process.env.REACT_APP_BACKEND_URL + '/users/index',   
+        url:  props.page, 
         method: 'get',
     })
     .then( function(response){
@@ -21,4 +20,4 @@ const loadUsers = (props) => {
         console.log(error.response.data)
     })
 }
-export default loadUsers
+export default LoadUsers

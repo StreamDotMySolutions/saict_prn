@@ -2,7 +2,7 @@ import React from 'react'
 
 const UserData = (props) => {
 
-    console.log(props.data.data)
+    //console.log(props.data.data)
     const users = props.data.data
     const listUsers = users.map( (user) => 
                     <tr key={user.id}>

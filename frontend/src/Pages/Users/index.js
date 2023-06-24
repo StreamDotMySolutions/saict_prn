@@ -8,8 +8,9 @@ import LoadUsers from './LoadUsers'
 
 const UsersIndex = () => {
     const [data, setData] = useState(null)
-
-    useEffect(() => LoadUsers({setData}),[])
+    const [page, setPage] = useState(process.env.REACT_APP_BACKEND_URL + '/users/index')
+ 
+    useEffect(() => LoadUsers({setData,page}),[page])
 
     return (
         <>
@@ -18,8 +19,14 @@ const UsersIndex = () => {
             <hr />
             { ( data !== undefined && data !== null ) ?
                 <> 
-                <UserData data={data} />
-                <Pagination data={data} />
+                    <UserData 
+                        data={data} 
+                    />
+                    
+                    <Pagination 
+                        data={data}
+                        setPage={setPage} 
+                    />
                 </>
                 :
                 <p>loading ...</p>
