@@ -11,9 +11,13 @@ class UsersController extends Controller
 {
     public function index()
     {
-        // update user profile
+
+        $users = User::paginate();
+       
+        // user paginations
         return Response::json([
             'message' => 'Users Index',
+            'users' => $users,
         ],200);
     }
 }
