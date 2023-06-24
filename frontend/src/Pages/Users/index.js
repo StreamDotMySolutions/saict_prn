@@ -9,6 +9,8 @@ import Data from './data'
 
 const UsersIndex = () => {
 
+    const [data, setData] = useState(null)
+
     function loadUsers(){
         // load users 
         // api/users/index
@@ -20,24 +22,33 @@ const UsersIndex = () => {
             method: 'get',
         })
         .then( function(response){
-            console.log(response)
+            //console.log(response)
+            setData(response.data.users)
         })
         .catch ( function(error){
             console.log(error.response.data)
         })
     }
 
-    useEffect( loadUsers , [])
-
+    // 👇️ fetchData running once
+    useEffect(() => {
+        loadUsers()
+    },[])
+    //console.log(data)
 
     return (
         <>
             <BreadCrumb title='User Management'/>   
             <h1>User Management</h1>
             <hr />
-            <Pagination />
-            <Data />
-            <Pagination />
+            { (data !== undefined && data !== null ) ?
+                <> 
+                <Data />
+                <Pagination data={data} />
+                </>
+                :
+                <p>loading ...</p>
+            }
         </>
     )
 }
