@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const Pagination = (props) => {
-    console.log(props.data)
+    //console.log(props.data.links)
 
     const pages = props.data.links
     const pageItems = pages.map( (page) => 

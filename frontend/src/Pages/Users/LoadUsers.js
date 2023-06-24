@@ -1,5 +1,5 @@
 import axios from '../../Libs/axios'
-const LoadUsers = (props) => {
+const loadUsers = (props) => {
 
     // destructure the props passed to the component
     //const { data, setData } = props;
@@ -21,4 +21,4 @@ const LoadUsers = (props) => {
         console.log(error.response.data)
     })
 }
-export default LoadUsers
+export default loadUsers

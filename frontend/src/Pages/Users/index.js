@@ -3,13 +3,13 @@ import { Link } from "react-router-dom"
 import { useStore } from "../../Helpers/Store"
 import { BreadCrumb } from '../../Components/BreadCrumb'
 import { Pagination } from '../../Components/Pagination'
-import Data from './data'
-import loadUsers from './loadUsers'
+import UserData from './UserData'
+import LoadUsers from './LoadUsers'
 
 const UsersIndex = () => {
     const [data, setData] = useState(null)
 
-    useEffect(() => loadUsers({setData}),[])
+    useEffect(() => LoadUsers({setData}),[])
 
     return (
         <>
@@ -18,7 +18,7 @@ const UsersIndex = () => {
             <hr />
             { ( data !== undefined && data !== null ) ?
                 <> 
-                <Data />
+                <UserData data={data} />
                 <Pagination data={data} />
                 </>
                 :
