@@ -35,6 +35,8 @@ import ProfileEdit from "./Pages/Profile/edit"
 
 /** Prop Drilling Demo */
 import PropDrilling from "./Pages/PropDrilling/Page"
+import Zustand from "./Pages/PropDrilling/Zustand"
+import Objects from "./Pages/PropDrilling/Objects"
 
 /** Font Awesome **/
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -51,6 +53,8 @@ export default function App() {
       <Routes>
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/prop-drilling" element={<PropDrilling />} />
+        <Route path="/zustand" element={<Zustand />} />
+        <Route path="/objects" element={<Objects />} />
         <Route index element={<Home />} />
         <Route path="*" element={<Error404 />} />
         <Route element={<AdminLayout />}>

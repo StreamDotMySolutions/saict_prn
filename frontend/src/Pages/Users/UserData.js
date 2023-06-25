@@ -4,6 +4,7 @@ const UserData = (props) => {
 
     //console.log(props.data.data)
     const users = props.data.data
+    console.log(users)
     const listUsers = users.map( (user) => 
                     <tr key={user.id}>
                         <th scope="row">{user.id}</th>

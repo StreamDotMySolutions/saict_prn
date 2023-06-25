@@ -15,7 +15,7 @@ const UsersIndex = () => {
             <BreadCrumb title='User Management'/>   
             <h1>User Management</h1>
             <hr />
-            { ( data !== undefined && data !== null ) ?
+            { data ?
                 <> 
                     <UserData 
                         data={data} 

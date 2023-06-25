@@ -3,7 +3,9 @@ import { React, useState }  from 'react'
 export const Pagination = (props) => {
     //console.log(props.data.links)
     const [active , setActive] = useState(false)
-    const pages = props.data.links
+    const pages = props.data.meta.links
+
+    console.log(pages)
     
     const loadPage = (url) => {
         //console.log(url)
@@ -29,10 +31,9 @@ export const Pagination = (props) => {
         props.setPage(2)
     }
     
-    
     return (
         <div className='row'>
-            <div className='col'>Showing {props.data.from} to {props.data.to} of {props.data.total} </div>
+            <div className='col'>Showing {props.data.meta.from} to {props.data.meta.to} of {props.data.meta.total} </div>
             <div className='col'>
             <nav>
                 <ul className="pagination justify-content-end">       
@@ -42,6 +43,5 @@ export const Pagination = (props) => {
 
             </div>
         </div>
-
     )
 }

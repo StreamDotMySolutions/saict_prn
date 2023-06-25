@@ -13,8 +13,9 @@ const LoadUsers = (props) => {
         method: 'get',
     })
     .then( function(response){
-        //console.log(response)
-        props.setData(response.data.users)
+        console.log(response.data.data)
+        //console.log(response.data.meta.links)
+        props.setData(response.data)
     })
     .catch ( function(error){
         console.log(error.response.data)
