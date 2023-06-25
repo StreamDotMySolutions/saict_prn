@@ -33,6 +33,9 @@ import Client from "./Pages/Client"
 import ProfileShow from "./Pages/Profile/show"
 import ProfileEdit from "./Pages/Profile/edit"
 
+/** Prop Drilling Demo */
+import PropDrilling from "./Pages/PropDrilling/Page"
+
 /** Font Awesome **/
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -46,7 +49,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="sign-in" element={<SignIn />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/prop-drilling" element={<PropDrilling />} />
         <Route index element={<Home />} />
         <Route path="*" element={<Error404 />} />
         <Route element={<AdminLayout />}>

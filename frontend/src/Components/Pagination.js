@@ -11,7 +11,9 @@ export const Pagination = (props) => {
     }
     const pageItems = pages.map( (page) => 
        
-        <li key={page.label} className={page.active === true ? 'page-item active' : (page.url === null) ? 'page-item disabled' :  'page-item'}>
+        <li 
+            key={page.label} 
+            className={page.active === true ? 'page-item active' : (page.url === null) ? 'page-item disabled' :  'page-item'}>
             <a 
                 className="page-link" 
                 href="#"
