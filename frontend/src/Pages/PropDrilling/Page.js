@@ -12,12 +12,8 @@ const PropDrilling = () => {
     // JSX is HTML
     return (
         <>
-            <Content content={content} />
-
-            <Form
-                content={content} 
-                setContent={setContent} 
-            />
+            <Content/>
+            <Form />
         </>
     )
 }

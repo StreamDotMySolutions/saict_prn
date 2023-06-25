@@ -1,10 +1,12 @@
-const Content = (props) => {
-    console.log(props.content)
+import useStore from './store'
+const Content = () => {
+    const title = useStore((state) => state.title);
+    const description = useStore((state) => state.description);
 
     return(
         <>
-            <h3>{ props.content.title }</h3>
-            <p>{ props.content.descriptions }</p>
+            <h3>{ title }</h3>
+            <p>{ description }</p>
         </>
     )
 }

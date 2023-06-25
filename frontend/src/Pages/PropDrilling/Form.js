@@ -1,8 +1,15 @@
+import useStore from './store'
 const Form = (props) => {
+
+    const title = useStore((state) => state.title);
+    const description = useStore((state) => state.description);
+    const setTitle = useStore((state) => state.setTitle);
+    const setDescription = useStore((state) => state.setDescription);
 
     const processForm = (event) => {
         event.preventDefault()
-        console.log(props.content)
+        console.log(title)
+        console.log(description)
     }
 
     return(
@@ -12,10 +19,8 @@ const Form = (props) => {
                 type="text" 
                 name="title" 
                 onChange={ (event) =>         
-                    props.setContent({
-                        ...props.content, // spread operator
-                        'title' : event.target.value // form event
-                    })}
+                    setTitle(event.target.value)    
+                }
             />
             <br />
             <br />
@@ -23,10 +28,8 @@ const Form = (props) => {
             <textarea 
                 name="descriptions"
                 onChange={ (event) =>         
-                    props.setContent({
-                        ...props.content, // spread operator
-                        'descriptions' : event.target.value // form event
-                    })}
+                    setDescription(event.target.value)    
+                }
             ></textarea>
             <br />
             <br />
