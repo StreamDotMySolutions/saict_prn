@@ -42,8 +42,7 @@ class LoginRequest extends FormRequest
      {
  
          if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-    
-            \Log::info('failed');
+ 
              throw ValidationException::withMessages([
                  'email' => __('auth.failed'),
              ]);
