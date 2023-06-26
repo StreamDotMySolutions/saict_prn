@@ -1,9 +1,10 @@
 import { React, useEffect } from 'react'
 import { Link } from "react-router-dom"
-import { BreadCrumb } from '../../Components/BreadCrumb';
+import { BreadCrumb } from '../../Components/BreadCrumb'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import useProfileStore from './utils/store'
-import FetchData from './utils/FetchData';
+import FetchData from './utils/FetchData'
+import avatar from './img/avatar.webp'
 
 const ProfileShow = () => {
 
@@ -22,7 +23,7 @@ const ProfileShow = () => {
                 <div className="col-lg-4">
                     <div className="card mb-4">
                         <div className="card-body text-center">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                            <img src={ profile.avatar ? profile.avatar : avatar } alt="avatar"
                             className="rounded-circle img-fluid" style={{ 'width': '150px' }} />
                             <h5 className="my-3">{profile?.name}</h5>
                             <p className="text-muted mb-1">{profile.email}</p>
@@ -64,11 +65,8 @@ const ProfileShow = () => {
                                 <div className="col-sm-9">
                                     <p className="text-muted mb-0"><strong>{profile.created_at}</strong></p>
                                 </div>
- 
                             </div>
-                            
                         </div>
-                        
                     </div>
                     <div className='row'>
                         <Link to='/profile/edit'>
@@ -77,11 +75,9 @@ const ProfileShow = () => {
                     </div>
                 </div>
             </div>
-           
         </div>
-
     </section>
-        </>
+    </>
     )
 } 
 

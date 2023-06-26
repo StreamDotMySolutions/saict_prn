@@ -3,7 +3,7 @@ import useProfileStore from './store'
 const FetchData = () => {
     const token =  localStorage.getItem('token') // API token
     console.log('fetching...')
-    const url =   process.env.REACT_APP_BACKEND_URL + '/user'
+    const url =   process.env.REACT_APP_BACKEND_URL + '/profile/show'
 
     const options = {
         method: 'get',
@@ -20,11 +20,11 @@ const FetchData = () => {
         return Promise.reject(response); // reject the promise
     })
     .then(json => {
-  
-        useProfileStore.setState({ name: json.name }) // setter
-        useProfileStore.setState({ email: json.email }) // setter
-        useProfileStore.setState({ created_at: json.created_at }) // setter
-
+        //console.log(json)
+        useProfileStore.setState({ name: json.data.name }) // setter
+        useProfileStore.setState({ email: json.data.email }) // setter
+        useProfileStore.setState({ avatar: json.data.avatar }) // setter
+        useProfileStore.setState({ created_at: json.data.created_at }) // setter
     })
     .catch( error =>{
         //console.log(error)

@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UsersResource extends JsonResource
+class ProfileResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,7 +19,7 @@ class UsersResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'avatar' => $this->avatar,
+            'avatar' =>  env('APP_URL').'/storage/avatars/' . $this->id . '/' . $this->avatar,
             'created_at' => $this->created_at->diffForHumans() . ' on ' . $this->created_at->format('d/m/Y'),
             'updated_at' => $this->updated_at,
         ];

@@ -2,9 +2,13 @@ import { useRef } from 'react'
 import camera1 from './img/camera1.svg'
 import avatar from './img/avatar.webp'
 import axios from '../../Libs/axios'
+import useProfileStore from './utils/store'
 
 export const Avatar = () => {
+
+    const profile = useProfileStore() 
     const inputRef = useRef(null)
+
     const handleClick = () => {
 
         // 👇️ open file input box on click of another element
@@ -45,8 +49,10 @@ export const Avatar = () => {
                     'Content-Type': 'multipart/form-data'
                 }
             })
-            .then( function(response){
-                console.log(response)
+            .then( function(json){
+                //console.log(json)
+                useProfileStore.setState({ avatar: json.data.avatar }) // setter
+                // update state
             })
             .catch ( function(error){
                 console.log(error.response.data)
@@ -56,6 +62,7 @@ export const Avatar = () => {
 
     return (
     <>
+      
         <input
             style={{display: 'none'}}
             ref={inputRef}
@@ -64,7 +71,7 @@ export const Avatar = () => {
         />
 
         <img 
-            src={avatar} 
+            src={ profile.avatar ? profile.avatar : avatar } 
             alt="avatar"
             className="rounded-circle img-fluid" 
             style={{ 'width': '150px' }} 

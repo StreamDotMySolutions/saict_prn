@@ -1,8 +1,10 @@
-import { NavLink, Link } from "react-router-dom"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { NavLink, Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import useProfileStore from '../Pages/Profile/utils/store'
+import avatar from '../Pages/Profile/img/avatar.webp'
 
 const SideBar = ( props ) => {
-
+    const profile = useProfileStore()
     const currDate = {
         show : new Date().toLocaleString(),
       }
@@ -34,7 +36,7 @@ const SideBar = ( props ) => {
     <hr />
     <div className="dropdown">
     <a href="#" className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2" />
+        <img src={ profile.avatar ? profile.avatar : avatar } alt="" width="32" height="32" className="rounded-circle me-2" />
         <strong>Webmaster</strong>
     </a>
     <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">

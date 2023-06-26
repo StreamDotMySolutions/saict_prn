@@ -3,7 +3,9 @@ import { create } from 'zustand'
 const profile = {
     name: null,
     email:null,
-    created_at: null
+    avatar: null,
+    created_at: null,
+
 }
 const useProfileStore = create( () => (profile)) // create store
 

@@ -10,9 +10,18 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreAvatarRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Resources\ProfileResource;
 
 class ProfileController extends Controller
 {
+
+    /**
+     * show user data in Profile
+     */
+    public function show(Request $request)
+    {
+        return new ProfileResource($request->user());
+    }
 
     /**
      * Handle an incoming authentication request.
@@ -79,15 +88,26 @@ class ProfileController extends Controller
     public function storeProfileAvatar(StoreAvatarRequest $request)
     {
 
-        // validation passed
-        // store in storage/app/avatars/ folder
-        $path = Storage::disk('local')->putFile('avatars/' .  $request->user()->id, $request->file('file'));
-        \Log::info($path);
+        if($request->has('file')){
+            // store in storage/app/public/avatars/ folder
+            // http://localhost:8000/storage/avatars/1/DxaIElZ3nsKIeYlAAnl6Ddd83Oop89wuCgV3hW1Z.png
+            $path = Storage::disk('avatars')->putFile( $request->user()->id, $request->file('file'));
+
+            if($path){
+                User::where('id' ,  Auth::user('auth:sanctum')->id )->update(['avatar' => basename($path) ]);
+            }
+     
+        }
+
+        //return new UserResource(User::findOrFail($id));
+        // return new ProfileResource([
+        //     'message' => 'Avatar updated ',
+        //     'url' => env('APP_URL').'/storage/avatars/' . Auth::user('auth:sanctum')->id . '/' .  basename($path),
+        // ]);
 
         // return http header 200
         return Response::json([
-            'message' => 'Profile updated ',
-            'id' => Auth::user('auth:sanctum')->id,
+            'avatar' => env('APP_URL').'/storage/avatars/' . Auth::user('auth:sanctum')->id . '/' .  basename($path),
         ],200);
     }
    
