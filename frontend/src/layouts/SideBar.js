@@ -1,7 +1,7 @@
 import { NavLink, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import useProfileStore from '../Pages/Profile/utils/store'
-import avatar from '../Pages/Profile/img/avatar.webp'
+import useProfileStore from '../pages/Profile/utils/Store'
+import avatar from '../pages/Profile/img/avatar.webp'
 
 const SideBar = ( props ) => {
     const profile = useProfileStore()

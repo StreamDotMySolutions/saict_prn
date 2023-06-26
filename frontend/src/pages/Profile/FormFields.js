@@ -1,8 +1,8 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom"
-import useProfileStore from './utils/store'
+import useProfileStore from './utils/Store'
 
-const Form = () => {
+const FormFields = () => {
     // set system variables
     const [message, setMessage] = React.useState('') // system message
     const [data, setData] = React.useState([]) // data from server
@@ -106,4 +106,4 @@ const Form = () => {
     )
 
 }
-export default Form
+export default FormFields

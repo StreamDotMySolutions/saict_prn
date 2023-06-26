@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
-import { useStore } from "../Helpers/Store";
+import { useAuthStore } from "../stores/AuthStore";
 
 const Login = () => {
 
@@ -9,8 +9,8 @@ const Login = () => {
     const [errors, setErrors] = React.useState([]); // validation errors
 
 
-    const isLoggedIn = useStore( (state) => state.isLoggedIn ) // get state
-    const setIsLoggedIn = useStore((state) => state.setIsLoggedIn) // set state
+    const isLoggedIn = useAuthStore( (state) => state.isLoggedIn ) // get state
+    const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn) // set state
 
     // 1. add event listenr
     // 2. user click submit
@@ -29,7 +29,8 @@ const Login = () => {
         // message and display
         // back at dom id = message
 
-        const url = 'http://localhost:8000/api/test'
+        //const url = 'http://localhost:8000/api/test'
+        const url = 'http://localhost:8000/api/login'
         const data = new FormData(event.target);
         const options = {
             method: 'post',

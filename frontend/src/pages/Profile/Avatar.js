@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import camera1 from './img/camera1.svg'
 import avatar from './img/avatar.webp'
-import axios from '../../Libs/axios'
-import useProfileStore from './utils/store'
+import axios from '../../libs/axios'
+import useProfileStore from './utils/Store'
 
 export const Avatar = () => {
 

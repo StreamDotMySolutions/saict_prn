@@ -1,4 +1,4 @@
-import axios from '../../Libs/axios'
+import axios from '../../libs/axios'
 const LoadUsers = (props) => {
 
     // load users 

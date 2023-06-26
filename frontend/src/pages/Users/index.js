@@ -1,6 +1,6 @@
 import { React, useEffect,useState } from 'react'
-import { BreadCrumb } from '../../Components/BreadCrumb'
-import { Pagination } from '../../Components/Pagination'
+import { BreadCrumb } from '../../components/BreadCrumb'
+import { Pagination } from '../../components/Pagination'
 import UserData from './UserData'
 import LoadUsers from './LoadUsers'
 

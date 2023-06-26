@@ -1,38 +1,38 @@
 import ReactDOM from "react-dom/client"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import ProtectedRoute from "./Helpers/ProtectedRoute"
+import ProtectedRoute from "./libs/ProtectedRoute"
 
 /** Layouts */
-import AdminLayout from "./Layouts/Admin"
+import AdminLayout from "./layouts/Admin"
 
 /** Error */
-import Error404 from "./Pages/Error404"
+import Error404 from "./pages/Error404"
 
 /** Pages - PUBLIC */
-import Home from "./Pages/Home"
-import Blogs from "./Pages/Blogs"
-import Login from "./Pages/Login"
-import Contact from "./Pages/Contact"
+import Home from "./pages/Home"
+import Blogs from "./pages/Blogs"
+import Login from "./pages/Login"
+import Contact from "./pages/Contact"
 
 /** Auth */
-import SignIn from "./Pages/SignIn"
+import SignIn from "./pages/SignIn"
 
 /** Users Management - ADMIN */
-import UsersIndex from "./Pages/Users"
+import UsersIndex from "./pages/Users"
 
 /** Pages - PRIVATE */
-import Dashboard from "./Pages/Dashboard"
-import MyAccount from "./Pages/MyAccount"
-import Client from "./Pages/Client"
+import Dashboard from "./pages/Dashboard"
+import MyAccount from "./pages/MyAccount"
+import Client from "./pages/Client"
 
 /** Profile */
-import ProfileShow from "./Pages/Profile/show"
-import ProfileEdit from "./Pages/Profile/edit"
+import ProfileShow from "./pages/Profile/Show"
+import ProfileEdit from "./pages/Profile/Edit"
 
 /** Prop Drilling Demo */
-import PropDrilling from "./Pages/PropDrilling/Page"
-import Zustand from "./Pages/PropDrilling/Zustand"
-import Objects from "./Pages/PropDrilling/Objects"
+import PropDrilling from "./pages/PropDrilling/Page"
+import Zustand from "./pages/PropDrilling/Zustand"
+import Objects from "./pages/PropDrilling/Objects"
 
 /** Font Awesome **/
 import { library } from '@fortawesome/fontawesome-svg-core'

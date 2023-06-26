@@ -1,8 +1,8 @@
 import { React, useEffect } from 'react'
 import { Link } from "react-router-dom"
-import { BreadCrumb } from '../../Components/BreadCrumb'
+import { BreadCrumb } from '../../components/BreadCrumb'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import useProfileStore from './utils/store'
+import useProfileStore from './utils/Store'
 import FetchData from './utils/FetchData'
 import avatar from './img/avatar.webp'
 

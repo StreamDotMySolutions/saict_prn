@@ -1,12 +1,12 @@
 import { Outlet, Link } from "react-router-dom";
-import { useStore } from "../Helpers/Store";
+import { useAuthStore } from "../stores/AuthStore";
 import './style.css'
 import SideBar from "./SideBar";
 
 const AdminLayout = () => {
 
-  const isLoggedIn = useStore( (state) => state.isLoggedIn ) // get state
-  const setIsLoggedIn = useStore((state) => state.setIsLoggedIn) // set state
+  const isLoggedIn = useAuthStore( (state) => state.isLoggedIn ) // get state
+  const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn) // set state
 
   const handleLogout = () => {
     // set store isLoggedIn to false

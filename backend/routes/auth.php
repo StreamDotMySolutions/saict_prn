@@ -3,6 +3,10 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/sign-in', [AuthController::class, 'store'])
+Route::post('/login', [AuthController::class, 'store'])
                 ->middleware('guest')
-                ->name('sign-in');
+                ->name('login');
+
+Route::get('/logout', [AuthController::class, 'delete'])
+                ->middleware('auth:sanctum')
+                ->name('logout');

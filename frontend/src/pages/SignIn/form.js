@@ -1,15 +1,15 @@
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Navigate } from 'react-router-dom'
-import { useStore } from '../../Helpers/Store'
+import { useAuthStore } from '../../stores/AuthStore'
 
 const Form = () => {
     // set system variables
     const [message, setMessage] = React.useState(''); // system message
     const [invalid, setInvalid] = React.useState(true)
     const [errors, setErrors] = React.useState([]); // validation errors
-    const isLoggedIn = useStore( (state) => state.isLoggedIn ) // get state
-    const setIsLoggedIn = useStore((state) => state.setIsLoggedIn) // set state
+    const isLoggedIn = useAuthStore( (state) => state.isLoggedIn ) // get state
+    const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn) // set state
 
     // handle form submission
     function handleSubmit(event){
@@ -29,7 +29,7 @@ const Form = () => {
         // message and display
         // back at dom id = message
 
-        const url =   process.env.REACT_APP_BACKEND_URL + '/test'
+        const url =   process.env.REACT_APP_BACKEND_URL + '/login'
         const data = new FormData(event.target);
         const options = {
             method: 'post',
@@ -41,12 +41,14 @@ const Form = () => {
 
             // response.ok status 200-299
             if(response.ok) {
+     
                 return response.json()
             } 
             return Promise.reject(response); // reject the promise
         })
         .then(json => {
-
+ 
+            //console.log(json)
             // authentication success
             setMessage(json.message)
 
@@ -58,7 +60,7 @@ const Form = () => {
         })
         .catch( error =>{
 
-            //console.log(error)
+            console.log(error)
             // field validations at 422
             // wrong username/password at 401
             // laravel validations error

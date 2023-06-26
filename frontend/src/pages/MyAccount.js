@@ -1,9 +1,9 @@
 import React from 'react'
-import { useStore } from "../Helpers/Store"
+import { useAuthStore } from "../stores/AuthStore"
 import Cookies from 'js-cookie'
-import axios from '../Libs/axios'
+import axios from '../libs/axios'
 import env from "react-dotenv";
-import { BreadCrumb } from '../Components/BreadCrumb';
+import { BreadCrumb } from '../components/BreadCrumb';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const MyAccount = () => {
@@ -13,7 +13,7 @@ const MyAccount = () => {
     const [data, setData] = React.useState([]) // dat from server
     const [errors, setErrors] = React.useState([]) // validation errors
     const token =  localStorage.getItem('token') // API token
-    const setIsLoggedIn = useStore((state) => state.setIsLoggedIn) // set state
+    const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn) // set state
 
   
     function fetchData(){

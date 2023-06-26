@@ -1,4 +1,4 @@
-import useProfileStore from './store'
+import useProfileStore from './Store'
 
 const FetchData = () => {
     const token =  localStorage.getItem('token') // API token

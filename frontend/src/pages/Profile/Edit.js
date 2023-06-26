@@ -1,11 +1,9 @@
 import { useEffect } from 'react'
-import { BreadCrumb } from '../../Components/BreadCrumb';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Link, useNavigate } from "react-router-dom"
-import { Avatar } from './avatar'
-import FetchData from './utils/FetchData';
-import Form from './form'
-import useProfileStore from './utils/store'
+import { BreadCrumb } from '../../components/BreadCrumb'
+import { Avatar } from './Avatar'
+import FetchData from './utils/FetchData'
+import useProfileStore from './utils/Store'
+import FormLayout from './FormLayout'
 
 export const ProfileEdit = () => {
 
@@ -41,24 +39,9 @@ export const ProfileEdit = () => {
             
                         {/* FORM - Profile */}
                         <div className="col-lg-8">
-                            <div className="card mb-4">
-                                <div className="card-header text-white" style={{ 'backgroundColor' : '#999'}}>
-                                    <h4>Update Profile</h4>
-                                </div>
-                                <div className="card-body bg-light">
-                                    <Form />
-                                </div>
-                            </div>
 
-                            <div className="row">
-                                <div className="col">
-                                    <button type="submit" className='btn btn-primary'><FontAwesomeIcon icon="fas fa-save" /> Save</button>
-                                    &nbsp;
-                                    <Link to='/profile'>
-                                    <button className='btn btn-danger'><FontAwesomeIcon icon="fa fa-times" /> Cancel</button>
-                                    </Link>
-                                </div>
-                            </div>
+                            <FormLayout />
+
                         </div>
                     </div>
                

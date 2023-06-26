@@ -14,7 +14,7 @@ class LoginRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
@@ -24,7 +24,7 @@ class LoginRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
-    public function rules(): array
+    public function rules()
     {
         return [
             'email' => ['required', 'string', 'email'],
@@ -38,28 +38,17 @@ class LoginRequest extends FormRequest
      * @throws \Illuminate\Validation\ValidationException
      */
 
-     public function authenticate(): response
+     public function authenticate()
      {
  
          if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
     
+            \Log::info('failed');
              throw ValidationException::withMessages([
                  'email' => __('auth.failed'),
              ]);
 
-         } else {
-               
-            // create token in User Model
-            $token = Auth::user()->createToken('API Token')->plainTextToken;
-
-            // return with 200 header sucess
-            // return message = "Authentication Success"
-            // return in JSON
-            return response()->json([
-                'message' => 'Authentication Success',
-                'token' => $token
-            ],200);
-        }
+         }
  
      }
 }
