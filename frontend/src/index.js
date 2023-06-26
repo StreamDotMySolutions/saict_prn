@@ -1,13 +1,9 @@
 import ReactDOM from "react-dom/client"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { useState } from "react"
 import ProtectedRoute from "./Helpers/ProtectedRoute"
-import { useStore } from "./Helpers/Store"
 
 /** Layouts */
-import Layout1 from "./Layouts/Layout1"
 import AdminLayout from "./Layouts/Admin"
-import Layout2 from "./Layouts/Layout2"
 
 /** Error */
 import Error404 from "./Pages/Error404"
@@ -43,10 +39,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas)
 
-
 export default function App() {
-  const [user, setUser] = useState(false); // simulate user object
-  const isLoggedIn = useStore(state => state.isLoggedIn) // using zustand
 
   return (
     <BrowserRouter>
@@ -58,7 +51,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="*" element={<Error404 />} />
         <Route element={<AdminLayout />}>
-          <Route element={<ProtectedRoute user={isLoggedIn} />}>
+          <Route element={<ProtectedRoute  />}>
               <Route path="/users" element={<UsersIndex />} />
               <Route path="/profile" element={<ProfileShow />} />
               <Route path="/profile/edit" element={<ProfileEdit />} />
