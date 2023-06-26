@@ -1,6 +1,6 @@
 import { useRef } from 'react'
-import camera1 from './camera1.svg'
-import avatar from './avatar.webp'
+import camera1 from './img/camera1.svg'
+import avatar from './img/avatar.webp'
 import axios from '../../Libs/axios'
 
 export const Avatar = () => {
