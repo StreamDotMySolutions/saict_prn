@@ -11,3 +11,7 @@ require __DIR__.'/profile.php';
 // users
 require __DIR__.'/users.php';
 
+Route::get('/json', function () {
+    return 'You can post data';
+ })->middleware(['responseInJson']);
+

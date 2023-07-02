@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreAvatarRequest;
+use App\Http\Requests\StoreProfileRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\ProfileResource;
 
@@ -24,9 +25,9 @@ class ProfileController extends Controller
     }
 
     /**
-     * Handle an incoming authentication request.
+     * update user profile
      */
-    public function store(Request $request)
+    public function store(StoreProfileRequest $request)
     {
 
         // POST data from ReactJS
@@ -50,40 +51,8 @@ class ProfileController extends Controller
     }
 
     /**
-     * Store Submitted Avatar
+     * update user avatar
      */
-    public function storeAvatar(Request $request)
-    {
-        \Log::info($request);
-
-        $rules = [
-            'file' => ['required','mimes:jpeg,png,jpg,gif'],
-        ];
-    
-        $customMessages = [
-            'file.required' => 'The :attribute field is required.',
-            'file.mimes' => 'Only WEBP,JPG and PNG is allowed'
-        ];
-    
-        $validator = Validator::make($request->all(), $rules, $customMessages);
-
-
-        // if validation fail, 
-        // return http header 422
-        if ($validator->fails()) {
-            return Response::json([
-                'message' => 'Validation failed',
-                'errors' => $validator->messages()
-            ],422);
-        }
-
-        // if validation passed
-        // return http header 200
-        return Response::json([
-            'message' => 'Profile updated ',
-            'id' => Auth::user('auth:sanctum')->id,
-        ],200);
-    }
 
     public function storeProfileAvatar(StoreAvatarRequest $request)
     {
@@ -96,14 +65,7 @@ class ProfileController extends Controller
             if($path){
                 User::where('id' ,  Auth::user('auth:sanctum')->id )->update(['avatar' => basename($path) ]);
             }
-     
         }
-
-        //return new UserResource(User::findOrFail($id));
-        // return new ProfileResource([
-        //     'message' => 'Avatar updated ',
-        //     'url' => env('APP_URL').'/storage/avatars/' . Auth::user('auth:sanctum')->id . '/' .  basename($path),
-        // ]);
 
         // return http header 200
         return Response::json([

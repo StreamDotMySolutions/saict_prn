@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreProfileRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class StoreProfileRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,20 @@ class StoreProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required','max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore(auth()->id())],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'The :attribute field is required.',
+
+            'email.required' => 'The :attribute field is required.',
+            'email.email' => 'Wrong email format',
+            
+        ];
+    }
+
 }
