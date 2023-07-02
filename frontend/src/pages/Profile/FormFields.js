@@ -43,6 +43,41 @@ const FormFields = () => {
                     </div>
                 </div>
             </div>
+            <hr />
+            <div className="row">
+                <div className="col-sm-3">
+                    <p className="mb-0">Password</p>
+                </div>
+                <div className="col-sm-9">
+                    <input 
+                        className={ profile.error_password ? 'form-control is-invalid' : 'form-control' } 
+                        type="password" 
+                        name="password" 
+                        onChange={(event) =>
+                            useProfileStore.setState({ password: event.target.value }) // name
+                        }
+                    />
+                    <div className="invalid-feedback">
+                        <span>{ profile.error_password ?  profile.error_password : null }</span>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div className="row">
+                <div className="col-sm-3">
+                    <p className="mb-0">Confirm Password</p>
+                </div>
+                <div className="col-sm-9">
+                    <input 
+                        className={ profile.error_password ? 'form-control is-invalid' : 'form-control' } 
+                        type="password" 
+                        name="password_confirmation" 
+                        onChange={(event) =>
+                            useProfileStore.setState({ password_confirmation: event.target.value }) // name
+                        }
+                    />
+                </div>
+            </div>
         </>
     )
 }

@@ -27,6 +27,8 @@ class StoreProfileRequest extends FormRequest
         return [
             'name' => ['required','max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore(auth()->id())],
+            //'password' => 'sometimes|string|min:6|confirmed'
+            'password' => ['sometimes','string','min:6','confirmed']
         ];
     }
 

@@ -29,7 +29,7 @@ class ProfileController extends Controller
      */
     public function store(StoreProfileRequest $request)
     {
-
+        \Log::info($request);
         // POST data from ReactJS
         $request_data = $request->only(['name','email']); 
 

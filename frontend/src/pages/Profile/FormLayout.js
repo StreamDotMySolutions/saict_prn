@@ -18,6 +18,8 @@ const FormLayout = () => {
         const formData = new FormData()
         formData.append('name', profile.name) // name
         formData.append('email', profile.email) // email
+        formData.append('password', profile.password) // password
+        formData.append('password_confirmation', profile.password_confirmation) // confirm password
 
         // submit as POST to API
         axios({
@@ -31,13 +33,11 @@ const FormLayout = () => {
         })
         .catch ( function(error){
             if( error.response.status === 422 ){
-        
+                
                 const validation =  error.response.data.errors
-                console.log(validation.name)
-                console.log(validation.email)
-                // set validation error
-                useProfileStore.setState({ error_name: validation.name }) 
-                useProfileStore.setState({ error_email: validation.email })
+                validation.name && useProfileStore.setState({ error_name: validation.name }) 
+                validation.email && useProfileStore.setState({ error_email: validation.email })
+                validation.password && useProfileStore.setState({ error_password: validation.password })
             }
         })
     }
