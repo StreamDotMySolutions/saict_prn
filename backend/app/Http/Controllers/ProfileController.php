@@ -33,20 +33,21 @@ class ProfileController extends Controller
         // POST data from ReactJS
         $request_data = $request->only(['name','email']); 
 
-        // if user change password
-        if($request->filled('password')){
-            $request_data['password'] = \Hash::make($request->input('password'));
+        // if user change password, field is newpassword
+        if($request->filled('newpassword')){
+            $request_data['password'] = \Hash::make($request->input('newpassword'));
         }
 
         User::where('id' ,  Auth::user('auth:sanctum')->id )->update($request_data);
-        
+
+        return new ProfileResource($request->user());
         // update user profile
-        return Response::json([
-            'message' => 'Updating profile',
-            'id' => Auth::user('auth:sanctum')->id,
-            'name' => $request->input('name'),
-            'email' =>  $request->input('email'),
-        ],200);
+        // return Response::json([
+        //     'message' => 'Updating profile',
+        //     'id' => Auth::user('auth:sanctum')->id,
+        //     'name' => $request->input('name'),
+        //     'email' =>  $request->input('email'),
+        // ],200);
 
     }
 

@@ -50,15 +50,15 @@ const FormFields = () => {
                 </div>
                 <div className="col-sm-9">
                     <input 
-                        className={ profile.error_password ? 'form-control is-invalid' : 'form-control' } 
+                        className={ profile.error_newpassword ? 'form-control is-invalid' : 'form-control' } 
                         type="password" 
-                        name="password" 
+                        name="newpassword" 
                         onChange={(event) =>
-                            useProfileStore.setState({ password: event.target.value }) // name
+                            useProfileStore.setState({ newpassword: event.target.value }) // name
                         }
                     />
                     <div className="invalid-feedback">
-                        <span>{ profile.error_password ?  profile.error_password : null }</span>
+                        <span>{ profile.error_newpassword ?  profile.error_newpassword : null }</span>
                     </div>
                 </div>
             </div>
@@ -69,11 +69,11 @@ const FormFields = () => {
                 </div>
                 <div className="col-sm-9">
                     <input 
-                        className={ profile.error_password ? 'form-control is-invalid' : 'form-control' } 
+                        className={ profile.error_newpassword ? 'form-control is-invalid' : 'form-control' } 
                         type="password" 
-                        name="password_confirmation" 
+                        name="newpassword_confirmation" 
                         onChange={(event) =>
-                            useProfileStore.setState({ password_confirmation: event.target.value }) // name
+                            useProfileStore.setState({ newpassword_confirmation: event.target.value }) // name
                         }
                     />
                 </div>

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link, useNavigate } from "react-router-dom"
 import FormFields from './FormFields'
 import useProfileStore from './utils/Store'
+import clearStore from './utils/ClearStore'
 import axios from '../../libs/axios'
 
 const FormLayout = () => {
@@ -11,15 +12,14 @@ const FormLayout = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        clearStore() // clear validation error store
 
-        useProfileStore.setState({ error_name: null }) 
-        useProfileStore.setState({ error_email: null }) 
-
+        // send formdata using FormData()
         const formData = new FormData()
         formData.append('name', profile.name) // name
         formData.append('email', profile.email) // email
-        formData.append('password', profile.password) // password
-        formData.append('password_confirmation', profile.password_confirmation) // confirm password
+        profile.newpassword && formData.append('newpassword', profile.newpassword) // password
+        profile.newpassword && formData.append('newpassword_confirmation', profile.newpassword_confirmation) // confirm password
 
         // submit as POST to API
         axios({
@@ -29,15 +29,17 @@ const FormLayout = () => {
         })
         .then( function(json){
             //console.log(json)
+            useProfileStore.setState({ message: 'Profile updated' }) 
             navigate('/profile');
         })
         .catch ( function(error){
             if( error.response.status === 422 ){
                 
+                // validation from laravel
                 const validation =  error.response.data.errors
                 validation.name && useProfileStore.setState({ error_name: validation.name }) 
                 validation.email && useProfileStore.setState({ error_email: validation.email })
-                validation.password && useProfileStore.setState({ error_password: validation.password })
+                validation.newpassword && useProfileStore.setState({ error_newpassword: validation.newpassword })
             }
         })
     }

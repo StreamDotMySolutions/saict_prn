@@ -1,9 +1,11 @@
 import { create } from 'zustand'
 
 const profile = {
-    password: null,
-    password_confirmation: null,
-    error_password: null,
+    message: null,
+
+    newpassword: null,
+    newpassword_confirmation: null,
+    error_newpassword: null,
 
     name: null,
     error_name: null,

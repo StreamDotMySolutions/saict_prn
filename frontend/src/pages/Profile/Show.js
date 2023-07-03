@@ -1,24 +1,44 @@
-import { React, useEffect } from 'react'
+import { React, useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import { BreadCrumb } from '../../components/BreadCrumb'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import useProfileStore from './utils/Store'
-import FetchData from './utils/FetchData'
+import fetchData from './utils/FetchData'
 import avatar from './img/avatar.webp'
+import clearStore from './utils/ClearStore'
 
 const ProfileShow = () => {
 
     useEffect(() => {
-        FetchData()
+        fetchData()
+        clearStore()
     },[useProfileStore])
 
     const profile = useProfileStore() // get state
+
+    // hide after 2 seconds
+    if(profile.message){
+        setTimeout(() => {
+            useProfileStore.setState({ message: null })
+        }, 2000)
+    }
 
     return (
     <>
     <BreadCrumb title='Profile'/>    
     <section>
+
+
+
         <div className="container py-5">
+            { profile.message && 
+                <div className="col-lg">
+                    <div className="alert alert-warning  py-2" role="alert">
+                        <FontAwesomeIcon icon="fas fa-triangle-exclamation" /> { profile.message }
+                    </div>
+                </div>
+            }
+
             <div className="row">
                 <div className="col-lg-4">
                     <div className="card mb-4">

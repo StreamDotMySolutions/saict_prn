@@ -55,9 +55,9 @@ export const Avatar = () => {
                 // update state
             })
             .catch ( function(error){
-                console.log(error.response.data)
+                //console.log(error.response.data)
             })
-
+          
       };
 
     return (
