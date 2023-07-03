@@ -5,12 +5,19 @@ export const Pagination = (props) => {
     const [active , setActive] = useState(false)
     const pages = props.data.meta.links
 
-    console.log(pages)
+
+    //console.log(pages)
     
     const loadPage = (url) => {
-        //console.log(url)
-        if(url !== null) props.setPage(url)
+        if(url !== null){
+            if(props.sorting){
+                props.setPage(url + props.sorting)
+            } else {
+                props.setPage(url)
+            }
+        } 
     }
+
     const pageItems = pages.map( (page) => 
        
         <li 
@@ -27,8 +34,8 @@ export const Pagination = (props) => {
     )
 
     const handleClick = () => {
-        console.log('klik set')
-        props.setPage(2)
+        //console.log('klik set')
+        //props.setPage(2)
     }
     
     return (

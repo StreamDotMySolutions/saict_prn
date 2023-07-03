@@ -1,5 +1,6 @@
-import React from 'react'
+import { React, useState }  from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Link } from "react-router-dom"
 
 const UserData = (props) => {
 
@@ -19,15 +20,80 @@ const UserData = (props) => {
                         </td>
                     </tr>
                 )
+
+    const [active, setActive] = useState(null)
+
+    const sort = (field,direction) => {
+        console.log(field)
+        console.log(direction)
+        setActive({
+                field:field,
+                direction:direction
+            })
+        
+        // build the query 
+        let query = "&field=" + field + "&direction=" + direction    
+        //props.setSorting(query)  
+        props.setPage(props.page + query)  
+    }
+    console.log(active)
+   
     
     return (
         <table className="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Name <FontAwesomeIcon icon="fa-solid fa-arrow-up" /> <FontAwesomeIcon icon="fa-solid fa-arrow-down" /></th>
-                    <th scope="col">Email <FontAwesomeIcon icon="fa-solid fa-arrow-up" /> <FontAwesomeIcon icon="fa-solid fa-arrow-down" /></th>
-                    <th scope="col">Created On <FontAwesomeIcon icon="fa-solid fa-arrow-up" /> <FontAwesomeIcon icon="fa-solid fa-arrow-down" /></th>
+                    <th scope="col">Name 
+               
+                    &nbsp;
+                    <Link onClick={ () => sort('name','ASC')}>
+                        <FontAwesomeIcon 
+                            icon="fa-solid fa-arrow-up"
+                            style={ active?.field === 'name' && active?.direction ==='ASC' ? { color: "red" } : {} }
+                        />
+                    </Link>
+                    &nbsp;
+                    <Link onClick={ () => sort('name','DESC')}>
+                    <FontAwesomeIcon 
+                            icon="fa-solid fa-arrow-down"
+                            style={ active?.field === 'name' && active?.direction ==='DESC' ? { color: "red" } : {} }
+                        />
+                    </Link>
+        
+                    </th>
+                    <th scope="col">Email 
+                    &nbsp;
+                    <Link onClick={ () => sort('email','ASC')}>
+                        <FontAwesomeIcon 
+                            icon="fa-solid fa-arrow-up"
+                            style={ active?.field === 'email' && active?.direction ==='ASC' ? { color: "red" } : {} }
+                        />
+                    </Link>
+                    &nbsp;
+                    <Link onClick={ () => sort('email','DESC')}>
+                    <FontAwesomeIcon 
+                            icon="fa-solid fa-arrow-down"
+                            style={ active?.field === 'email' && active?.direction ==='DESC' ? { color: "red" } : {} }
+                        />
+                    </Link>
+                    </th>
+                    <th scope="col">Created On 
+                    &nbsp;
+                    <Link onClick={ () => sort('created_at','ASC')}>
+                        <FontAwesomeIcon 
+                            icon="fa-solid fa-arrow-up"
+                            style={ active?.field === 'created_at' && active?.direction ==='ASC' ? { color: "red" } : {} }
+                        />
+                    </Link>
+                    &nbsp;
+                    <Link onClick={ () => sort('created_at','DESC')}>
+                    <FontAwesomeIcon 
+                            icon="fa-solid fa-arrow-down"
+                            style={ active?.field === 'created_at' && active?.direction ==='DESC' ? { color: "red" } : {} }
+                        />
+                    </Link>
+                    </th>
                     <th>Actions</th>
                 </tr>
             </thead>

@@ -9,16 +9,17 @@ const LoadUsers = (props) => {
     // submit as POST to API
     axios({
        // url:  process.env.REACT_APP_BACKEND_URL + '/users/index',   
-        url:  props.page, 
+        url:  props.page,
         method: 'get',
     })
     .then( function(response){
-        console.log(response.data.data)
+        //console.log(response.data.data)
         //console.log(response.data.meta.links)
         props.setData(response.data)
     })
     .catch ( function(error){
         console.log(error.response.data)
     })
+    
 }
 export default LoadUsers

@@ -8,10 +8,17 @@ use App\Http\Resources\UsersResource;
 
 class UsersController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        //$users = User::orderBy('name', 'asc')->paginate();
-        $users = User::paginate();
+        // to detect if sort is active
+        if($request->filled('field')){
+            $field = $request->query('field');
+            $direction = $request->query('direction');
+            $users = User::orderBy($field, $direction)->paginate()->withQueryString();
+        } else {
+            $users = User::paginate();
+        }
+        
         return UsersResource::collection($users);
     }
 
@@ -19,6 +26,5 @@ class UsersController extends Controller
     {
         $users = User::all();
         return UsersResource::collection($users);
-        //dd(opcache_get_status()['jit']);
     }
 }

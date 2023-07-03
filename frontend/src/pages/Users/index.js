@@ -8,8 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 const UsersIndex = () => {
     const [data, setData] = useState(null)
     const [page, setPage] = useState(process.env.REACT_APP_BACKEND_URL + '/users/index')
- 
-    useEffect(() => LoadUsers({setData,page}),[page])
+    const [sorting, setSorting] = useState(null)
+    useEffect(() => LoadUsers({setData,page}),[page,sorting]) // load data from Laravel
 
     return (
         <>
@@ -30,10 +30,14 @@ const UsersIndex = () => {
                 <> 
                     <UserData 
                         data={data} 
+                        page={page} 
+                        setPage={setPage} 
+                        setSorting={setSorting}
                     />
                     
                     <Pagination 
                         data={data}
+                        sorting={sorting}
                         setPage={setPage} 
                     />
                 </>

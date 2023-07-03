@@ -29,7 +29,6 @@ class ProfileController extends Controller
      */
     public function store(StoreProfileRequest $request)
     {
-        \Log::info($request);
         // POST data from ReactJS
         $request_data = $request->only(['name','email']); 
 
@@ -41,13 +40,6 @@ class ProfileController extends Controller
         User::where('id' ,  Auth::user('auth:sanctum')->id )->update($request_data);
 
         return new ProfileResource($request->user());
-        // update user profile
-        // return Response::json([
-        //     'message' => 'Updating profile',
-        //     'id' => Auth::user('auth:sanctum')->id,
-        //     'name' => $request->input('name'),
-        //     'email' =>  $request->input('email'),
-        // ],200);
 
     }
 
