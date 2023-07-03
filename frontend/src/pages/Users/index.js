@@ -3,6 +3,7 @@ import { BreadCrumb } from '../../components/BreadCrumb'
 import { Pagination } from '../../components/Pagination'
 import UserData from './UserData'
 import LoadUsers from './LoadUsers'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const UsersIndex = () => {
     const [data, setData] = useState(null)
@@ -13,7 +14,17 @@ const UsersIndex = () => {
     return (
         <>
             <BreadCrumb title='User Management'/>   
-            <h1>User Management</h1>
+            
+            <div className='row'>
+                <div className='col-lg-6'>
+                    <h1>User Management</h1>
+                </div>
+                <div className='col-lg-6'>
+                    <div className='float-end'>
+                        <button className='btn btn-primary'><FontAwesomeIcon icon="fa-solid fa-plus " /> Create User</button>
+                    </div>
+                </div>
+            </div>
             <hr />
             { data ?
                 <> 

@@ -1,6 +1,6 @@
 import useProfileStore from './Store'
 
-const fetchData = () => {
+const FetchData = () => {
     const token =  localStorage.getItem('token') // API token
     console.log('fetching...')
     const url =   process.env.REACT_APP_BACKEND_URL + '/profile/show'
@@ -35,4 +35,4 @@ const fetchData = () => {
     })
 
 }
-export default fetchData
+export default FetchData

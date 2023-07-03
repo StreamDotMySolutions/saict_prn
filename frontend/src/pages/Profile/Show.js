@@ -3,15 +3,15 @@ import { Link } from "react-router-dom"
 import { BreadCrumb } from '../../components/BreadCrumb'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import useProfileStore from './utils/Store'
-import fetchData from './utils/FetchData'
+import FetchData from './utils/FetchData'
 import avatar from './img/avatar.webp'
-import clearStore from './utils/ClearStore'
+import ClearStore from './utils/ClearStore'
 
 const ProfileShow = () => {
 
     useEffect(() => {
-        fetchData()
-        clearStore()
+        FetchData()
+        ClearStore()
     },[useProfileStore])
 
     const profile = useProfileStore() // get state
@@ -27,9 +27,6 @@ const ProfileShow = () => {
     <>
     <BreadCrumb title='Profile'/>    
     <section>
-
-
-
         <div className="container py-5">
             { profile.message && 
                 <div className="col-lg">

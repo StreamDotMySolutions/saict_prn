@@ -10,6 +10,7 @@ class UsersController extends Controller
 {
     public function index()
     {
+        //$users = User::orderBy('name', 'asc')->paginate();
         $users = User::paginate();
         return UsersResource::collection($users);
     }
