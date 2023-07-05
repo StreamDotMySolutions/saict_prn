@@ -1,6 +1,4 @@
-RTM Malaysia Corporate Website
-- frontend powered by NEXT JS
-- api powered by LARAVEL SANCTUM
-- admin powered by REACTJS
-- MySQL Database
-- FFMPEG
+RTM Malaysia SAICT PRN
+- Laravel backend
+- ReactJS frontend
+- Google Sheet data
