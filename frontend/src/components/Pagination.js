@@ -2,9 +2,8 @@ import { React, useState }  from 'react'
 
 export const Pagination = (props) => {
     //console.log(props.data.links)
-    const [active , setActive] = useState(false)
+    //const [active , setActive] = useState(false)
     const pages = props.data.meta.links
-
 
     //console.log(pages)
     

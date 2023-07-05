@@ -24,8 +24,8 @@ const UserData = (props) => {
     const [active, setActive] = useState(null)
 
     const sort = (field,direction) => {
-        console.log(field)
-        console.log(direction)
+        //console.log(field)
+        //console.log(direction)
         setActive({
                 field:field,
                 direction:direction
@@ -36,7 +36,7 @@ const UserData = (props) => {
         //props.setSorting(query)  
         props.setPage(props.page + query)  
     }
-    console.log(active)
+    //console.log(active)
    
     
     return (
