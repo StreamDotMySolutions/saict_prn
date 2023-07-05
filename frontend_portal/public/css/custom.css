@@ -1,0 +1,22 @@
+.modal-body img {
+    max-height: calc(100vh - 200px);
+    width: auto;
+    max-width: 100%;
+}
+
+iframe.twitter-tweet {
+    height: 100px; /* adjust to your desired height */
+}
+
+.nav-pills .nav-link.active,.nav-pills .show>.nav-link {
+    color: white !important;
+    background-color: black !important;
+}
+
+.custom-class {
+    margin-right: -10px;
+}
+
+.progress-stacked {
+    height: 30px;
+}
