@@ -24,5 +24,7 @@ class ApiKey
       // return erro
       return response('API not present',401);
     }
+
+    return $next($request);
   }
 }

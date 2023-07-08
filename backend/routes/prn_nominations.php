@@ -7,5 +7,3 @@ use Illuminate\Support\Facades\Route;
 Route::POST('/prn-nominations/store', [PrnNominationController::class, 'store'])
                 ->middleware('apiKey')
                 ->name('prn_nominations.store');
-
-
