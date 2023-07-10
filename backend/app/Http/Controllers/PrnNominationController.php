@@ -9,7 +9,9 @@ class PrnNominationController extends Controller
 {
     public function store(Request $request)
     {
-        // store data to DB
+        // let see the data structure
         \Log::info($request);
+
+        // $request->data need to loop using foreach
     }
 }
