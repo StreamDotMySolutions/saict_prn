@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('region_name')->nullable();
             $table->string('region_code')->nullable();
 
+            $table->integer('candidate_entry')->nullable();
             $table->string('candidate_title')->nullable();
             $table->string('candidate_name')->nullable();
             $table->string('candidate_marital_status')->nullable();

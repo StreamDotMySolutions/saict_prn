@@ -9,16 +9,14 @@ class PrnVariableController extends Controller
 {
     public function storeRegionData(Request $request)
     {
-
-    
-
+        // create collection from submitted request
         $collection = collect($request->data);
         
         $collection->each(function ( $item,$key ) use ( $request ) {
             
             if( !is_null($item[0]) && !is_null($item[1]) ){
 
-
+                // check of dataset exists on DB
                 $check = PrnRegion::where([
                                 [ 'state_name', $request->input('state_name') ],
                                 [ 'code', $item[0] ],
@@ -26,6 +24,7 @@ class PrnVariableController extends Controller
                             ])
                             ->first();
                 if(!$check){   
+                    // create new dataset
                     $prn_region = new PrnRegion;
                     $prn_region->gsheet_email = $request->input('email');
                     $prn_region->sheet_name = $request->input('sheet_name');
@@ -33,18 +32,21 @@ class PrnVariableController extends Controller
                     $prn_region->code = $item[0];
                     $prn_region->name = $item[1];       
                     $prn_region->save();
-                    \Log::info('create');
+                    //\Log::info('create');
                 } else {
+                    // update exsiting dataset
                     $check->gsheet_email = $request->input('email');
                     $check->sheet_name = $request->input('sheet_name');
                     $check->state_name = $request->input('state_name');
                     $check->code = $item[0];
                     $check->name = $item[1];   
                     $check->save();
-                    \Log::info('update');
+                    //\Log::info('update');
                 }
 
             }
         });
     }
+
+    
 }

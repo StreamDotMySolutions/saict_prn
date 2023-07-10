@@ -7,11 +7,41 @@ use App\Models\PrnNomination;
 
 class PrnNominationController extends Controller
 {
-    public function store(Request $request)
+    public function storeCandidateData(Request $request)
     {
         // let see the data structure
+        //$data = $request->data;
         \Log::info($request);
 
-        // $request->data need to loop using foreach
+        
+        $data = $request->data;
+
+        $prn_candidate = PrnNomination::updateOrCreate(
+            [
+                'candidate_entry'=> $data['entry'],
+                'region_code' => $data['region_code'],
+            
+            ], // condition
+            
+            // data
+            [
+                'state_name' => $request->state_name,
+                'region_code' => $data['region_code'],
+                'region_name' => $data['region_name'],
+
+                'sheet_name'=> $request->sheet_name,
+                'gsheet_email'=> $request->email, 
+
+                'candidate_title'=> $data['title'], 
+                'candidate_name'=> $data['name'],
+                'candidate_marital_status'=> $data['marital_status'],  
+                'candidate_party_job'=> $data['party_job'],  
+                'candidate_career'=> $data['career'],  
+                'candidate_education_status'=> $data['education_status'], 
+                
+                'party_coalition'=> $data['party_coalition'],  
+                'party_name'=> $data['party_name'],  
+            ]
+         );
     }
 }
