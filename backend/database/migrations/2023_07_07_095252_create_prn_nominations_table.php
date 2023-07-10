@@ -16,6 +16,10 @@ return new class extends Migration
 
         Schema::create('prn_nominations', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->nullable();
+            $table->string('gsheet_email')->nullable();
+            $table->string('sheet_name')->nullable();
+
             $table->string('state_zone')->nullable();
             $table->string('state_name')->nullable();  
             
@@ -30,6 +34,8 @@ return new class extends Migration
 
             $table->string('party_coalition')->nullable();
             $table->string('party_name')->nullable();
+
+            $table->timestamps();
         });
 
     }

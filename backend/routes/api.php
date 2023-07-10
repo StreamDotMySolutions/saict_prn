@@ -14,7 +14,6 @@ require __DIR__.'/users.php';
 // prn_nomintions
 require __DIR__.'/prn_nominations.php';
 
-Route::get('/json', function () {
-    return 'You can post data';
- })->middleware(['responseInJson']);
+// prn_variables
+require __DIR__.'/prn_variables.php';
 

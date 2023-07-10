@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\PrnRegion;
+
+class PrnVariableController extends Controller
+{
+    public function storeRegionData(Request $request)
+    {
+
+    
+
+        $collection = collect($request->data);
+        
+        $collection->each(function ( $item,$key ) use ( $request ) {
+            
+            if( !is_null($item[0]) && !is_null($item[1]) ){
+
+
+                $check = PrnRegion::where([
+                                [ 'state_name', $request->input('state_name') ],
+                                [ 'code', $item[0] ],
+                                [ 'name', $item[1] ],
+                            ])
+                            ->first();
+                if(!$check){   
+                    $prn_region = new PrnRegion;
+                    $prn_region->gsheet_email = $request->input('email');
+                    $prn_region->sheet_name = $request->input('sheet_name');
+                    $prn_region->state_name = $request->input('state_name');
+                    $prn_region->code = $item[0];
+                    $prn_region->name = $item[1];       
+                    $prn_region->save();
+                    \Log::info('create');
+                } else {
+                    $check->gsheet_email = $request->input('email');
+                    $check->sheet_name = $request->input('sheet_name');
+                    $check->state_name = $request->input('state_name');
+                    $check->code = $item[0];
+                    $check->name = $item[1];   
+                    $check->save();
+                    \Log::info('update');
+                }
+
+            }
+        });
+    }
+}
