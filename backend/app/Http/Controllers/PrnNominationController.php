@@ -8,12 +8,7 @@ use App\Models\PrnNomination;
 class PrnNominationController extends Controller
 {
     public function storeCandidateData(Request $request)
-    {
-        // let see the data structure
-        //$data = $request->data;
-        \Log::info($request);
-
-        
+    {        
         $data = $request->data;
 
         $prn_candidate = PrnNomination::updateOrCreate(
