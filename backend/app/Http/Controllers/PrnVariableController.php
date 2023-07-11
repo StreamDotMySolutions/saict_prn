@@ -7,6 +7,9 @@ use App\Models\PrnRegion;
 
 class PrnVariableController extends Controller
 {
+    /**
+     * store variables submitted from Google Sheet
+     */
     public function storeRegionData(Request $request)
     {
         // create collection from submitted request
@@ -48,5 +51,23 @@ class PrnVariableController extends Controller
         });
     }
 
-    
+    /**
+     * Return as Array 
+     * Regions by State
+     */
+    public function getRegionData($stateName)
+    {
+
+        //str_replace("world","Peter","Hello world!");
+        $stateName = strToUpper(str_replace('-',' ',$stateName));
+
+        // fetch regions 
+        $regions = PrnRegion::query()
+                            ->select('code','name')
+                            ->where(['state_name' => $stateName])
+                            ->get();
+        return \Response::json([
+            'data' => $regions
+        ]);
+    }
 }

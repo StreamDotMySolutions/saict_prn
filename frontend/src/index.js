@@ -24,8 +24,7 @@ export default function App() {
         <Route element={<DefaultLayout />}>
           <Route index element={<Home />} />
           <Route path="*" element={<Error404 />} />
-
-          <Route path="/states/:state_name" element={<States />} />
+          <Route path="/states/:stateName" element={<States />} />
         </Route>
       </Routes>
     </BrowserRouter>

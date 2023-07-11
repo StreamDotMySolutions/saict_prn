@@ -1,27 +1,26 @@
 import { Outlet} from "react-router-dom"
 import './style.css'
 import SideBar from "./SideBar"
-import NavBar from "./NavBar";
+import TopNavBar from "./TopNavBar";
+
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
+
 
 const DefaultLayout = () => {
 
   return (
     <>
-    <main className="bg-light">
-        {/* <SideBar/> */}
-          
-        <div className="container-fluid mt-5 py-4 " style={{'height':'95vh'}} >
-        <NavBar/> 
-            <div className="card">
-   
-                <div className="card-body" >
-                    <Outlet />
-            </div>
-            </div>
-        </div>
-    </main>   
+      <TopNavBar/> 
+     
+      <Container fluid className="p-5">
+      <hr />
+        <Outlet />
+      </Container>
     </>
-  )
+  );
 };
 
 export default DefaultLayout;
