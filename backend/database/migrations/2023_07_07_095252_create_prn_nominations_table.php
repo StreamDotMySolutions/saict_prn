@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('candidate_marital_status')->nullable();
             $table->string('candidate_career')->nullable();
             $table->string('candidate_party_job')->nullable();
+            $table->string('candidate_education')->nullable();
 
             $table->string('party_coalition')->nullable();
             $table->string('party_name')->nullable();

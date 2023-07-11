@@ -32,7 +32,7 @@ class PrnNominationController extends Controller
                 'candidate_marital_status'=> $data['marital_status'],  
                 'candidate_party_job'=> $data['party_job'],  
                 'candidate_career'=> $data['career'],  
-                'candidate_education_status'=> $data['education_status'], 
+                'candidate_education'=> $data['education'], 
                 
                 'party_coalition'=> $data['party_coalition'],  
                 'party_name'=> $data['party_name'],  

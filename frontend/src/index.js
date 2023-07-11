@@ -10,10 +10,12 @@ import Error404 from "./pages/Error404"
 /** Pages - PUBLIC */
 import Home from "./pages/Home"
 import States from "./pages/States"
+import Regions from "./pages/Regions"
 
 /** Font Awesome **/
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+
 library.add(fas)
 
 export default function App() {
@@ -24,7 +26,8 @@ export default function App() {
         <Route element={<DefaultLayout />}>
           <Route index element={<Home />} />
           <Route path="*" element={<Error404 />} />
-          <Route path="/states/:stateName" element={<States />} />
+          <Route path="/:stateName" element={<States />} />
+          <Route path="/:stateName/:regionCode/:regionName" element={<Regions />} />
         </Route>
       </Routes>
     </BrowserRouter>

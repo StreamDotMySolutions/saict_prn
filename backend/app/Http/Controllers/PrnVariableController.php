@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PrnRegion;
+use App\Models\PrnNomination;
+use App\Http\Resources\PrnRegionResource;
+use App\Http\Resources\PrnCandidateResource;
 
 class PrnVariableController extends Controller
 {
@@ -66,8 +69,30 @@ class PrnVariableController extends Controller
                             ->select('code','name')
                             ->where(['state_name' => $stateName])
                             ->get();
-        return \Response::json([
-            'data' => $regions
-        ]);
+
+        return PrnRegionResource::collection($regions);
+    }
+
+    /**
+     * Return as Array 
+     * Regions by State
+     */
+    public function getCandidateData($stateName, $regionCode)
+    {
+
+        \Log::info($stateName);
+        \Log::info($regionCode);
+        //str_replace("world","Peter","Hello world!");
+        $stateName = strToUpper(str_replace('-',' ',$stateName));
+
+        // fetch regions 
+        $candidates = PrnNomination::query()
+                            //->select('code','name')
+                            ->where([
+                                'state_name' => $stateName,
+                                'region_code' => $regionCode])
+                            ->get();
+        \Log::info($candidates);
+        return PrnCandidateResource::collection($candidates);
     }
 }
