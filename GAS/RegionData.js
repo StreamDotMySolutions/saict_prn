@@ -4,7 +4,7 @@
  */
 
 
-function updateRegionData()
+function ingestRegionData()
 {
   var sheets = SpreadsheetApp.getActiveSpreadsheet().getSheets();
 
@@ -52,6 +52,10 @@ function updateRegionData()
 
     }
   }) // sheets.loop
+
+
+  var ui = SpreadsheetApp.getUi();
+  ui.alert('Region Data successfully updated');
 
 } // getAllSheets()
 

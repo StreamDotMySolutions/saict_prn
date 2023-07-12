@@ -78,3 +78,9 @@ edit  vim /etc/php/8.2/cli/php.ini
 # enable octane ( production )
 php artisan octane:install ( choose swoole )
 php artisan octane: start ( port 8000 by default )
+
+# clasp
+cd GAS
+npm install -g @google/clasp
+npx clasp logn
+clasp clone 1gxCxyyGWQfhJrw1_seiAHGQ7MAZuaV0Y8LeyX_DmfMUpf-8XLD4KlPNW
