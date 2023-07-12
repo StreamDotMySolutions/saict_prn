@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PrnNomination;
+use App\Http\Resources\PrnCandidateResource;
 
 class PrnNominationController extends Controller
 {
+
+    /**
+     * Model - PrnNominaton
+     * Store Candidate data from
+     * GSheet Pencalonan TABs
+     * @param Request $request
+     * @return JSON
+     */
     public function storeCandidateData(Request $request)
     {        
         $data = $request->data;
@@ -39,4 +48,35 @@ class PrnNominationController extends Controller
             ]
          );
     }
+
+    /**
+     * 
+     * Show candidate data based on given ID
+     *
+     * @param Int $id  
+     * @return JSON
+     * @api GET 
+     * @apiSampleRequest /api/prn-nominations/{id}/show-candidate-data
+     * 
+     */
+
+     public function showCandidateData($id)
+     {
+        // check if data exist
+        $candidate = PrnNomination::where('id','=',$id)->first();
+
+        //\Log::info($candidate); 
+
+        if(!$candidate){
+            return \Response::json(
+                        ['message' => 'does not exist'],
+                        404
+                    );
+        }
+
+        // return as JSON
+        return PrnCandidateResource::make($candidate);
+     }
+
+
 }

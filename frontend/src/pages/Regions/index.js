@@ -29,10 +29,10 @@ const Regions = () => {
          <td>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</td>
          <td>{candidate.party_name?.toUpperCase()}</td>
          <td>{candidate.party_coalition?.toUpperCase()}</td>
-         <td className="d-none d-lg-block">{candidate.candidate_education?.toUpperCase()}</td>
+         {/* <td className="d-none d-lg-block">{candidate.candidate_education?.toUpperCase()}</td>
          <td className="d-none d-lg-block">{candidate.candidate_job_in_party?.toUpperCase()}</td>
          <td className="d-none d-lg-block">{candidate.candidate_career?.toUpperCase()}</td>
-         <td className="d-none d-lg-block">{candidate.candidate_marital_status?.toUpperCase()}</td>
+         <td className="d-none d-lg-block">{candidate.candidate_marital_status?.toUpperCase()}</td> */}
     </tr>
        
     );
@@ -41,7 +41,6 @@ const Regions = () => {
     <>
         <small>
         <Breadcrumb>
-
             <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>
                 <FontAwesomeIcon icon="fas fa-home" />
             </Breadcrumb.Item>
@@ -64,10 +63,10 @@ const Regions = () => {
                     <th>NAMA</th>
                     <th>PARTI</th>
                     <th>GABUNGAN</th>
-                    <th className="d-none d-lg-block">PENDIDIKAN</th>
+                    {/* <th className="d-none d-lg-block">PENDIDIKAN</th>
                     <th className="d-none d-lg-block" >JAWATAN DALAM PARTI</th>
                     <th className="d-none d-lg-block">KERJAYA</th>
-                    <th className="d-none d-lg-block">TARAF PERKAHWINAN</th>
+                    <th className="d-none d-lg-block">TARAF PERKAHWINAN</th> */}
                 </thead>
 
                 <tbody>

@@ -11,7 +11,10 @@ use App\Http\Resources\PrnCandidateResource;
 class PrnVariableController extends Controller
 {
     /**
+     * Model - PrnRegion
      * store variables submitted from Google Sheet
+     * @param Request $request
+     * @return JSON 
      */
     public function storeRegionData(Request $request)
     {
@@ -55,8 +58,11 @@ class PrnVariableController extends Controller
     }
 
     /**
+     * Model - PrnRegion
      * Return as Array 
      * Regions by State
+     * @param String $stateName
+     * @return JSON
      */
     public function getRegionData($stateName)
     {
@@ -74,14 +80,18 @@ class PrnVariableController extends Controller
     }
 
     /**
+     * Model - PrnNomination
      * Return as Array 
      * Regions by State
+     * @param String $stateName
+     * @param String $regionCode
+     * @return JSON
      */
     public function getCandidateData($stateName, $regionCode)
     {
 
-        \Log::info($stateName);
-        \Log::info($regionCode);
+        // \Log::info($stateName);
+        // \Log::info($regionCode);
         //str_replace("world","Peter","Hello world!");
         $stateName = strToUpper(str_replace('-',' ',$stateName));
 
@@ -92,7 +102,7 @@ class PrnVariableController extends Controller
                                 'state_name' => $stateName,
                                 'region_code' => $regionCode])
                             ->get();
-        \Log::info($candidates);
+        // \Log::info($candidates);
         return PrnCandidateResource::collection($candidates);
     }
 }
