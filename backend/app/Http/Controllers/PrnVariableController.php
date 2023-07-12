@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PrnRegion;
 use App\Models\PrnNomination;
+use App\Models\PrnCoalition;
+use App\Models\PrnParty;
 use App\Http\Resources\PrnRegionResource;
 use App\Http\Resources\PrnCandidateResource;
 
@@ -55,6 +57,64 @@ class PrnVariableController extends Controller
 
             }
         });
+    }
+
+    /**
+     * Model - PrnCoalition
+     * store variables submitted from Google Sheet
+     * @param Request $request
+     * @return JSON 
+     */
+    public function storeCoalitionData(Request $request)
+    {
+        foreach($request->data as $data){
+
+            PrnCoalition::updateOrCreate(
+                
+                // check condition
+                [
+                    'title'=> $data[0],     
+                ],
+                
+                // data
+                [
+                    'title'=> $data[0], 
+                    'description'=> $data[1], 
+                ]
+            );
+        }
+        return \Response::json([
+            'message' => 'Coalition data sync to portal is successful'
+        ],200);
+    }
+
+    /**
+     * Model - PrnParty
+     * store variables submitted from Google Sheet
+     * @param Request $request
+     * @return JSON 
+     */
+    public function storePartyData(Request $request)
+    {
+        foreach($request->data as $data){
+
+            PrnParty::updateOrCreate(
+                
+                // check condition
+                [
+                    'title'=> $data[0],     
+                ],
+                
+                // data
+                [
+                    'title'=> $data[0], 
+                    'description'=> $data[1], 
+                ]
+            );
+        }
+        return \Response::json([
+            'message' => 'Party data sync to portal is successful'
+        ],200);
     }
 
     /**
