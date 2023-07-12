@@ -31,5 +31,4 @@ Route::POST('/prn-nominations/store_candidate_data', [PrnNominationController::c
  */
 
 Route::GET('/prn-nominations/{id}/show-candidate-data', [PrnNominationController::class, 'showCandidateData'])
-->middleware('apiKey')
 ->name('prn_nominations.show-candidate-data');

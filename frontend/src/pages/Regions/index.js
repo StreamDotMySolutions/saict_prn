@@ -22,17 +22,18 @@ const Regions = () => {
         getCandidates(stateName, regionCode, setCandidates)
       }, [regionName])
 
+    const candidateDataUrl = '/' + stateName + '/' + regionCode + '/' + regionName + '/'
     const listItems = candidates.map((candidate) =>
-
+      
     <tr key={candidate.candidate_entry}>
          <td>{candidate.candidate_entry}</td>
-         <td>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</td>
-         <td>{candidate.party_name?.toUpperCase()}</td>
-         <td>{candidate.party_coalition?.toUpperCase()}</td>
-         {/* <td className="d-none d-lg-block">{candidate.candidate_education?.toUpperCase()}</td>
-         <td className="d-none d-lg-block">{candidate.candidate_job_in_party?.toUpperCase()}</td>
-         <td className="d-none d-lg-block">{candidate.candidate_career?.toUpperCase()}</td>
-         <td className="d-none d-lg-block">{candidate.candidate_marital_status?.toUpperCase()}</td> */}
+         <td>
+        <Link to={candidateDataUrl + candidate.id + '/' + candidate.slug}>
+            {candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}
+        </Link>
+        </td>
+         <td className='text-center'>{candidate.party_name?.toUpperCase()}</td>
+         <td className='text-center'>{candidate.party_coalition?.toUpperCase()}</td>
     </tr>
        
     );
@@ -57,16 +58,12 @@ const Regions = () => {
 
        
         { candidates.length > 0 ? 
-            <table className='table table-striped'>
+            <table className='w-25 table table-striped'>
                 <thead>
                     <th>ID</th>
                     <th>NAMA</th>
-                    <th>PARTI</th>
-                    <th>GABUNGAN</th>
-                    {/* <th className="d-none d-lg-block">PENDIDIKAN</th>
-                    <th className="d-none d-lg-block" >JAWATAN DALAM PARTI</th>
-                    <th className="d-none d-lg-block">KERJAYA</th>
-                    <th className="d-none d-lg-block">TARAF PERKAHWINAN</th> */}
+                    <th className='text-center'>PARTI</th>
+                    <th className='text-center'>GABUNGAN</th>
                 </thead>
 
                 <tbody>
@@ -87,7 +84,7 @@ const Regions = () => {
 function getCandidates(stateName,regionCode,setCandidates){
     console.log(`get candidates from server - ${stateName}-${regionCode}`)
     axios({
-        url:  `${process.env.REACT_APP_BACKEND_URL}/prn-variables/states/${stateName}/code/${regionCode}/get-candidate-data`,   
+        url:  `${process.env.REACT_APP_BACKEND_URL}/prn-variables/states/${stateName}/code/${regionCode}/get-candidates-data`,   
         method: 'get',
         headers: {
             'Accept': 'application/json'

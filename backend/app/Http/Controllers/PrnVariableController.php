@@ -66,6 +66,8 @@ class PrnVariableController extends Controller
      */
     public function getRegionData($stateName)
     {
+        
+        //\Log::info($_SERVER);
 
         //str_replace("world","Peter","Hello world!");
         $stateName = strToUpper(str_replace('-',' ',$stateName));
