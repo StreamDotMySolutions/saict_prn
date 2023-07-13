@@ -1,4 +1,5 @@
-function ingestCoalitionData() {
+function ingestCoalitionData() 
+{
 
   /**
    * @author Azril Nazli Alias ( streamdotmysolutions@gmail.com )
