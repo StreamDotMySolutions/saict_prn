@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PrnNomination;
 use App\Http\Resources\PrnCandidateResource;
+use App\Http\Resources\PrnNominationResource;
 
 class PrnNominationController extends Controller
 {
@@ -78,5 +79,30 @@ class PrnNominationController extends Controller
         return PrnCandidateResource::make($candidate);
      }
 
+
+    /**
+     * 
+     * Show request update from GSheet
+     *
+     * @return JSON
+     * @api GET 
+     * @apiSampleRequest /api/prn-nominations/{id}/show-candidate-data
+     * 
+     */
+
+    public function latest()
+    {
+
+        $latest = PrnNomination::query()
+                                ->limit(25)
+                                ->get();
+
+        return PrnNominationResource::collection($latest);
+
+        // return \Response::json([
+        //     'message' => 'success',
+        //     'data' => $latest
+        // ],200);
+    }
 
 }

@@ -28,3 +28,14 @@ Route::post('/protected', function () {
 
 // auth
 //require __DIR__.'/auth.php';
+
+// test GET
+Route::get('/test_get', function () {
+    return 'You can GET data';
+ })->middleware(['responseInJson']);
+
+ // test POST
+Route::post('/test_post', function () {
+    return 'You can POST data';
+ })->middleware(['responseInJson']);
+

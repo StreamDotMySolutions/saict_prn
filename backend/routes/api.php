@@ -16,4 +16,3 @@ require __DIR__.'/prn_nominations.php';
 
 // prn_variables
 require __DIR__.'/prn_variables.php';
-

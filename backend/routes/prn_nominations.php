@@ -32,3 +32,16 @@ Route::POST('/prn-nominations/store_candidate_data', [PrnNominationController::c
 
 Route::GET('/prn-nominations/{id}/show-candidate-data', [PrnNominationController::class, 'showCandidateData'])
 ->name('prn_nominations.show-candidate-data');
+
+/**
+ * 
+ * GET request from ReactJS Frontend
+ * 
+ * @api GET
+ * @apiSampleRequest /api/prn-nominations/lates
+ * @controller PrnNominationController::latest
+ * 
+ */
+
+ Route::GET('/prn-nominations/latest', [PrnNominationController::class, 'latest'])
+ ->name('prn_nominations.latest');

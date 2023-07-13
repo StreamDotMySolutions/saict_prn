@@ -12,10 +12,12 @@ import Home from "./pages/Home"
 import States from "./pages/States"
 import Regions from "./pages/Regions"
 import Candidate from "./pages/Candidates"
+import Dashboard from "./pages/Dashboard"
 
 /** Font Awesome **/
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+
 
 
 library.add(fas)
@@ -28,6 +30,7 @@ export default function App() {
         <Route element={<DefaultLayout />}>
           <Route index element={<Home />} />
           <Route path="*" element={<Error404 />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/:stateName" element={<States />} />
           <Route path="/:stateName/:regionCode/:regionName" element={<Regions />} />
           <Route path="/:stateName/:regionCode/:regionName/:candidateId/:slug" element={<Candidate />} />

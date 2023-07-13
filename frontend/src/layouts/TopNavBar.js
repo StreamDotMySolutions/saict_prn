@@ -13,7 +13,7 @@ function TopNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={NavLink} to="/">Home</Nav.Link>
+            <Nav.Link as={NavLink} to="/dashboard">Dashboard</Nav.Link>
             <NavDropdown title="Negeri" id="basic-nav-dropdown">
               <NavDropdown.Item as={NavLink} to="/selangor">Selangor</NavDropdown.Item>
               <NavDropdown.Item as={NavLink} to="/kedah">Kedah</NavDropdown.Item>
