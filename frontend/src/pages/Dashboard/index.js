@@ -23,10 +23,19 @@ const Dashboard = () => {
     const listItems = latest.map((item) =>
       
     <tr key={item.id}>
-         <td>{item.region_code}</td>
-         <td>{item.region_name}</td>
-         <td className='text-center'>{item.gsheet_email}</td>
-         <td className='text-center'>{item.when}</td>
+        <td><h2>{item.region_code}</h2></td>
+
+        <td className='text-center'>
+            <small>
+                
+                {item.state_name}-{item.region_name}
+                <br />
+
+                {item.gsheet_email}<br />
+                <i>{item.when}</i>
+            </small>
+        </td>
+
     </tr>
        
     );
@@ -47,12 +56,10 @@ const Dashboard = () => {
 
        
         { latest.length > 0 ? 
-            <table className='w-50 table table-striped'>
+            <table className='w-100 table table-striped'>
                 <thead>
                     <th>KOD</th>
-                    <th>KAWASAN</th>
                     <th className='text-center'>KEYER</th>
-                    <th className='text-center'>TARIKH</th>
                 </thead>
 
                 <tbody>

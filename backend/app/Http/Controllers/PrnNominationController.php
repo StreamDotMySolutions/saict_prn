@@ -94,8 +94,9 @@ class PrnNominationController extends Controller
     {
 
         $latest = PrnNomination::query()
-                                ->orderBy('id', 'DESC')
-                                ->get();
+                                ->orderBy('updated_at', 'DESC')
+                                ->limit(100)
+                                ->get()->unique('region_code');
 
         return PrnNominationResource::collection($latest);
 
