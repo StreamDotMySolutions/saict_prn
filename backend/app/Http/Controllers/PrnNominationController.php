@@ -94,7 +94,7 @@ class PrnNominationController extends Controller
     {
 
         $latest = PrnNomination::query()
-                                ->limit(25)
+                                ->orderBy('id', 'DESC')
                                 ->get();
 
         return PrnNominationResource::collection($latest);
