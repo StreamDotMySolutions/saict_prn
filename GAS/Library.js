@@ -11,7 +11,8 @@ function sendData(data, method, route){
        "accept": "application/json" // Tell Laravel to talk in JSON
      }
   };
-  var url = backendUrl() + route;
+  var url = BACKEND_URL + route;
+  Logger.log(url)
   var response = UrlFetchApp.fetch(url, options);
   return response;
 
@@ -43,8 +44,6 @@ function sendCandidateData(data)
 function sendRegionData(data,sheetName,stateName)
 {
   var sheet = SpreadsheetApp.getActiveSheet();
- 
-
   var data = {
 
     'state_name' : stateName,

@@ -1,26 +1,29 @@
 /**
- * GSheet Menu
- */
-
-// function onOpen() {
-//   var ui = SpreadsheetApp.getUi();
-
-//   ui.createMenu('SAICT PRN')
-//       .addItem('Sync Gabungan', 'getCoalitionData')
-//       .addToUi();     
-// }
-
-/**
  * When user edit a cell, send the whole row 
  * to Laravel server as POST
+ * only update on chosen sheets
+ * 
  */
-function onCellUpdate() {
+function ingestCandidateData(){
+  // detecT sheet name
+  var sheetName =  SpreadsheetApp.getActiveSheet().getName();
+  
+  if(PRN_STATES.includes(sheetName)){
+    console.log('match')
+    updateCandidate()
+  }
+}
+
+/**
+ * Update targetted CELL 
+ * for single ROW
+ */
+function updateCandidate() {
   var sheet = SpreadsheetApp.getActiveSheet();
   var selection = sheet.getSelection();
   var activeRow = selection.getCurrentCell().getRow();
   var data = sheet.getRange( activeRow,1,1,sheet.getLastColumn() ).getValues();
   //sendCandidateData(data);
-
 
     // calon 1
     var col = 5
@@ -95,7 +98,13 @@ function onCellUpdate() {
 }
 
 /**
- * Candidate data
+ * 
+ * Candidate data to be sent by specified RANGE
+ * 
+ * @param Int entry - range from 1..10
+ * @param Array data - data from getRange.getValues()
+ * @param String regionCode - region code for each kawasan
+ * @param String regionName - kawasan name 
  */
 function candidate(entry, data, regionCode, regionName){
 
@@ -113,14 +122,4 @@ function candidate(entry, data, regionCode, regionName){
     party_job: data[0][4]
   }
   sendCandidateData(payload);
-
-
-}
-
-/**
- * When user click menu Send To Portal
- * send the whole activeSheet
- */
-function onMenuUpdate() {
-    Logger.log('all');
 }
