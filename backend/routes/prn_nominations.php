@@ -38,10 +38,23 @@ Route::GET('/prn-nominations/{id}/show-candidate-data', [PrnNominationController
  * GET request from ReactJS Frontend
  * 
  * @api GET
- * @apiSampleRequest /api/prn-nominations/lates
+ * @apiSampleRequest /api/prn-nominations/latesy
  * @controller PrnNominationController::latest
  * 
  */
 
  Route::GET('/prn-nominations/latest', [PrnNominationController::class, 'latest'])
  ->name('prn_nominations.latest');
+
+ /**
+ * 
+ * GET request from ReactJS Frontend
+ * 
+ * @api GET
+ * @apiSampleRequest /api/prn-nominations/lates
+ * @controller PrnNominationController::latest
+ * 
+ */
+
+ Route::GET('/prn-nominations/latest/candidates', [PrnNominationController::class, 'latestCandidates'])
+ ->name('prn_nominations.latest_candidates');

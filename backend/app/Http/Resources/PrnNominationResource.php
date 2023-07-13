@@ -17,7 +17,8 @@ class PrnNominationResource extends JsonResource
     {
         //return parent::toArray($request);
         return [
-            'id' => $this->id,           
+            'id' => $this->id,          
+            'candidate_name' => $this->candidate_name,  
             'state_name' => $this->state_name, 
             'region_code' => $this->region_code,
             'region_name' => $this->region_name,

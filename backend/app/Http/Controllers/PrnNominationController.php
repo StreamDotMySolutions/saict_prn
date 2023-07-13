@@ -99,11 +99,28 @@ class PrnNominationController extends Controller
                                 ->get()->unique('region_code');
 
         return PrnNominationResource::collection($latest);
-
-        // return \Response::json([
-        //     'message' => 'success',
-        //     'data' => $latest
-        // ],200);
     }
+
+        /**
+     * 
+     * Show request update from GSheet
+     *
+     * @return JSON
+     * @api GET 
+     * @apiSampleRequest /api/prn-nominations/{id}/show-candidate-data
+     * 
+     */
+
+     public function latestCandidates()
+     {
+ 
+         $candidates = PrnNomination::query()
+                                 ->orderBy('updated_at', 'DESC')
+                                 ->where('candidate_name','!=', null)
+                                 ->limit(10)
+                                 ->get();
+ 
+         return PrnNominationResource::collection($candidates);
+     }
 
 }
