@@ -48,6 +48,10 @@ class PrnNominationController extends Controller
                 'party_name'=> $data['party_name'],  
             ]
          );
+
+        // flush cache
+        \Cache::forget('candidates');
+        \Cache::forget('regions');
     }
 
     /**
@@ -86,19 +90,20 @@ class PrnNominationController extends Controller
      *
      * @return JSON
      * @api GET 
-     * @apiSampleRequest /api/prn-nominations/{id}/show-candidate-data
+    * @apiSampleRequest /api/prn-nominations/latestRegions
      * 
      */
 
     public function latestRegions()
     {
+        $regions = \Cache::rememberForever('regions', function () {
+            return PrnNomination::query()
+            ->orderBy('updated_at', 'DESC')
+            ->limit(10)
+            ->get()->unique('region_code');
+        });
 
-        $latest = PrnNomination::query()
-                                ->orderBy('updated_at', 'DESC')
-                                ->limit(10)
-                                ->get()->unique('region_code');
-
-        return PrnNominationResource::collection($latest);
+        return PrnNominationResource::collection($regions);
     }
 
     /**
@@ -107,20 +112,27 @@ class PrnNominationController extends Controller
      *
      * @return JSON
      * @api GET 
-     * @apiSampleRequest /api/prn-nominations/{id}/show-candidate-data
+     * @apiSampleRequest /api/prn-nominations/latestCandidates
      * 
      */
 
      public function latestCandidates()
      {
+        //\DB::enableQueryLog();
+
+        $candidates = \Cache::rememberForever('candidates', function () {
+            return PrnNomination::query()
+                ->orderBy('updated_at', 'DESC')
+                ->where('candidate_name','!=', null)
+                ->limit(10)
+                ->get();
+        });
+
+        // Your query here
+        //$queries = \DB::getQueryLog();
+        //Log::info($queries);
  
-         $candidates = PrnNomination::query()
-                                 ->orderBy('updated_at', 'DESC')
-                                 ->where('candidate_name','!=', null)
-                                 ->limit(10)
-                                 ->get();
- 
-         return PrnNominationResource::collection($candidates);
+        return PrnNominationResource::collection($candidates);
      }
 
 }
