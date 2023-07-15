@@ -90,18 +90,18 @@ class PrnNominationController extends Controller
      * 
      */
 
-    public function latest()
+    public function latestRegions()
     {
 
         $latest = PrnNomination::query()
                                 ->orderBy('updated_at', 'DESC')
-                                ->limit(100)
+                                ->limit(10)
                                 ->get()->unique('region_code');
 
         return PrnNominationResource::collection($latest);
     }
 
-        /**
+    /**
      * 
      * Show request update from GSheet
      *

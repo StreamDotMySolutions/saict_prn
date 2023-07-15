@@ -17,6 +17,10 @@ Route::POST('/prn-nominations/store_candidate_data', [PrnNominationController::c
                 ->middleware('apiKey')
                 ->name('prn_nominations.store_candidate_data');
 
+Route::POST('/prn-nominations/store-candidate-data', [PrnNominationController::class, 'storeCandidateData'])
+        ->middleware('apiKey')
+        ->name('prn_nominations.store_candidate_data');
+
 
 
 /**
@@ -38,21 +42,21 @@ Route::GET('/prn-nominations/{id}/show-candidate-data', [PrnNominationController
  * GET request from ReactJS Frontend
  * 
  * @api GET
- * @apiSampleRequest /api/prn-nominations/latesy
- * @controller PrnNominationController::latest
+ * @apiSampleRequest /api/prn-nominations/latest/regions
+ * @controller PrnNominationController::latestRegions
  * 
  */
 
- Route::GET('/prn-nominations/latest', [PrnNominationController::class, 'latest'])
- ->name('prn_nominations.latest');
+ Route::GET('/prn-nominations/latest/regions', [PrnNominationController::class, 'latestRegions'])
+ ->name('prn_nominations.latest_regions');
 
  /**
  * 
  * GET request from ReactJS Frontend
  * 
  * @api GET
- * @apiSampleRequest /api/prn-nominations/lates
- * @controller PrnNominationController::latest
+ * @apiSampleRequest /api/prn-nominations/latest/candidates
+ * @controller PrnNominationController::latestCandidates
  * 
  */
 

@@ -22,6 +22,7 @@ class PrnNominationResource extends JsonResource
             'state_name' => $this->state_name, 
             'region_code' => $this->region_code,
             'region_name' => $this->region_name,
+            'party_name' => $this->party_name,
             'gsheet_email' => $this->gsheet_email,
             'when' => $this->updated_at->diffForHumans(),
 
