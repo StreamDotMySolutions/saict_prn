@@ -2,11 +2,12 @@
  * When user edit a cell, send the whole row 
  * to Laravel server as POST
  * only update on chosen sheets
+ * @trigger onEdit()
  * 
  */
 function ingestCandidateData()
 {
-  // detecT sheet name
+  // detect sheet name
   var sheetName =  SpreadsheetApp.getActiveSheet().getName();
   
   // update the row
@@ -80,3 +81,5 @@ function candidate(entry, data, regionCode, regionName)
   }
   sendCandidateData(payload);
 }
+
+
