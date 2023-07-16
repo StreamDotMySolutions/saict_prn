@@ -27,6 +27,10 @@ const States = () => {
                 className="" 
                 to={ region.code + '/' + region.slug }
             >{region.name}</NavLink>
+            &nbsp;
+            { region.candidates != 0 && 
+                <small><i><strong>{region.candidates}</strong> calon</i></small> 
+            }
         </li>
     );
 

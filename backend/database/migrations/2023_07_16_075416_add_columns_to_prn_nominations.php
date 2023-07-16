@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::table('prn_nominations', function (Blueprint $table) {
             //
-            $table->integer('prn_region_id')->nullable();
-            $table->integer('prn_coalition_id')->nullable();
-            $table->integer('prn_party_id')->nullable();
+            $table->integer('prn_region_id')->nullable()->after('id');
+            $table->integer('prn_coalition_id')->nullable()->after('prn_region_id');
+            $table->integer('prn_party_id')->nullable()->after('prn_coalition_id');
         });
     }
 

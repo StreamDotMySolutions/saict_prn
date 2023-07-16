@@ -133,7 +133,9 @@ class PrnVariableController extends Controller
         $regions = PrnRegion::query()
                             ->select('code','name')
                             ->where(['state_name' => $stateName])
+                            ->withCount('prn_nominations')
                             ->get();
+        \Log::info($regions);                    
 
         return PrnRegionResource::collection($regions);
     }
