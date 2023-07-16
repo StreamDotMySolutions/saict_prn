@@ -16,6 +16,9 @@ const LatestRegion = () => {
     //   }, [])
 
     useEffect(() => {
+
+        // run for 1st time
+        getLatestRegions(setLatestRegions,setIsLoading)     
        
         const intervalId = setInterval(() => {
             getLatestRegions(setLatestRegions,setIsLoading)

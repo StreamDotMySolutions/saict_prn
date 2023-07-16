@@ -11,12 +11,16 @@ const LatestCandidate = () => {
     const [latestCandidates,setLatestCandidates] = useState([])
     const [isLoading,setIsLoading] = useState(false)
 
+
     // useEffect(() => {
     //     getLatestCandidates(setLatestCandidates)
     //   }, [])
 
     useEffect(() => {
        
+        // loading for 1st time
+        getLatestCandidates(setLatestCandidates,setIsLoading)
+        
         const intervalId = setInterval(() => {
             getLatestCandidates(setLatestCandidates,setIsLoading)
         }, 1000 * 5) // in milliseconds

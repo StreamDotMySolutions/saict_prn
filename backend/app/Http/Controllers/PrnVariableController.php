@@ -127,9 +127,6 @@ class PrnVariableController extends Controller
     public function getRegionData($stateName)
     {
         
-        //\Log::info($_SERVER);
-
-        //str_replace("world","Peter","Hello world!");
         $stateName = strToUpper(str_replace('-',' ',$stateName));
 
         // fetch regions 
@@ -152,9 +149,7 @@ class PrnVariableController extends Controller
     public function getCandidateData($stateName, $regionCode)
     {
 
-        // \Log::info($stateName);
-        // \Log::info($regionCode);
-        //str_replace("world","Peter","Hello world!");
+
         $stateName = strToUpper(str_replace('-',' ',$stateName));
 
         // fetch regions 
@@ -163,8 +158,9 @@ class PrnVariableController extends Controller
                             ->where([
                                 'state_name' => $stateName,
                                 'region_code' => $regionCode])
+                            ->whereNotNull('candidate_name')
                             ->get();
-        // \Log::info($candidates);
+    
         return PrnCandidateResource::collection($candidates);
     }
 }
