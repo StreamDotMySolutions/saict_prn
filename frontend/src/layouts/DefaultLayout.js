@@ -12,11 +12,12 @@ const DefaultLayout = () => {
       <TopNavBar/> 
       <Container fluid className="p-5">
         <hr />
-        <Col lg={6} className="mt-3">
+        <Col lg={6}>
           <Outlet />
         </Col>
+        <Footer/>
       </Container>
-      <Footer/>
+     
     </>
   );
 };
