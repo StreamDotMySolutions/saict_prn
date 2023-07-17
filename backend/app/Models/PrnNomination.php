@@ -10,4 +10,12 @@ class PrnNomination extends Model
     use HasFactory;
     private $useTable = 'prn_nominations';
     protected $guarded = ['id'];
+
+    public function prn_party(){
+        return $this->belongsTo(PrnParty::class);
+    }
+
+    public function prn_region(){
+        return $this->belongsTo(PrnRegion::class);
+    }
 }

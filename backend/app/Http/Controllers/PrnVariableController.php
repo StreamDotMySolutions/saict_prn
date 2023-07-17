@@ -134,10 +134,14 @@ class PrnVariableController extends Controller
                             ->select('code','name')
                             ->where(['state_name' => $stateName])
                             ->withCount('prn_nominations')
-                            ->get();
-        \Log::info($regions);                    
+                            ->get();	
 
-        return PrnRegionResource::collection($regions);
+        $totalCandidates = $regions->sum('prn_nominations_count');
+
+        return \Response::json([
+            'candidates' => $totalCandidates ? $totalCandidates : 0,
+            'regions' => $regions,
+        ]);
     }
 
     /**

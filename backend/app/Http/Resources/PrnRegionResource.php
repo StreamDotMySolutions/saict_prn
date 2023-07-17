@@ -23,5 +23,6 @@ class PrnRegionResource extends JsonResource
             'candidates' => $this->prn_nominations_count,
             'slug' => Str::slug($this->name, '-')
         ];
+
     }
 }

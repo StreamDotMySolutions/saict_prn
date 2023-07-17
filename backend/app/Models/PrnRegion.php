@@ -13,6 +13,6 @@ class PrnRegion extends Model
 
 
     public function prn_nominations(){
-        return $this->hasMany(PrnNomination::class)->where('candidate_name','!=', null);;
+        return $this->hasMany(PrnNomination::class)->where('candidate_name','!=', null);
     }
 }
