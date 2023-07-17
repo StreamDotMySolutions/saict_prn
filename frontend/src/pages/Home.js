@@ -21,9 +21,9 @@ const Home = () => {
             <Container className="bg-light text-center">
             <Row>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
-                <a href="https://mypru15.rtm.gov.my/">
+                <NavLink as={NavLink} to="https://mypru15.rtm.gov.my/">
                     <img src="img/flags/Malaysia.png" className="img-fluid" width="30%" title="Malaysia" />
-                </a>
+                </NavLink>
                 </Col>
             </Row>
             </Container>

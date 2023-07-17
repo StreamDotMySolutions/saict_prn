@@ -1,19 +1,47 @@
 import { useState } from 'react'
-import Form from './Form'
-import Content from './Content'
 
 const PropDrilling = () => {
-
     const [ content, setContent ] = useState({
-        'title' : null,
-        'descriptions' : null
+        'title' : 'Hello World',
+        'descriptions' : 'Lorem Ipsum...'
     })
-
+    const processForm = () => {
+        console.log('form submission')
+    }
     // JSX is HTML
     return (
         <>
-            <Content/>
-            <Form />
+            <h3>{ content.title }</h3>
+            <p>{ content.descriptions }</p>
+
+            <label>Title</label> <br />
+            <input 
+                type="text" 
+                name="title" 
+                onChange={ (event) =>         
+                    setContent({
+                        ...content, // spread operator
+                        'title' : event.target.value // form event
+                    })}
+            />
+            <br />
+            <br />
+            <label>Description</label><br />
+            <textarea 
+                name="descriptions"
+                onChange={ (event) =>         
+                    setContent({
+                        ...content, // spread operator
+                        'descriptions' : event.target.value // form event
+                    })}
+                ></textarea><br />
+
+            <br />
+            <input 
+                type="button" 
+                onClick={ () => processForm() }
+                value="Submit"
+            />
         </>
     )
 }

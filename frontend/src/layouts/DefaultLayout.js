@@ -2,6 +2,7 @@ import { Outlet} from "react-router-dom"
 import './style.css'
 import TopNavBar from "./TopNavBar";
 import Container from 'react-bootstrap/Container';
+import Footer from "./Footer";
 
 const DefaultLayout = () => {
 
@@ -12,6 +13,7 @@ const DefaultLayout = () => {
         <hr />
         <Outlet />
       </Container>
+      <Footer/>
     </>
   );
 };
