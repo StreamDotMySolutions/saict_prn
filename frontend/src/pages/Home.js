@@ -36,32 +36,32 @@ const Home = () => {
             <Row>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
                 <a href="/selangor">
-                    <img src="img/flags/Selangor.png" className="img-fluid" width="30%" title="Selangor" />
+                    <img src="/img/flags/Selangor.png" className="img-fluid" width="30%" title="Selangor" />
                 </a>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
                 <a href="pulau_pinang">
-                    <img src="img/flags/PP.png" className="img-fluid" width="30%" title="PP" />
+                    <img src="/img/flags/PP.png" className="img-fluid" width="30%" title="PP" />
                 </a>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
                 <a href="/n9">
-                    <img src="img/flags/NS.png" className="img-fluid" width="30%" title="NS" />
+                    <img src="/img/flags/NS.png" className="img-fluid" width="30%" title="NS" />
                 </a>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
                 <a href="/kedah">
-                    <img src="img/flags/Kedah.png" className="img-fluid" width="30%" title="Kedah" />
+                    <img src="/img/flags/Kedah.png" className="img-fluid" width="30%" title="Kedah" />
                 </a>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
                 <a href="/terengganu">
-                    <img src="img/flags/Terengganu.png" className="img-fluid" width="30%" title="Terengganu" />
+                    <img src="/img/flags/Terengganu.png" className="img-fluid" width="30%" title="Terengganu" />
                 </a>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
                 <a href="/kelantan">
-                    <img src="img/flags/Kelantan.png" className="img-fluid" width="30%" title="Kelantan" />
+                    <img src="/img/flags/Kelantan.png" className="img-fluid" width="30%" title="Kelantan" />
                 </a>
                 </Col>
             </Row>
@@ -95,7 +95,6 @@ const Home = () => {
             <hr className="featurette-divider" />
         </Container>
 
-        {/* Outlet */}
         <Outlet />
         </>
     )
