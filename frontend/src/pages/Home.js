@@ -36,7 +36,7 @@ const Home = () => {
             <Row>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
                 <a href="/selangor">
-                    <img src="/img/flags/Selangor.png" className="img-fluid" width="30%" title="Selangor" />
+                    <img src="/img/flags/selangor.png" className="img-fluid" width="30%" title="Selangor" />
                 </a>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
