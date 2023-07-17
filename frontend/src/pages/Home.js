@@ -4,6 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import { NavLink} from 'react-router-dom'
+import Nav from 'react-bootstrap/Nav';
 
 
 const Home = () => {
@@ -35,9 +37,9 @@ const Home = () => {
             <Container className="bg-light text-center">
             <Row>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
-                <a href="/selangor">
-                    <img src="/img/flags/selangor.png" className="img-fluid" width="30%" title="Selangor" />
-                </a>
+                    <Nav.Link as={NavLink} to="/selangor">
+                        <img src="/img/flags/selangor.png" className="img-fluid" width="30%" title="Selangor" />
+                    </Nav.Link>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
                 <a href="pulau_pinang">
