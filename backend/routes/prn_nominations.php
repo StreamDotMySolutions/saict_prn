@@ -21,6 +21,10 @@ Route::POST('/prn-nominations/store-candidate-data', [PrnNominationController::c
         ->middleware('apiKey')
         ->name('prn_nominations.store_candidate_data');
 
+Route::POST('/prn-nominations/store-sheet-data', [PrnNominationController::class, 'storeSheetData'])
+->middleware('apiKey')
+->name('prn_nominations.store_sheet_data');
+
 
 
 /**
