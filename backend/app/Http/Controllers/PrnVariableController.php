@@ -9,6 +9,7 @@ use App\Models\PrnCoalition;
 use App\Models\PrnParty;
 use App\Http\Resources\PrnRegionResource;
 use App\Http\Resources\PrnCandidateResource;
+use Illuminate\Support\Str;
 
 class PrnVariableController extends Controller
 {
@@ -134,7 +135,11 @@ class PrnVariableController extends Controller
                             ->select('code','name')
                             ->where(['state_name' => $stateName])
                             ->withCount('prn_nominations')
-                            ->get();	
+                            ->get()	
+                            ->map(function ($region) {
+                                $region->slug = \Str::slug($region->name);
+                                return $region;
+                            });
 
         $totalCandidates = $regions->sum('prn_nominations_count');
 
