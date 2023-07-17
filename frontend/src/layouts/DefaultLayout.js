@@ -10,9 +10,9 @@ const DefaultLayout = () => {
   return (
     <>
       <TopNavBar/> 
-      <Container fluid className="p-5">
+      <Container fluid className="p-1 mt-5">
         <hr />
-        <Col lg={6}>
+        <Col lg={12}>
           <Outlet />
         </Col>
         <Footer/>

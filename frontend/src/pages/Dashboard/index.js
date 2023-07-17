@@ -9,7 +9,7 @@ const Dashboard = () => {
     return (
     <>
         <small>
-            <Breadcrumb>
+            <Breadcrumb >
                 <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>
                     <FontAwesomeIcon icon="fas fa-home" />
                 </Breadcrumb.Item>
