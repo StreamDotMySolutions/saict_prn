@@ -42,24 +42,24 @@ const Home = () => {
                     </Nav.Link>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
-                <a href="pulau_pinang">
-                    <img src="/img/flags/PP.png" className="img-fluid" width="30%" title="PP" />
-                </a>
+                    <Nav.Link as={NavLink} to="/pulau-pinang">
+                        <img src="/img/flags/PP.png" className="img-fluid" width="30%" title="PP" />
+                    </Nav.Link>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
-                <a href="/n9">
-                    <img src="/img/flags/NS.png" className="img-fluid" width="30%" title="NS" />
-                </a>
+                    <Nav.Link as={NavLink} to="/negeri-sembilan">
+                        <img src="/img/flags/NS.png" className="img-fluid" width="30%" title="NS" />
+                    </Nav.Link>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
-                <a href="/kedah">
-                    <img src="/img/flags/Kedah.png" className="img-fluid" width="30%" title="Kedah" />
-                </a>
+                    <Nav.Link as={NavLink} to="/kedah">
+                        <img src="/img/flags/Kedah.png" className="img-fluid" width="30%" title="Kedah" />
+                    </Nav.Link>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
-                <a href="/terengganu">
-                    <img src="/img/flags/Terengganu.png" className="img-fluid" width="30%" title="Terengganu" />
-                </a>
+                    <Nav.Link as={NavLink} to="/terengganu">
+                        <img src="/img/flags/Terengganu.png" className="img-fluid" width="30%" title="Terengganu" />
+                    </Nav.Link>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
                 <a href="/kelantan">
