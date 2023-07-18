@@ -130,23 +130,50 @@ class PrnVariableController extends Controller
         
         $stateName = strToUpper(str_replace('-',' ',$stateName));
 
+        // List all Registered Party
+        $parties = \App\Models\PrnParty::query()
+                    ->select('title')
+                    ->get()
+                    ->map( function($party) use ($stateName) {
+                        $party->total = $this->getContestingPartyByState($stateName,$party->title); 
+                        return $party;
+                    });
+        //\Log::info($parties);            
+
+        //\DB::enableQueryLog();
         // fetch regions 
         $regions = PrnRegion::query()
-                            ->select('code','name')
-                            ->where(['state_name' => $stateName])
-                            ->withCount('prn_nominations')
-                            ->get()	
-                            ->map(function ($region) {
-                                $region->slug = \Str::slug($region->name);
-                                return $region;
-                            });
+                    ->select('code','name')
+                    ->where(['state_name' => $stateName])
+                    ->withCount('prn_nominations')
+                    ->get()	
+                    ->map(function ($region) {
+                        $region->slug = Str::slug($region->name);
+                        return $region;
+                    });
+
 
         $totalCandidates = $regions->sum('prn_nominations_count');
 
         return \Response::json([
             'candidates' => $totalCandidates ? $totalCandidates : 0,
             'regions' => $regions,
+            'parties' => $parties,
         ]);
+    }
+
+    private function getContestingPartyByState($stateName,$partyName){
+        return \App\Models\PrnNomination::query()
+            ->select('prn_party_id','candidate_name','id')
+            ->where('prn_party_id','!=', null)
+            ->where('candidate_name','!=', null)
+            ->whereHas('prn_region.state', function ($query) use ($stateName){
+                return $query->where('name', '=', $stateName);
+            })
+            ->whereHas('prn_party', function ($query) use ($partyName){
+                return $query->where('title', '=', $partyName);
+            })
+            ->count();
     }
 
     /**

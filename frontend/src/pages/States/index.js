@@ -11,22 +11,32 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const States = () => {
     const { stateName } = useParams();
     const [regions, setRegions] = useState([]);
+    const [parties, setParties] = useState([]);
     const [candidates, setCandidates] = useState(0);
 
     useEffect(() => {
-        getRegions(stateName, setRegions, setCandidates);
+        getRegions(stateName, setRegions,setParties, setCandidates);
     }, [stateName]);
 
 
     const renderParty = () => {
+        if (parties.length === 0) {
+            return <p>No parties found.</p>;
+        }
+
         return (
         <>
-        <strong>Parti bertanding :</strong>
-           <ol>
-                <li>UMNO ( 20 kerusi )</li>
-                <li>PKR ( 16 kerusi )</li>
-            </ol> 
-            <hr />
+        <strong>Parti bertanding - </strong>
+
+        {parties.map((party) => (
+                    <>
+                    {party.total > 0  &&
+                        <li key={party.title}>{party.title} ( {party.total} )</li>
+                    }
+                    </>
+                )
+            )}
+        <hr />
         </>
         )
     }
@@ -82,9 +92,8 @@ const States = () => {
                 <Breadcrumb.Item active>{stateName.toUpperCase()}</Breadcrumb.Item>
             </Breadcrumb>
             </small>
-            <h1 className='text-center'>
-                <img src="/img/flags/Kedah.png" className="img-fluid" width="80px" title="Kedah" />
-                &nbsp;
+            <h1>
+           
                 {stateName.toUpperCase()}
             </h1>
             {renderParty()}
@@ -94,7 +103,7 @@ const States = () => {
     );
 };
 
-function getRegions(stateName, setRegions, setCandidates) {
+function getRegions(stateName, setRegions,setParties, setCandidates) {
     axios({
         url: `${process.env.REACT_APP_BACKEND_URL}/prn-variables/states/${stateName}/get-region-data`,
         method: 'get',
@@ -105,6 +114,7 @@ function getRegions(stateName, setRegions, setCandidates) {
     .then((response) => {
         setCandidates(response.data.candidates);
         setRegions(response.data.regions);
+        setParties(response.data.parties);
         //console.log(response);
     })
     .catch((error) => {

@@ -11,8 +11,14 @@ class PrnRegion extends Model
     private $useTable = 'prn_regions';
     protected $guarded = ['id'];
 
-
-    public function prn_nominations(){
+    public function prn_nominations()
+    {
         return $this->hasMany(PrnNomination::class)->where('candidate_name','!=', null);
     }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+
 }
