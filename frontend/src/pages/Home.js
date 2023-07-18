@@ -62,9 +62,9 @@ const Home = () => {
                     </Nav.Link>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
-                <a href="/kelantan">
-                    <img src="/img/flags/Kelantan.png" className="img-fluid" width="30%" title="Kelantan" />
-                </a>
+                    <Nav.Link as={NavLink} to="/kelantan">
+                        <img src="/img/flags/Kelantan.png" className="img-fluid" width="30%" title="Kelantan" />
+                    </Nav.Link>
                 </Col>
             </Row>
             </Container>

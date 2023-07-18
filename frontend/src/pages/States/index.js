@@ -73,16 +73,15 @@ const States = () => {
 
     return (
         <>
-        <small>
-        <Breadcrumb>
-            <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/' }}>
-            <FontAwesomeIcon icon="fas fa-home" />
-            </Breadcrumb.Item>
-            <Breadcrumb.Item active>{stateName.toUpperCase()}</Breadcrumb.Item>
-        </Breadcrumb>
-        </small>
-
         <Container>
+            <small>
+            <Breadcrumb>
+                <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/' }}>
+                <FontAwesomeIcon icon="fas fa-home" />
+                </Breadcrumb.Item>
+                <Breadcrumb.Item active>{stateName.toUpperCase()}</Breadcrumb.Item>
+            </Breadcrumb>
+            </small>
             <h1 className='text-center'>
                 <img src="/img/flags/Kedah.png" className="img-fluid" width="80px" title="Kedah" />
                 &nbsp;

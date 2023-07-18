@@ -17,7 +17,6 @@ const DefaultLayout = () => {
         </Col>
         <Footer/>
       </Container>
-     
     </>
   );
 };

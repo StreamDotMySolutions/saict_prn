@@ -3,7 +3,6 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink} from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 
@@ -17,11 +16,11 @@ function TopNavbar() {
 
   return (
     <Navbar fixed="top"  bg="light" data-bs-theme="light">
-      <Container fluid className="px-5">
+      <Container className="justify-content-center">
         <Navbar.Brand as={NavLink} to="/"><h3>#prn2023</h3></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="ms-auto">
           
             <NavDropdown title="Negeri" id="basic-nav-dropdown">
               <NavDropdown.Item style={{width:'180px'}} as={NavLink} to="/selangor">{flag('selangor')} Selangor</NavDropdown.Item>
