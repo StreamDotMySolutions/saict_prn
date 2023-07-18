@@ -8,6 +8,7 @@ import { Link} from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ListItem from './ListItem';
+import Container from 'react-bootstrap/esm/Container';
 
 const Candidate = () => {
     const { stateName } = useParams()
@@ -24,12 +25,13 @@ const Candidate = () => {
     useEffect(() => {
         //Runs only on the first render
         getCandidateData(candidateId, setCandidate)
-      }, [candidateId])
+    }, [candidateId])
 
 
 
     return (
     <>
+        <Container>
         <small>
         <Breadcrumb>
             <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" + stateName  + "/" + regionCode + "/" + regionName }}>
@@ -55,11 +57,10 @@ const Candidate = () => {
                     <ListItem item='Pendidikan' value={candidate.candidate_education} />
                     <ListItem item='Pekerjaan' value={candidate.candidate_career} />
                 </div>
-               
-        
             </>
             : <p className='text-muted'>Belum ada pencalonan</p>
-         }
+        }
+        </Container>
     </>
     )
 }
