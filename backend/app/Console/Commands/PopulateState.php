@@ -28,8 +28,8 @@ class PopulateState extends Command
     public function handle()
     {
 
-        $this->partyContestInState('KEDAH','UMNO');
-        //$this->updateStateIdInPrnRegionModel();
+        //$this->partyContestInState('KEDAH','UMNO');
+        $this->updateStateIdInPrnRegionModel();
         return Command::SUCCESS;
     }
 
