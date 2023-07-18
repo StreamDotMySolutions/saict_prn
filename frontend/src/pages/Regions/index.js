@@ -7,6 +7,7 @@ import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { Link} from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Container from 'react-bootstrap/esm/Container';
 
 /**
  * @returns HTML
@@ -41,36 +42,38 @@ const Regions = () => {
 
     return (
     <>
-        <small>
-        <Breadcrumb>
-            <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>
-                <FontAwesomeIcon icon="fas fa-home" />
-            </Breadcrumb.Item>
+        <Container>
+            <small>
+            <Breadcrumb>
+                <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>
+                    <FontAwesomeIcon icon="fas fa-home" />
+                </Breadcrumb.Item>
 
-            <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" + stateName }}>
-                {stateName.toUpperCase()}
-            </Breadcrumb.Item>
+                <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" + stateName }}>
+                    {stateName.toUpperCase()}
+                </Breadcrumb.Item>
 
-            <Breadcrumb.Item active>{regionCode} {regionName.toUpperCase()}</Breadcrumb.Item>
-        </Breadcrumb>
-        </small>
+                <Breadcrumb.Item active>{regionCode} {regionName.toUpperCase()}</Breadcrumb.Item>
+            </Breadcrumb>
+            </small>
 
-        <h2>{stateName.toUpperCase()} - {regionCode} {regionName.toUpperCase()}</h2>
+            <h2>{stateName.toUpperCase()} - {regionCode} {regionName.toUpperCase()}</h2>
 
-       
-        { candidates.length > 0 ? 
-            <table className='w-100 table table-striped'>
-                <thead>
-                    <th style={{ width:'5px'}}>ID</th>
-                    <th>NAMA</th>
-                </thead>
+        
+            { candidates.length > 0 ? 
+                <table className='w-100 table table-striped'>
+                    <thead>
+                        <th style={{ width:'5px'}}>ID</th>
+                        <th>NAMA</th>
+                    </thead>
 
-                <tbody>
-                    {listItems}
-                </tbody>
-            </table>
-            : <p className='text-muted'>Belum ada pencalonan</p>
-         }
+                    <tbody>
+                        {listItems}
+                    </tbody>
+                </table>
+                : <p className='text-muted'>Belum ada pencalonan</p>
+            }
+        </Container>
     </>
     )
 }
