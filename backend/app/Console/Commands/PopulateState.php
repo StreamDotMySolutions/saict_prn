@@ -29,6 +29,7 @@ class PopulateState extends Command
     {
 
         //$this->partyContestInState('KEDAH','UMNO');
+        $this->getStatesFromPrnRegionModel();
         $this->updateStateIdInPrnRegionModel();
         return Command::SUCCESS;
     }
