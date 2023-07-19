@@ -45,10 +45,6 @@ const States = () => {
                 ))}
             </div>
         </div>
-
-
-        
-  
         <hr />
         </>
         )
@@ -68,6 +64,7 @@ const States = () => {
                         <th className="text-center" style={{width:'10px'}}>Kod</th>
                         <th>Nama Kawasan</th>
                         <th className="text-center" style={{width:'150px'}}>Calon</th>
+                        <th style={{width:'20px'}}></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -82,9 +79,14 @@ const States = () => {
                         <td className="text-center">
                             {region.prn_nominations_count !== 0 && (
                             <NavLink to={`${region.code}/${region.slug}`} className="text-decoration-none text-dark">
-                                <strong>{region.prn_nominations_count}</strong> calon
+                                <strong>{region.prn_nominations_count}</strong> calon 
                             </NavLink>
                             )}
+                        </td>
+                        <td>
+                            <NavLink to={`${region.code}/${region.slug}`} className="text-decoration-none text-dark">
+                                <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
+                            </NavLink>
                         </td>
                     </tr>
                     ))}
@@ -99,7 +101,7 @@ const States = () => {
         <Container>
             <Breadcrumb>
                 <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/' }}>
-                <FontAwesomeIcon icon="fas fa-home" />
+                    <FontAwesomeIcon icon="fas fa-home" />
                 </Breadcrumb.Item>
                 <Breadcrumb.Item active>{stateName.toUpperCase()}</Breadcrumb.Item>
             </Breadcrumb>

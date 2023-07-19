@@ -73,7 +73,7 @@ const Home = () => {
 
             <Row>
             <Col lg={6}>
-                <h3>Statistik Keputusan</h3>
+                <h3>Statistik Pencalonan</h3>
             </Col>
             </Row>
 

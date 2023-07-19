@@ -24,26 +24,14 @@ const Regions = () => {
       }, [regionName])
 
     const candidateDataUrl = '/' + stateName + '/' + regionCode + '/' + regionName + '/'
+
     const listItems = candidates.map((candidate) =>
-        
-    <li  key={candidate.candidate_entry} className="list-group-item">
-        {candidate.candidate_entry}. &nbsp;
-        <Link to={candidateDataUrl + candidate.id + '/' + candidate.slug}>
-            {candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}
-        </Link>
-    </li>
-        // <tr key={candidate.candidate_entry}>
-        //     <td>{candidate.candidate_entry}</td>
-        //     <td>
-        //     <Link to={candidateDataUrl + candidate.id + '/' + candidate.slug}>
-        //         {candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}
-        //     </Link>
-        //     </td>
-        // </tr>
-   
-        
-     
-       
+        <li  key={candidate.candidate_entry} className="list-group-item">
+            {candidate.candidate_entry}. &nbsp;
+            <Link to={candidateDataUrl + candidate.id + '/' + candidate.slug}>
+                {candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}
+            </Link>
+        </li>
     );
 
     return (
@@ -62,35 +50,16 @@ const Regions = () => {
                 <Breadcrumb.Item active>{regionCode} {regionName.toUpperCase()}</Breadcrumb.Item>
             </Breadcrumb>
       
-
-            
             <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{stateName.toUpperCase()} - {regionCode} {regionName.toUpperCase()}</h5>
+                    <p class="card-text">Penyandang ialah ...</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    {listItems}
+                </ul>
+            </div>
 
-
-  <div class="card-body">
-    <h5 class="card-title">{stateName.toUpperCase()} - {regionCode} {regionName.toUpperCase()}</h5>
-    <p class="card-text">Penyandang ialah ...</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    {listItems}
-  </ul>
-
-</div>
-
-        
-            {/* { candidates.length > 0 ? 
-                <table className='w-100 table table-striped'>
-                    <thead>
-                        <th style={{ width:'5px'}}>ID</th>
-                        <th>NAMA</th>
-                    </thead>
-
-                    <tbody>
-                        {listItems}
-                    </tbody>
-                </table>
-                : <p className='text-muted'>Belum ada pencalonan</p>
-            } */}
         </Container>
     </>
     )

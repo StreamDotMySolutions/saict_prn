@@ -17,7 +17,7 @@ function TopNavbar() {
   return (
     <Navbar fixed="top"  bg="light" data-bs-theme="light">
       <Container className="justify-content-center">
-        <Navbar.Brand as={NavLink} to="/"><h3>#prn2023</h3></Navbar.Brand>
+        <Navbar.Brand as={NavLink} to="/"><h3>#mypru15</h3></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
