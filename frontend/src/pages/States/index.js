@@ -26,16 +26,29 @@ const States = () => {
 
         return (
         <>
-        <strong>Parti bertanding - </strong>
 
-        {parties.map((party) => (
+        <div className="card-group">
+            <div className="row row-cols-8">
+                {parties.map((party) => (
                     <>
-                    {party.total > 0  &&
-                        <li key={party.title}>{party.title} ( {party.total} )</li>
-                    }
+                        {party.total > 0 &&
+                            <div className="col mb-4">
+                                <div className="card text-center">
+                                    <div className="card-body">
+                                        <h1 className="card-title">{party.total}</h1>
+                                        <p className="card-text">{party.title}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
                     </>
-                )
-            )}
+                ))}
+            </div>
+        </div>
+
+
+        
+  
         <hr />
         </>
         )
@@ -52,25 +65,25 @@ const States = () => {
             <Table className='mt-1'striped bordered hover>
                 <thead>
                     <tr>
-                        <th>Kod Kawasan</th>
+                        <th className="text-center" style={{width:'10px'}}>Kod</th>
                         <th>Nama Kawasan</th>
-                        <th>Calon</th>
+                        <th className="text-center" style={{width:'150px'}}>Calon</th>
                     </tr>
                 </thead>
                 <tbody>
                     {regions.map((region) => (
                     <tr key={region.name}>
-                        <td>{region.code}</td>
+                        <td className="text-center">{region.code}</td>
                         <td>
                             <NavLink to={`${region.code}/${region.slug}`} className="text-decoration-none text-dark">
                                 {region.name}
                             </NavLink>
                         </td>
-                        <td>
+                        <td className="text-center">
                             {region.prn_nominations_count !== 0 && (
-                            <small>
+                            <NavLink to={`${region.code}/${region.slug}`} className="text-decoration-none text-dark">
                                 <strong>{region.prn_nominations_count}</strong> calon
-                            </small>
+                            </NavLink>
                             )}
                         </td>
                     </tr>
@@ -84,16 +97,13 @@ const States = () => {
     return (
         <>
         <Container>
-            <small>
             <Breadcrumb>
                 <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/' }}>
                 <FontAwesomeIcon icon="fas fa-home" />
                 </Breadcrumb.Item>
                 <Breadcrumb.Item active>{stateName.toUpperCase()}</Breadcrumb.Item>
             </Breadcrumb>
-            </small>
             <h1>
-           
                 {stateName.toUpperCase()}
             </h1>
             {renderParty()}
