@@ -13,10 +13,13 @@ import States from "./pages/States"
 import Regions from "./pages/Regions"
 import Candidate from "./pages/Candidates"
 import Dashboard from "./pages/Dashboard"
+import Penafian from "./pages/Penafian"
 
 /** Font Awesome **/
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import Keselamatan from "./pages/Keselamatan"
+import Privasi from "./pages/Privasi"
 
 
 
@@ -34,6 +37,9 @@ export default function App() {
           <Route path="/:stateName" element={<States />} />
           <Route path="/:stateName/:regionCode/:regionName" element={<Regions />} />
           <Route path="/:stateName/:regionCode/:regionName/:candidateId/:slug" element={<Candidate />} />
+          <Route path="/penafian" element={<Penafian />} />
+          <Route path="/keselamatan" element={<Keselamatan />} />
+          <Route path="/privasi" element={<Privasi />} />
         </Route>
       </Routes>
     </BrowserRouter>
