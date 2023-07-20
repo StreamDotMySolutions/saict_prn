@@ -84,3 +84,6 @@ cd GAS
 npm install -g @google/clasp
 npx clasp logn
 clasp clone 1gxCxyyGWQfhJrw1_seiAHGQ7MAZuaV0Y8LeyX_DmfMUpf-8XLD4KlPNW
+
+# laravel - populate state_id to existing prn_nomination
+php artisan populate:state
