@@ -36,7 +36,7 @@ const Footer = () => {
         </div>
         <div className="col-md-4">
           <p>
-            &copy; 2023 Seksyen Aplikasi ICT, Jabatan Penyiaran Malaysia. All rights reserved.
+            Hak Cipta Terpelihara &copy; 2023 Seksyen Aplikasi ICT, Jabatan Penyiaran Malaysia
           </p>
           <p className="text-end">
             <a href="#" className="text-secondary text-decoration-none">

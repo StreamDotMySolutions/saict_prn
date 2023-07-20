@@ -14,12 +14,12 @@ import Regions from "./pages/Regions"
 import Candidate from "./pages/Candidates"
 import Dashboard from "./pages/Dashboard"
 import Penafian from "./pages/Penafian"
+import Keselamatan from "./pages/Keselamatan"
+import Privasi from "./pages/Privasi"
 
 /** Font Awesome **/
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
-import Keselamatan from "./pages/Keselamatan"
-import Privasi from "./pages/Privasi"
 
 
 
