@@ -48,7 +48,10 @@ const Candidate = () => {
                 <h2>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</h2>
                 <br />
                 <div className='col'>
+          
+                <br />
                     {candidate.url &&
+                  
                         <img src={candidate.url} style={{ width:'200px'}} className='img-fluid' />
                     }
 

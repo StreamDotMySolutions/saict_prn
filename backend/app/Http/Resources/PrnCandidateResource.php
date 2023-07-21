@@ -16,9 +16,29 @@ class PrnCandidateResource extends JsonResource
     public function toArray($request)
     {
         //return parent::toArray($request);
+
+        // https://drive.google.com/uc?export=view&id=14pX_Q8edWHxjArqCrHWTTUG_f7LOY1no 
+        // https://drive.google.com/file/d/14pX_Q8edWHxjArqCrHWTTUG_f7LOY1no/preview
+
+        // Input URL
+        //$input_url = 'https://drive.google.com/file/d/14pX_Q8edWHxjArqCrHWTTUG_f7LOY1no/preview';
+
+        $input_url = 'https://drive.google.com/file/d/1476dwtNnPz_xVi-zYaV-z6kYWqajv2c8/view?usp=drive_link';
+
+        // Regex pattern to detect the URL format
+        $pattern = '#^(https://)drive\.google\.com/file/d/([a-zA-Z0-9_-]+)/view\?usp=drive_link$#';
+        
+        // Replacement URL format
+        $replacement = 'https://drive.google.com/uc?export=view&id=$2';
+
+        // Perform the replacement
+        //$url = preg_replace($pattern, $replacement, $input_url);
+        $url = preg_replace($pattern, $replacement, $this->url);
+
         return [
             'id' => $this->id,
-            'url' => $this->url,
+            //'url' => $this->url,
+            'url' => $url,
             
             'candidate_entry' => $this->candidate_entry,
             'candidate_title' => $this->candidate_title,
