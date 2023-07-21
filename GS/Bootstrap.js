@@ -14,15 +14,32 @@ function onOpen()
 
 /**
  * Load menu on spreadsheet
+ *'DB_KEDAH_PRU15',
+  'DB_KELANTAN_PRU15',
+  'DB_SELANGOR_PRU15',
+  'DB_TERENGGANU_PRU15',
+  'DB_PENANG_PRU15',
+  'DB_N9_PRU15',
  */
+
 function generateMenu() 
 {
   var ui = SpreadsheetApp.getUi();
 
   ui.createMenu('Data Portal #PRN23')
-    .addItem('Kemaskini Gabungan', 'ingestCoalitionData')
-    .addItem('Kemaskini Parti', 'ingestPartyData')
-    .addItem('Kemaskini Kawasan', 'ingestRegionData')
+    // .addItem('Kemaskini Gabungan', 'ingestCoalitionData')
+    // .addItem('Kemaskini Parti', 'ingestPartyData')
+    // .addItem('Kemaskini Kawasan', 'ingestRegionData')
+    // .addItem('Sync Semua Data ke DB ', 'ingestAllRegionsData')
+    //   .addSeparator()
+      .addSubMenu(ui.createMenu('Sync Data ke Portal')
+          .addItem('KEDAH',"ingestKedah")
+          .addItem('KELANTAN',"ingestKelantan")
+          .addItem('SELANGOR',"ingestSelangor")
+          .addItem('TERENGGANU',"ingestTerengganu")
+          .addItem('PENANG',"ingestPenang")
+          .addItem('N9',"ingestNs")
+          )
     .addToUi();    
 }
 

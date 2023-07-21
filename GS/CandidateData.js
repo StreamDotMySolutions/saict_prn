@@ -47,12 +47,22 @@ function getCandidateData()
     var regionName = sheet.getRange(activeRow,4).getValues();
 
     if( regionCode !== null && regionName !== null ){
+      
+      // if candidate name is a LINK, the value will be sent to server as URL
+      var url = sheet.getRange( activeRow,nextStartCol+1,totalRow,1 ).getRichTextValue().getLinkUrl();
+
       // send to server
-      candidate( (i+1), data, regionCode, regionName)
+      candidate( (i+1), data, regionCode, regionName, url)
     }
 
   }
 }
+
+function getLink(range){
+  var link = SpreadsheetApp.getActive().getActiveSheet().getRange(range).getRichTextValue().getLinkUrl();
+  return link;
+}
+
 
 /**
  * 
@@ -62,24 +72,35 @@ function getCandidateData()
  * @param Array data - data from getRange.getValues()
  * @param String regionCode - region code for each kawasan
  * @param String regionName - kawasan name 
+ * 
  */
-function candidate(entry, data, regionCode, regionName)
+function candidate(entry, data, regionCode, regionName, url)
 {
 
-  var payload = {
-    entry: entry,
-    region_name: regionName[0][0],
-    region_code: regionCode[0][0],
-    title: data[0][0],
-    name: data[0][1],
-    marital_status:data[0][5],
-    career: data[0][7],
-    education: data[0][6],
-    party_coalition: data[0][2],
-    party_name: data[0][3],
-    party_job: data[0][4]
+  // should check empty data
+  // empty name && empty party_name
+  if ( data[0][1] !== "" && data[0][3] !== "" ){
+
+    // extract url from data[0][1] or name
+
+
+    var payload = {
+      url: url,
+      entry: entry,
+      region_name: regionName[0][0],
+      region_code: regionCode[0][0],
+      title: data[0][0],
+      name: data[0][1],
+      marital_status:data[0][5],
+      career: data[0][7],
+      education: data[0][6],
+      party_coalition: data[0][2],
+      party_name: data[0][3],
+      party_job: data[0][4]
+    }
+    sendCandidateData(payload);
+
   }
-  sendCandidateData(payload);
 }
 
 

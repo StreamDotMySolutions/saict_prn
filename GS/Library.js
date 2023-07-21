@@ -25,6 +25,7 @@ function sendCandidateData(data)
 {
     var sheetName =  SpreadsheetApp.getActiveSheet().getName();
     var stateName = SpreadsheetApp.getActiveSheet().getRange('B5').getValue();
+
     var data = {
     'state_name': stateName,
     'sheet_name' : sheetName,
@@ -33,8 +34,9 @@ function sendCandidateData(data)
     'data' : data
   };
 
-  var route = "/prn-nominations/store_candidate_data";
+  var route = "/prn-nominations/store-candidate-data";
   var method = "post";
+  
   sendData(data,method,route);
 }
 
