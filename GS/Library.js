@@ -29,7 +29,7 @@ function sendCandidateData(data)
     var data = {
     'state_name': stateName,
     'sheet_name' : sheetName,
-    'api_key' : "abc123",
+    'api_key' : API_KEY,
     'email' : Session.getActiveUser().getEmail(),
     'data' : data
   };
@@ -50,7 +50,7 @@ function sendRegionData(data,sheetName,stateName)
 
     'state_name' : stateName,
     'sheet_name' : sheetName,
-    'api_key' : "abc123",
+    'api_key' : API_KEY,
     'email' : Session.getActiveUser().getEmail(),
     'data' : data
   };

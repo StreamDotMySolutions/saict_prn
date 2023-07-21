@@ -26,7 +26,7 @@ function ingestPartyData() {
 
   var data = {
     'sheet_name' : sheetName,
-    'api_key' : "abc123",
+    'api_key' : API_KEY,
     'email' : Session.getActiveUser().getEmail(),
     'data' : data
   };

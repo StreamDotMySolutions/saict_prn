@@ -1,8 +1,8 @@
 // Test server
-const BACKEND_URL = "http://202.165.15.230:8001/api"
+//const BACKEND_URL = "http://202.165.15.230:8001/api"
 
 // SAICT PRN  OFFICIAL SERVER 
-//const BACKEND_URL="https://pilihanraya.rtm.gov.my/api"
+const BACKEND_URL="https://pilihanraya.rtm.gov.my/api"
 
 // PRN-NOMINATION SHEETS
 const PRN_STATES = [

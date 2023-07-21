@@ -50,6 +50,7 @@ function getCandidateData()
       
       // if candidate name is a LINK, the value will be sent to server as URL
       var url = sheet.getRange( activeRow,nextStartCol+1,totalRow,1 ).getRichTextValue().getLinkUrl();
+      Logger.log("url is " + url)
 
       // send to server
       candidate( (i+1), data, regionCode, regionName, url)

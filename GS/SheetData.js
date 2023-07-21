@@ -9,7 +9,7 @@ function ingestAllRegionsData()
 
       // Prepare the data for POST request
       var data = {
-        'api_key' : "abc123",
+        'api_key' : API_KEY,
         'state_name' : stateName,
         'sheet_name' : sheetName,
         values: values
@@ -78,7 +78,7 @@ function ingestSheetName(sheetName)
 
   // Prepare the data for POST request
   var data = {
-    'api_key' : "abc123",
+    'api_key' : API_KEY,
     'state_name' : stateName,
     'sheet_name' : sheetName,
     values: values
@@ -151,7 +151,7 @@ function postURL(stateName,name,url)
   // Convert the data to JSON format
 
     var data = {
-    'api_key' : "abc123",
+    'api_key' : API_KEY,
     'state_name': stateName,
     'candidate_name': name,
     'url' : url,
