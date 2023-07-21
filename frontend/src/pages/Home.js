@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import { NavLink} from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav';
+import Facebook from './Socmed/Facebook';
+import Youtube from './Socmed/Youtube';
 
 
 const Home = () => {
@@ -92,6 +94,25 @@ const Home = () => {
             <div className="progress mb-4" role="progressbar" aria-label="Bn" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{ height: "25px" }}>
                 <div className="progress-bar progress-bar-striped progress-bar-animated" style={{ width: "25%", backgroundColor: "rgb(0, 0, 128)" }}></div>
             </div>
+            </Container>
+
+            <hr className="featurette-divider" />
+
+            <Row>
+            <Col lg={6}>
+                <h3>Terkini</h3>
+            </Col>
+            </Row>
+
+            <Container className="my-3">
+                <Row>
+                    <Col md={6}>
+                        <Youtube />
+                    </Col>
+                    <Col md={6}>
+                        <Facebook />
+                    </Col>
+                </Row>
             </Container>
         </Container>
 
