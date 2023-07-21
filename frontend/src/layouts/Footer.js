@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import Nav from 'react-bootstrap/Nav';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faTiktok, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import Col from 'react-bootstrap/Col';
 
 
 const Footer = () => {
@@ -27,7 +28,7 @@ const Footer = () => {
         </Nav.Link>
       </div>
       <div className="row mt-3">
-        <div className="col-md-4">
+        <Col md={4}>
           <ul className="list-unstyled">
             <li>
               <Nav.Link as={NavLink} to="/keselamatan" className="text-secondary text-decoration-none">
@@ -45,8 +46,8 @@ const Footer = () => {
               </Nav.Link>
             </li>
           </ul>
-        </div>
-        <div className="col-md-4">
+        </Col>
+        <Col md={4}>
           <p>
             Radio Televisyen Malaysia <br />
             Angkasapuri Kota Media <br />
@@ -54,8 +55,8 @@ const Footer = () => {
             Tel: 03 - 2282 5333 <br />
             Faks: 03 - 2284 7591
           </p>
-        </div>
-        <div className="col-md-4">
+        </Col>
+        <Col md={4}>
           <p>
             Hak Cipta Terpelihara &copy; 2023 Seksyen Aplikasi ICT, Jabatan Penyiaran Malaysia
           </p>
@@ -64,7 +65,7 @@ const Footer = () => {
               Back to top
             </a>
           </p>
-        </div>
+        </Col>
       </div>
     </footer>
   );
