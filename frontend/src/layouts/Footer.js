@@ -1,25 +1,50 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import Nav from 'react-bootstrap/Nav';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faTwitter, faInstagram, faTiktok, faYoutube } from '@fortawesome/free-brands-svg-icons';
+
 
 const Footer = () => {
   return (
-    <footer className="container py-5">
-      <div className="row">
+    <footer className="container py-6">
+      <hr className="featurette-divider" />
+      <div className="social-media-container">
+        <Nav.Link as={NavLink} to="https://www.tiktok.com/@radiotelevisyenmalaysia?is_from_webapp=1&sender_device=pc">
+          <FontAwesomeIcon icon={faTiktok} className="social-media-icon tiktok-icon"/>
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="https://www.facebook.com/RadioTelevisyenMalaysia/?ref=embed_page">
+          <FontAwesomeIcon icon={faFacebook} className="social-media-icon facebook-icon"/>
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="https://www.youtube.com/channel/UCjUxj4cyy_F0tVCT8WfmdZQ" >
+          <FontAwesomeIcon icon={faYoutube} className="social-media-icon youtube-icon"/>
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="https://twitter.com/beritartm?lang=en">
+          <FontAwesomeIcon icon={faTwitter} className="social-media-icon twitter-icon"/>
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="https://www.instagram.com/beritartm/?hl=en">
+          <FontAwesomeIcon icon={faInstagram} className="social-media-icon instagram-icon"/>
+        </Nav.Link>
+      </div>
+      <div className="row mt-3">
         <div className="col-md-4">
-          <p>
-            <a href="#" className="text-secondary text-decoration-none">
-              Penafian
-            </a>
-          </p>
-          <p>
-            <a href="#" className="text-secondary text-decoration-none">
-              Polisi Keselamtan
-            </a>
-          </p>
-          <p>
-            <a href="#" className="text-secondary text-decoration-none">
-              Polisi Privasi
-            </a>
-          </p>
+          <ul className="list-unstyled">
+            <li>
+              <Nav.Link as={NavLink} to="/keselamatan" className="text-secondary text-decoration-none">
+                Dasar Keselamatan
+              </Nav.Link>
+            </li>
+            <li>
+              <Nav.Link as={NavLink} to="/penafian" className="text-secondary text-decoration-none">
+                Penafian
+              </Nav.Link>
+            </li>
+            <li>
+              <Nav.Link as={NavLink} to="/privasi" className="text-secondary text-decoration-none">
+                Dasar Privasi
+              </Nav.Link>
+            </li>
+          </ul>
         </div>
         <div className="col-md-4">
           <p>
@@ -32,7 +57,7 @@ const Footer = () => {
         </div>
         <div className="col-md-4">
           <p>
-            Hak Cipta Terpelihara &copy; 2023 Seksyen Aplikasi ICT, Jabatan Penyiaran Malaysia.
+            Hak Cipta Terpelihara &copy; 2023 Seksyen Aplikasi ICT, Jabatan Penyiaran Malaysia
           </p>
           <p className="text-end">
             <a href="#" className="text-secondary text-decoration-none">

@@ -87,4 +87,36 @@ body {
   
   .fw-semibold { font-weight: 600; }
   .lh-tight { line-height: 1.25; }
+
+  /* SocialMediaIcons.css */
+.social-media-container {
+  display: flex;
+}
+
+.social-media-icon {
+  color: #000; /* Default color for all icons */
+  font-size: 24px; /* Default size for all icons */
+  margin-right: 10px;
+}
+
+.facebook-icon {
+  color: #1877f2; /* Custom color for Facebook */
+}
+
+.twitter-icon {
+  color: #1da1f2; /* Custom color for Twitter */
+}
+
+.instagram-icon {
+  color: #c13584; /* Custom color for Instagram */
+}
+
+.tiktok-icon {
+  color: #000000; /* Custom color for TikTok */
+}
+
+.youtube-icon {
+  color: #ff0000; /* Custom color for YouTube */
+}
+
   
