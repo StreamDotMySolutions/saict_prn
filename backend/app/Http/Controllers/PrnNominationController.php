@@ -109,6 +109,38 @@ class PrnNominationController extends Controller
 
     /**
      * Model - PrnNominaton
+     * Store Candidate URL ( INSERT LINK )
+     * GSheet Pencalonan TABs
+     * @param Request $request
+     * @return JSON
+     */
+    public function storeCandidateUrl(Request $request)
+    {
+
+        //\Log::info($request);
+        $prn_candidate = PrnNomination::updateOrCreate(
+            [
+                'state_name'=> $request->input('state_name'),
+                'candidate_name'=> $request->input('candidate_name'),
+
+            
+            ], // condition
+            
+            // data
+            [
+                'url' => $request->input('url'),
+               
+            ]
+         );
+
+        // flush cache
+        \Cache::forget('candidates');
+        \Cache::forget('regions');
+
+    }
+
+    /**
+     * Model - PrnNominaton
      * Store Candidate data from
      * GSheet Pencalonan TABs
      * @param Request $request
