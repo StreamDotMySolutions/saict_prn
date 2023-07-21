@@ -18,6 +18,7 @@ class PrnCandidateResource extends JsonResource
         //return parent::toArray($request);
         return [
             'id' => $this->id,
+            'url' => $this->url,
             
             'candidate_entry' => $this->candidate_entry,
             'candidate_title' => $this->candidate_title,

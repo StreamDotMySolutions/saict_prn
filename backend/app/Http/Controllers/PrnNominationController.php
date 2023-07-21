@@ -117,7 +117,7 @@ class PrnNominationController extends Controller
     public function storeCandidateData(Request $request)
     {        
 
-        \Log::info($request);
+        //\Log::info($request);
 
         $data = $request->data;
 

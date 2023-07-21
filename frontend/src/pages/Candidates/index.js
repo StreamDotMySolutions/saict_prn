@@ -45,17 +45,25 @@ const Candidate = () => {
         
         { candidate ? 
             <>
-                <h2>{candidate.candidate_title} {candidate.candidate_name}</h2>
+                <h2>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</h2>
                 <br />
                 <div className='col'>
-                    <ListItem item='Gelaran' value={candidate.candidate_title} />
-                    <ListItem item='Nama' value={candidate.candidate_name} />
-                    <ListItem item='Party' value={candidate.party_name} />
-                    <ListItem item='Jawatan dalam parti' value={candidate.candidate_party_job} />
-                    <ListItem item='Gabungan' value={candidate.party_coalition} />
-                    <ListItem item='Status Perkahwinan' value={candidate.candidate_marital_status} />
-                    <ListItem item='Pendidikan' value={candidate.candidate_education} />
-                    <ListItem item='Pekerjaan' value={candidate.candidate_career} />
+                    {candidate.url &&
+                        <img src={candidate.url} style={{ width:'200px'}} className='img-fluid' />
+                    }
+
+                    {candidate.candidate_title && 
+                        <ListItem item='Gelaran' value={candidate.candidate_title.toUpperCase()} />
+                    }
+
+
+                    <ListItem item='Nama' value={candidate.candidate_name?.toUpperCase()} />
+                    <ListItem item='Party' value={candidate.party_name?.toUpperCase()} />
+                    <ListItem item='Jawatan dalam parti' value={candidate.candidate_party_job?.toUpperCase()} />
+                    <ListItem item='Gabungan' value={candidate.party_coalition?.toUpperCase()} />
+                    <ListItem item='Status Perkahwinan' value={candidate.candidate_marital_status?.toUpperCase()} />
+                    <ListItem item='Pendidikan' value={candidate.candidate_education?.toUpperCase()} />
+                    <ListItem item='Pekerjaan' value={candidate.candidate_career?.toUpperCase()} />
                 </div>
             </>
             : <p className='text-muted'>Belum ada pencalonan</p>
