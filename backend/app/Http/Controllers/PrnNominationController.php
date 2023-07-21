@@ -116,9 +116,11 @@ class PrnNominationController extends Controller
      */
     public function storeCandidateData(Request $request)
     {        
+
+        \Log::info($request);
+
         $data = $request->data;
 
-        $this->store($data);
 
         if(!is_null($data['party_coalition'])){
             $prn_coalition = \App\Models\PrnCoalition::select('id')->where('title',$data['party_coalition'])->first();
@@ -156,6 +158,7 @@ class PrnNominationController extends Controller
                 'sheet_name'=> $request->sheet_name,
                 'gsheet_email'=> $request->email, 
 
+                'url'=> $data['url'], 
                 'candidate_title'=> $data['title'], 
                 'candidate_name'=> $data['name'],
                 'candidate_marital_status'=> $data['marital_status'],  
@@ -177,64 +180,6 @@ class PrnNominationController extends Controller
         \Cache::forget('regions');
     }
 
-    private function store($data){
-        
-        if(!is_null($data['party_coalition'])){
-            $prn_coalition = \App\Models\PrnCoalition::select('id')->where('title',$data['party_coalition'])->first();
-            // \Log::info($prn_coalition->id);
-            //\Log::info($data['party_coalition']);
-        }
-
-        if(!is_null($data['party_name'])){
-            $prn_party = \App\Models\PrnParty::select('id')->where('title', $data['party_name'])->first();
-            //\Log::info($data['party_name']);
-        }
-
-        if(!is_null($data['region_code']) && !is_null($data['region_name'] && !is_null($request->state_name) )  ){
-            $prn_region = \App\Models\PrnRegion::query()
-                                            ->select('id')
-                                            ->where('code',$data['region_code'])
-                                            ->where('name',$data['region_name'])
-                                            ->where('state_name',$request->state_name)
-                                            ->first();
-        }
-
-        $prn_candidate = PrnNomination::updateOrCreate(
-            [
-                'candidate_entry'=> $data['entry'],
-                'region_code' => $data['region_code'],
-            
-            ], // condition
-            
-            // data
-            [
-                'state_name' => $request->state_name,
-                'region_code' => $data['region_code'],
-                'region_name' => $data['region_name'],
-
-                'sheet_name'=> $request->sheet_name,
-                'gsheet_email'=> $request->email, 
-
-                'candidate_title'=> $data['title'], 
-                'candidate_name'=> $data['name'],
-                'candidate_marital_status'=> $data['marital_status'],  
-                'candidate_party_job'=> $data['party_job'],  
-                'candidate_career'=> $data['career'],  
-                'candidate_education'=> $data['education'], 
-                
-                'party_coalition'=> $data['party_coalition'],  
-                'party_name'=> $data['party_name'],  
-
-                'prn_coalition_id' => isset($prn_coalition) ? $prn_coalition->id : null ,
-                'prn_party_id' => isset($prn_party) ? $prn_party->id : null ,
-                'prn_region_id' => isset($prn_region) ? $prn_region->id : null ,
-            ]
-         );
-
-        // flush cache
-        \Cache::forget('candidates');
-        \Cache::forget('regions');
-    }
 
     /**
      * 
