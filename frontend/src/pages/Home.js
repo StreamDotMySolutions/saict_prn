@@ -14,7 +14,7 @@ const Home = () => {
             <Container className="mt-3">
             <Row>
             <Col lg={6} className="mt-3">
-                <h3>Pilihan Raya Utama 15</h3>
+                <h3>Pilihan Raya Utama Ke-15</h3>
             </Col>
             </Row>
 
@@ -30,7 +30,7 @@ const Home = () => {
 
             <Row className="mt-5">
             <Col lg={6}>
-                <h3>Pilihan Raya Negeri</h3>
+                <h3>Pilihan Raya DUN Ke-15</h3>
             </Col>
             </Row>
 
@@ -93,8 +93,6 @@ const Home = () => {
                 <div className="progress-bar progress-bar-striped progress-bar-animated" style={{ width: "25%", backgroundColor: "rgb(0, 0, 128)" }}></div>
             </div>
             </Container>
-
-            <hr className="featurette-divider" />
         </Container>
 
         <Outlet />
