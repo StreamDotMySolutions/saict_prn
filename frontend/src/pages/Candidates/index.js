@@ -9,6 +9,7 @@ import Nav from 'react-bootstrap/Nav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ListItem from './ListItem';
 import Container from 'react-bootstrap/esm/Container';
+import Image from 'react-bootstrap/esm/Image';
 
 const Candidate = () => {
     const { stateName } = useParams()
@@ -51,8 +52,10 @@ const Candidate = () => {
           
                 <br />
                     {candidate.url &&
-                  
-                        <img src={candidate.url} style={{ width:'200px'}} className='img-fluid' />
+                        <>
+                        <Image src={candidate.url} style={{ width:'200px'}} thumbnails />
+                        <hr />
+                        </>
                     }
 
                     {candidate.candidate_title && 
