@@ -8,7 +8,7 @@ import { NavLink} from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav';
 import Facebook from './Socmed/Facebook';
 import Youtube from './Socmed/Youtube';
-
+import Youtube2 from './Socmed/Youtube2';
 
 const Home = () => {
     return (
@@ -107,7 +107,7 @@ const Home = () => {
             <Container className="my-3">
                 <Row>
                     <Col md={6}>
-                        <Youtube />
+                        <Youtube2 />
                     </Col>
                     <Col md={6}>
                         <Facebook />
