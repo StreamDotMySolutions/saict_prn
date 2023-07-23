@@ -18,14 +18,14 @@ const Party = () => {
         
         const intervalId = setInterval(() => {
             getPartyData(setData,setIsLoading)
-        }, 1000 * 5) // in milliseconds
+        }, 1000 * 10) // in milliseconds
 
         return () => clearInterval(intervalId)
         
     }, [])
     
 
-    const listParties = data.parties.map((item) =>
+    const listParties = data.parties?.map((item) =>
         <tr key={item.title}>
             <td>
             <FontAwesomeIcon icon="fa fa-sign-in" /> Parti <strong>{item.title}</strong> bertanding di <strong>{item.prn_nominations_count}</strong> kawasan
@@ -35,7 +35,7 @@ const Party = () => {
 
     return (
     <>
-        { data.parties.length > 0 ? 
+        { data.parties?.length > 0 ? 
             <>
  
             <div className="card-group">
@@ -86,7 +86,7 @@ const Party = () => {
                 <tbody>
                     {listParties}
                 </tbody>
-            </table>
+            </table>    
             </>
             : <p className='text-muted'>Tiada data</p>
          }
@@ -111,7 +111,7 @@ function getPartyData(setData,setIsLoading){
         }
     })
     .then( function(json){
-        console.log(json.data.data)
+        //console.log(json.data.data)
         setData(json.data.data)
         setIsLoading(false)
     })
