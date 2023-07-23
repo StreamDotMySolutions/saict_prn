@@ -37,10 +37,10 @@ class DashboardController extends Controller
         // get total parties
         $prn_parties = \Cache::rememberForever('dashboard_prn_parties', function () {
             return \App\Models\PrnParty::query()
-            ->select('title')
-            ->withCount('prn_nominations')
-            ->having('prn_nominations_count', '>', 0)
-            ->get();
+                                ->select('title')
+                                ->withCount('prn_nominations')
+                                ->having('prn_nominations_count', '>', 0)
+                                ->get();
         });
 
         // get total regions
@@ -61,7 +61,7 @@ class DashboardController extends Controller
         $data = [
             'total_nominations' => $prn_nominations ? $prn_nominations : 0,
             'total_regions' => $prn_regions ? $prn_regions : 0,
-            'prn_regions_nominated' =>  $prn_regions_nominated,
+            'prn_regions_nominated' => $prn_regions_nominated,
             'parties' => $prn_parties
         ];
 

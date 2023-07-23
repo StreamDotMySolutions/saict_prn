@@ -9,6 +9,7 @@ import Nav from 'react-bootstrap/Nav';
 import Facebook from './Socmed/Facebook';
 import Youtube from './Socmed/Youtube';
 import Youtube2 from './Socmed/Youtube2';
+import Party from './Dashboard/components/Party'
 
 const Home = () => {
     return (
@@ -80,20 +81,21 @@ const Home = () => {
             </Row>
 
             <Container>
-            <div className="mb-4">Pakatan Harapan</div>
-            <div className="progress mb-4" role="progressbar" aria-label="PH" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{ height: "25px" }}>
-                <div className="progress-bar progress-bar-striped progress-bar-animated" style={{ width: "65%", backgroundColor: "rgb(216, 35, 43)" }}></div>
-            </div>
+                <Party />
+                {/* <div className="mb-4">Pakatan Harapan</div>
+                <div className="progress mb-4" role="progressbar" aria-label="PH" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{ height: "25px" }}>
+                    <div className="progress-bar progress-bar-striped progress-bar-animated" style={{ width: "65%", backgroundColor: "rgb(216, 35, 43)" }}></div>
+                </div>
 
-            <div className="mb-4">Perikatan Nasional</div>
-            <div className="progress mb-4" role="progressbar" aria-label="PN" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{ height: "25px" }}>
-                <div className="progress-bar progress-bar-striped progress-bar-animated" style={{ width: "45%", backgroundColor: "rgb(0, 49, 82)" }}></div>
-            </div>
+                <div className="mb-4">Perikatan Nasional</div>
+                <div className="progress mb-4" role="progressbar" aria-label="PN" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{ height: "25px" }}>
+                    <div className="progress-bar progress-bar-striped progress-bar-animated" style={{ width: "45%", backgroundColor: "rgb(0, 49, 82)" }}></div>
+                </div>
 
-            <div className="mb-4">Barisan Nasional</div>
-            <div className="progress mb-4" role="progressbar" aria-label="Bn" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{ height: "25px" }}>
-                <div className="progress-bar progress-bar-striped progress-bar-animated" style={{ width: "25%", backgroundColor: "rgb(0, 0, 128)" }}></div>
-            </div>
+                <div className="mb-4">Barisan Nasional</div>
+                <div className="progress mb-4" role="progressbar" aria-label="Bn" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style={{ height: "25px" }}>
+                    <div className="progress-bar progress-bar-striped progress-bar-animated" style={{ width: "25%", backgroundColor: "rgb(0, 0, 128)" }}></div>
+                </div> */}
             </Container>
 
             <hr className="featurette-divider" />

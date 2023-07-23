@@ -53,7 +53,6 @@ const Regions = () => {
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{stateName.toUpperCase()} - {regionCode} {regionName.toUpperCase()}</h5>
-                    <p class="card-text">Penyandang ialah ...</p>
                 </div>
                 <ul class="list-group list-group-flush">
                     {listItems}
