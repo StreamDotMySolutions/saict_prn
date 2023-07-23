@@ -103,8 +103,13 @@ class PrnNominationController extends Controller
             }
         }        
         // flush cache
-        \Cache::forget('candidates');
-        \Cache::forget('regions');
+        \Cache::flush();
+        // \Cache::forget('candidates');
+        // \Cache::forget('regions');
+        // \Cache::forget('dashboard_prn_nominations');
+        // \Cache::forget('dashboard_prn_parties');
+        // \Cache::forget('dashboard_prn_regions');
+        // \Cache::forget('dashboard_prn_regions_nominated');
     }
 
     /**
@@ -134,8 +139,13 @@ class PrnNominationController extends Controller
          );
 
         // flush cache
-        \Cache::forget('candidates');
-        \Cache::forget('regions');
+        \Cache::flush();
+        // \Cache::forget('candidates');
+        // \Cache::forget('regions');
+        // \Cache::forget('dashboard_prn_nominations');
+        // \Cache::forget('dashboard_prn_parties');
+        // \Cache::forget('dashboard_prn_regions');
+        // \Cache::forget('dashboard_prn_regions_nominated');
 
     }
 
@@ -208,8 +218,13 @@ class PrnNominationController extends Controller
          );
 
         // flush cache
-        \Cache::forget('candidates');
-        \Cache::forget('regions');
+        \Cache::flush();
+        // \Cache::forget('candidates');
+        // \Cache::forget('regions');
+        // \Cache::forget('dashboard_prn_nominations');
+        // \Cache::forget('dashboard_prn_parties');
+        // \Cache::forget('dashboard_prn_regions');
+        // \Cache::forget('dashboard_prn_regions_nominated');
     }
 
 

@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 // auth
 require __DIR__.'/auth.php';
 
+// dashboard
+require __DIR__.'/dashboard.php';
+
 // profile
 require __DIR__.'/profile.php';
 

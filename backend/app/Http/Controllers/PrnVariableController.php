@@ -113,6 +113,9 @@ class PrnVariableController extends Controller
                 ]
             );
         }
+
+        \Cache::flush();
+        
         return \Response::json([
             'message' => 'Party data sync to portal is successful'
         ],200);

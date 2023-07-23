@@ -6,7 +6,7 @@ const YouTube2 = () => {
   const videoId = 'FnkRfDROw_4'; // Replace with your YouTube video ID
 
   return (
-    <div className="embed-responsive embed-responsive-16by9">
+    <div className="embed-responsive embed-responsive-16by9 mt-3">
       <div className="card-header bg-danger text-white">
         <FontAwesomeIcon icon={faYoutube} /> Youtube
       </div>

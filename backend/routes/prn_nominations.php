@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
  * @controller PrnNominationController::storeCandidateData
  * 
  */
-// Route::POST('/prn-nominations/store_candidate_data', [PrnNominationController::class, 'storeCandidateData'])
-//                 ->middleware('apiKey')
-//                 ->name('prn_nominations.store_candidate_data');
 
 Route::POST('/prn-nominations/store-candidate-data', [PrnNominationController::class, 'storeCandidateData'])
         ->middleware('apiKey')
@@ -28,8 +25,6 @@ Route::POST('/prn-nominations/store-candidate-url', [PrnNominationController::cl
 Route::POST('/prn-nominations/store-sheet-data', [PrnNominationController::class, 'storeSheetData'])
         ->middleware('apiKey')
         ->name('prn_nominations.store_sheet_data');
-
-
 
 /**
  * 
