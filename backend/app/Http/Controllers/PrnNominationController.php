@@ -9,8 +9,6 @@ use App\Http\Resources\PrnNominationResource;
 
 class PrnNominationController extends Controller
 {
-
-
     /**
      * To store PrnNomination data from Google Sheet 
      * Data will be array from getRange.values()
@@ -182,6 +180,8 @@ class PrnNominationController extends Controller
                                             ->where('state_name',$request->state_name)
                                             ->first();
         }
+
+        // if candidate_name not null ?
 
         $prn_candidate = PrnNomination::updateOrCreate(
             [

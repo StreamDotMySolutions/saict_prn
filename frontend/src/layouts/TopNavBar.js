@@ -2,11 +2,14 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { NavLink} from 'react-router-dom'
+import { NavLink, useLocation} from 'react-router-dom'
+
 
 
 
 function TopNavbar() {
+
+  const location = useLocation();
 
   const flag = (stateName) => {
     return (
@@ -20,7 +23,7 @@ function TopNavbar() {
         <Navbar.Brand as={NavLink} to="/"><h3>#mypru15</h3></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
+          <Nav  className="ms-auto">
           
             <NavDropdown title="Negeri" id="basic-nav-dropdown">
               <NavDropdown.Item style={{width:'180px'}} as={NavLink} to="/selangor">{flag('selangor')} Selangor</NavDropdown.Item>
@@ -31,7 +34,10 @@ function TopNavbar() {
               <NavDropdown.Item as={NavLink} to="/negeri-sembilan">{flag('NS')} Negeri Sembilan</NavDropdown.Item>
             </NavDropdown>
 
-            <Nav.Link as={NavLink} to="/dashboard">Dashboard</Nav.Link>
+            <Nav activeKey={location.pathname}>
+              <Nav.Link as={NavLink} to="/dashboard">Dashboard</Nav.Link>
+            </Nav>
+            
           </Nav>
         </Navbar.Collapse>
         </Container>

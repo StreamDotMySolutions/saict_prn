@@ -34,7 +34,7 @@ const LatestCandidate = () => {
         <tr key={item.id}>
             <td>
                 <small>
-                    {item.candidate_title} {item.candidate_name} mewakili parti {item.party_name} di {item.region_name} , {item.state_name}
+                    Data calon {item.candidate_title} {item.candidate_name} di kawasan {item.region_code} {item.region_name} , {item.state_name} telah dikemaskini
                     <br />
                     <span className='text-muted'><FontAwesomeIcon icon="fas fa-clock" /><i>&nbsp;{item.when}</i></span>
                 </small>
