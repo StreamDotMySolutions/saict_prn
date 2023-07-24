@@ -1,9 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 import Nav from 'react-bootstrap/Nav';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faTiktok, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import Col from 'react-bootstrap/Col';
+
 
 
 const Footer = () => {
@@ -11,39 +12,40 @@ const Footer = () => {
     <footer className="container py-6">
       <hr className="featurette-divider" />
       <div className="social-media-container">
-        <Nav.Link as={NavLink} to="https://www.tiktok.com/@radiotelevisyenmalaysia?is_from_webapp=1&sender_device=pc">
+        <Link  to="https://www.tiktok.com/@radiotelevisyenmalaysia?is_from_webapp=1&sender_device=pc">
           <FontAwesomeIcon icon={faTiktok} className="social-media-icon tiktok-icon"/>
-        </Nav.Link>
-        <Nav.Link as={NavLink} to="https://www.facebook.com/RadioTelevisyenMalaysia/?ref=embed_page">
+        </Link>
+        <Link  to="https://www.facebook.com/RadioTelevisyenMalaysia/?ref=embed_page">
           <FontAwesomeIcon icon={faFacebook} className="social-media-icon facebook-icon"/>
-        </Nav.Link>
-        <Nav.Link as={NavLink} to="https://www.youtube.com/channel/UCjUxj4cyy_F0tVCT8WfmdZQ" >
+        </Link>
+        <Link  to="https://www.youtube.com/channel/UCjUxj4cyy_F0tVCT8WfmdZQ" >
           <FontAwesomeIcon icon={faYoutube} className="social-media-icon youtube-icon"/>
-        </Nav.Link>
-        <Nav.Link as={NavLink} to="https://twitter.com/beritartm?lang=en">
+        </Link>
+        <Link  to="https://twitter.com/beritartm?lang=en">
           <FontAwesomeIcon icon={faTwitter} className="social-media-icon twitter-icon"/>
-        </Nav.Link>
-        <Nav.Link as={NavLink} to="https://www.instagram.com/beritartm/?hl=en">
+        </Link>
+        <Link  to="https://www.instagram.com/beritartm/?hl=en">
           <FontAwesomeIcon icon={faInstagram} className="social-media-icon instagram-icon"/>
-        </Nav.Link>
+        </Link>
       </div>
       <div className="row mt-3">
         <Col md={4}>
           <ul className="list-unstyled">
             <li>
-              <Nav.Link as={NavLink} to="/keselamatan" className="text-secondary text-decoration-none">
+              <NavLink className={({ isActive }) => (isActive ? "text-danger" : "inactive")} to="/keselamatan">
                 Dasar Keselamatan
-              </Nav.Link>
+              </NavLink>
+     
             </li>
             <li>
-              <Nav.Link as={NavLink} to="/penafian" className="text-secondary text-decoration-none">
+              <NavLink className={({ isActive }) => (isActive ? "text-danger" : "inactive")} to="/penafian">
                 Penafian
-              </Nav.Link>
+              </NavLink>
             </li>
             <li>
-              <Nav.Link as={NavLink} to="/privasi" className="text-secondary text-decoration-none">
+              <NavLink className={({ isActive }) => (isActive ? "text-danger" : "inactive")} to="/privasi">
                 Dasar Privasi
-              </Nav.Link>
+              </NavLink>
             </li>
           </ul>
         </Col>

@@ -32,9 +32,9 @@ const Penafian = () => {
                         </Card.Text>
                     </Card.Body>
                 </Card>
-                <hr className="featurette-divider" />
+       
             </Container>
-            <Outlet />
+    
         </>
     )
 }
