@@ -127,7 +127,6 @@ class PrnNominationController extends Controller
             [
                 'state_name'=> $request->input('state_name'),
                 'candidate_name'=> $request->input('candidate_name'),
-
             
             ], // condition
             
@@ -188,6 +187,7 @@ class PrnNominationController extends Controller
             [
                 'candidate_entry'=> $data['entry'],
                 'region_code' => $data['region_code'],
+                'region_name' => $data['region_name'],
             
             ], // condition
             

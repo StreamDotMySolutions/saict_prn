@@ -5,8 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faTiktok, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import Col from 'react-bootstrap/Col';
 
-
-
 const Footer = () => {
   return (
     <footer className="container py-6">
