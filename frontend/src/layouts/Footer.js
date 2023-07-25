@@ -30,18 +30,18 @@ const Footer = () => {
         <Col md={4}>
           <ul className="list-unstyled">
             <li>
-              <NavLink className={({ isActive }) => (isActive ? "text-danger" : "inactive")} to="/keselamatan">
+              <NavLink className="text-dark text-decoration-none" to="/keselamatan">
                 Dasar Keselamatan
               </NavLink>
      
             </li>
             <li>
-              <NavLink className={({ isActive }) => (isActive ? "text-danger" : "inactive")} to="/penafian">
+              <NavLink className="text-dark text-decoration-none" to="/penafian">
                 Penafian
               </NavLink>
             </li>
             <li>
-              <NavLink className={({ isActive }) => (isActive ? "text-danger" : "inactive")} to="/privasi">
+              <NavLink className="text-dark text-decoration-none" to="/privasi">
                 Dasar Privasi
               </NavLink>
             </li>
