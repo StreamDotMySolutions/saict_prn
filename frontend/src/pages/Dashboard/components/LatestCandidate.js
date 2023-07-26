@@ -34,9 +34,16 @@ const LatestCandidate = () => {
         <tr key={item.id}>
             <td>
                 <small>
-                    Data calon {item.candidate_title} {item.candidate_name} di kawasan {item.region_code} {item.region_name} , {item.state_name} telah dikemaskini
+                    Data calon{' '}
+                    <Link to={`/`}>
+                        {item.candidate_title} {item.candidate_name}
+                    </Link>{' '}
+                    di kawasan {item.region_code} {item.region_name}, {item.state_name} telah dikemaskini
                     <br />
-                    <span className='text-muted'><FontAwesomeIcon icon="fas fa-clock" /><i>&nbsp;{item.when}</i></span>
+                    <span className="text-muted">
+                        <FontAwesomeIcon icon="fas fa-clock" />
+                        <i>&nbsp;{item.when}</i>
+                    </span>
                 </small>
             </td>
         </tr>
