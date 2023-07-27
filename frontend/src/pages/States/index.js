@@ -7,6 +7,8 @@ import Table from 'react-bootstrap/Table';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Row from 'react-bootstrap/esm/Row';
+import Col from 'react-bootstrap/esm/Col';
 
 const States = () => {
     const { stateName } = useParams();
@@ -18,6 +20,17 @@ const States = () => {
         getRegions(stateName, setRegions,setParties, setCandidates);
     }, [stateName]);
 
+    const map = (stateName) => {
+        return (
+            <img src={'/img/map/' + stateName + '.png'} className='img-fluid' width="100%" />
+        )
+    }
+
+    const flag = (stateName) => {
+        return (
+        <img src={'/img/flags/' + stateName + '.png' }  className="img-fluid" width="70px" />
+        )
+    }
 
     const renderParty = () => {
         if (parties.length === 0) {
@@ -105,11 +118,28 @@ const States = () => {
                 </Breadcrumb.Item>
                 <Breadcrumb.Item active>{stateName.toUpperCase()}</Breadcrumb.Item>
             </Breadcrumb>
-            <h1>
-                {stateName.toUpperCase()}
-            </h1>
-            {renderParty()}
-            {renderTable()}
+            <Row>
+                <Col md={1} className='mt-2'> 
+                    {flag(stateName)}
+                </Col>
+                <Col md={6}>
+                    <h1>
+                        {stateName.toUpperCase()}
+                    </h1>
+                </Col>
+            </Row>
+            <Row>
+                <Col md={6}>
+                    {renderParty()}
+                    {renderTable()}
+                </Col>
+                <Col md={6}>
+                <div className="d-flex justify-content-center">
+                    {map(stateName)}
+                </div>
+                </Col>
+            </Row>
+
         </Container>
         </>
     );

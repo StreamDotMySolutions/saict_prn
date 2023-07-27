@@ -27,11 +27,11 @@ function TopNavbar() {
           
             <NavDropdown title="Negeri" id="basic-nav-dropdown">
               <NavDropdown.Item style={{width:'180px'}} as={NavLink} to="/selangor">{flag('selangor')} Selangor</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to="/pulau-pinang">{flag('pulau-pinang')} Pulau Pinang</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to="/negeri-sembilan">{flag('negeri-sembilan')} Negeri Sembilan</NavDropdown.Item>
               <NavDropdown.Item as={NavLink} to="/kedah">{flag('Kedah')} Kedah</NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} to="/kelantan">{flag('Kelantan')} Kelantan</NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} to="/pulau-pinang">{flag('PP')} Pulau Pinang</NavDropdown.Item>
               <NavDropdown.Item as={NavLink} to="/terengganu">{flag('Terengganu')} Terengganu</NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} to="/negeri-sembilan">{flag('NS')} Negeri Sembilan</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to="/kelantan">{flag('Kelantan')} Kelantan</NavDropdown.Item>
             </NavDropdown>
 
             <Nav activeKey={location.pathname}>

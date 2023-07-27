@@ -52,12 +52,12 @@ const Home = () => {
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
                     <Nav.Link as={NavLink} to="/pulau-pinang">
-                        <img src="/img/flags/PP.png" className="img-fluid" width="30%" title="PP" />
+                        <img src="/img/flags/pulau-pinang.png" className="img-fluid" width="30%" title="PP" />
                     </Nav.Link>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
                     <Nav.Link as={NavLink} to="/negeri-sembilan">
-                        <img src="/img/flags/NS.png" className="img-fluid" width="30%" title="NS" />
+                        <img src="/img/flags/negeri-sembilan.png" className="img-fluid" width="30%" title="NS" />
                     </Nav.Link>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
