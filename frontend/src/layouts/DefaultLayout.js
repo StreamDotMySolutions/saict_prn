@@ -36,7 +36,7 @@ const DefaultLayout = () => {
           </>
       }
     </>
-  ); // return 
+  ); // return JSX
 };
 
 export default DefaultLayout;
