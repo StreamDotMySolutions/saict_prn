@@ -123,4 +123,6 @@ body {
 background-color:#ff0000;
 }
 
-  
+.text-dark {
+  color: #343a40; /* Replace with your desired dark color */
+}

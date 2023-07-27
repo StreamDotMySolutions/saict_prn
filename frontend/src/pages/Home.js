@@ -62,17 +62,17 @@ const Home = () => {
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
                     <Nav.Link as={NavLink} to="/kedah">
-                        <img src="/img/flags/Kedah.png" className="img-fluid" width="30%" title="Kedah" />
+                        <img src="/img/flags/ksedah.png" className="img-fluid" width="30%" title="Kedah" />
                     </Nav.Link>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
                     <Nav.Link as={NavLink} to="/terengganu">
-                        <img src="/img/flags/Terengganu.png" className="img-fluid" width="30%" title="Terengganu" />
+                        <img src="/img/flags/terengganu.png" className="img-fluid" width="30%" title="Terengganu" />
                     </Nav.Link>
                 </Col>
                 <Col lg={2} md={3} sm={4} xs={6} className="my-2">
                     <Nav.Link as={NavLink} to="/kelantan">
-                        <img src="/img/flags/Kelantan.png" className="img-fluid" width="30%" title="Kelantan" />
+                        <img src="/img/flags/kelantan.png" className="img-fluid" width="30%" title="Kelantan" />
                     </Nav.Link>
                 </Col>
             </Row>
