@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
+import Card from 'react-bootstrap/Card';
 
 const States = () => {
     const { stateName } = useParams();
@@ -134,9 +135,11 @@ const States = () => {
                     {renderTable()}
                 </Col>
                 <Col md={6}>
-                <div className="d-flex justify-content-center">
-                    {map(stateName)}
-                </div>
+                    <Card className='bg-light mt-4'>
+                        <div className="d-flex justify-content-center">
+                            {map(stateName)}
+                        </div>
+                    </Card>
                 </Col>
             </Row>
 
