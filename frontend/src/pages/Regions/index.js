@@ -8,6 +8,8 @@ import { Link} from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Container from 'react-bootstrap/esm/Container';
+import Col from 'react-bootstrap/esm/Col';
+import Row from 'react-bootstrap/esm/Row';
 
 /**
  * @returns HTML
@@ -21,14 +23,19 @@ const Regions = () => {
     useEffect(() => {
         //Runs only on the first render
         getCandidates(stateName, regionCode, setCandidates)
-      }, [regionName])
+    }, [regionName])
 
+    const flag = (stateName) => {
+        return (
+        <img src={'/img/flags/' + stateName + '.png' }  className="img-fluid" width="60px" />
+        )
+    }
     const candidateDataUrl = '/' + stateName + '/' + regionCode + '/' + regionName + '/'
 
     const listItems = candidates.map((candidate) =>
         <li  key={candidate.candidate_entry} className="list-group-item">
             {candidate.candidate_entry}. &nbsp;
-            <Link to={candidateDataUrl + candidate.id + '/' + candidate.slug}>
+            <Link to={candidateDataUrl + candidate.id + '/' + candidate.slug} className='text-decoration-none text-dark'>
                 {candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}
             </Link>
         </li>
@@ -52,7 +59,14 @@ const Regions = () => {
       
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{stateName.toUpperCase()} - {regionCode} {regionName.toUpperCase()}</h5>
+                    <Row>
+                        <Col sm={1}>
+                            {flag(stateName)}
+                        </Col>
+                        <Col md={7}>
+                            <h5 class="card-title">{stateName.toUpperCase()} - {regionCode} {regionName.toUpperCase()}</h5>
+                        </Col>
+                    </Row>
                 </div>
                 <ul class="list-group list-group-flush">
                     {listItems}
