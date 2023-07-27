@@ -58,7 +58,6 @@ const States = () => {
                 ))}
             </div>
         </div>
-        <hr />
         </>
         )
     }
@@ -118,7 +117,7 @@ const States = () => {
                 </Breadcrumb.Item>
                 <Breadcrumb.Item active>{stateName.toUpperCase()}</Breadcrumb.Item>
             </Breadcrumb>
-            <Row>
+            <Row className='justify-content-end'>
                 <Col md={1} className='mt-2'> 
                     {flag(stateName)}
                 </Col>
@@ -127,6 +126,7 @@ const States = () => {
                         {stateName.toUpperCase()}
                     </h1>
                 </Col>
+                <hr className="featurette-divider mt-3" />
             </Row>
             <Row>
                 <Col md={6}>
