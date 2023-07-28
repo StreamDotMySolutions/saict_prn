@@ -84,6 +84,11 @@ class DashboardController extends Controller
         // get stateName
         //\Log::info($stateName);
 
+        // un slug stateName
+        $stateName = \Str::headline($stateName);
+        $stateName = \Str::upper($stateName);
+        //\Log::info($stateName);
+
         // get latest updated candidate
         \Cache::flush();
         $candidates = \Cache::rememberForever('dashboard_candidates_' . $stateName, function () use ($stateName) {
