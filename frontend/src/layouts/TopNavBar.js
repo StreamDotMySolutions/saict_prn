@@ -35,7 +35,7 @@ function TopNavbar() {
             </NavDropdown>
 
             <Nav activeKey={location.pathname}>
-              <Nav.Link as={NavLink} to="#" className='text-muted'>Dashboard</Nav.Link>
+              <Nav.Link as={NavLink} to="/dashboard" className='text-muted'>Dashboard</Nav.Link>
             </Nav>
             
           </Nav>
