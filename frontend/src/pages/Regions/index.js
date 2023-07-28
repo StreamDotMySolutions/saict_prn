@@ -20,9 +20,23 @@ const Regions = () => {
     const { regionName} = useParams()
     const [ candidates, setCandidates] = useState([])
 
+    // useEffect(() => {
+    //     //Runs only on the first render
+    //     getCandidates(stateName, regionCode, setCandidates)
+    // }, [regionName])
+
+    // 3 seconds interval
     useEffect(() => {
-        //Runs only on the first render
-        getCandidates(stateName, regionCode, setCandidates)
+       
+        // loading for 1st time
+       getCandidates(stateName, regionCode, setCandidates)
+        
+        const intervalId = setInterval(() => {
+           getCandidates(stateName, regionCode, setCandidates)
+        }, 1000 * 5) // in milliseconds
+
+        return () => clearInterval(intervalId)
+        
     }, [regionName])
 
     const flag = (stateName) => {
@@ -33,7 +47,7 @@ const Regions = () => {
     const candidateDataUrl = '/' + stateName + '/' + regionCode + '/' + regionName + '/'
 
     const listItems = candidates.map((candidate) =>
-        <li  key={candidate.candidate_entry} className="list-group-item">
+        <li key={candidate.candidate_entry} className="list-group-item">
             {candidate.candidate_entry}. &nbsp;
             <Link to={candidateDataUrl + candidate.id + '/' + candidate.slug} className='text-decoration-none text-dark'>
                 {candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}
@@ -57,18 +71,18 @@ const Regions = () => {
                 <Breadcrumb.Item active>{regionCode} {regionName.toUpperCase()}</Breadcrumb.Item>
             </Breadcrumb>
       
-            <div class="card">
-                <div class="card-body">
+            <div className="card">
+                <div className="card-body">
                     <Row>
                         <Col sm={1}>
                             {flag(stateName)}
                         </Col>
                         <Col md={7}>
-                            <h5 class="card-title">{stateName.toUpperCase()} - {regionCode} {regionName.toUpperCase()}</h5>
+                            <h5 className="card-title">{stateName.toUpperCase()} - {regionCode} {regionName.toUpperCase()}</h5>
                         </Col>
                     </Row>
                 </div>
-                <ul class="list-group list-group-flush">
+                <ul className="list-group list-group-flush">
                     {listItems}
                 </ul>
             </div>
