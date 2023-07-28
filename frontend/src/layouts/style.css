@@ -124,5 +124,28 @@ background-color:#ff0000;
 }
 
 .text-dark {
-  color: #343a40; /* Replace with your desired dark color */
+  color: #343a40;
 }
+
+/* for footer */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+}
+
+a {
+
+  color: #000;
+  text-decoration: none;
+}
+

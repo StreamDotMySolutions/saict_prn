@@ -7,8 +7,8 @@ import Col from 'react-bootstrap/Col';
 
 const Footer = () => {
   return (
-    <footer className="container py-6">
-      <hr className="featurette-divider" />
+    <footer className="py-3 bg-light">
+      <div className="container">
       <div className="social-media-container">
         <Link  to="https://www.tiktok.com/@radiotelevisyenmalaysia?is_from_webapp=1&sender_device=pc">
           <FontAwesomeIcon icon={faTiktok} className="social-media-icon tiktok-icon"/>
@@ -30,18 +30,18 @@ const Footer = () => {
         <Col md={4}>
           <ul className="list-unstyled">
             <li>
-              <NavLink className="text-dark text-decoration-none" to="/keselamatan">
+              <NavLink extact className="text-dark text-decoration-none hover-link" to="/keselamatan" activeClassName="active-link">
                 Dasar Keselamatan
               </NavLink>
      
             </li>
             <li>
-              <NavLink className="text-dark text-decoration-none" to="/penafian">
+              <NavLink extact className="text-dark text-decoration-none hover-link" to="/penafian" activeClassName="active-link">
                 Penafian
               </NavLink>
             </li>
             <li>
-              <NavLink className="text-dark text-decoration-none" to="/privasi">
+              <NavLink extact className="text-dark text-decoration-none hover-link" to="/privasi" activeClassName="active-link">
                 Dasar Privasi
               </NavLink>
             </li>
@@ -66,6 +66,7 @@ const Footer = () => {
             </a>
           </p>
         </Col>
+      </div>
       </div>
     </footer>
   );

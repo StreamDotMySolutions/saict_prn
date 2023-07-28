@@ -3,12 +3,18 @@ const ListItem = ({item,value}) => {
     return (
     <>
     <div className="row mb-2">
-        <div className="col-2">
-            <p className="mb-0">{item}</p>
-        </div>
-        <div className="col-8">
-            <p className="text-muted mb-0">: <strong>{value}</strong></p>
-        </div>
+        <row>
+            <div className="col-2 mx-3">
+                <b className="mb-0">{item}</b>
+            </div>
+        </row>
+        <row>
+            <div className="col-8 mt-1">
+                <p className="text-dark mb-3 mx-3">{value}</p>
+            </div>
+        </row>
+
+
     </div>
 
     </>
