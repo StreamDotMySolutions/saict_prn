@@ -273,7 +273,7 @@ class PrnNominationController extends Controller
         $regions = \Cache::rememberForever('regions', function () {
             return PrnNomination::query()
             ->orderBy('updated_at', 'DESC')
-            ->limit(10)
+            ->limit(20)
             ->get()->unique('region_code');
         });
 
@@ -299,7 +299,7 @@ class PrnNominationController extends Controller
                 ->orderBy('updated_at', 'DESC')
                 ->where('candidate_name','!=', null)
                 ->where('party_name','!=', null)
-                ->limit(10)
+                ->limit(50)
                 ->get();
         });
 
