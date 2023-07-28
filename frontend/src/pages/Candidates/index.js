@@ -10,6 +10,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ListItem from './ListItem';
 import Container from 'react-bootstrap/esm/Container';
 import Image from 'react-bootstrap/esm/Image';
+import Row from 'react-bootstrap/esm/Row';
+import Col from 'react-bootstrap/esm/Col';
+import Card from 'react-bootstrap/esm/Card';
+
 
 const Candidate = () => {
     const { stateName } = useParams()
@@ -46,31 +50,28 @@ const Candidate = () => {
         
         { candidate ? 
             <>
-                <h2>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</h2>
-                <br />
-                <div className='col'>
-          
-                <br />
+                <Row>
+                    <h2>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</h2>
+                </Row>
+
+                <Row className='mt-3'>
+                    <Col md={3} className='mt-2'>
                     {candidate.url &&
                         <>
-                        <Image src={candidate.url} style={{ width:'200px'}} thumbnails />
-                        <hr />
+                        <Image src={candidate.url} style={{ width:'200px', border: '1px solid #DCDCDC'}} thumbnails />
                         </>
                     }
+                    </Col>
+                    <Col md={5} className='mt-2'>
+                        <ListItem item='Wakil' value={`${stateName?.toUpperCase()} - ${regionCode} - ${regionName?.toUpperCase()}`} />
+                        <ListItem item='Parti' value={candidate.party_name?.toUpperCase()} />
+                        <ListItem item='Gabungan' value={candidate.party_coalition?.toUpperCase()} />
+                    </Col>
+                </Row>
+                
+                <Row>
 
-                    {candidate.candidate_title && 
-                        <ListItem item='Gelaran' value={candidate.candidate_title.toUpperCase()} />
-                    }
-
-
-                    <ListItem item='Nama' value={candidate.candidate_name?.toUpperCase()} />
-                    <ListItem item='Party' value={candidate.party_name?.toUpperCase()} />
-                    <ListItem item='Jawatan dalam parti' value={candidate.candidate_party_job?.toUpperCase()} />
-                    <ListItem item='Gabungan' value={candidate.party_coalition?.toUpperCase()} />
-                    <ListItem item='Status Perkahwinan' value={candidate.candidate_marital_status?.toUpperCase()} />
-                    <ListItem item='Pendidikan' value={candidate.candidate_education?.toUpperCase()} />
-                    <ListItem item='Pekerjaan' value={candidate.candidate_career?.toUpperCase()} />
-                </div>
+                </Row>
             </>
             : <p className='text-muted'>Belum ada pencalonan</p>
         }

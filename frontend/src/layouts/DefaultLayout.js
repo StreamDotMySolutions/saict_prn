@@ -15,13 +15,13 @@ const DefaultLayout = () => {
     { mode == 'production' ?
         <>
           <TopNavBar/> 
-          <Container fluid className="p-1 mt-5">
-            <hr />
-            <Col lg={12}>
-              <Outlet />
-            </Col>
-            <Footer/>
-          </Container> 
+            <Container fluid className="p-1 mt-5">
+              <hr />
+              <Col lg={12}>
+                <Outlet />
+              </Col>
+            </Container>
+          <Footer/>
         </>
           :
           <>
