@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import Card from 'react-bootstrap/Card';
+import LatestCandidate from './components/LatestCandidate';
 
 const States = () => {
     const { stateName } = useParams();
@@ -145,6 +146,11 @@ const States = () => {
                             {map(stateName)}
                         </div>
                     </Card>
+                    <Card className='bg-light mt-4'>
+                     
+                        <LatestCandidate />
+                       
+                    </Card>                    
                 </Col>
             </Row>
 

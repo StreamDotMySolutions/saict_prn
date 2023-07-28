@@ -298,6 +298,7 @@ class PrnNominationController extends Controller
             return PrnNomination::query()
                 ->orderBy('updated_at', 'DESC')
                 ->where('candidate_name','!=', null)
+                ->where('party_name','!=', null)
                 ->limit(10)
                 ->get();
         });

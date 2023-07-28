@@ -40,6 +40,7 @@ class PrnCandidateResource extends JsonResource
             //'url' => $this->url,
             'url' => $url,
             
+            'candidate_id' => $this->id,
             'candidate_entry' => $this->candidate_entry,
             'candidate_title' => $this->candidate_title,
             'candidate_name' => $this->candidate_name,
@@ -48,9 +49,14 @@ class PrnCandidateResource extends JsonResource
             'candidate_career' => $this->candidate_career,
             'candidate_education' => $this->candidate_education,
 
+            'region_code' => $this->region_code,
+            'region_name' => $this->region_name,
+            'state_name' => $this->state_name,
+
             'party_name' => $this->party_name,
             'party_coalition' => $this->party_coalition,
-            'slug' => Str::slug($this->candidate_name, '-')
+            'slug' => Str::slug($this->candidate_name, '-'),
+            'when' => $this->updated_at->diffForHumans(),
         ];
     }
 }
