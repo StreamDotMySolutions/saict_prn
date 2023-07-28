@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import Card from 'react-bootstrap/Card';
+import LatestCandidate from './components/LatestCandidate';
 
 const States = () => {
     const { stateName } = useParams();
@@ -70,7 +71,12 @@ const States = () => {
 
         return (
             <>
-            Jumlah calon : <strong>{candidates} orang</strong>
+            {/* <span className='mb-2'>Jumlah calon : <strong>{candidates} orang</strong></span> */}
+            
+            <button type="button" style={{ 'text-decoration':'none' }} className="mb-3 btn btn-light">
+                Jumlah Calon  <span className="badge bg-secondary">{candidates}</span>
+            </button>
+
             <Table className='mt-1'striped bordered hover>
                 <thead>
                     <tr>
@@ -140,6 +146,11 @@ const States = () => {
                             {map(stateName)}
                         </div>
                     </Card>
+                    <Card className='bg-light mt-4'>
+                     
+                        <LatestCandidate />
+                       
+                    </Card>                    
                 </Col>
             </Row>
 

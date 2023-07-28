@@ -27,10 +27,24 @@ const Candidate = () => {
      * To fetch data from API
      * @param Int candidateId
      */
+    // useEffect(() => {
+    //     //Runs only on the first render
+    //     getCandidateData(candidateId, setCandidate)
+    // }, [candidateId])
+
     useEffect(() => {
-        //Runs only on the first render
-        getCandidateData(candidateId, setCandidate)
+       
+        // loading for 1st time
+       getCandidateData(candidateId, setCandidate)
+        
+        const intervalId = setInterval(() => {
+           getCandidateData(candidateId, setCandidate)
+        }, 1000 * 3) // in milliseconds
+
+        return () => clearInterval(intervalId)
+        
     }, [candidateId])
+    
 
 
 
@@ -102,7 +116,7 @@ function getCandidateData(candidateId, setCandidate){
         }
     })
     .then( function(json){
-        console.log(json.data.data)
+        //console.log(json.data.data)
         setCandidate(json.data.data)
     })
     .catch ( function(error){
