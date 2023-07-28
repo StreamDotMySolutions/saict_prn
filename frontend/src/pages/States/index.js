@@ -70,7 +70,12 @@ const States = () => {
 
         return (
             <>
-            Jumlah calon : <strong>{candidates} orang</strong>
+            {/* <span className='mb-2'>Jumlah calon : <strong>{candidates} orang</strong></span> */}
+            
+            <button type="button" style={{ 'text-decoration':'none' }} className="mb-3 btn btn-light">
+                Jumlah Calon  <span className="badge bg-secondary">{candidates}</span>
+            </button>
+
             <Table className='mt-1'striped bordered hover>
                 <thead>
                     <tr>
