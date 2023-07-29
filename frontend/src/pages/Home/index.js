@@ -39,7 +39,7 @@ const Home = () => {
 
             <Row className="mt-5">
             <Col lg={6}>
-                <h3>Pilihan Raya DUN Ke-15</h3>
+                <h3>Pilihan Raya Umum DUN Ke-15</h3>
             </Col>
             </Row>
 
