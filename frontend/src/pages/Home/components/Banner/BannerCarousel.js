@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from 'react-bootstrap/Carousel';
+import Banner from './img/banner.png';
 
 const BannerCarousel = () => {
 
@@ -11,7 +12,7 @@ const BannerCarousel = () => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={imageSource}
+          src={Banner}
           alt="PRU DUN KE-15"
         />
       </Carousel.Item>
