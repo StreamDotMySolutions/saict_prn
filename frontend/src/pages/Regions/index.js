@@ -49,6 +49,10 @@ const Regions = () => {
     const listItems = candidates.map((candidate) =>
         <li key={candidate.candidate_entry} className="list-group-item">
             {candidate.candidate_entry}. &nbsp;
+            
+            { candidate.url !== null &&
+                <img style={{'width':'50px'}} className="rounded" src={candidate.url} />
+            }
             <Link to={candidateDataUrl + candidate.id + '/' + candidate.slug} className='text-decoration-none text-dark'>
                 {candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}
             </Link>
