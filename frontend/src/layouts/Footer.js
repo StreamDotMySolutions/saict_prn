@@ -52,8 +52,8 @@ const Footer = () => {
             Radio Televisyen Malaysia <br />
             Angkasapuri Kota Media <br />
             50614 Kuala Lumpur <br />
-            Tel: 03 - 2282 5333 <br />
-            Faks: 03 - 2284 7591
+            Tel: 03 - 2288 8796 <br />
+            Faks: 03 - 2282 1927
           </p>
         </Col>
         <Col md={4}>

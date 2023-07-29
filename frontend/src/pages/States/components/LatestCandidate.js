@@ -42,10 +42,10 @@ const LatestCandidate = () => {
         <li key={candidate.candidate_id} className="list-group-item">
             {index+1}. &nbsp;
             <Link to={ '/' + stateName + '/' + candidate.region_code + '/' + candidate.region_name + '/' + candidate.id + '/' +  candidate.slug }>
-                {candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()} 
+                <strong>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()} </strong>
             </Link> calon #{candidate.candidate_entry} dari &nbsp;
             <Link to={ '/' + stateName + '/' + candidate.region_code + '/' + candidate.region_name } >
-                {candidate.region_name}
+                <b>{candidate.region_name}</b>
             </Link>
            
             <br />
