@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 
 const Facebook = () => {
-  const facebookPageURL = 'https://www.facebook.com/BESTVRTM/';
+  const facebookPageURL = 'https://www.facebook.com/BeritaRTM?mibextid=LQQJ4d';
 
   return (
     <div className="card mt-3">

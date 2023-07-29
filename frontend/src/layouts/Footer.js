@@ -49,7 +49,7 @@ const Footer = () => {
         </Col>
         <Col md={4}>
           <p>
-            Radio Televisyen Malaysia <br />
+            Jabatan Penyiaran Malaysia <br />
             Angkasapuri Kota Media <br />
             50614 Kuala Lumpur <br />
             Tel: 03 - 2288 8796 <br />
