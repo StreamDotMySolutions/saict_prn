@@ -57,7 +57,7 @@ const Candidate = () => {
                     <FontAwesomeIcon icon="fas fa-home" />
             </Breadcrumb.Item>
 
-            <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" + stateName  + "/" + regionCode + "/" + regionName }}>
+            <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" + stateName }}>
                 {stateName.toLocaleUpperCase()}
             </Breadcrumb.Item>
 
@@ -113,7 +113,7 @@ const Candidate = () => {
  * 
  */
 function getCandidateData(candidateId, setCandidate){
-    console.log(`get candidate from server - ${candidateId}`)
+    //console.log(`get candidate from server - ${candidateId}`)
     axios({
         url:  `${process.env.REACT_APP_BACKEND_URL}/prn-nominations/${candidateId}/show-candidate-data`,   
         method: 'get',
