@@ -51,7 +51,7 @@ const Candidate = () => {
     return (
     <>
         <Container>
-        <small>
+   
         <Breadcrumb>
             <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>
                     <FontAwesomeIcon icon="fas fa-home" />
@@ -63,7 +63,7 @@ const Candidate = () => {
 
             <Breadcrumb.Item active>{regionCode} {regionName.toUpperCase()}</Breadcrumb.Item>
         </Breadcrumb>
-        </small>
+     
 
         
         { candidate ? 
