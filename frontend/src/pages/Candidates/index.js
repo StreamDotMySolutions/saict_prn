@@ -39,7 +39,7 @@ const Candidate = () => {
         
         const intervalId = setInterval(() => {
            getCandidateData(candidateId, setCandidate)
-        }, 1000 * 3) // in milliseconds
+        }, 1000 * 5) // in milliseconds
 
         return () => clearInterval(intervalId)
         
@@ -122,7 +122,7 @@ function getCandidateData(candidateId, setCandidate){
         }
     })
     .then( function(json){
-        //console.log(json.data.data)
+        console.log(json.data.data)
         setCandidate(json.data.data)
     })
     .catch ( function(error){
