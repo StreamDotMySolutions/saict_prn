@@ -90,7 +90,7 @@ class DashboardController extends Controller
         //\Log::info($stateName);
 
         // get latest updated candidate
-        \Cache::flush();
+        //\Cache::flush();
         $candidates = \Cache::rememberForever('dashboard_candidates_' . $stateName, function () use ($stateName) {
             // get total prn nominations
    

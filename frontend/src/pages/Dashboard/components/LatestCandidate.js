@@ -87,7 +87,7 @@ function getLatestCandidates(setLatestCandidates,setIsLoading){
         }
     })
     .then( function(json){
-        //console.log(json.data.data)
+        console.log(json.data.data)
         setLatestCandidates(json.data.data)
         setIsLoading(false)
     })

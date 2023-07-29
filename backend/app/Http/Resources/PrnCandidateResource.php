@@ -23,17 +23,19 @@ class PrnCandidateResource extends JsonResource
         // Input URL
         //$input_url = 'https://drive.google.com/file/d/14pX_Q8edWHxjArqCrHWTTUG_f7LOY1no/preview';
 
-        $input_url = 'https://drive.google.com/file/d/1476dwtNnPz_xVi-zYaV-z6kYWqajv2c8/view?usp=drive_link';
+        //$input_url = 'https://drive.google.com/file/d/1476dwtNnPz_xVi-zYaV-z6kYWqajv2c8/view?usp=drive_link';
 
         // Regex pattern to detect the URL format
-        $pattern = '#^(https://)drive\.google\.com/file/d/([a-zA-Z0-9_-]+)/view\?usp=drive_link$#';
+        $pattern1 = '#^(https://)drive\.google\.com/file/d/([a-zA-Z0-9_-]+)/view\?usp=drive_link$#';
+        $pattern2 = '#^(https://)drive\.google\.com/file/d/([a-zA-Z0-9_-]+)/view\?usp=drive_link$#';
         
         // Replacement URL format
         $replacement = 'https://drive.google.com/uc?export=view&id=$2';
 
         // Perform the replacement
         //$url = preg_replace($pattern, $replacement, $input_url);
-        $url = preg_replace($pattern, $replacement, $this->url);
+        $url = preg_replace($pattern1, $replacement, $this->url);
+        $url = preg_replace($pattern2, $replacement, $this->url);
 
         return [
             'id' => $this->id,
