@@ -41,6 +41,10 @@ const LatestCandidate = () => {
     
         <li key={candidate.candidate_id} className="list-group-item">
             {index+1}. &nbsp;
+            
+            { candidate.url !== null &&
+                <img style={{'width':'50px'}} className="rounded" src={candidate.url} />
+            }
             <Link to={ '/' + stateName + '/' + candidate.region_code + '/' + candidate.region_name + '/' + candidate.id + '/' +  candidate.slug }>
                 <strong>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()} </strong>
             </Link> calon #{candidate.candidate_entry} dari &nbsp;

@@ -122,7 +122,7 @@ function getCandidateData(candidateId, setCandidate){
         }
     })
     .then( function(json){
-        console.log(json.data.data)
+        //console.log(json.data.data)
         setCandidate(json.data.data)
     })
     .catch ( function(error){
