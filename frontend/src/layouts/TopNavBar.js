@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink, useLocation} from 'react-router-dom'
-import Logo from './img/logo.png'
+import Logo from './img/logo-2.png'
 
 function TopNavbar() {
 
