@@ -10,10 +10,10 @@ const Footer = () => {
     <footer className="py-3 bg-light">
       <div className="container">
       <div className="social-media-container">
-        <Link  to="https://www.tiktok.com/@radiotelevisyenmalaysia?is_from_webapp=1&sender_device=pc">
+        <Link  to="https://www.tiktok.com/@beritartm?_t=8eNzEzhj1YV&_r=1">
           <FontAwesomeIcon icon={faTiktok} className="social-media-icon tiktok-icon"/>
         </Link>
-        <Link  to="https://www.facebook.com/RadioTelevisyenMalaysia/?ref=embed_page">
+        <Link  to="https://www.facebook.com/BeritaRTM">
           <FontAwesomeIcon icon={faFacebook} className="social-media-icon facebook-icon"/>
         </Link>
         <Link  to="https://www.youtube.com/channel/UCjUxj4cyy_F0tVCT8WfmdZQ" >
