@@ -3,9 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink, useLocation} from 'react-router-dom'
-
-
-
+import Logo from './img/logo.png'
 
 function TopNavbar() {
 
@@ -20,10 +18,10 @@ function TopNavbar() {
   return (
     <Navbar fixed="top"  bg="light" data-bs-theme="light">
       <Container className="justify-content-center">
-        <Navbar.Brand as={NavLink} to="/"><h3>#mypru15</h3></Navbar.Brand>
+        <Navbar.Brand as={NavLink} to="/"><img style={{ 'width':'125px' }}  src={Logo} /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav  className="ms-auto">
+          <Nav className="ms-auto">
           
             <NavDropdown title="Negeri" id="basic-nav-dropdown">
               <NavDropdown.Item style={{width:'180px'}} as={NavLink} to="/selangor">{flag('selangor')} Selangor</NavDropdown.Item>

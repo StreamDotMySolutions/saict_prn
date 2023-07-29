@@ -53,8 +53,12 @@ const Candidate = () => {
         <Container>
         <small>
         <Breadcrumb>
+            <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>
+                    <FontAwesomeIcon icon="fas fa-home" />
+            </Breadcrumb.Item>
+
             <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" + stateName  + "/" + regionCode + "/" + regionName }}>
-                <FontAwesomeIcon icon="fas fa-arrow-circle-left" />
+                {stateName.toLocaleUpperCase()}
             </Breadcrumb.Item>
 
             <Breadcrumb.Item active>{regionCode} {regionName.toUpperCase()}</Breadcrumb.Item>
@@ -69,17 +73,19 @@ const Candidate = () => {
                 </Row>
 
                 <Row className='mt-3'>
-                    <Col md={3} className='mt-2'>
+                    
                     {candidate.url &&
                         <>
-                        <Image src={candidate.url} style={{ width:'200px', border: '1px solid #DCDCDC'}} thumbnails />
+                        <Col md={3} className='mt-2'>
+                            <Image src={candidate.url} style={{ width:'200px', border: '1px solid #DCDCDC'}} thumbnails />
+                        </Col>
                         </>
                     }
-                    </Col>
+                   
                     <Col md={5} className='mt-2'>
                         <ListItem item='Wakil' value={`${stateName?.toUpperCase()} - ${regionCode} - ${regionName?.toUpperCase()}`} />
                         <ListItem item='Parti' value={candidate.party_name?.toUpperCase()} />
-                        <ListItem item='Gabungan' value={candidate.party_coalition?.toUpperCase()} />
+                        <ListItem item='Calon' value={candidate.party_coalition?.toUpperCase()} />
                     </Col>
                 </Row>
                 
