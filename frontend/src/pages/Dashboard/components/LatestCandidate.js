@@ -32,10 +32,16 @@ const LatestCandidate = () => {
 
     const listCandidates = latestCandidates.map((item) =>
         <tr key={item.id}>
-            <td>
+            <td className='text-center' >
+                {item.url !== '' &&
+                    <img src={item.url} className='rounded ' style={{ 'width':'50px'}} />
+                }
+            </td>
+            <td>    
                 <small>
-                    Data calon
+                    Data calon {''} 
                     {item.candidate_title} {item.candidate_name} {''} 
+                    dari parti {item.party_name} {''} 
                     di kawasan {item.region_code} {item.region_name}, {item.state_name} telah dikemaskini
                     <br />
                     <span className="text-muted">
@@ -53,7 +59,8 @@ const LatestCandidate = () => {
             <table className='w-100 table table-striped'>
                 <thead>
                     <tr>
-                        <th>
+                     
+                        <th colspan="2">
                         <FontAwesomeIcon icon="fas fa-user" /> CALON 
                         &nbsp; { isLoading ? <FontAwesomeIcon icon="fa-solid fa-spinner" /> : null }
                         </th>
@@ -87,7 +94,7 @@ function getLatestCandidates(setLatestCandidates,setIsLoading){
         }
     })
     .then( function(json){
-        console.log(json.data.data)
+        //console.log(json.data.data)
         setLatestCandidates(json.data.data)
         setIsLoading(false)
     })

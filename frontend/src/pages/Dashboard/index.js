@@ -18,8 +18,6 @@ const Dashboard = () => {
             <Breadcrumb.Item active>Dashboard</Breadcrumb.Item>
         </Breadcrumb>
      
-        <h2><FontAwesomeIcon icon="fas fa-list" /> Dashboard</h2>
-        <hr />
         <LatestCandidate />
         <LatestRegion />
     </Container>

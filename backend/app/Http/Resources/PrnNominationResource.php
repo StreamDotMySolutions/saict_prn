@@ -15,9 +15,31 @@ class PrnNominationResource extends JsonResource
      */
     public function toArray($request)
     {
-        //return parent::toArray($request);
+ 
+        $pattern = '#^(https://)drive\.google\.com/file/d/([a-zA-Z0-9_-]+)/view\?usp=drive_link$#';
+        
+        // Replacement URL format
+        $replacement = 'https://drive.google.com/uc?export=view&id=$2';
+
+        // Perform the replacement
+        //$url = preg_replace($pattern, $replacement, $input_url);
+
+        $url = $this->url;
+
+        $pattern1 = '#^(https://)drive\.google\.com/file/d/([a-zA-Z0-9_-]+)/view\?usp=drive_link$#';
+        if (preg_match($pattern1, $this->url)) {
+            $url = preg_replace($pattern1, $replacement,$this->url);
+        }
+
+        $pattern2 = '#^(https://)drive\.google\.com/file/d/([a-zA-Z0-9_-]+)/view\?usp=sharing$#';
+        if (preg_match($pattern2,$this->url)) {
+            $url = preg_replace($pattern2, $replacement, $this->url);
+        }
+
         return [
-            'id' => $this->id,          
+            'id' => $this->id,    
+            'url' => $url,      
+            'candidate_title' => $this->candidate_title,  
             'candidate_name' => $this->candidate_name,  
             'state_name' => $this->state_name, 
             'region_code' => $this->region_code,
