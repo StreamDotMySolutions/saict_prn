@@ -35,27 +35,43 @@ class CleanData extends Command
     }
 
     public function cleanData(){
-        // $columnToCheckForDuplicates = 'candidate_name';
-        // $duplicates = PrnNomination::select($columnToCheckForDuplicates, DB::raw('COUNT(*) as count'))
-        // ->groupBy($columnToCheckForDuplicates)
-        // ->having('count', '>', 1)
-        // ->get();   
+        $columnToCheckForDuplicates = 'candidate_name';
+        $duplicates = PrnNomination::select($columnToCheckForDuplicates, DB::raw('COUNT(*) as count'))
+        ->groupBy($columnToCheckForDuplicates)
+        ->having('count', '>', 1)
+        //->where('candidate_name', '!=', "")
+        ->get();   
 
-        // foreach ($duplicates as $duplicate) {
-        //     $name = $duplicate->candidate_name;
-        //     $count = $duplicate->count;
-        //     // Process the duplicate entry as needed
-        //     // For example, you might print them or delete them
-        //     echo "Duplicate entry found for name '$name' ($count times).";
-        //     echo "\n";
-        // }
-        $check = PrnNomination::where('candidate_name', '=', 'HASHIM BIN ISMAIL')->first();
+        foreach ($duplicates as $duplicate) {
+            $name = $duplicate->candidate_name;
+            $count = $duplicate->count;
+            // Process the duplicate entry as needed
+            // For example, you might print them or delete them
+            echo "Duplicate entry found for name '$name' ($count times).";
+            echo "\n";
 
-        if ($check) {
-            $id = $check->id;
-            dd($id);
-        } else {
-            dd('No record found.'); // Optional: Add a message when no record is found.
+            $check = PrnNomination::query()
+                                ->where('candidate_name', '=', $duplicate->candidate_name)
+                                ->where('candidate_name', '!=', "")
+                                ->orderBy('id','DESC')
+                                ->skip(1)
+                                ->first();
+            if ($check) {
+                $id = $check->id;
+                $check->delete();
+                //dd($id);
+            } else {
+                dd('No record found.'); // Optional: Add a message when no record is found.
+            }
         }
+        // $check = PrnNomination::where('candidate_name', '=', 'HASHIM BIN ISMAIL')->first();
+
+        // if ($check) {
+        //     $id = $check->id;
+        //     $check->delete();
+        //     dd($id);
+        // } else {
+        //     dd('No record found.'); // Optional: Add a message when no record is found.
+        // }
     }
 }

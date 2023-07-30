@@ -189,7 +189,7 @@ class PrnNominationController extends Controller
         }
 
         // delete duplicate data before insert
-        $check = PrnNomination::where('candidate_name', '=', $data['name'])->first();
+        $check = PrnNomination::query()->where('candidate_name', '=', $data['name'])->first();
 
         if ($check) {
             $id = $check->id;
