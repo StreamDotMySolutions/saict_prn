@@ -159,6 +159,7 @@ class PrnVariableController extends Controller
         $totalCandidates = $regions->sum('prn_nominations_count');
 
         return \Response::json([
+            'state_name'=> $stateName,
             'candidates' => $totalCandidates ? $totalCandidates : 0,
             'regions' => $regions,
             'parties' => $parties,
@@ -170,6 +171,7 @@ class PrnVariableController extends Controller
             ->select('prn_party_id','candidate_name','id')
             ->where('prn_party_id','!=', null)
             ->where('candidate_name','!=', null)
+            ->where('region_name','!=', null)
             ->where('party_name','!=', null)
             ->whereHas('prn_region.state', function ($query) use ($stateName){
                 return $query->where('name', '=', $stateName);

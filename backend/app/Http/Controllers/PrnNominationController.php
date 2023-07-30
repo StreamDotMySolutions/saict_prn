@@ -125,6 +125,10 @@ class PrnNominationController extends Controller
             [
                 'state_name'=> $request->input('state_name'),
                 'candidate_name'=> $request->input('candidate_name'),
+
+                // 'candidate_entry'=> $data['entry'],
+                // 'region_code' => $data['region_code'],
+                // 'region_name' => $data['region_name'],
             
             ], // condition
             
@@ -156,6 +160,9 @@ class PrnNominationController extends Controller
     public function storeCandidateData(Request $request)
     {        
 
+        // data validation
+
+
         //\Log::info($request);
 
         $data = $request->data;
@@ -181,8 +188,15 @@ class PrnNominationController extends Controller
                                             ->first();
         }
 
-        // if candidate_name not null ?
+        // delete duplicate data before insert
+        $check = PrnNomination::where('candidate_name', '=', $data['name'])->first();
 
+        if ($check) {
+            $id = $check->id;
+            $check->delete();
+        } 
+
+        // update or create
         $prn_candidate = PrnNomination::updateOrCreate(
             [
                 'candidate_entry'=> $data['entry'],
