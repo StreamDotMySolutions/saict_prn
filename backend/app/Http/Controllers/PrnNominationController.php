@@ -207,6 +207,10 @@ class PrnNominationController extends Controller
             $check->delete();
         } 
 
+        // only update if
+        // candidate_name != name
+        // candidate_title != title
+
         // update or create
         $prn_candidate = PrnNomination::updateOrCreate(
             [
