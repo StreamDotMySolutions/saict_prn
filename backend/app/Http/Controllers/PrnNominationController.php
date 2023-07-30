@@ -160,8 +160,19 @@ class PrnNominationController extends Controller
     public function storeCandidateData(Request $request)
     {        
 
+        \Log::info($request);
         // data validation
+        // candidate_name not null || unique
+        // candidate_entry not null
+        // party_name not null
+        // party_coalition not null
 
+        $validated = $request->validate([
+            'data.entry' => 'required',
+            'data.name' => 'required',
+            'data.party_name' => 'required',
+            'data.party_coalition' => 'required',
+        ]);
 
         //\Log::info($request);
 

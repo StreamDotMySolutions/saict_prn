@@ -30,7 +30,8 @@ class CleanData extends Command
      */
     public function handle()
     {
-        $this->cleanData();
+        //$this->cleanData();
+        $this->syncPrnRegion();
         return Command::SUCCESS;
     }
 
@@ -73,5 +74,19 @@ class CleanData extends Command
         // } else {
         //     dd('No record found.'); // Optional: Add a message when no record is found.
         // }
+    }
+
+    public function syncPrnRegion(){
+        $ids = PrnNomination::query()
+            ->where('prn_region_id', '=', null)
+            ->where('region_name', '!=', null)
+            ->get();
+        if ($ids) {
+            foreach($ids as $id){
+                \Log::info($id);
+            }
+        } else {
+            dd('No record found.'); // Optional: Add a message when no record is found.
+        }
     }
 }
