@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('prn_results', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->nullable();
-            
+
             $table->integer('state_id')->nullable();
             $table->integer('prn_region_id')->nullable();
             $table->integer('prn_party_id')->nullable();
