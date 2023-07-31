@@ -158,6 +158,7 @@ class PrnVariableController extends Controller
                     ->select('code','name')
                     ->where(['state_name' => $stateName])
                     ->withCount('prn_nominations')
+                    ->orderBy('code', 'ASC')
                     ->get()	
                     ->map(function ($region) {
                         $region->slug = Str::slug($region->name);
