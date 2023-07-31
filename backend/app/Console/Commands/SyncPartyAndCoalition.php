@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class SyncPartyAndCoalition extends Command
 {
@@ -27,14 +28,15 @@ class SyncPartyAndCoalition extends Command
      */
     public function handle()
     {
-        $this->cleanData();
+        $this->cleanDuplicateData();
+        $this->cleanNullData();
         $this->syncParty();
         $this->syncCoalition();
         $this->syncRegion();
         return Command::SUCCESS;
     }
 
-    public function cleanData(){
+    public function cleanNullData(){
         \App\Models\PrnNomination::query()
                                     ->whereNull('candidate_name')
                                     ->delete();
@@ -95,5 +97,37 @@ class SyncPartyAndCoalition extends Command
                                             $c->save();
                                         }
                                     });
+    }
+
+    public function cleanDuplicateData(){
+        $columnToCheckForDuplicates = 'candidate_name';
+        $duplicates = \App\Models\PrnNomination::select($columnToCheckForDuplicates, DB::raw('COUNT(*) as count'))
+        ->groupBy($columnToCheckForDuplicates)
+        ->having('count', '>', 1)
+        //->where('candidate_name', '!=', "")
+        ->get();   
+
+        foreach ($duplicates as $duplicate) {
+            $name = $duplicate->candidate_name;
+            $count = $duplicate->count;
+            // Process the duplicate entry as needed
+            // For example, you might print them or delete them
+            echo "Duplicate entry found for name '$name' ($count times).";
+            echo "\n";
+
+            $check = \App\Models\PrnNomination::query()
+                                ->where('candidate_name', '=', $duplicate->candidate_name)
+                                ->where('candidate_name', '!=', "")
+                                ->orderBy('id','DESC')
+                                ->skip(1)
+                                ->first();
+            if ($check) {
+                $id = $check->id;
+                $check->delete();
+                //dd($id);
+            } else {
+                //dd('No record found.'); // Optional: Add a message when no record is found.
+            }
+        }
     }
 }
