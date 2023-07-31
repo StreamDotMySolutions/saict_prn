@@ -55,7 +55,7 @@ class SyncPartyAndCoalition extends Command
                                     ->whereNotNull('region_name')
                                     ->get()
                                     ->map( function($c){
-                                        $r = \App\Models\PrnRegion::query()->where('name','=',$c->region_name)->first();
+                                        $r = \App\Models\PrnRegion::query()->where('state_name','=',$c->state_name)->where('name','=',$c->region_name)->first();
                                         if($r) {
                                             $c->prn_region_id = $r->id;
                                             $c->save();
