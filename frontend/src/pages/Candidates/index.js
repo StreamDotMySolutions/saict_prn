@@ -41,6 +41,8 @@ const Candidate = () => {
            getCandidateData(candidateId, setCandidate)
         }, 1000 * 5) // in milliseconds
 
+    
+
         return () => clearInterval(intervalId)
         
     }, [candidateId])

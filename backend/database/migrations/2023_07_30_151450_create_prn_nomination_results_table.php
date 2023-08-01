@@ -21,7 +21,6 @@ return new class extends Migration
             $table->integer('prn_party_id')->nullable();
             $table->integer('prn_coalition_id')->nullable();
             $table->integer('prn_nomination_id')->nullable();
-            $table->integer('verifier_id')->nullable();
 
             $table->integer('official_count')->nullable();
             $table->integer('unofficial_count')->nullable();
