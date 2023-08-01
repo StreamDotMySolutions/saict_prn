@@ -50,9 +50,12 @@ const Regions = () => {
         <li key={candidate.candidate_entry} className="list-group-item">
             {candidate.candidate_entry}. &nbsp;
             
-            { candidate.url !== null &&
-                <img style={{'width':'50px'}} className="rounded" src={candidate.url} />
-            }
+            {candidate.url ? (
+                <img style={{ width: '70px' }} className="rounded" src={candidate.url} />
+                ) : (
+                <img style={{ width: '70px' }} className="rounded" src="/img/no-image.png" />
+            )}
+            
             <Link to={candidateDataUrl + candidate.id + '/' + candidate.slug} className='text-decoration-none text-dark'>
                 {candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}
             </Link>

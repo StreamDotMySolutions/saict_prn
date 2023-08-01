@@ -33,9 +33,12 @@ const LatestCandidate = () => {
     const listCandidates = latestCandidates.map((item) =>
         <tr key={item.id}>
             <td className='text-center' >
-                {item.url !== '' &&
-                    <img src={item.url} className='rounded ' style={{ 'width':'50px'}} />
-                }
+            {item.url ? (
+                <img src={item.url} className="rounded" style={{ width: '50px' }} />
+                ) : (
+                <img src="/img/no-image.png" className="rounded" style={{ width: '50px' }} />
+            )}
+
             </td>
             <td>    
                 <small>

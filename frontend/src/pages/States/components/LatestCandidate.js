@@ -64,9 +64,11 @@ const LatestCandidate = () => {
                 <div className="d-flex w-100 justify-content-between">
                     <h5 className="mb-1">{c.candidate_title?.toUpperCase()} {c.candidate_name?.toUpperCase()}</h5>
                  
-                    { c.url !== null &&
-                        <img style={{'width':'70px'}} className="rounded" src={c.url} />
-                    }
+                    {c.url ? (
+                        <img style={{ width: '70px' }} className="rounded" src={c.url} />
+                        ) : (
+                        <img style={{ width: '70px' }} className="rounded" src="/img/no-image.png" />
+                    )}
                   
                 </div>
                 <p class="mb-1">Calon #{c.candidate_entry} dari {c.party_name}.</p>

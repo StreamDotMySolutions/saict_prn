@@ -74,14 +74,15 @@ const Candidate = () => {
 
                 <Row className='mt-3'>
                     
-                    {candidate.url &&
-                        <>
-                        <Col md={3} className='mt-2'>
+                    <Col md={3} className='mt-2'>
+                        {candidate.url ? (
                             <Image src={candidate.url} style={{ width:'200px', border: '1px solid #DCDCDC'}} thumbnails />
-                        </Col>
-                        </>
-                    }
-                   
+                        ) : (
+                            <Image src="/img/no-image.png" style={{ width:'200px', border: '1px solid #DCDCDC'}} thumbnails />
+                        )}
+                    </Col>
+
+
                     <Col md={5} className='mt-2'>
                         <ListItem item='Wakil' value={`${stateName?.toUpperCase()} - ${regionCode} - ${regionName?.toUpperCase()}`} />
                         <ListItem item='Parti' value={candidate.party_name?.toUpperCase()} />
