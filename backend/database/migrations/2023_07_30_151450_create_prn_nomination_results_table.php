@@ -13,21 +13,28 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('prn_verifiers', function (Blueprint $table) {
+        Schema::create('prn_nomination_results', function (Blueprint $table) {
             $table->id();
 
             $table->integer('state_id')->nullable();
             $table->integer('prn_region_id')->nullable();
-   
-            $table->boolean('verifier1')->default(false);
-            $table->boolean('verifier2')->default(false);
-            $table->boolean('master_verifier')->default(false);
+            $table->integer('prn_party_id')->nullable();
+            $table->integer('prn_coalition_id')->nullable();
+            $table->integer('prn_nomination_id')->nullable();
+            $table->integer('verifier_id')->nullable();
+
+            $table->integer('official_count')->nullable();
+            $table->integer('unofficial_count')->nullable();
 
             $table->string('sheet_name')->nullable();
             $table->string('state_name')->nullable();  
             $table->string('region_name')->nullable();
             $table->string('region_code')->nullable();
-    
+            $table->integer('candidate_entry')->nullable();
+            $table->string('candidate_name')->nullable();
+            $table->string('party_coalition')->nullable();
+            $table->string('party_name')->nullable();
+
             $table->timestamps();
         });
     }
@@ -39,6 +46,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('verifiers');
+        Schema::dropIfExists('prn_nomination_results');
     }
 };

@@ -21,10 +21,14 @@ return new class extends Migration
             $table->string('region_name')->nullable();
             $table->string('region_code')->nullable();
 
-            $table->integer('registred_voters')->nullable();
+            $table->integer('registered_voters')->nullable();
             $table->integer('votes')->nullable();
             $table->string('percentage')->nullable(); 
             $table->integer('majority')->nullable();
+
+            $table->boolean('verifier1')->default(false);
+            $table->boolean('verifier2')->default(false);
+            $table->boolean('chief_verifier')->default(false);
 
 
             $table->timestamps();

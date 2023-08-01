@@ -21,4 +21,9 @@ class PrnRegion extends Model
         return $this->belongsTo(State::class);
     }
 
+    public function prn_region_detail()
+    {
+        return $this->hasOne(PrnRegionDetail::class);
+    }
+
 }
