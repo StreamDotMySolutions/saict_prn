@@ -32,14 +32,20 @@ class PrnResultController extends Controller
             if(str_contains($sheetName, $state)){
                 return $state;
             }
+
+            if(str_contains($sheetName, )){
+                return $state;
+            }
         }
 
     }
 
     public function storeRegionData(Request $request){
 
+        \Log::info($request);
         $sheet_name = $request->input('sheet_name');
-        $state_name = $this->getStateName($sheet_name);
+        $state_name = $request->input('state_name');
+        // $state_name = $this->getStateName($sheet_name);
        
         foreach($request->data as $data){
             $this->storePrnRegionDetail($state_name,$data);
@@ -80,7 +86,7 @@ class PrnResultController extends Controller
                     'state_name'=> $stateName,
                     'region_code'=> $region_code,
                     'region_name'=> $region['region_name'], 
-                    'registered_voters'=> $region['registered_voters'], 
+                    'registered_voters'=> is_int($region['registered_voters']) ? $region['registered_voters'] : 0 , 
                     'votes'=> $region['votes'],   
                     'percentage' => $region['percentage'],
                     'majority' => $region['majority'],
