@@ -42,7 +42,7 @@ class PrnResultController extends Controller
 
     public function storeRegionData(Request $request){
 
-        \Log::info($request);
+        //\Log::info($request);
         $sheet_name = $request->input('sheet_name');
         $state_name = $request->input('state_name');
         // $state_name = $this->getStateName($sheet_name);
@@ -183,8 +183,217 @@ class PrnResultController extends Controller
                  );
             } 
         }
-
-
-  
     }
+
+    /**
+     * Store triggered data 
+     */
+
+     public function storeTriggeredData(Request $request){
+        //\Log::info($request);
+
+        $collection = collect($request['data']);
+
+        // store candidate result
+        $this->storeCandidate($request,$collection);
+
+        // store region result
+        $this->storeDetail($request,$collection);
+
+     }
+
+     function storeCandidate($request, $collection){
+        
+        // Create a new array from key 1 to key 10
+        $candidates = $collection->slice(1, 10)->all();
+        unset($collection);
+        foreach($candidates as $candidate){
+            //$candidate_entry = $c[0];
+            
+           
+            // Define your new keys as an array
+            $newKeys = [
+                'candidate_entry',  // New key for index 0
+                'candidate_name',  // New key for index 1
+                3,  // New key for index 2
+                'party_coalition',  // New key for index 3
+                'party_name',  // New key for index 4
+                'official_count',  // New key for index 5
+                'unofficial_count',  // New key for index 6
+            ];
+
+            // Convert the original array to a Laravel collection
+           
+            $collection = collect($candidate);
+
+            $c = $collection
+                    ->combine($newKeys)
+                    ->flip()
+                    ->reject(function ($value) {
+                        return is_null($value) || $value === '';
+                    })
+                    ->all();
+
+            $c = collect($c);
+            $c->put('state_name', $request['state_name']);  
+            $c->put('sheet_name', $request['sheet_name']);     
+              
+            $rc = $request['data'][0][0];
+            $regionCode = 'N' . sprintf("%02d", $rc ); 
+            $c->put('region_code', $regionCode);
+
+            $rn = $request['data'][0][1];
+            $c->put('region_name', $rn);
+
+
+            // get PrnNomination->id
+            if ($c->has('candidate_entry')) {
+                $nomination = \App\Models\PrnNomination::query()
+                    ->where('state_name','=',$request['state_name'])
+                    ->where('region_code','=',$regionCode)
+                    ->where('candidate_entry','=', $c['candidate_entry'])
+                    ->first();
+                if($nomination) $c->put('prn_nomination_id', $nomination->id);
+            }
+
+            // get Party->id
+            if ($c->has('party_name')) {
+                $party = \App\Models\PrnParty::query()
+                    ->where('title','=', $c['party_name'])
+                    ->first();
+                if($party ) $c->put('prn_party_id', $party->id);
+            }
+
+            if ($c->has('party_coalition')) {
+                // get Coalition->id
+                $coalition = \App\Models\PrnCoalition::query()
+                    ->where('title','=', $c['party_coalition'])
+                    ->first();
+                if($coalition) $c->put('prn_coalition_id', $coalition->id);
+            }
+
+            if ($c->has('state_name')) {
+                // get state id
+                $state = \App\Models\State::query()
+                    ->where('name','=', $request['state_name'])
+                    ->first();
+                if($state) $c->put('state_id', $state->id);
+            }
+
+
+            //\Log::info($c->all()); // is ready for insert
+
+            // Assuming $c is your existing collection and $request is your request data
+            if (
+                $c->has('candidate_entry')
+                && isset($request['state_name'])
+                && isset($regionCode)
+            ) {
+                $result = \App\Models\PrnNominationResult::updateOrCreate(
+                    [
+                        'state_name' => $request['state_name'],
+                        'region_code' => $regionCode,
+                        'candidate_entry' => $c['candidate_entry'],
+                    ],
+                    $c->all()
+                );
+
+                // Add your code here to handle the result (optional)
+            } else {
+                // Handle the case when any of the required conditions is missing
+            }
+
+        }
+
+     }
+
+     function storeDetail($request, $collection){
+     
+     // Slice the original collection
+$slicedCollection = collect($collection)->slice(12, 9);
+
+// Remove specified keys from the sub-arrays
+$keysToRemove = [1, 2, 3, 4, 6];
+$filteredCollection = $slicedCollection->map(function ($subArray) use ($keysToRemove) {
+    return collect($subArray)->forget($keysToRemove)->all();
+});
+
+// // Remove specified keys from the collection itself
+$filteredCollection = $filteredCollection->forget([15, 17]);
+
+// // Flatten the resulting collection
+$flattenedArray = $filteredCollection->flatten(1);
+//\Log::info($flattenedArray->all());
+
+$cleanArray = $flattenedArray->forget([0,2,4,6,8,10,12])->values();
+//\Log::info($cleanArray->all());
+// // Output the result
+
+
+        $newKeys = [
+            'registered_voters',  // New key for index 0
+            'votes',  // New key for index 1
+            'percentage',  // New key for index 2
+            'majority',  // New key for index 3
+            'verifier1',  // New key for index 4
+            'verifier2',  // New key for index 5
+            'chief_verifier',  // New key for index 6
+        ];
+
+        // Create a new collection with the updated keys
+        $updatedArray = $cleanArray->mapWithKeys(function ($value, $key) use ($newKeys) {
+            return [$newKeys[$key] => $value];
+        });
+
+        //\Log::info($updatedArray->all());
+
+        $data = collect($updatedArray);
+        if($request->has('state_name')) $data->put('state_name', $request['state_name']);  
+        if($request->has('sheet_name')) $data->put('sheet_name', $request['sheet_name']);     
+
+        if (isset($request['data'][0][0])) {
+            $rc = $request['data'][0][0];
+            $regionCode = 'N' . sprintf("%02d", $rc ); 
+            $data->put('region_code', $regionCode);
+        }
+
+        if (isset($request['data'][0][1])) {
+            $rn = $request['data'][0][1];
+            $data->put('region_name', $rn);
+        }
+
+        // get region->id
+        if (isset($request['state_name']) && isset($regionCode)) {
+            $r = \App\Models\PrnRegion::query()
+                ->where('state_name','=', $request['state_name'])
+                ->where('code','=',$regionCode)
+                ->first();
+            if($r) $data->put('prn_region_id', $r->id);    
+        }
+
+        if($request->has('state_name'))  $data->put('state_name', $request['state_name']);
+        if($request->has('region_name'))  $data->put('state_name', $request['region_name']);
+        if($request->has('region_code'))  $data->put('region_code', $regionCode);
+
+        //Assuming $c is your existing collection and $request is your request data
+        if (
+            $request->has('state_name')
+            && isset($regionCode)
+        ) {
+            $result = \App\Models\PrnRegionDetail::updateOrCreate(
+                [
+                    'state_name' => $request['state_name'],
+                    'region_code' => $regionCode,
+
+                ],
+                $data->all()
+            );
+
+            // Add your code here to handle the result (optional)
+        } else {
+            // Handle the case when any of the required conditions is missing
+        }
+
+        //\Log::info($data->all());
+     }
 }

@@ -6,3 +6,8 @@ use Illuminate\Support\Facades\Route;
 Route::POST('/prn-results/store-region-data', [PrnResultController::class, 'storeRegionData'])
         ->middleware('apiKey')
         ->name('prn_result.store_region_data');
+
+// data from Google Sheet as POST as API
+Route::POST('/prn-results/store-triggered-data', [PrnResultController::class, 'storeTriggeredData'])
+        ->middleware('apiKey')
+        ->name('prn_result.store_triggered_data');
