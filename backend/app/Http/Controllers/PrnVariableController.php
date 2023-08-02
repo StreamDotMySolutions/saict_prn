@@ -213,6 +213,7 @@ class PrnVariableController extends Controller
                                 'state_name' => $stateName,
                                 'region_code' => $regionCode])
                             ->whereNotNull('candidate_name')
+                            ->orderBy('candidate_entry', 'ASC')
                             ->get();
     
         return PrnCandidateResource::collection($candidates);
