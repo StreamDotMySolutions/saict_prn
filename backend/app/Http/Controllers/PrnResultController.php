@@ -223,18 +223,22 @@ class PrnResultController extends Controller
             ];
 
             // Convert the original array to a Laravel collection
-           
-            $collection = collect($candidate);
+            $newCollection = collect($candidate);
+            $updatedArray = $newCollection->mapWithKeys(function ($value, $key) use ($newKeys) {
+                return [$newKeys[$key] => $value];
+            });
+                
+            // $collection = collect($candidate);
 
-            $c = $collection
-                    ->combine($newKeys)
-                    ->flip()
-                    ->reject(function ($value) {
-                        return is_null($value) || $value === '';
-                    })
-                    ->all();
+            // $c = $collection
+            //         ->combine($newKeys)
+            //         ->flip()
+            //         ->reject(function ($value) {
+            //             return is_null($value) || $value === '';
+            //         })
+            //         ->all();
 
-            $c = collect($c);
+            $c = collect($updatedArray);
             $c->put('state_name', $request['state_name']);  
             $c->put('sheet_name', $request['sheet_name']);     
               
@@ -309,25 +313,25 @@ class PrnResultController extends Controller
 
      function storeDetail($request, $collection){
      
-     // Slice the original collection
-$slicedCollection = collect($collection)->slice(12, 9);
+        // Slice the original collection
+        $slicedCollection = collect($collection)->slice(12, 9);
 
-// Remove specified keys from the sub-arrays
-$keysToRemove = [1, 2, 3, 4, 6];
-$filteredCollection = $slicedCollection->map(function ($subArray) use ($keysToRemove) {
-    return collect($subArray)->forget($keysToRemove)->all();
-});
+        // Remove specified keys from the sub-arrays
+        $keysToRemove = [1, 2, 3, 4, 6];
+        $filteredCollection = $slicedCollection->map(function ($subArray) use ($keysToRemove) {
+            return collect($subArray)->forget($keysToRemove)->all();
+        });
 
-// // Remove specified keys from the collection itself
-$filteredCollection = $filteredCollection->forget([15, 17]);
+        // // Remove specified keys from the collection itself
+        $filteredCollection = $filteredCollection->forget([15, 17]);
 
-// // Flatten the resulting collection
-$flattenedArray = $filteredCollection->flatten(1);
-//\Log::info($flattenedArray->all());
+        // // Flatten the resulting collection
+        $flattenedArray = $filteredCollection->flatten(1);
+        //\Log::info($flattenedArray->all());
 
-$cleanArray = $flattenedArray->forget([0,2,4,6,8,10,12])->values();
-//\Log::info($cleanArray->all());
-// // Output the result
+        $cleanArray = $flattenedArray->forget([0,2,4,6,8,10,12])->values();
+        //\Log::info($cleanArray->all());
+        // // Output the result
 
 
         $newKeys = [
@@ -375,6 +379,10 @@ $cleanArray = $flattenedArray->forget([0,2,4,6,8,10,12])->values();
         if($request->has('region_name'))  $data->put('state_name', $request['region_name']);
         if($request->has('region_code'))  $data->put('region_code', $regionCode);
 
+        if (!$request->has('verifier1'))  $data->put('verifier1', false);
+        if (!$request->has('verifier2'))  $data->put('verifier2', false);
+        if (!$request->has('chief_verifier'))  $data->put('chief_verifier', false);
+
         //Assuming $c is your existing collection and $request is your request data
         if (
             $request->has('state_name')
@@ -384,7 +392,6 @@ $cleanArray = $flattenedArray->forget([0,2,4,6,8,10,12])->values();
                 [
                     'state_name' => $request['state_name'],
                     'region_code' => $regionCode,
-
                 ],
                 $data->all()
             );
