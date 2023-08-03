@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PrnResultController extends Controller
 {
@@ -386,6 +387,19 @@ class PrnResultController extends Controller
         if (!$request->has('verifier1'))  $data->put('verifier1', false);
         if (!$request->has('verifier2'))  $data->put('verifier2', false);
         if (!$request->has('chief_verifier'))  $data->put('chief_verifier', false);
+
+        // timestamp from GSheet
+        $timestampCollection = collect($collection)->slice(11,1)->flatten(1)->forget([0,1,2,3,6])->values(); // array #11 and only 1 item
+
+        $status = $timestampCollection[0]; // status mendahului | tidak rasmi
+        $timestamp = $timestampCollection[1]; // timestamp in JS
+        
+        // $timestamp = Carbon::parse($dateString)->timestamp;
+
+        $data->put('status', $status ? $status : null );
+        $data->put('last_updated', $timestamp ? $timestamp : null );
+
+        \Log::info($timestampCollection->all());
 
         //Assuming $c is your existing collection and $request is your request data
         if (

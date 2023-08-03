@@ -26,6 +26,9 @@ return new class extends Migration
             $table->string('percentage')->nullable(); 
             $table->integer('majority')->nullable();
 
+            $table->string('status')->nullable();
+            $table->string('last_updated')->nullable();
+
             $table->boolean('verifier1')->default(false);
             $table->boolean('verifier2')->default(false);
             $table->boolean('chief_verifier')->default(false);

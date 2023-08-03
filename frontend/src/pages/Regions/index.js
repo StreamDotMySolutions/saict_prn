@@ -163,7 +163,7 @@ const Regions = () => {
                 </div>
                 <div className="card-body">
                     <Row>
-                        <Col sm={3}>
+                        <Col sm={6}>
                         <div class="container mt-4">
                             <ul class="list-group">
                                 <li className="list-group-item d-flex justify-content-between align-items-center">
@@ -175,8 +175,16 @@ const Regions = () => {
                                     <span className="badge bg-primary rounded-pill">{ details.votes }</span>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between align-items-center">
-                                   Peratusan
+                                   Peratusan mengundi
                                     <span className="badge bg-primary rounded-pill">{ details.percentage ?  details.percentage : 0 } %</span>
+                                </li>
+                                <li className="list-group-item d-flex justify-content-between align-items-center">
+                                   Status
+                                    <span className="badge bg-primary rounded-pill">{ details.status ?  details.status : null } </span>
+                                </li>
+                                <li className="list-group-item d-flex justify-content-between align-items-center">
+                                   Kemaskini 
+                                    <span className="badge bg-primary rounded-pill">{ details.last_updated ?  details.last_updated : null }</span>
                                 </li>
                             </ul>
                         </div>

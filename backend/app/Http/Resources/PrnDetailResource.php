@@ -14,16 +14,16 @@ class PrnDetailResource extends JsonResource
      */
     public function toArray($request)
     {
-        //return parent::toArray($request);
-        return [
-            'id' => $this->id,
+       return parent::toArray($request);
+        // return [
+        //     'id' => $this->id,
 
-            'registered_voters' => $this->registered_voters,
-            'votes' => $this->votes,
-            'percentage' => $this->percentage,
-            'majority' => $this->majority,
+        //     'registered_voters' => $this->registered_voters,
+        //     'votes' => $this->votes,
+        //     'percentage' => $this->percentage,
+        //     'majority' => $this->majority,
 
-            'when' => $this->updated_at->diffForHumans(),
-        ];
+        //     'when' => $this->updated_at->diffForHumans(),
+        // ];
     }
 }
