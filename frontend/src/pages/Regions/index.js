@@ -100,13 +100,25 @@ const Regions = () => {
                             className="rounded" 
                             src="/img/no-image.png" />
                     )}
+
+                    
                 </div>
                 
             </div>
+
+ 
             <div className="col-md-4">
                
                 <div className="p-3">
                     <strong>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</strong>
+                     <br />
+                    <span className='text-muted'>
+                        {candidate.party_coalition && candidate.party_name
+                            ? candidate.party_coalition.toUpperCase() === candidate.party_name.toUpperCase()
+                            ? candidate.party_coalition.toUpperCase()
+                            : `${candidate.party_coalition.toUpperCase()} - ${candidate.party_name.toUpperCase()}`
+                            : 'N/A'}
+                    </span>  
                 </div>
             </div>
             <div className="col-md-4">

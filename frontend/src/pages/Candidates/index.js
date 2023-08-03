@@ -63,7 +63,12 @@ const Candidate = () => {
                 {stateName.toLocaleUpperCase()}
             </Breadcrumb.Item>
 
-            <Breadcrumb.Item active>{regionCode} {regionName.toUpperCase()}</Breadcrumb.Item>
+            
+            <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" + stateName  + "/" + regionCode + "/" + regionName }}>
+                {regionCode} {regionName.toUpperCase()}
+            </Breadcrumb.Item>
+
+            <Breadcrumb.Item active>Maklumat calon</Breadcrumb.Item>
         </Breadcrumb>
      
 
