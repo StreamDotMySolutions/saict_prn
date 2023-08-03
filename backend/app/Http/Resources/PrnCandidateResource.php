@@ -70,8 +70,8 @@ class PrnCandidateResource extends JsonResource
             'when' => $this->updated_at->diffForHumans(),
 
             // prn_nomination_result
-            'official_count' => $this->prn_nomination_result->official_count,
-            'unofficial_count' => $this->prn_nomination_result->unofficial_count,
+            'official_count' => $this->prn_nomination_result ? $this->prn_nomination_result->official_count : 0 ,
+            'unofficial_count' => $this->prn_nomination_result ?  $this->prn_nomination_result->unofficial_count : 0,
   
         ];
     }
