@@ -64,23 +64,62 @@ const Regions = () => {
                              
         // </li>
 
-        <li className="list-group-item d-flex justify-content-between align-items-center">
-            {candidate.url ? (
-                 <img alt={candidate.candidate_name} style={{ width: '70px' }} className="rounded" src={candidate.url} />
-                 ) : (
-                <img style={{ width: '70px' }} className="rounded" src="/img/no-image.png" />
-            )}
+        // <li className="list-group-item d-flex justify-content-between align-items-center">
+        //     {candidate.url ? (
+        //          <img alt={candidate.candidate_name} style={{ width: '70px' }} className="rounded" src={candidate.url} />
+        //          ) : (
+        //         <img style={{ width: '70px' }} className="rounded" src="/img/no-image.png" />
+        //     )}
 
-            <Link alt={candidate.candidate_name}  to={candidateDataUrl + candidate.id + '/' + candidate.slug} className='text-decoration-none text-dark'>
-                <strong>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</strong>
-            </Link>
-            <div class="row">
-                <span className="badge bg-success pill">rasmi - { candidate.official_count }</span>
-                <span className="badge bg-danger pill">tidak rasmi - { candidate.unofficial_count }</span>
-            </div>
+        //     <Link alt={candidate.candidate_name}  to={candidateDataUrl + candidate.id + '/' + candidate.slug} className='text-decoration-none text-dark'>
+        //         <strong>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</strong>
+        //     </Link>
+        //     <div class="row">
+        //         <span className="badge bg-success pill">rasmi - { candidate.official_count }</span>
+        //         <span className="badge bg-danger pill">tidak rasmi - { candidate.unofficial_count }</span>
+        //     </div>
      
-
-        </li>
+        // </li>
+        <>
+                
+    
+        <Link className="row mb-4 bg-light" alt={candidate.candidate_name}  to={candidateDataUrl + candidate.id + '/' + candidate.slug}>
+            <div className="col-md-3">
+               
+                <div className="p-3">
+                    {candidate.url ? (
+                        <img 
+                            alt={candidate.candidate_name} 
+                            style={{ width: '70px', height: 'auto', display: 'block', margin: '0 auto' }} 
+                            className="rounded" 
+                            src={candidate.url} />
+                        ) : (
+                        <img 
+                            alt={candidate.candidate_name} 
+                            style={{ width: '70px', height: 'auto', display: 'block', margin: '0 auto' }}
+                            className="rounded" 
+                            src="/img/no-image.png" />
+                    )}
+                </div>
+                
+            </div>
+            <div className="col-md-4">
+               
+                <div className="p-3">
+                    <strong>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</strong>
+                </div>
+            </div>
+            <div className="col-md-4">
+            
+                <div className="p-3">
+                    <div class="row">
+                        <span className="mb-1 badge bg-success pill">rasmi - { candidate.official_count ? candidate.official_count : 0 }</span>
+                        <span className="badge bg-warning text-dark pill">tidak rasmi - { candidate.unofficial_count ? candidate.unofficial_count : 0}</span>
+                    </div>
+                </div>
+            </div>
+        </Link>
+        </>
     );
 
     return (
@@ -113,7 +152,7 @@ const Regions = () => {
                 <div className="card-body">
                     <Row>
                         <Col sm={3}>
-                            
+                        <div class="container mt-4">
                             <ul class="list-group">
                                 <li className="list-group-item d-flex justify-content-between align-items-center">
                                    Pengundi berdaftar
@@ -128,6 +167,7 @@ const Regions = () => {
                                     <span className="badge bg-primary rounded-pill">{ details.percentage ?  details.percentage : 0 } %</span>
                                 </li>
                             </ul>
+                        </div>
 
                         </Col>
                 
@@ -136,9 +176,13 @@ const Regions = () => {
                 <div className="card-body">
                     <Row>
                         <Col sm={6}>
-                            <ul className="list-group list-group-flush">
+                            {/* <ul className="list-group list-group-flush">
                                 {listItems}
-                            </ul>
+                            </ul <div class="container mt-4">> */}
+                              <div class="container mt-4">
+                                {listItems}
+                              </div>
+                            
                         </Col>
                     </Row>
                 </div>

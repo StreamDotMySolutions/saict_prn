@@ -31,7 +31,7 @@ const LatestCandidate = () => {
             <small>
                 Data calon {''}
                 <Link
-                to={ '/' + item.state_name + '/' + item.region_code + '/' + item.region_name + '/' + item.id + '/' +  item.slug }
+                to={ '/' + item.state_name_slug + '/' + item.region_code + '/' + item.region_name + '/' + item.id + '/' +  item.slug }
                 >
                 <b>{item.candidate_title} {item.candidate_name} {''}</b>
                 </Link>
@@ -40,7 +40,7 @@ const LatestCandidate = () => {
                 <Link to={ '/' + item.state_name + '/' + item.region_code + '/' + item.region_name } >
                 <b>{item.region_code} {item.region_name}</b>, {''}
                 </Link>
-                <Link to={'/' + item.state_name}>
+                <Link to={'/' + item.state_name_slug}>
                     <b>{item.state_name}</b>
                 </Link> {''}
                 telah dikemaskini
