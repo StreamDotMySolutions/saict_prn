@@ -16,7 +16,7 @@ class PrnCandidateResource extends JsonResource
     public function toArray($request)
     {
         //return parent::toArray($request);
-
+        
         // https://drive.google.com/uc?export=view&id=14pX_Q8edWHxjArqCrHWTTUG_f7LOY1no 
         // https://drive.google.com/file/d/14pX_Q8edWHxjArqCrHWTTUG_f7LOY1no/preview
 
@@ -68,6 +68,11 @@ class PrnCandidateResource extends JsonResource
             'party_coalition' => $this->party_coalition,
             'slug' => Str::slug($this->candidate_name, '-'),
             'when' => $this->updated_at->diffForHumans(),
+
+            // prn_nomination_result
+            'official_count' => $this->prn_nomination_result->official_count,
+            'unofficial_count' => $this->prn_nomination_result->unofficial_count,
+  
         ];
     }
 }

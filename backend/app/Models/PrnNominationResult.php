@@ -9,4 +9,8 @@ class PrnNominationResult extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function prn_nomination(){
+        return $this->belongsTo(PrnNomination::class);
+    }
 }

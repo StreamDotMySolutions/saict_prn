@@ -311,6 +311,9 @@ class PrnResultController extends Controller
 
      }
 
+     /**
+      * To store row data for RegionDetail
+      */
      function storeDetail($request, $collection){
      
         // Slice the original collection
@@ -322,13 +325,14 @@ class PrnResultController extends Controller
             return collect($subArray)->forget($keysToRemove)->all();
         });
 
-        // // Remove specified keys from the collection itself
+        // Remove specified keys from the collection itself
         $filteredCollection = $filteredCollection->forget([15, 17]);
 
-        // // Flatten the resulting collection
+        // Flatten the resulting collection
         $flattenedArray = $filteredCollection->flatten(1);
         //\Log::info($flattenedArray->all());
 
+        // remove unwanted key
         $cleanArray = $flattenedArray->forget([0,2,4,6,8,10,12])->values();
         //\Log::info($cleanArray->all());
         // // Output the result
@@ -375,9 +379,9 @@ class PrnResultController extends Controller
             if($r) $data->put('prn_region_id', $r->id);    
         }
 
-        if($request->has('state_name'))  $data->put('state_name', $request['state_name']);
-        if($request->has('region_name'))  $data->put('state_name', $request['region_name']);
-        if($request->has('region_code'))  $data->put('region_code', $regionCode);
+        if ($request->has('state_name'))  $data->put('state_name', $request['state_name']);
+        if ($request->has('region_name'))  $data->put('state_name', $request['region_name']);
+        if ($request->has('region_code'))  $data->put('region_code', $regionCode);
 
         if (!$request->has('verifier1'))  $data->put('verifier1', false);
         if (!$request->has('verifier2'))  $data->put('verifier2', false);

@@ -18,4 +18,8 @@ class PrnNomination extends Model
     public function prn_region(){
         return $this->belongsTo(PrnRegion::class);
     }
+
+    public function prn_nomination_result(){
+        return $this->hasOne(PrnNominationResult::class);
+    }
 }
