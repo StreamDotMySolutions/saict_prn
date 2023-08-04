@@ -58,33 +58,81 @@ const Regions = () => {
                 <Breadcrumb.Item active>{regionCode} {regionName.toUpperCase()}</Breadcrumb.Item>
             </Breadcrumb>
       
-            <div className="card">
-                <div className="card-body">
-                    <Row>
-                        <Col sm={1}>
-                            {flag(stateName)}
-                        </Col>
-                        <Col md={7}>
-                            <h5 className="card-title">{stateName.toUpperCase()} - {regionCode} {regionName.toUpperCase()}</h5>
-                        </Col>
-                    </Row>
-                </div>
-                <div className="card-body">
-                    <RegionDetails details={details} />
-                </div>
-                <div className="card-body">
-                    <Row>
-                        <Col sm={6}>
-                            <div class="container mt-4">
-                                <Candidates 
-                                    candidates={candidates} 
-                                    candidateDataUrl={candidateDataUrl}
-                                />
-                            </div>  
-                        </Col>
-                    </Row>
-                </div>
-            </div>
+            <Row>
+                <Col sm={6}>
+
+                    <div className="card">
+                        <div className="card-body">
+                            <Row>
+                                <Col>
+                                    {flag(stateName)}
+                                </Col>
+                                <Col >
+                                    <h5 className="card-title">{stateName.toUpperCase()} - {regionCode} {regionName.toUpperCase()}</h5>
+                                </Col>
+                            </Row>
+                        </div>
+                    </div>
+
+                    <div className="card mt-3">
+                        <div className="card-header">
+                            Calon bertanding
+                        </div>
+                        <div className="card-body">
+                            <Candidates 
+                                candidates={candidates} 
+                                candidateDataUrl={candidateDataUrl}
+                            />
+                        </div>
+                    </div>
+
+                    
+                    {/* <div className="card">
+                        <div className="card-body">
+                 
+                        </div>
+                        <div className="card-body">
+                            <RegionDetails details={details} />
+                        </div>
+                        
+                        <div className="card-body">
+                            <Row>
+                                <Col>
+                                    <div class="container mt-4">
+                                        <Candidates 
+                                            candidates={candidates} 
+                                            candidateDataUrl={candidateDataUrl}
+                                        />
+                                    </div>  
+                                </Col>
+                            </Row>
+                        </div>
+                    </div> */}
+                </Col>
+                <Col>
+                    
+               
+                    <div className="card">
+                        <div className="card-header">
+                            Maklumat kawasan
+                        </div>
+                        <div className="card-body">
+                        <RegionDetails details={details} />
+                        </div>
+                    </div>
+                       
+                  
+
+                    <div className="card mt-3">
+                        <div className="card-header">
+                            Calon Sedang Mendahului
+                        </div>
+                        <div className="card-body">
+                            
+                        </div>
+                    </div>
+                </Col>
+            </Row>
         </Container>
     </>
     )

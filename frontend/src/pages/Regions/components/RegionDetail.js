@@ -6,9 +6,9 @@ const RegionDetails = ({details}) => {
 
 return(
     <Row>
-        <Col sm={6}>
-        <div class="container mt-4">
-            <ul class="list-group">
+        <Col>
+     
+            <ul class="list-group-flush">
                 <li className="list-group-item d-flex justify-content-between align-items-center">
                 Pengundi berdaftar
                 { details.registered_voters &&
@@ -28,20 +28,12 @@ return(
                 }
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center">
-                Status
-                { details.status &&
-                    <span className="badge bg-primary rounded-pill">{ details.status ?  details.status : null } </span>
-                }
-                    </li>
-                <li className="list-group-item d-flex justify-content-between align-items-center">
                 Kemaskini 
                 { details.last_updated &&
                     <span className="badge bg-primary rounded-pill">{ details.last_updated ?  details.last_updated : null }</span>
                 }
                 </li>
             </ul>
-        </div>
-
         </Col>
     </Row>
     )
