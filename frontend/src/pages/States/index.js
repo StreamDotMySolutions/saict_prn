@@ -24,19 +24,19 @@ const States = () => {
 
     const map = (stateName) => {
         return (
-            <img src={'/img/map/' + stateName + '.png'} className='img-fluid' width="100%" />
+            <img alt={stateName} src={'/img/map/' + stateName + '.png'} className='img-fluid' width="100%" />
         )
     }
 
     const flag = (stateName) => {
         return (
-        <img src={'/img/flags/' + stateName + '.png' }  className="img-fluid" width="70px" />
+        <img alt={stateName} src={'/img/flags/' + stateName + '.png' }  className="img-fluid" width="70px" />
         )
     }
 
     const renderParty = () => {
         if (parties.length === 0) {
-            return <p>No parties found.</p>;
+            return <p></p>;
         }
 
         return (
@@ -47,7 +47,7 @@ const States = () => {
                 {parties.map((party) => (
                     <>
                         {party.total > 0 &&
-                            <div className="col mb-4">
+                            <div key={party.title} className="col mb-4">
                                 <div className="card text-center">
                                     <div className="card-body">
                                         <h1 className="card-title">{party.total}</h1>
@@ -66,14 +66,14 @@ const States = () => {
 
     const renderTable = () => {
         if (regions.length === 0) {
-            return <p>No regions found.</p>;
+            return <p></p>;
         }
 
         return (
             <>
             {/* <span className='mb-2'>Jumlah calon : <strong>{candidates} orang</strong></span> */}
             
-            <button type="button" style={{ 'text-decoration':'none' }} className="mb-3 btn btn-light">
+            <button type="button" style={{ 'textDecoration':'none' }} className="mb-3 btn btn-light">
                 Jumlah Calon  <span className="badge bg-secondary">{candidates}</span>
             </button>
 

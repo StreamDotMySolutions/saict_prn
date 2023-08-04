@@ -22,19 +22,51 @@ const Regions = () => {
     const { regionName} = useParams()
     const [ candidates, setCandidates] = useState([])
     const [ details, setDetails] = useState([])
+    const [ logs, setLogs] = useState([])
 
     useEffect(() => {
        
         // loading for 1st time
-       getData(stateName, regionCode, setCandidates, setDetails)
+       getData(stateName, regionCode, setCandidates, setDetails, setLogs)
         
         const intervalId = setInterval(() => {
-           getData(stateName, regionCode, setCandidates, setDetails)
+           getData(stateName, regionCode, setCandidates, setDetails, setLogs)
         }, 1000 * 5) // in milliseconds
 
         return () => clearInterval(intervalId)
         
     }, [regionName])
+
+    const listItems = logs.map((log) => 
+    <>
+          <Row key={log.id}>
+                <Col md={3}>{log.status}</Col>
+                <Col md={2}>{log.last_updated}</Col>
+                <Col>
+                <p>
+                
+                {log.candidate_coalition && (
+                    <span>
+                        Calon dari Parti <strong>{log.candidate_coalition}</strong>, {" "}
+                    </span>
+                )}
+                
+                {log.candidate_name && (
+                    <span>
+                        <strong>{log.candidate_name}</strong>{" "}
+                    </span>
+                )}
+        
+                {log.candidate_votes && (
+                    <span>
+                        mengumpul <strong>{log.candidate_votes}</strong> undi ( majoriti <strong>{log.majority}</strong> undi )
+                    </span>
+                )}
+            </p>
+                </Col>
+            </Row>
+    </>
+    )
 
     const flag = (stateName) => {
         return (
@@ -85,29 +117,6 @@ const Regions = () => {
                             />
                         </div>
                     </div>
-
-                    
-                    {/* <div className="card">
-                        <div className="card-body">
-                 
-                        </div>
-                        <div className="card-body">
-                            <RegionDetails details={details} />
-                        </div>
-                        
-                        <div className="card-body">
-                            <Row>
-                                <Col>
-                                    <div class="container mt-4">
-                                        <Candidates 
-                                            candidates={candidates} 
-                                            candidateDataUrl={candidateDataUrl}
-                                        />
-                                    </div>  
-                                </Col>
-                            </Row>
-                        </div>
-                    </div> */}
                 </Col>
                 <Col>
                     
@@ -125,12 +134,18 @@ const Regions = () => {
 
                     <div className="card mt-3">
                         <div className="card-header">
-                            Calon Sedang Mendahului
+                            Maklumat terkini
                         </div>
                         <div className="card-body">
-                            
+                        
+                        
+                      {listItems}
+
+                       
                         </div>
                     </div>
+
+                    
                 </Col>
             </Row>
         </Container>
@@ -143,7 +158,7 @@ const Regions = () => {
 /**
  * Get regions under given stateName
  */
-function getData(stateName,regionCode,setCandidates, setDetails){
+function getData(stateName,regionCode,setCandidates, setDetails, setLogs){
     //console.log(`get candidates from server - ${stateName}-${regionCode}`)
     axios({
         url:  `${process.env.REACT_APP_BACKEND_URL}/prn-variables/states/${stateName}/code/${regionCode}/get-candidates-data`,   
@@ -154,6 +169,7 @@ function getData(stateName,regionCode,setCandidates, setDetails){
     })
     .then( function(json){
         //console.log(json.data)
+        setLogs(json.data.logs)
         setDetails(json.data.details)
         setCandidates(json.data.candidates)
     })

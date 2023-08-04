@@ -13,4 +13,8 @@ class PrnNominationResult extends Model
     public function prn_nomination(){
         return $this->belongsTo(PrnNomination::class);
     }
+
+    public function prn_logs(){
+        return $this->hasMany(PrnLog::class);
+    }
 }

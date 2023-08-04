@@ -421,10 +421,23 @@ class PrnResultController extends Controller
                 ],
                 $data->all() // update existing data or create new one
             );
+
+            $log = new \App\Models\PrnLog();
+            $log->prn_region_detail_id = $result->id;
+            $log->candidate_name = $data['candidate_name'];
+            $log->candidate_coalition = $data['candidate_coalition'];
+            $log->status = $data['status'];
+            $log->candidate_votes =  $data['candidate_votes'];
+            $log->last_updated =  $data['last_updated'];
+            $log->majority =  $data['majority'];
+            $log->save();
+    
+            //\Log::info($data->all());
+
         } else {
             // Handle the case when any of the required conditions is missing
         }
 
-        //\Log::info($data->all());
+ 
      }
 }

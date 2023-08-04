@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::table('prn_region_details', function (Blueprint $table) {
             $table->string('candidate_name')->nullable()->after('id');
             $table->string('candidate_coalition')->nullable()->after('id');
+            $table->string('candidate_party')->nullable()->after('id');
             $table->string('candidate_votes')->nullable()->after('id');
         });
     }
@@ -30,6 +31,7 @@ return new class extends Migration
         Schema::table('prn_region_details', function (Blueprint $table) {
             $table->dropColumn('candidate_name');
             $table->dropColumn('candidate_coalition');
+            $table->dropColumn('candidate_party');
             $table->dropColumn('candidate_votes');
         });
     }
