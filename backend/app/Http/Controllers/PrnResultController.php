@@ -388,20 +388,28 @@ class PrnResultController extends Controller
         if (!$request->has('verifier2'))  $data->put('verifier2', false);
         if (!$request->has('chief_verifier'))  $data->put('chief_verifier', false);
 
+        // statusCollection
+        $statusCollection = collect($collection)->slice(11,1)->flatten(1)->forget([0,3])->values(); // array #11 and only 1 item
+        //\Log::info($statusCollection->all());
+        /**
+         * 0 - candidate_name
+         * 1 - party_coalition
+         * 2 - status | MENDAHULUI || TIDAK RASMI
+         * 3 - votes
+         * 4 - updated
+         */
+        $data->put('candidate_name',  $statusCollection ?  $statusCollection[0] : null );
+        $data->put('candidate_coalition',  $statusCollection ?  $statusCollection[1] : null );
+        $data->put('status',  $statusCollection ?  $statusCollection[2] : null );
+        $data->put('candidate_votes',  $statusCollection ?  $statusCollection[3] : null );
+       
         // timestamp from GSheet
-        $timestampCollection = collect($collection)->slice(11,1)->flatten(1)->forget([0,1,2,3,6])->values(); // array #11 and only 1 item
+        $timestampCollection = collect($collection)->slice(15,1)->flatten(1)->forget([1,2,3,4,6])->values(); // array #11 and only 1 item
+        //\Log::info($timestampCollection->all());
+        $data->put('last_updated', $timestampCollection ? $timestampCollection[1] : null );
+       
 
-        $status = $timestampCollection[0]; // status mendahului | tidak rasmi
-        $timestamp = $timestampCollection[1]; // timestamp in JS
-        
-        // $timestamp = Carbon::parse($dateString)->timestamp;
-
-        $data->put('status', $status ? $status : null );
-        $data->put('last_updated', $timestamp ? $timestamp : null );
-
-        \Log::info($timestampCollection->all());
-
-        //Assuming $c is your existing collection and $request is your request data
+        //Assuming $data is your existing collection and $request is your request data
         if (
             $request->has('state_name')
             && isset($regionCode)
@@ -411,10 +419,8 @@ class PrnResultController extends Controller
                     'state_name' => $request['state_name'],
                     'region_code' => $regionCode,
                 ],
-                $data->all()
+                $data->all() // update existing data or create new one
             );
-
-            // Add your code here to handle the result (optional)
         } else {
             // Handle the case when any of the required conditions is missing
         }
