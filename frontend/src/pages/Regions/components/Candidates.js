@@ -4,7 +4,7 @@ const Candidates = ({candidates, candidateDataUrl}) => {
     const listItems = candidates.map((candidate) =>
         <>
         <Link className="row mb-4 bg-light" alt={candidate.candidate_name}  to={candidateDataUrl + candidate.id + '/' + candidate.slug}>
-            <div className="col-md-3">
+            <div className="col-md-2">
                
                 <div className="p-3">
                     {candidate.url ? (
@@ -41,14 +41,19 @@ const Candidates = ({candidates, candidateDataUrl}) => {
                     </span>  
                 </div>
             </div>
-            <div className="col-md-4">
+            <div className="col">
             
                 <div className="p-3">
-                    <div class="row">
-                        <span className="mb-1 badge bg-success pill">rasmi - { candidate.official_count ? candidate.official_count : 0 }</span>
-                        <span className="badge bg-warning text-dark pill">tidak rasmi - { candidate.unofficial_count ? candidate.unofficial_count : 0}</span>
+                    <div className="row">
+                        <span className="col mb-1 badge bg-light text-dark text-end pill">RASMI</span>
+                        <span className="col mb-1 badge bg-primary ">{ candidate.official_count ? candidate.official_count : 0 }</span>
+                    </div>
+                    <div className="row">
+                        <span className="col mb-1 badge bg-light text-dark text-end pill">TIDAK RASMI</span>
+                        <span className="col border badge bg-light text-muted text-dark ">{ candidate.unofficial_count ? candidate.unofficial_count : 0}</span>
                     </div>
                 </div>
+                
             </div>
         </Link>
         </>

@@ -38,7 +38,7 @@ const Regions = () => {
 
     const flag = (stateName) => {
         return (
-        <img src={'/img/flags/' + stateName + '.png' }  className="img-fluid" width="60px" />
+            <img alt={stateName}  src={'/img/flags/' + stateName + '.png' }  className="img-fluid" width="60px" />
         )
     }
     const candidateDataUrl = '/' + stateName + '/' + regionCode + '/' + regionName + '/'
@@ -46,7 +46,6 @@ const Regions = () => {
     return (
     <>
         <Container>
-      
             <Breadcrumb>
                 <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>
                     <FontAwesomeIcon icon="fas fa-home" />
@@ -106,7 +105,7 @@ function getData(stateName,regionCode,setCandidates, setDetails){
         }
     })
     .then( function(json){
-        console.log(json.data)
+        //console.log(json.data)
         setDetails(json.data.details)
         setCandidates(json.data.candidates)
     })
