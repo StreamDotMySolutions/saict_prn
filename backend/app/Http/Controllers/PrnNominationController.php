@@ -169,9 +169,9 @@ class PrnNominationController extends Controller
 
         $validated = $request->validate([
             'data.entry' => 'required',
-            'data.name' => 'required',
-            'data.party_name' => 'required',
-            'data.party_coalition' => 'required',
+            // 'data.name' => 'required',
+            // 'data.party_name' => 'required',
+            // 'data.party_coalition' => 'required',
         ]);
 
         //\Log::info($request);
