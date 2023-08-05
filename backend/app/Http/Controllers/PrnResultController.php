@@ -258,7 +258,12 @@ class PrnResultController extends Controller
                     ->where('region_code','=',$regionCode)
                     ->where('candidate_entry','=', $c['candidate_entry'])
                     ->first();
-                if($nomination) $c->put('prn_nomination_id', $nomination->id);
+                if($nomination){
+                    $nomination->candidate_vote = $c['official_count']; // save on PrnNomination vote
+                    $nomination->save();
+                    \Cache::flush();
+                    $c->put('prn_nomination_id', $nomination->id);
+                }
             }
 
             // get Party->id
