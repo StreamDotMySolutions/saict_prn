@@ -2,11 +2,19 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Candidates = ({candidates, candidateDataUrl}) => {
 
+    
+    const highestVote = Math.max(...candidates.map(candidate => candidate.official_count));
+
     const listItems = candidates.map((candidate) =>
         <>
-        <Link key={candidate.id} className="row mb-4 bg-light" alt={candidate.candidate_name}  to={candidateDataUrl + candidate.id + '/' + candidate.slug}>
-            
-        <div className="col-sm-4 d-flex align-items-center justify-content-center">
+        <Link 
+            key={candidate.id} 
+            className={candidate.official_count !== 0 && candidate.official_count === highestVote ? 'row p-3 mb-4  border border-2 border-primary' : 'row p-3 mb-4 bg-light'}
+            alt={candidate.candidate_name}  
+            to={candidateDataUrl + candidate.id + '/' + candidate.slug}>
+          
+          
+        <div className="col-sm-3 d-flex align-items-center justify-content-center">
                
                 <div className="p-3">
                     {candidate.url ? (
@@ -28,7 +36,7 @@ const Candidates = ({candidates, candidateDataUrl}) => {
             </div>
 
  
-            <div className="col-sm-4 d-flex align-items-center justify-content-center">
+            <div className="col-sm-3 d-flex align-items-center justify-content-center">
                 <div className="p-3">
                     <strong>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</strong>
                      <br />
@@ -41,7 +49,17 @@ const Candidates = ({candidates, candidateDataUrl}) => {
                     </span>  
                 </div>
             </div>
-            <div className="col-sm-4 d-flex align-items-center justify-content-center">
+            <div className="col-sm-3 d-flex align-items-center justify-content-center">
+               
+                    <h2>
+                    <span className='text-muted'>
+                        {candidate.party_coalition }
+                    </span>
+                    </h2>    
+                
+            </div>
+
+            <div className="col-sm-3 d-flex align-items-center justify-content-center">
                 <div className="card text-center pe-2 ps-2 pt-2 m-3 ">
                     <h4>
                         <FontAwesomeIcon icon="fas fa-vote-yea" />

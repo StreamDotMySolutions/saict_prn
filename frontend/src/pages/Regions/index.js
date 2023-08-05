@@ -61,7 +61,7 @@ const Regions = () => {
             </Breadcrumb>
       
             <Row>
-                <Col sm={6}>
+                <Col sm={7}>
 
                     <div className="card">
                         <div className="card-body">
@@ -78,7 +78,7 @@ const Regions = () => {
 
                     <div className="card mt-3">
                         <div className="card-header">
-                            Calon bertanding
+                            NAMA CALON SEPERTI KERTAS UNDI
                         </div>
                         <div className="card-body">
                             <Candidates 

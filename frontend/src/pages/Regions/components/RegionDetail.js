@@ -15,7 +15,7 @@ return(
                 }
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center">
-                    Jumlah undi semasa
+                Jumlah undi semasa
                 { details.votes !== 0 &&    
                     <span className="badge bg-primary rounded-pill">{ details.votes }</span>
                 }
@@ -30,6 +30,13 @@ return(
                 Kemaskini 
                 { details.last_updated !== null &&
                     <span className="badge bg-primary rounded-pill">{ details.last_updated ?  details.last_updated : null }</span>
+                }
+                </li>
+
+                <li className="list-group-item d-flex justify-content-between align-items-center">
+                Majoriti 
+                { details.majority !== null &&
+                    <span className="badge bg-primary rounded-pill">{ details.majority ?  details.majority : null }</span>
                 }
                 </li>
             </ul>
