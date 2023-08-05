@@ -11,25 +11,25 @@ return(
             <ul class="list-group-flush">
                 <li className="list-group-item d-flex justify-content-between align-items-center">
                 Pengundi berdaftar
-                { details.registered_voters &&
+                { details.registered_voters !== 0 &&
                     <span className="badge bg-primary rounded-pill">{ details.registered_voters }</span>
                 }
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center">
                     Jumlah undi semasa
-                { details.votes &&    
+                { details.votes !== 0 &&    
                     <span className="badge bg-primary rounded-pill">{ details.votes }</span>
                 }
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center">
                 Peratusan mengundi
-                { details.percentage &&
+                { details.percentage !== null &&
                     <span className="badge bg-primary rounded-pill">{ details.percentage ?  details.percentage : 0 } %</span>
                 }
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center">
                 Kemaskini 
-                { details.last_updated &&
+                { details.last_updated !== null &&
                     <span className="badge bg-primary rounded-pill">{ details.last_updated ?  details.last_updated : null }</span>
                 }
                 </li>
