@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Candidates = ({candidates, candidateDataUrl}) => {
 
     const listItems = candidates.map((candidate) =>
         <>
         <Link key={candidate.id} className="row mb-4 bg-light" alt={candidate.candidate_name}  to={candidateDataUrl + candidate.id + '/' + candidate.slug}>
-            <div className="col-md-2">
+            
+        <div className="col-sm-4 d-flex align-items-center justify-content-center">
                
                 <div className="p-3">
                     {candidate.url ? (
@@ -23,11 +25,10 @@ const Candidates = ({candidates, candidateDataUrl}) => {
 
                     
                 </div>
-                
             </div>
 
  
-            <div className="col-md-4 d-flex align-items-center justify-content-center">
+            <div className="col-sm-4 d-flex align-items-center justify-content-center">
                 <div className="p-3">
                     <strong>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</strong>
                      <br />
@@ -40,32 +41,15 @@ const Candidates = ({candidates, candidateDataUrl}) => {
                     </span>  
                 </div>
             </div>
-            <div className="col d-flex align-items-center justify-content-center">
-            
-                    
-                    <div className="card text-center p-3 m-3 ">
-        
-                            <h4>{ candidate.official_count ? candidate.official_count : 0 }</h4>    
-                        
-                    </div>
-                            
-                    {/* <div className="row">
-                        <span className="col mb-1 badge bg-light text-dark text-end pill">RASMI</span>
-                        <span className="col mb-1 badge bg-primary ">{ candidate.official_count ? candidate.official_count : 0 }</span>
-                    </div> */}
-                    {/* <div className="row">
-                        <span className="col mb-1 badge bg-light text-dark text-end pill">TIDAK RASMI</span>
-                        <span className="col border badge bg-light text-muted text-dark ">{ candidate.unofficial_count ? candidate.unofficial_count : 0}</span>
-                    </div> */}
-             
-                
+            <div className="col-sm-4 d-flex align-items-center justify-content-center">
+                <div className="card text-center pe-2 ps-2 pt-2 m-3 ">
+                    <h4>
+                        <FontAwesomeIcon icon="fas fa-vote-yea" />
+                        {" "}
+                        { candidate.official_count ? candidate.official_count : 0 }
+                    </h4>    
+                </div>
             </div>
-            {/* <div className="col d-flex align-items-center justify-content-center">
-            
-            </div> */}
-
-    
-
         </Link>
         </>
     ); // listItems

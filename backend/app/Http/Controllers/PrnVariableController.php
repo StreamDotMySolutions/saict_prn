@@ -225,16 +225,18 @@ class PrnVariableController extends Controller
                         'region_code' => $regionCode])
                     ->first();
 
-        $logs = \App\Models\PrnLog::query()
-                    ->where('prn_region_detail_id','=' , $details->id)
-                    ->orderBy('id','DESC')
-                    ->limit(10)
-                    ->get();
-        
+        if($details){            
+            $logs = \App\Models\PrnLog::query()
+                        ->where('prn_region_detail_id','=' , $details->id)
+                        ->orderBy('id','DESC')
+                        ->limit(10)
+                        ->get();
+        }
+            
         return \Response::json([
             'candidates' => PrnCandidateResource::collection($candidates),
             'details' => PrnDetailResource::make($details),
-            'logs' => $logs,
+            'logs' => isset($logs) ? $logs : null,
         ]);
     }
 }
