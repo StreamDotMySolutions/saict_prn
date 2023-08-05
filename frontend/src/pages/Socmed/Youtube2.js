@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 const YouTube2 = () => {
-  const videoId = 'FnkRfDROw_4'; // Replace with your YouTube video ID
+  const videoId = 'Mkyr0ZxtDgA'; // Replace with your YouTube video ID
 
   return (
     <div className="embed-responsive embed-responsive-16by9 mt-3">
