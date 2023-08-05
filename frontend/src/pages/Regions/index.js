@@ -78,7 +78,7 @@ const Regions = () => {
 
                     <div className="card mt-3">
                         <div className="card-header">
-                            NAMA CALON SEPERTI KERTAS UNDI
+                            NAMA CALON
                         </div>
                         <div className="card-body">
                             <Candidates 
