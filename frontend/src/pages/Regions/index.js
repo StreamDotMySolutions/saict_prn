@@ -126,7 +126,7 @@ const Regions = () => {
                             Maklumat kawasan
                         </div>
                         <div className="card-body">
-                        <RegionDetails details={details} />
+                            <RegionDetails details={details} />
                         </div>
                     </div>
                        
@@ -137,11 +137,7 @@ const Regions = () => {
                             Maklumat terkini
                         </div>
                         <div className="card-body">
-                        
-                        
-                      {listItems}
-
-                       
+                            {listItems}
                         </div>
                     </div>
 
