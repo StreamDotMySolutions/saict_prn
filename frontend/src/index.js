@@ -9,6 +9,7 @@ import Error404 from "./pages/Error404"
 
 /** Pages - PUBLIC */
 import Home from "./pages/Home"
+import Index from "./pages/Index"
 import States from "./pages/States"
 import Regions from "./pages/Regions"
 import Candidate from "./pages/Candidates"
@@ -40,6 +41,7 @@ export default function App() {
           <Route path="/penafian" element={<Penafian />} />
           <Route path="/keselamatan" element={<Keselamatan />} />
           <Route path="/privasi" element={<Privasi />} />
+          <Route path="/index" element={<Index />} />
         </Route>
       </Routes>
     </BrowserRouter>

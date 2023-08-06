@@ -47,7 +47,7 @@ const Regions = () => {
 
     return (
     <>
-        <Container>
+        <Container className='p-3'>
             <Breadcrumb>
                 <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>
                     <FontAwesomeIcon icon="fas fa-home" />
@@ -59,10 +59,8 @@ const Regions = () => {
 
                 <Breadcrumb.Item active>{regionCode} {regionName.toUpperCase()}</Breadcrumb.Item>
             </Breadcrumb>
-      
             <Row>
-                <Col sm={7}>
-
+                <Col>
                     <div className="card">
                         <div className="card-body">
                             <Row>
@@ -75,7 +73,11 @@ const Regions = () => {
                             </Row>
                         </div>
                     </div>
+                </Col>
+            </Row>
 
+            <Row>
+                <Col  className="order-sm-2" sm={7}>
                     <div className="card mt-3">
                         <div className="card-header">
                             NAMA CALON
@@ -88,9 +90,7 @@ const Regions = () => {
                         </div>
                     </div>
                 </Col>
-                <Col>
-                    
-               
+                <Col className="order-sm-1 mt-3">
                     <div className="card">
                         <div className="card-header">
                             Maklumat kawasan
@@ -100,8 +100,6 @@ const Regions = () => {
                         </div>
                     </div>
                        
-                  
-
                     <div className="card mt-3">
                         <div className="card-header">
                             Maklumat terkini
@@ -111,7 +109,6 @@ const Regions = () => {
                         </div>
                     </div>
 
-                    
                 </Col>
             </Row>
         </Container>

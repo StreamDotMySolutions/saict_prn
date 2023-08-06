@@ -48,11 +48,16 @@ const Candidate = () => {
     }, [candidateId])
     
 
+    const flag = (stateName) => {
+        return (
+            <img alt={stateName}  src={'/img/flags/' + stateName + '.png' }  className="img-fluid" width="60px" />
+        )
+    }
 
 
     return (
     <>
-        <Container>
+        <Container className="p-3">
    
         <Breadcrumb>
             <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>
@@ -72,37 +77,54 @@ const Candidate = () => {
         </Breadcrumb>
      
 
+        <Row>
+            <Col>
+                <div className="card">
+                    <div className="card-body">
+                        <Row>
+                            <Col>
+                                {flag(stateName)}
+                            </Col>
+                            <Col >
+                                <h5 className="card-title">{stateName.toUpperCase()} - {regionCode} {regionName.toUpperCase()}</h5>
+                            </Col>
+                        </Row>
+                    </div>
+                </div>
+            </Col>
+        </Row>
         
-        { candidate ? 
-            <>
-                <Row>
-                    <h2>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</h2>
-                </Row>
+        <div className="card mt-3">
+            <div className="card-body">
+                { candidate ? 
+                    <>
+                        <Row>
+                            <h2>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</h2>
+                        </Row>
 
-                <Row className='mt-3'>
-                    
-                    <Col md={3} className='mt-2'>
-                        {candidate.url ? (
-                            <Image src={candidate.url} style={{ width:'200px', border: '1px solid #DCDCDC'}} thumbnails />
-                        ) : (
-                            <Image src="/img/no-image.png" style={{ width:'200px', border: '1px solid #DCDCDC'}} thumbnails />
-                        )}
-                    </Col>
+                        <Row className='mt-3'>
+                            
+                            <Col md={2} className='mt-2'>
+                                {candidate.url ? (
+                                    <Image src={candidate.url} style={{ width:'200px', border: '1px solid #DCDCDC'}} thumbnails />
+                                ) : (
+                                    <Image src="/img/no-image.png" style={{ width:'200px', border: '1px solid #DCDCDC'}} thumbnails />
+                                )}
+                            </Col>
 
 
-                    <Col md={5} className='mt-2'>
-                        <ListItem item='Wakil' value={`${stateName?.toUpperCase()} - ${regionCode} - ${regionName?.toUpperCase()}`} />
-                        <ListItem item='Parti' value={candidate.party_name?.toUpperCase()} />
-                        <ListItem item='Calon' value={candidate.party_coalition?.toUpperCase()} />
-                    </Col>
-                </Row>
-                
-                <Row>
-
-                </Row>
-            </>
-            : <p className='text-muted'>Belum ada pencalonan</p>
-        }
+                            <Col md={5} className='mt-2'>
+                                <ListItem item='Wakil' value={`${stateName?.toUpperCase()} - ${regionCode} - ${regionName?.toUpperCase()}`} />
+                                <ListItem item='Parti' value={candidate.party_name?.toUpperCase()} />
+                                <ListItem item='Calon' value={candidate.party_coalition?.toUpperCase()} />
+                            </Col>
+                        </Row>
+            
+                    </>
+                    : <p className='text-muted'>Belum ada pencalonan</p>
+                }
+            </div>
+        </div>
         </Container>
     </>
     )
