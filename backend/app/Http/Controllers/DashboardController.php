@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\PrnCandidateResource;
+use Illuminate\Support\Str;
 
 class DashboardController extends Controller
 {
@@ -126,5 +127,31 @@ class DashboardController extends Controller
             'message' => 'success',
             'data' => $data
         ],200);
+    }
+
+    function getStates(){
+        //\Cache::flush();
+        $states = \Cache::rememberForever('dashboard_states', function () {
+          
+            return \App\Models\State::query()
+                ->get()
+                ->map(function ($state) {
+                    // Add a new "slug" field to the state object using Str::slug method
+                    $state->slug = Str::slug($state->name);
+                    return $state;
+                });
+            
+        });
+
+        // return as JSON
+        return \Response::json([
+            'message' => 'success',
+            'states' => $states
+        ],200);
+        
+    }
+
+    function getStateDetails($stateName){
+
     }
 }
