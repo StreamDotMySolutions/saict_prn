@@ -137,16 +137,18 @@ const States = () => {
             </Row>
             <Row>
                 <Col md={6}>
-                    {renderParty()}
-                    {renderTable()}
-                </Col>
-                <Col md={6}>
-                    <Card className='bg-light mt-4'>
+                    <Card className='bg-light mb-3'>
                         <div className="d-flex justify-content-center">
                             {map(stateName)}
                         </div>
                     </Card>
-                    <Card className='bg-light mt-4'>
+                    {renderParty()}
+                    {renderTable()}
+           
+                </Col>
+                <Col md={6}>
+   
+                    <Card className='bg-light '>
                      
                         <LatestCandidate />
                        
