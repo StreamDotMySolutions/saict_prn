@@ -11,6 +11,7 @@ import axios from '../../libs/axios'
 const Index = () => {
 
     const [ states, setStates ] = useState([])
+    
 
     useEffect(() => {
         // loading for 1st time
@@ -21,11 +22,11 @@ const Index = () => {
 
         return () => clearInterval(intervalId)
         
-    }, [states])
+    }, [])
 
-    const listItem = states.map(state => 
+    const listItem = states?.map(state => 
         <Col key={state.id}>
-            <States stateName={state.name} />
+            <States data={state} />
         </Col>
         )
 

@@ -60,7 +60,8 @@ class PrnResultController extends Controller
      */
     public function storePrnRegionDetail($stateName, $data){
 
-        //\Log::info($data);
+        // \Log::info($stateName);
+        // \Log::info($data);
         foreach($data as $region){
             // \Log::info($stateName);
             // \Log::info($region);

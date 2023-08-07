@@ -129,8 +129,13 @@ class DashboardController extends Controller
         ],200);
     }
 
+    /**
+     * Return state name
+     * @url /index
+     * @return JSON $states
+     */
     function getStates(){
-        //\Cache::flush();
+        \Cache::flush();
         $states = \Cache::rememberForever('dashboard_states', function () {
           
             return \App\Models\State::query()
@@ -138,8 +143,50 @@ class DashboardController extends Controller
                 ->map(function ($state) {
                     // Add a new "slug" field to the state object using Str::slug method
                     $state->slug = Str::slug($state->name);
+                   
+                    // Add registered voters
+                    $voters = \App\Models\PrnRegionDetail::query()
+                        ->where('state_name','=', $state->name)    
+                        ->sum('registered_voters');
+
+                    $state->voters =    number_format((float) $voters, 0);
+
+                    // Add votes
+                    $votes = \App\Models\PrnNominationResult::query()
+                        ->where('state_name','=', $state->name)    
+                        ->sum('official_count');
+                    $state->votes =    number_format((float) $votes, 0);
+
+                    // candidates
+                    $state->candidates = \App\Models\PrnNomination::query()
+                        ->where('state_name','=', $state->name)    
+                        ->where('candidate_name','!=', null)
+                        ->where('party_name','!=', null)
+                        ->where('party_coalition','!=', null)
+                        ->count('id');
+
+                    $state->regions = \App\Models\PrnRegionDetail::query()
+                        ->where('state_name','=', $state->name)  
+                        ->count();
+
+                    $state->latest = \App\Models\PrnRegionDetail::query()
+                        ->where('state_name','=', $state->name)  
+                        ->whereNotNull('region_name')
+                        ->whereNotNull('status')
+                        ->orderBy('id','DESC')
+                        ->limit(5)
+                        ->get();
+         
+                    // Calculate percentage
+                    if ($voters > 0) {
+                        $percentage = ($votes / $voters) * 100;
+                        $state->percentage = number_format((float) $percentage, 2); // Format to two decimal places
+                    } else {
+                        $state->percentage = 0;
+                    }
+
                     return $state;
-                });
+            });
             
         });
 
@@ -152,6 +199,25 @@ class DashboardController extends Controller
     }
 
     function getStateDetails($stateName){
+
+        // registered voters
+        $votes = \App\Models\PrnNominationResult::query()
+                    ->where('state_name','=', $state->name)    
+                    >sum('official_count');
+
+        // number of regions
+
+        // number of calon
+
+        // casted votes
+
+        // last updated
+
+        // return as JSON
+        return \Response::json([
+            'message' => 'success',
+            'votes' => $votes
+        ],200);
 
     }
 }

@@ -32,7 +32,8 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<DefaultLayout />}>
-          <Route index element={<Home />} />
+          {/* <Route index element={<Home />} /> */}
+          <Route index element={<Index />} />
           <Route path="*" element={<Error404 />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/:stateName" element={<States />} />
