@@ -52,6 +52,8 @@ class PrnResultController extends Controller
             $this->storePrnRegionDetail($state_name,$data);
             $this->storePrnNominationResult($state_name,$data);
         }
+        \Cache::flush();
+
     }
 
     /**
@@ -202,6 +204,8 @@ class PrnResultController extends Controller
         // store region result
         $this->storeDetail($request,$collection);
 
+        // purge cache
+        \Cache::flush();
      }
 
      function storeCandidate($request, $collection){
