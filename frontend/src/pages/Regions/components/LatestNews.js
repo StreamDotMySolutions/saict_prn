@@ -6,7 +6,7 @@ const LatestNews = ({logs}) => {
     const listItems = logs?.map((log) => 
     <>
         <Row key={log.id}>
-            <Col md={3}>
+            <Col md={4}>
                 {log.status}
                 <span className='text-muted'><small>{log.last_updated}</small></span>
             </Col>

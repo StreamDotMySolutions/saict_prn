@@ -9,7 +9,7 @@ const Candidates = ({candidates, candidateDataUrl}) => {
         <>
         <Link 
             key={candidate.id} 
-            className={candidate.official_count !== 0 && candidate.official_count === highestVote ? 'row p-3 mb-4  border border-2 border-primary' : 'row p-3 mb-4 bg-light'}
+            className={candidate.official_count !== 0 && candidate.official_count === highestVote ? 'row p-3 mb-4  border border-2 border-success' : 'row p-3 mb-4 bg-light'}
             alt={candidate.candidate_name}  
             to={candidateDataUrl + candidate.id + '/' + candidate.slug}>
           
