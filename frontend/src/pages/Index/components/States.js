@@ -7,7 +7,7 @@ const States = (state) => {
     //console.log(state)
   
 
-    const listItems = state.data.latest.map( (item) => 
+    const listItems = state.data.latest?.map( (item) => 
         <li>
            <Row>
                 <Col>
