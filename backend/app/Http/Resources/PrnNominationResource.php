@@ -47,6 +47,7 @@ class PrnNominationResource extends JsonResource
             'party_name' => $this->party_name,
             'gsheet_email' => $this->gsheet_email,
             'state_name_slug' => Str::slug($this->state_name, '-'),
+            'region_name_slug' => Str::slug($this->region_name, '-'),
             'slug' => Str::slug($this->candidate_name, '-'),
             'when' => $this->updated_at->diffForHumans(),
 
