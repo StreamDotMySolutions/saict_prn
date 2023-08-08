@@ -399,7 +399,7 @@ class PrnResultController extends Controller
             
             // special case TERENGGANU P36
             if( $request['sheet_name'] == "TERENGGANU P.36" ){
-                $regionCode = 'P' . sprintf("%02d", $rc );
+                $regionCode = 'P' . sprintf("%03d", $rc );
             } else {
                 $regionCode = 'N' . sprintf("%02d", $rc );
             }
