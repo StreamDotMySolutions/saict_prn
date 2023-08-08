@@ -77,6 +77,25 @@ class PrnResultController extends Controller
                     ->where('code','=',$region_code)
                     ->first();
 
+            // verifier 1
+            $verifier1 = false;
+            if(isset($region['verifier1'])){
+                if($region['verifier1'] == "VERIFIED") $verifier1 = true;
+            } 
+
+            // verifier 2
+            $verifier2 = false;
+            if(isset($region['verifier2'])){
+                if($region['verifier2'] == "VERIFIED") $verifier2 = true;
+            } 
+
+            // verifier 1
+            $chief_verifier = false;
+            if(isset($region['chief_verifier'])){
+                if($region['chief_verifier'] == "VERIFIED") $chief_verifier = true;
+            } 
+
+
             \App\Models\PrnRegionDetail::updateOrCreate(
                 [
                     'state_name'=> $stateName,
@@ -94,9 +113,9 @@ class PrnResultController extends Controller
                     'votes'=> $region['votes'],   
                     'percentage' => $region['percentage'],
                     'majority' => $region['majority'],
-                    'verifier1' => isset($region['verifier1']) ? true : false,
-                    'verifier2' => isset($region['verifier2']) ? true : false,
-                    'chief_verifier' => isset($region['chief_verifier']) ? true : false,
+                    'verifier1' => $verifier1,
+                    'verifier2' => $verifier2,
+                    'chief_verifier' => $chief_verifier,
                 ]
              );
         }
@@ -395,26 +414,21 @@ class PrnResultController extends Controller
             if($r) $data->put('prn_region_id', $r->id);    
         }
 
-
-        // if ($request->has('state_name'))  $data->put('state_name', $request['state_name']);
-        // if ($request->has('region_name'))  $data->put('state_name', $request['region_name']);
-
-        // region_code
-        //if ($request->has('region_code'))  $data->put('region_code', $regionCode);
-
         // verifier 1
         if ($data['verifier1'] == "VERIFIED") {
             $data->put('verifier1', true); 
         } else {  
             $data->put('verifier1', false); 
         }
-        
+
+        // verifier 2
         if ($data['verifier2'] == "VERIFIED") {
             $data->put('verifier2', true); 
         } else {  
             $data->put('verifier2', false); 
         }
 
+        // chief_verifier
         if ($data['chief_verifier'] == "VERIFIED") {
             $data->put('chief_verifier', true); 
         } else {  
