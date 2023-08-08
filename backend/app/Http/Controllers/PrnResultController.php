@@ -268,7 +268,13 @@ class PrnResultController extends Controller
             $c->put('sheet_name', $request['sheet_name']);     
               
             $rc = $request['data'][0][0];
-            $regionCode = 'N' . sprintf("%02d", $rc ); 
+            // $regionCode = 'N' . sprintf("%02d", $rc );
+            // special case TERENGGANU P36
+            if( $request['sheet_name'] == "TERENGGANU P.36" ){
+                $regionCode = 'P' . sprintf("%03d", $rc );
+            } else {
+                $regionCode = 'N' . sprintf("%02d", $rc );
+            }
             $c->put('region_code', $regionCode);
 
             $rn = $request['data'][0][1];
@@ -332,6 +338,7 @@ class PrnResultController extends Controller
                     $c->all()
                 );
 
+                \Log::info($c->all());
                 // Add your code here to handle the result (optional)
             } else {
                 // Handle the case when any of the required conditions is missing
@@ -489,7 +496,7 @@ class PrnResultController extends Controller
             $log->save();
     
             //\Log::info($request);
-            \Log::info($data->all());
+            //\Log::info($data->all());
 
         } else {
             // Handle the case when any of the required conditions is missing
