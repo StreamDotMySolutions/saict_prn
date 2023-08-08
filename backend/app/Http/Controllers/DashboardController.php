@@ -135,7 +135,7 @@ class DashboardController extends Controller
      * @return JSON $states
      */
     function getStates(){
-        //\Cache::flush();
+        \Cache::flush();
         $states = \Cache::rememberForever('dashboard_states', function () {
           
             return \App\Models\State::query()

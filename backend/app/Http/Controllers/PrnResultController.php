@@ -50,10 +50,99 @@ class PrnResultController extends Controller
        
         foreach($request->data as $data){
             $this->storePrnRegionDetail($state_name,$data);
-            $this->storePrnNominationResult($state_name,$data);
+            //$this->storePrnNominationResult($state_name,$data);
+          
+            foreach($data as $prn){
+                
+                $this->storeCandidateData($prn);
+            }
+
+            // loop to insert candidate from 1..10
+            // foreach($data['candidates'] as $candidate){
+                
+            // }
         }
         \Cache::flush();
 
+    }
+
+    public function storeCandidateData($data){
+        //\Log::info($data);
+
+        foreach($data['candidates'] as $candidate){
+            //\Log::info($candidate);
+
+            $collection = collect($candidate);
+            $collection->put('state_name', $data['state_name']);
+            $collection->put('sheet_name', $data['sheet_name']);
+            $collection->put('region_name', $data['region_name']);
+            
+            $rc = $data['region_code'];
+            if( $data['sheet_name'] == "TERENGGANU P.36" ){
+                $regionCode = 'P' . sprintf("%03d", $rc );
+            } else {
+                $regionCode = 'N' . sprintf("%02d", $rc );
+            }
+
+            $collection->put('region_code', $regionCode);
+
+            // state id
+            $state = \App\Models\State::query()
+                ->where('name','=',$collection['state_name'])
+                ->first();
+            $collection->put('state_id', $state ? $state->id : null );
+
+            // prn region id
+            $region = \App\Models\PrnRegion::query()
+                ->where('state_name','=',$collection['state_name'])
+                ->where('code','=',$collection['region_code'])
+                ->first();
+            $collection->put('prn_region_id', $region? $region->id : null );
+            
+            // get PrnNomination->id
+            $prnNomination = \App\Models\PrnNomination::query()
+                ->where('state_name','=',$collection['state_name'])
+                ->where('region_code','=',$collection['region_code'])
+                ->where('candidate_entry','=', $collection['candidate_entry'])
+                ->first();
+            $collection->put('prn_nomination_id', $prnNomination? $prnNomination->id : null );
+
+            // get Party->id
+            $party = \App\Models\PrnParty::query()
+                ->where('title','=',$collection['party_name'])
+                ->first();
+            $collection->put('prn_party_id', $party ? $party->id : null);
+
+            // get Coalition->id
+            $coalition = \App\Models\PrnCoalition::query()
+                ->where('title','=',$collection['party_coalition'])
+                ->first();
+            $collection->put('prn_coalition_id', $coalition ?  $coalition->id  : null);
+
+            //\Log::info($collection->all());
+             //\Log::info($candidate);
+
+             if( 
+                    // conditions before insert
+                    $collection['candidate_name'] != null &&
+                    $collection['party_coalition'] != null && 
+                    $collection['party_name'] != null &&
+                    $collection['official_count'] != null
+
+                ) {
+                    \App\Models\PrnNominationResult::updateOrCreate(
+                        [
+                            'state_name'=> $collection['state_name'],
+                            'region_code'=> $collection['region_code'],
+                            'candidate_entry' => $collection['candidate_entry'],
+                        ], // condition
+                        
+                        // candidate data
+                        $collection->all()
+                    );
+                }
+            
+        }
     }
 
     /**
@@ -126,87 +215,89 @@ class PrnResultController extends Controller
      * Store data into PrnNominationResult
      * 
      */
-    public function storePrnNominationResult($stateName, $data){
+    // public function storePrnNominationResult($stateName, $data){
 
-        // get PrnNomination->id
-        $s = \App\Models\State::query()
-        ->where('name','=',$stateName)
-        ->first();
+    //     // get PrnNomination->id
+    //     $s = \App\Models\State::query()
+    //     ->where('name','=',$stateName)
+    //     ->first();
 
-        $candidates = [];
-        foreach($data as $key => $region){
-            $candidates[$key] = $region['candidates'][0];
+    //     $candidates = [];
+    //     foreach($data as $key => $region){
+    //         $candidates[$key] = $region['candidates'][0];
             
-            // conver 1 to N01
-            $regionCode = 'N' . sprintf("%02d",  $region['region_code'] ); 
+    //         // conver 1 to N01
+    //         $regionCode = 'N' . sprintf("%02d",  $region['region_code'] ); 
 
-            // get PrnRegion->id
-            $r = \App\Models\PrnRegion::query()
-                    ->where('state_name','=',$stateName)
-                    ->where('code','=',$regionCode)
-                    ->first();
+    //         // get PrnRegion->id
+    //         $r = \App\Models\PrnRegion::query()
+    //                 ->where('state_name','=',$stateName)
+    //                 ->where('code','=',$regionCode)
+    //                 ->first();
 
 
 
-            //\Log::info($region);
+    //         //\Log::info($region);
 
-            // insert into PrnNominationResult
-            foreach($region['candidates'] as $key => $candidate){
+    //         // insert into PrnNominationResult
+    //         foreach($region['candidates'] as $key => $candidate){
 
-                // get PrnNomination->id
-                $c = \App\Models\PrnNomination::query()
-                    ->where('state_name','=',$stateName)
-                    ->where('region_code','=',$regionCode)
-                    ->where('candidate_entry','=', $candidate[0])
-                    ->first();
+    //             \Log::info($candidate);
 
-                // get Party->id
-                $p = \App\Models\PrnParty::query()
-                    ->where('title','=',$candidate[4])
-                    ->first();
+    //             // get PrnNomination->id
+    //             $c = \App\Models\PrnNomination::query()
+    //                 ->where('state_name','=',$stateName)
+    //                 ->where('region_code','=',$regionCode)
+    //                 ->where('candidate_entry','=', $candidate[0])
+    //                 ->first();
 
-                 // get Coalition->id
-                $g = \App\Models\PrnCoalition::query()
-                    ->where('title','=',$candidate[3])
-                    ->first();
+    //             // get Party->id
+    //             $p = \App\Models\PrnParty::query()
+    //                 ->where('title','=',$candidate[4])
+    //                 ->first();
 
-                //\Log::info($candidate);
-                \App\Models\PrnNominationResult::updateOrCreate(
+    //              // get Coalition->id
+    //             $g = \App\Models\PrnCoalition::query()
+    //                 ->where('title','=',$candidate[3])
+    //                 ->first();
 
-                    [
-                        'state_name'=> $stateName,
-                        'region_code'=> $regionCode,
-                        'candidate_entry' => $candidate[0],
+    //             //\Log::info($candidate);
+    //             \App\Models\PrnNominationResult::updateOrCreate(
+
+    //                 [
+    //                     'state_name'=> $stateName,
+    //                     'region_code'=> $regionCode,
+    //                     'candidate_entry' => $candidate[0],
                     
-                    ], // condition
+    //                 ], // condition
                     
-                    // $region
-                    [
-                        'prn_region_id' => $r ? $r->id : null ,
-                        'prn_nomination_id' => $c ? $c->id : null ,
-                        'prn_party_id' => $p ? $p->id : null ,
-                        'prn_coalition_id' => $g ? $g->id : null ,
-                        'state_id' => $s ? $s->id : null ,
+    //                 // $region
+    //                 [
+    //                     'prn_region_id' => $r ? $r->id : null ,
+    //                     'prn_nomination_id' => $c ? $c->id : null ,
+    //                     'prn_party_id' => $p ? $p->id : null ,
+    //                     'prn_coalition_id' => $g ? $g->id : null ,
+    //                     'state_id' => $s ? $s->id : null ,
 
 
-                        'state_name'=> $stateName,
-                        'region_code'=> $regionCode,
-                        'region_name'=> $region['region_name'], 
-                        'sheet_name'=> $region['sheet_name'], 
+    //                     'state_name'=> $stateName,
+    //                     'region_code'=> $regionCode,
+    //                     'region_name'=> $region['region_name'], 
+    //                     'sheet_name'=> $region['sheet_name'], 
                         
-                        'candidate_entry' => $candidate[0],
-                        'candidate_name' => $candidate[1],
-                        'party_coalition' => $candidate[3],
-                        'party_name' => $candidate[4],
+    //                     'candidate_entry' => $candidate[0],
+    //                     'candidate_name' => $candidate[1],
+    //                     'party_coalition' => $candidate[3],
+    //                     'party_name' => $candidate[4],
 
-                        'official_count' =>  $candidate[5],
-                        'unofficial_count' =>  $candidate[6],
+    //                     'official_count' =>  $candidate[5],
+    //                     'unofficial_count' =>  $candidate[6],
                         
-                    ]
-                 );
-            } 
-        }
-    }
+    //                 ]
+    //              );
+    //         } 
+    //     }
+    // }
 
     /**
      * Store triggered data 
@@ -229,6 +320,7 @@ class PrnResultController extends Controller
 
      function storeCandidate($request, $collection){
         
+        //\Log::info($request);
         // Create a new array from key 1 to key 10
         $candidates = $collection->slice(1, 10)->all();
         unset($collection);
@@ -504,4 +596,12 @@ class PrnResultController extends Controller
 
  
      }
+
+
+     /**
+      * To store data by sheet
+      */
+      function storeBySheet(Request $request){
+        \Log::info($request);
+      }
 }
