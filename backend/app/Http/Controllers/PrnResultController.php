@@ -367,21 +367,26 @@ class PrnResultController extends Controller
         //\Log::info($updatedArray->all());
 
         $data = collect($updatedArray);
+        // state_name
         if($request->has('state_name')) $data->put('state_name', $request['state_name']);  
+        
+        // sheet_name
         if($request->has('sheet_name')) $data->put('sheet_name', $request['sheet_name']);     
 
+        // region_code
         if (isset($request['data'][0][0])) {
             $rc = $request['data'][0][0];
             $regionCode = 'N' . sprintf("%02d", $rc ); 
             $data->put('region_code', $regionCode);
         }
 
+        // region_name
         if (isset($request['data'][0][1])) {
             $rn = $request['data'][0][1];
             $data->put('region_name', $rn);
         }
 
-        // get region->id
+        // prn_region_id
         if (isset($request['state_name']) && isset($regionCode)) {
             $r = \App\Models\PrnRegion::query()
                 ->where('state_name','=', $request['state_name'])
@@ -390,13 +395,31 @@ class PrnResultController extends Controller
             if($r) $data->put('prn_region_id', $r->id);    
         }
 
-        if ($request->has('state_name'))  $data->put('state_name', $request['state_name']);
-        if ($request->has('region_name'))  $data->put('state_name', $request['region_name']);
-        if ($request->has('region_code'))  $data->put('region_code', $regionCode);
 
-        if (!$request->has('verifier1'))  $data->put('verifier1', false);
-        if (!$request->has('verifier2'))  $data->put('verifier2', false);
-        if (!$request->has('chief_verifier'))  $data->put('chief_verifier', false);
+        // if ($request->has('state_name'))  $data->put('state_name', $request['state_name']);
+        // if ($request->has('region_name'))  $data->put('state_name', $request['region_name']);
+
+        // region_code
+        //if ($request->has('region_code'))  $data->put('region_code', $regionCode);
+
+        // verifier 1
+        if ($data['verifier1'] == "VERIFIED") {
+            $data->put('verifier1', true); 
+        } else {  
+            $data->put('verifier1', false); 
+        }
+        
+        if ($data['verifier2'] == "VERIFIED") {
+            $data->put('verifier2', true); 
+        } else {  
+            $data->put('verifier2', false); 
+        }
+
+        if ($data['chief_verifier'] == "VERIFIED") {
+            $data->put('chief_verifier', true); 
+        } else {  
+            $data->put('chief_verifier', false); 
+        }
 
         // statusCollection
         $statusCollection = collect($collection)->slice(11,1)->flatten(1)->forget([0,3])->values(); // array #11 and only 1 item
@@ -432,6 +455,7 @@ class PrnResultController extends Controller
                 $data->all() // update existing data or create new one
             );
 
+            // log the result into another table
             $log = new \App\Models\PrnLog();
             $log->prn_region_detail_id = $result->id;
             $log->candidate_name = $data['candidate_name'];
@@ -442,7 +466,8 @@ class PrnResultController extends Controller
             $log->majority =  $data['majority'];
             $log->save();
     
-            //\Log::info($data->all());
+            // \Log::info($request);
+            // \Log::info($data->all());
 
         } else {
             // Handle the case when any of the required conditions is missing
