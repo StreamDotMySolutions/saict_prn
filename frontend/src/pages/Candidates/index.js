@@ -12,7 +12,8 @@ import Container from 'react-bootstrap/esm/Container';
 import Image from 'react-bootstrap/esm/Image';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
-import Card from 'react-bootstrap/esm/Card';
+//import Card from 'react-bootstrap/esm/Card';
+import { Helmet } from 'react-helmet-async';
 
 
 const Candidate = () => {
@@ -57,7 +58,8 @@ const Candidate = () => {
 
     return (
     <>
-        <Container className="p-3">
+
+    <Container className="p-3">
    
         <Breadcrumb>
             <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>
@@ -98,6 +100,23 @@ const Candidate = () => {
             <div className="card-body">
                 { candidate ? 
                     <>
+
+                        <Helmet>
+                            <>
+                            <title>PRN15 RTM -  {candidate?.candidate_name?.toUpperCase()} </title>
+                            <meta 
+                                name='description' 
+                                content={`Calon pilihanraya kawasan ${regionCode} - ${regionName} negeri ${stateName}`}
+                            />
+                            <meta property="og:title" content={`${candidate?.candidate_name?.toUpperCase()} Calon pilihanraya kawasan ${regionCode} - ${regionName} negeri ${stateName}`} />
+                            <meta property="og:url" content={ 'https://pilihanraya.rtm.gov.my/' + stateName + '/' + regionCode + '/' + regionName + '/' + candidate.id + '/' +  candidate.slug } />
+                            <meta
+                                property="og:image"
+                                content={candidate.url ?? "https://pilihanraya.rtm.gov.my/img/logo_pru.png"}
+                                />
+                            </>
+                        
+                        </Helmet>
                         <Row>
                             <h2>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</h2>
                         </Row>
