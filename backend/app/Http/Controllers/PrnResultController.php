@@ -331,8 +331,8 @@ class PrnResultController extends Controller
         // Check if the status is 'VERIFIED'
         if ($status !== 'MENDAHULUI' && $status !== 'TIDAK RASMI' && $status !== 'RASMI'  ) {
             // If status is not 'VERIFIED', exit the function
-            \Log::info('tak lepas status');
-            \Log::info($status);
+            // \Log::info('tak lepas status');
+            // \Log::info($status);
             return;
         }
     
