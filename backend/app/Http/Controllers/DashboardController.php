@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Resources\PrnCandidateResource;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -165,9 +166,14 @@ class DashboardController extends Controller
                         ->where('party_coalition','!=', null)
                         ->count('id');
 
+                    //DB::enableQueryLog();    
+
                     $state->regions = \App\Models\PrnRegionDetail::query()
                         ->where('state_name','=', $state->name)  
-                        ->count();
+                        ->whereNotNull('region_name') 
+                        ->count('id');
+                        
+                    //\Log::info(DB::getQueryLog());
 
                     $state->latest = \App\Models\PrnRegionDetail::query()
                         ->where('state_name','=', $state->name)  
