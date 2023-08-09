@@ -307,6 +307,7 @@ class PrnResultController extends Controller
         //\Log::info($request);
 
         $collection = collect($request['data']);
+        
 
         // store candidate result
         $this->storeCandidate($request,$collection);
@@ -320,7 +321,50 @@ class PrnResultController extends Controller
 
      function storeCandidate($request, $collection){
         
-        //\Log::info($request);
+        //\Log::info($request['data']);
+
+        // get status array(11)
+        // MENDAHULUI | TIDAK RASMI | RASMI
+        $status = $request['data'][11][4];
+
+        //\Log::info('masuk');
+        // Check if the status is 'VERIFIED'
+        if ($status !== 'MENDAHULUI' && $status !== 'TIDAK RASMI' && $status !== 'RASMI'  ) {
+            // If status is not 'VERIFIED', exit the function
+            \Log::info('tak lepas status');
+            \Log::info($status);
+            return;
+        }
+    
+        // get verifier 1
+        // VERIFIED | null
+        $verifier1 = $request['data'][18][5];
+        if ($status === 'MENDAHULUI') {
+            // check if verifier1 == verified
+            if($verifier1 !== 'VERIFIED') return;
+        }
+
+        // get verifier 2
+        // VERIFIED | null
+        $verifier2 = $request['data'][19][5];
+        if ($status === 'TIDAK RASMI') {
+            // check if verifier1 == verified
+            if($verifier1 !== 'VERIFIED') return;
+            if($verifier2 !== 'VERIFIED') return;
+        }
+        
+        // get ketua verifier
+         // VERIFIED | null
+        $chief_verifier = $request['data'][20][5];
+        if ($status === 'RASMI') {
+            // check if verifier1 == verified
+            if($verifier1 !== 'VERIFIED') return;
+            if($verifier2 !== 'VERIFIED') return;
+            if($chief_verifier !== 'VERIFIED') return;
+        }
+
+        //\Log::info('lepas');
+
         // Create a new array from key 1 to key 10
         $candidates = $collection->slice(1, 10)->all();
         unset($collection);
@@ -341,6 +385,9 @@ class PrnResultController extends Controller
 
             // Convert the original array to a Laravel collection
             $newCollection = collect($candidate);
+            
+            //\Log::info($newCollection->all());
+
             $updatedArray = $newCollection->mapWithKeys(function ($value, $key) use ($newKeys) {
                 return [$newKeys[$key] => $value];
             });
@@ -412,6 +459,12 @@ class PrnResultController extends Controller
                 if($state) $c->put('state_id', $state->id);
             }
 
+            // additional fields
+            $c->put('status', $status);
+            $c->put('verifier1', $verifier1 );
+            $c->put('verifier2', $verifier2 );
+            $c->put('chief_verifier', $chief_verifier );
+
 
             //\Log::info($c->all()); // is ready for insert
 
@@ -430,7 +483,7 @@ class PrnResultController extends Controller
                     $c->all()
                 );
 
-                \Log::info($c->all());
+                //\Log::info($c->all());
                 // Add your code here to handle the result (optional)
             } else {
                 // Handle the case when any of the required conditions is missing

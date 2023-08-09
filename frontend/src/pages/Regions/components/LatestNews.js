@@ -8,6 +8,7 @@ const LatestNews = ({logs}) => {
         <Row key={log.id}>
             <Col md={4}>
                 {log.status}
+                <br />
                 <span className='text-muted'><small>{log.last_updated}</small></span>
             </Col>
             <Col>
