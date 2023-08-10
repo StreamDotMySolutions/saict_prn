@@ -51,25 +51,17 @@ const Candidates = ({candidates, candidateDataUrl}) => {
                 </div>
             </div>
             <div className="col-sm-3 d-flex align-items-center justify-content-center">
-               
-                <div className='card'>
-                        <div className='card-body text-center'>
-                            <h2>
-                                <span className='text-muted '>
-                                    {candidate.party_coalition }
-                                </span>
-                            </h2>  
-                        </div>
-          
-                </div>
+                <h2>
+                    <span className='text-muted '>
+                        {candidate.party_coalition }
+                    </span>
+                </h2>  
             </div>
 
             <div className="col-sm-3 d-flex align-items-center justify-content-center">
                 <div className="card text-center pe-2 ps-2 pt-2 m-3 ">
                     
-                    <h4>
-                        <FontAwesomeIcon icon="fas fa-vote-yea" />
-                        {" "}
+                    <h4 className='pt-1 pb-1 ps-2 pe-2'>
                         { candidate.official_count ? candidate.official_count : 0 }
                     </h4>    
                 </div>
