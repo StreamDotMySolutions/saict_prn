@@ -71,7 +71,6 @@ const Candidates = ({candidates, candidateDataUrl}) => {
                     { candidate.status === "RASMI" && candidate.official_count === highestVote &&
                  
                         <h1 className='text-success'><FontAwesomeIcon icon="fa-solid fa-check" /></h1>
-                       
                     }  
                 </div>
             </div>
