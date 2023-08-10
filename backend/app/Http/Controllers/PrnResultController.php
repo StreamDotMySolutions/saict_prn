@@ -326,6 +326,9 @@ class PrnResultController extends Controller
         // get status array(11)
         // MENDAHULUI | TIDAK RASMI | RASMI
         $status = $request['data'][11][4];
+        $verifier1 = $request['data'][18][5];
+        $verifier2 = $request['data'][19][5];
+        $chief_verifier = $request['data'][20][5];
 
         //\Log::info('masuk');
         // Check if the status is 'VERIFIED'
@@ -338,7 +341,7 @@ class PrnResultController extends Controller
     
         // get verifier 1
         // VERIFIED | null
-        $verifier1 = $request['data'][18][5];
+        //$verifier1 = $request['data'][18][5];
         if ($status === 'MENDAHULUI') {
             // check if verifier1 == verified
             if($verifier1 !== 'VERIFIED') return;
@@ -346,16 +349,16 @@ class PrnResultController extends Controller
 
         // get verifier 2
         // VERIFIED | null
-        $verifier2 = $request['data'][19][5];
+        // $verifier2 = $request['data'][19][5];
         if ($status === 'TIDAK RASMI') {
             // check if verifier1 == verified
             if($verifier1 !== 'VERIFIED') return;
-            if($verifier2 !== 'VERIFIED') return;
+            //if($verifier2 !== 'VERIFIED') return;
         }
         
         // get ketua verifier
          // VERIFIED | null
-        $chief_verifier = $request['data'][20][5];
+        //$chief_verifier = $request['data'][20][5];
         if ($status === 'RASMI') {
             // check if verifier1 == verified
             if($verifier1 !== 'VERIFIED') return;
