@@ -14,9 +14,10 @@ const Candidates = ({candidates, candidateDataUrl}) => {
             to={candidateDataUrl + candidate.id + '/' + candidate.slug}>
           
           
-        <div className="col-sm-3 d-flex align-items-center justify-content-center">
+        <div className="col-sm-2 d-flex align-items-center justify-content-center">
                
                 <div className="p-3">
+                   
                     {candidate.url ? (
                         <img 
                             alt={candidate.candidate_name} 
@@ -36,7 +37,7 @@ const Candidates = ({candidates, candidateDataUrl}) => {
             </div>
 
  
-            <div className="col-sm-3 d-flex align-items-center justify-content-center">
+            <div className="col-sm-4 d-flex align-items-center justify-content-center">
                 <div className="p-3">
                     <strong>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</strong>
                      <br />
@@ -51,12 +52,22 @@ const Candidates = ({candidates, candidateDataUrl}) => {
             </div>
             <div className="col-sm-3 d-flex align-items-center justify-content-center">
                
-                    <h2>
-                    <span className='text-muted'>
-                        {candidate.party_coalition }
-                    </span>
-                    </h2>    
-                
+                <div className='card'>
+                        <div className='card-body text-center'>
+                            <h2>
+                                <span className='text-muted '>
+                                    {candidate.party_coalition }
+                                </span>
+                            </h2>  
+                        </div>
+                        { candidate.status === "RASMI" && candidate.official_count === highestVote &&
+                        <div className="d-flex justify-content-center align-items-center text-center">
+                            <div className='card-body bg-success'>
+                                    <h3 className='text-light'><FontAwesomeIcon icon="fa-solid fa-check" /></h3>
+                            </div>
+                        </div>
+                        }
+                </div>
             </div>
 
             <div className="col-sm-3 d-flex align-items-center justify-content-center">
