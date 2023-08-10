@@ -50,7 +50,7 @@ const Candidates = ({candidates, candidateDataUrl}) => {
                     </span>  
                 </div>
             </div>
-            <div className="col-sm-3 d-flex align-items-center justify-content-center">
+            <div className="col-sm-2 d-flex align-items-center justify-content-center">
                
                 <div className='card'>
                         <div className='card-body text-center'>
@@ -60,23 +60,27 @@ const Candidates = ({candidates, candidateDataUrl}) => {
                                 </span>
                             </h2>  
                         </div>
-                        { candidate.status === "RASMI" && candidate.official_count === highestVote &&
-                        <div className="d-flex justify-content-center align-items-center text-center">
-                            <div className='card-body bg-success'>
-                                    <h3 className='text-light'><FontAwesomeIcon icon="fa-solid fa-check" /></h3>
-                            </div>
-                        </div>
-                        }
+          
                 </div>
             </div>
 
             <div className="col-sm-3 d-flex align-items-center justify-content-center">
                 <div className="card text-center pe-2 ps-2 pt-2 m-3 ">
+                    
                     <h4>
                         <FontAwesomeIcon icon="fas fa-vote-yea" />
                         {" "}
                         { candidate.official_count ? candidate.official_count : 0 }
                     </h4>    
+                </div>
+
+                <div className="text-center ms-3 me-3">
+                    
+                    { candidate.status === "RASMI" && candidate.official_count === highestVote &&
+                 
+                        <h1 className='text-success'><FontAwesomeIcon icon="fa-solid fa-check" /></h1>
+                       
+                    }  
                 </div>
             </div>
         </Link>

@@ -77,7 +77,7 @@ const Regions = () => {
             </Row>
 
             <Row>
-                <Col  className="order-sm-2" sm={7}>
+                <Col  className="order-sm-2" sm={8}>
                     <div className="card mt-3">
                         <div className="card-header">
                             NAMA CALON

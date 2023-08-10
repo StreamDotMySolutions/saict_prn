@@ -6,13 +6,12 @@ const LatestNews = ({logs}) => {
     const listItems = logs?.map((log) => 
     <>
         <Row key={log.id}>
-            <Col md={4}>
-                {log.status}
-                <br />
+            <Col md={3}>
                 <span className='text-muted'><small>{log.last_updated}</small></span>
             </Col>
             <Col>
-            <p>
+            <p className='text-muted' style={{ 'fontSize':'9pt'}}>
+               <strong className='text-primary'>{log.status}</strong> {' - '}
                 {log.candidate_coalition && (
                     <span>
                         Calon dari Parti <strong>{log.candidate_coalition}</strong>, {" "}
