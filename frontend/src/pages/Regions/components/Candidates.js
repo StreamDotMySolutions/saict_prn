@@ -50,7 +50,7 @@ const Candidates = ({candidates, candidateDataUrl}) => {
                     </span>  
                 </div>
             </div>
-            <div className="col-sm-2 d-flex align-items-center justify-content-center">
+            <div className="col-sm-3 d-flex align-items-center justify-content-center">
                
                 <div className='card'>
                         <div className='card-body text-center'>
