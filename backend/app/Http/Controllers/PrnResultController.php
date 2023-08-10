@@ -305,10 +305,11 @@ class PrnResultController extends Controller
 
      public function storeTriggeredData(Request $request){
         //\Log::info($request);
+       
 
+        // make collection for candidates
         $collection = collect($request['data']);
         
-
         // store candidate result
         $this->storeCandidate($request,$collection);
 
@@ -319,12 +320,10 @@ class PrnResultController extends Controller
         \Cache::flush();
      }
 
-     function storeCandidate($request, $collection){
-        
-        //\Log::info($request['data']);
-
-        // get status array(11)
-        // MENDAHULUI | TIDAK RASMI | RASMI
+     /**
+      * verify data before continue
+      */
+     function verify($request){
         $status = $request['data'][11][4];
         $verifier1 = $request['data'][18][5];
         $verifier2 = $request['data'][19][5];
@@ -366,7 +365,66 @@ class PrnResultController extends Controller
             if($chief_verifier !== 'VERIFIED') return;
         }
 
+        $data = [
+            'status' => $status ? $status : null,
+            'verifier1' => $verifier1 ? $verifier1 : null,
+            'verifier2' => $verifier2 ? $verifier2 : null,
+            'chief_verifier' => $chief_verifier ? $chief_verifier : null,
+        ];
+
+        return $data;
+     }
+
+     function storeCandidate($request, $collection){
+        
+        //\Log::info($request['data']);
+
+        // get status array(11)
+        // MENDAHULUI | TIDAK RASMI | RASMI
+        // $status = $request['data'][11][4];
+        // $verifier1 = $request['data'][18][5];
+        // $verifier2 = $request['data'][19][5];
+        // $chief_verifier = $request['data'][20][5];
+
+        // //\Log::info('masuk');
+        // // Check if the status is 'VERIFIED'
+        // if ($status !== 'MENDAHULUI' && $status !== 'TIDAK RASMI' && $status !== 'RASMI'  ) {
+        //     // If status is not 'VERIFIED', exit the function
+        //     // \Log::info('tak lepas status');
+        //     // \Log::info($status);
+        //     return;
+        // }
+    
+        // // get verifier 1
+        // // VERIFIED | null
+        // //$verifier1 = $request['data'][18][5];
+        // if ($status === 'MENDAHULUI') {
+        //     // check if verifier1 == verified
+        //     if($verifier1 !== 'VERIFIED') return;
+        // }
+
+        // // get verifier 2
+        // // VERIFIED | null
+        // // $verifier2 = $request['data'][19][5];
+        // if ($status === 'TIDAK RASMI') {
+        //     // check if verifier1 == verified
+        //     if($verifier1 !== 'VERIFIED') return;
+        //     //if($verifier2 !== 'VERIFIED') return;
+        // }
+        
+        // // get ketua verifier
+        //  // VERIFIED | null
+        // //$chief_verifier = $request['data'][20][5];
+        // if ($status === 'RASMI') {
+        //     // check if verifier1 == verified
+        //     if($verifier1 !== 'VERIFIED') return;
+        //     if($verifier2 !== 'VERIFIED') return;
+        //     if($chief_verifier !== 'VERIFIED') return;
+        // }
+
         //\Log::info('lepas');
+
+        $verify = $this->verify($request);
 
         // Create a new array from key 1 to key 10
         $candidates = $collection->slice(1, 10)->all();
@@ -463,11 +521,10 @@ class PrnResultController extends Controller
             }
 
             // additional fields
-            $c->put('status', $status);
-            $c->put('verifier1', $verifier1 );
-            $c->put('verifier2', $verifier2 );
-            $c->put('chief_verifier', $chief_verifier );
-
+            $c->put('status', $verify['status'] ? $verify['status'] : null  );
+            $c->put('verifier1', $verify['verifier1'] ?  $verify['verifier1'] : null );
+            $c->put('verifier2', $verify['verifier2'] ?  $verify['verifier2'] : null );
+            $c->put('chief_verifier', $verify['chief_verifier'] ?  $verify['chief_verifier'] : null );
 
             //\Log::info($c->all()); // is ready for insert
 
@@ -500,6 +557,9 @@ class PrnResultController extends Controller
       * To store row data for RegionDetail
       */
      function storeDetail($request, $collection){
+
+        //\Log::info($request);
+        $verify = $this->verify($request);
      
         // Slice the original collection
         $slicedCollection = collect($collection)->slice(12, 9);
