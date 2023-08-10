@@ -149,14 +149,14 @@ const Candidate = () => {
         <div className="card mt-3">
             <div className="card-body">
                 <Row>
-                    <Col md={2}><strong>KEMASKINI</strong></Col>
+                    <Col><strong>KEMASKINI</strong></Col>
                     <Col><strong>JUMLAH UNDI</strong></Col>
                 </Row>
                     
                 { logs.map(log => 
               
                     <Row>
-                        <Col md={2}>{log.last_updated}</Col>
+                        <Col>{log.last_updated}</Col>
                         <Col>{log.official_count}</Col>
                     </Row>
                     
