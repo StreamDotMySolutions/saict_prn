@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('table_prn_nomination_result_logs', function (Blueprint $table) {
+        Schema::create('prn_nomination_result_logs', function (Blueprint $table) {
             $table->id();
             $table->integer('prn_nomination_id')->nullable();
             $table->string('status')->nullable();
             $table->string('last_updated')->nullable();
             $table->string('candidate_name')->nullable();
-            $table->string('candidate_coalition')->nullable();
-            $table->string('candidate_party')->nullable();
-            $table->string('candidate_votes')->nullable();
-            $table->integer('majority')->nullable();
+            $table->string('party_coalition')->nullable();
+            $table->string('party_name')->nullable();
+            $table->string('official_count')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_prn_nomination_result_logs');
+        Schema::dropIfExists('prn_nomination_result_logs');
     }
 };

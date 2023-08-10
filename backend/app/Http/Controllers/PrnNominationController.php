@@ -273,17 +273,24 @@ class PrnNominationController extends Controller
         // check if data exist
         $candidate = PrnNomination::where('id','=',$id)->first();
 
-        //\Log::info($candidate); 
-
-        if(!$candidate){
-            return \Response::json(
-                        ['message' => 'does not exist'],
-                        404
-                    );
+        if($candidate){
+            $logs = \App\Models\PrnNominationResultLog::query()
+                    ->where('prn_nomination_id','=', $candidate->id)
+                    ->orderBy('id','DESC')
+                    ->get();
+            //\Log::info($candidate); 
         }
 
+      
+        return \Response::json([
+            'message' => 'success',
+            'candidate' => PrnCandidateResource::make($candidate),
+            'logs' => $logs ? $logs : null
+        ]);
+    
+
         // return as JSON
-        return PrnCandidateResource::make($candidate);
+        //return PrnCandidateResource::make($candidate);
      }
 
 

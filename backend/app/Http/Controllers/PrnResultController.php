@@ -324,10 +324,13 @@ class PrnResultController extends Controller
       * verify data before continue
       */
      function verify($request){
+        //\Log::info($request);
         $status = $request['data'][11][4];
+        $last_updated = $request['data'][15][5];
         $verifier1 = $request['data'][18][5];
         $verifier2 = $request['data'][19][5];
         $chief_verifier = $request['data'][20][5];
+        //\Log::info($last_updated);
 
         //\Log::info('masuk');
         // Check if the status is 'VERIFIED'
@@ -367,6 +370,7 @@ class PrnResultController extends Controller
 
         $data = [
             'status' => $status ? $status : null,
+            'last_updated' => $last_updated ? $last_updated : null,
             'verifier1' => $verifier1 ? $verifier1 : null,
             'verifier2' => $verifier2 ? $verifier2 : null,
             'chief_verifier' => $chief_verifier ? $chief_verifier : null,
@@ -521,10 +525,10 @@ class PrnResultController extends Controller
             }
 
             // additional fields
-            $c->put('status', $verify['status'] ? $verify['status'] : null  );
-            $c->put('verifier1', $verify['verifier1'] ?  $verify['verifier1'] : null );
-            $c->put('verifier2', $verify['verifier2'] ?  $verify['verifier2'] : null );
-            $c->put('chief_verifier', $verify['chief_verifier'] ?  $verify['chief_verifier'] : null );
+            $c->put('status', $verify ? $verify['status'] : null  );
+            $c->put('verifier1', $verify ?  $verify['verifier1'] : null );
+            $c->put('verifier2', $verify ?  $verify['verifier2'] : null );
+            $c->put('chief_verifier', $verify ?  $verify['chief_verifier'] : null );
 
             //\Log::info($c->all()); // is ready for insert
 
@@ -542,6 +546,20 @@ class PrnResultController extends Controller
                     ],
                     $c->all()
                 );
+
+            if(!is_null($c['candidate_name'])){
+      
+                // log the result into another table
+                $log = new \App\Models\PrnNominationResultLog();
+                $log->prn_nomination_id = $c['prn_nomination_id'];
+                $log->candidate_name = $c['candidate_name'];
+                $log->party_coalition = $c['party_coalition'];
+                $log->status = $c['status'];
+                $log->party_name = $c['party_name'];
+                $log->official_count = $c['official_count'];
+                $log->last_updated = $verify['last_updated'] ?  $verify['last_updated'] : null;
+                $log->save();
+            }
 
                 //\Log::info($c->all());
                 // Add your code here to handle the result (optional)
