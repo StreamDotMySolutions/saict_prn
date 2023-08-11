@@ -22,11 +22,11 @@ const DefaultLayout = () => {
               <Col lg={12}>
                 <Outlet />
               </Col>
-              <div class="rotated-div"> 
+              {/* <div class="rotated-div"> 
                 {[1, 2, 3, 4, 5].map((index) => (
                   <h1 className="text-light" key={index}>PENGUJIAN DATA SEDANG DIJALANKAN</h1>
                 ))}
-              </div>
+              </div> */}
             </Container>
           <Footer/>
         </>
