@@ -28,23 +28,22 @@ const Teknologi = () => {
                     </Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            Sistem paparkan maklumat data PRN NEGERI ke 15 ini menggunakan teknologi Open Source. Pihak SAICT ( Seksyen Aplikasi ICT ) mendapat
-                            mandat dari UNIT BERITA RTM untuk menyediakan satu laman web yang mesra MOBILE dan juga DESKTOP untuk memaparkan maklumat pilihanraya
-                            yang bersumberkan dari wartawan RTM secara REALTIME dari bilik gerakan.
+                            Sistem memaparkan maklumat data PRUDUN15 ini menggunakan teknologi Open Source. Seksyen Aplikasi ICT (SAICT) mendapat
+                            mandat dari SEKSYEN EHWAL SEMASA (SES) untuk menyediakan satu laman web yang mesra paparan MOBILE dan juga DESKTOP bagi memaparkan maklumat pilihanraya secara REALTIME dari bilik gerakan.
                         </Card.Text>
 
                         <Card.Text>
-                            Latency data telah diuji untuk tidak melebihi 5 saat dari bilik gerakan ke portal. Di bilik gerakan, wartawan RTM akan melaporkan menggunakan 
+                            Latensi data telah diuji agar tidak melebihi 5 saat dari bilik gerakan ke portal. Pelapor RTM di bilik gerakan akan melaporkan menggunakan 
                             teknologi GOOGLE CLOUD iaitu :
                             <ul>
                                 <li>GOOGLE SHEET</li>
                                 <li>GOOGLE DRIVE</li>
                             </ul>
-                            Kemudian data akan dihantar menggunakan GOOGLE SCRIPT ke DATABASE utama di RTM sebelum di paparkan ke PORTAL rasmi di https://pilihanraya.rtm.gov.my.
+                            Kemudian data akan dihantar menggunakan GOOGLE SCRIPT ke Pangkalan Data Utama di RTM sebelum di paparkan ke PORTAL rasmi di https://pilihanraya.rtm.gov.my.
                             <br />
                             <br />
                             Sebelum data dikeluarkan ke PORTAL, ianya perlu melalui beberapa fasa pengesahan dari VERIFIER untuk memastikan data adalah tepat
-                            mengikut piawai UNIT BERITA RTM.
+                            dengan merujuk pangkalan Suruhanjaya Pilhanraya (SPR).
                         
                         </Card.Text>
 
@@ -82,23 +81,22 @@ const Teknologi = () => {
 
                         <Card.Text>
                             <h2>Proses</h2>
-                            Proses dari mula sehingga akhir, pihak SAICT menggunakan pendekatan Rapid SDLC untuk mempercepatkan
-                            penyiapan portal
+                            SAICT menggunakan pendekatan Rapid  Software Development Life Cycle (SDLC) untuk mempercepatkan pembangunan portal.
                         </Card.Text>
 
                         <Card.Text>
                             <h2>Keselamatan</h2>
-                            Kami menggunakan security ranking dari Mozilla Observatory untuk menilai tahap keselamatan laman web ini
-                            dan dapat memperolehi markah <strong>B+</strong>.
+                            SAICT menggunakan security ranking dari Mozilla Observatory untuk menilai tahap keselamatan laman web ini
+                            dan telah memperolehi gred <strong>B+</strong>.
                             <br />
-                            Boleh rujuk di sini <a target="_blank" href="https://observatory.mozilla.org/analyze/pilihanraya.rtm.gov.my">
+                            Rujuk pautan berikut: <a target="_blank" href="https://observatory.mozilla.org/analyze/pilihanraya.rtm.gov.my">
                             <strong>https://observatory.mozilla.org/analyze/pilihanraya.rtm.gov.my</strong>
                             </a>
                         </Card.Text>
 
                         <Card.Text>
                             <h2>Server</h2>
-                            Server dibekalkan oleh pihak MAMPU ( PDSA )
+                            Menggunakan perkhidmatan Server Pusat Data Sentral Awam (PDSA MAMPU)
                         </Card.Text>
 
                     </Card.Body>
