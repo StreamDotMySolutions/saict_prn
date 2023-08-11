@@ -40,7 +40,11 @@ const Teknologi = () => {
                                 <li>GOOGLE SHEET</li>
                                 <li>GOOGLE DRIVE</li>
                             </ul>
-                            Kemudian data akan dihantar menggunakan GOOGLE SCRIPT ke DATABASE utama di RTM sebelum di paparkan ke PORTAL rasmi di https://pilihanraya.rtm.gov.my
+                            Kemudian data akan dihantar menggunakan GOOGLE SCRIPT ke DATABASE utama di RTM sebelum di paparkan ke PORTAL rasmi di https://pilihanraya.rtm.gov.my.
+                            <br />
+                            <br />
+                            Sebelum data dikeluarkan ke PORTAL, ianya perlu melalui beberapa fasa pengesahan dari VERIFIER untuk memastikan data adalah tepat
+                            mengikut piawai UNIT BERITA RTM.
                         
                         </Card.Text>
 
@@ -52,11 +56,14 @@ const Teknologi = () => {
                                 <li>API Backend menggunakan teknologi RESTful dari perisian framework LARAVEL</li>
                                 <li>API server yang dikuasai oleh NGINX dan PHP Swoole untuk pastikan kelajuan tinggi dan kemampuan menahan load concurrent yang tinggi</li>
                                 <li>Process Manager dari PM2 untuk melihat metrik penggunaan resource server secara realtime</li>
-                                <li>Sistem Smart CACHE untuk pastikan DATABASE didak overload sewaktu traffic tinggi</li>
+                                <li>Sistem Smart CACHE untuk pastikan DATABASE tidak overload sewaktu traffic tinggi</li>
                                 <li>Database MySQL Enterprise dari ORACLE</li>
                                 <li>Web server prestasi tinggi dari NGINX yang telah ditala untuk keselamatan dan trafik yang tinggi</li>
                                 <li>Paparan yang mudah dan kemas menggunakan Bootstrap 5 CSS Framework</li>
                                 <li>Sistem pengurusan source code dari GIT</li>
+                                <li>Sistem operasi dari UBUNTU</li>
+                                <li>Sistem automasi dari CRON</li>
+                                <li>Sistem automasi dari BASH Script</li>
                             </ol>
                         </Card.Text>
 
