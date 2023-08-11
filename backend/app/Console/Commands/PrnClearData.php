@@ -50,6 +50,7 @@ class PrnClearData extends Command
                     ->update([
                             'candidate_vote' => null,
                     ]);
+        \Cache::flush();            
         echo "Table for pengundian cleared ! \n";
         
     }
