@@ -5,6 +5,8 @@ import Container from 'react-bootstrap/Container';
 import Footer from "./Footer";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExclamationTriangle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 const DefaultLayout = () => {
 
@@ -14,20 +16,25 @@ const DefaultLayout = () => {
     <>
     { mode == 'production' ?
         <>
-          <TopNavBar/> 
+          <TopNavBar/>
             <Container fluid className="p-1 mt-5">
               <hr />
               <Col lg={12}>
                 <Outlet />
               </Col>
             </Container>
+            <div class="rotated-div"> 
+              {[1, 2, 3, 4, 5].map((index) => (
+                <h1 className="text-light" key={index}>PENGUJIAN DATA SEDANG DIJALANKAN</h1>
+              ))}
+            </div>
           <Footer/>
         </>
           :
           <>
             <Container>
               <div className="d-flex justify-content-center">
-                  <img src="img/maintainance.jpg" className="img-fluid" width="50%" title="maitainance" />
+                  <img src="img/maintainance.jpg" className="img-fluid" width="50%" />
               </div>
               <Row>
                 <h2 className="text-center mt-3">Laman Web Dalam Penyelengaraan</h2>
