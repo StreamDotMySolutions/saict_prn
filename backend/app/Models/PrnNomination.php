@@ -11,6 +11,10 @@ class PrnNomination extends Model
     private $useTable = 'prn_nominations';
     protected $guarded = ['id'];
 
+    public function prn_coalition(){
+        return $this->belongsTo(PrnCoalition::class);
+    }
+
     public function prn_party(){
         return $this->belongsTo(PrnParty::class);
     }

@@ -271,7 +271,12 @@ class PrnNominationController extends Controller
      public function showCandidateData($id)
      {
         // check if data exist
-        $candidate = PrnNomination::where('id','=',$id)->first();
+        $candidate = PrnNomination::query()
+                        ->where('id','=',$id)
+                        ->with('prn_coalition')
+                        ->first();    
+        //\Log::info($candidate);                    
+    
 
         if($candidate){
             $logs = \App\Models\PrnNominationResultLog::query()

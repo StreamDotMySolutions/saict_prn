@@ -79,10 +79,13 @@ class PrnVariableController extends Controller
      */
     public function storeCoalitionData(Request $request)
     {
+
+        \Log::info($request);
         foreach($request->data as $data){
 
+         
             PrnCoalition::updateOrCreate(
-                
+             
                 // check condition
                 [
                     'title'=> $data[0],     
@@ -92,6 +95,7 @@ class PrnVariableController extends Controller
                 [
                     'title'=> $data[0], 
                     'description'=> $data[1], 
+                    'url'=> $data[2], 
                 ]
             );
         }
@@ -238,5 +242,23 @@ class PrnVariableController extends Controller
             'details' => PrnDetailResource::make($details),
             'logs' => isset($logs) ? $logs : null,
         ]);
+    }
+
+
+    /**
+     * Model - PrnCoalition
+     * Return as JSON
+     * @param String title
+     * @return JSON url
+     */
+    public function getCoalitionImage($title)
+    {
+
+        //\App\Models\PrnCoalition
+        return \Response([
+            'message' => 'success'
+        ]);
+
+        \Log::info($title);
     }
 }

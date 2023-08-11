@@ -129,6 +129,13 @@ const Candidate = () => {
                                 ) : (
                                     <Image alt={candidate.candidate_name?.toUpperCase()} src="/img/no-image.png" style={{ width:'200px', border: '1px solid #DCDCDC'}} thumbnails />
                                 )}
+                    
+                                {candidate.party_coalition_url ? (
+                                    <Image alt={candidate.candidate_name?.toUpperCase()} src={candidate.party_coalition_url} style={{ width:'200px', border: '1px solid #DCDCDC'}} thumbnails />
+                                ) : (
+                                   <></>
+                                )}
+                          
                             </Col>
 
 
@@ -136,6 +143,7 @@ const Candidate = () => {
                                 <ListItem item='Wakil' value={`${stateName?.toUpperCase()} - ${regionCode} - ${regionName?.toUpperCase()}`} />
                                 <ListItem item='Parti' value={candidate.party_name?.toUpperCase()} />
                                 <ListItem item='Calon' value={candidate.party_coalition?.toUpperCase()} />
+                             
                             </Col>
                         </Row>
             

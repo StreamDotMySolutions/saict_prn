@@ -26,5 +26,9 @@ Route::GET('/prn-variables/states/{stateName}/get-region-data', [PrnVariableCont
 Route::GET('/prn-variables/states/{stateName}/code/{regionCode}/get-candidates-data', [PrnVariableController::class, 'getCandidateData'])
         ->name('prn_variable.get_candidate_data');
 
+// http://202.165.15.230:8001/api/prn-variables/coalition/BN/get-image
+Route::GET('/prn-variables/coalition/{title}/get-image', [PrnVariableController::class, 'getCoalitionImage'])
+        ->name('prn_variable.get_coalition_image');
+
         
 

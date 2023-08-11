@@ -35,15 +35,29 @@ class PrnCandidateResource extends JsonResource
         //$url = preg_replace($pattern, $replacement, $input_url);
 
         $url = $this->url;
+        $party_coalition_url = null;
 
         $pattern1 = '#^(https://)drive\.google\.com/file/d/([a-zA-Z0-9_-]+)/view\?usp=drive_link$#';
         if (preg_match($pattern1, $this->url)) {
             $url = preg_replace($pattern1, $replacement,$this->url);
         }
 
+        if($this->prn_coalition->url){
+            if (preg_match($pattern1,  $this->prn_coalition->url)) {
+                $party_coalition_url  = preg_replace($pattern1, $replacement,$this->prn_coalition->url);
+            }
+        }
+
         $pattern2 = '#^(https://)drive\.google\.com/file/d/([a-zA-Z0-9_-]+)/view\?usp=sharing$#';
         if (preg_match($pattern2,$this->url)) {
             $url = preg_replace($pattern2, $replacement, $this->url);
+        }
+
+
+        if($this->prn_coalition){
+            if (preg_match($pattern2,  $this->prn_coalition->url)) {
+                $party_coalition_url  = preg_replace($pattern2, $replacement,$this->prn_coalition->url);
+            }
         }
 
         return [
@@ -66,6 +80,8 @@ class PrnCandidateResource extends JsonResource
 
             'party_name' => $this->party_name,
             'party_coalition' => $this->party_coalition,
+            'party_coalition_url' => $party_coalition_url,
+
             'slug' => Str::slug($this->candidate_name, '-'),
             'when' => $this->updated_at->diffForHumans(),
 
