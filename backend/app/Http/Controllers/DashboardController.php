@@ -168,9 +168,9 @@ class DashboardController extends Controller
 
                     //DB::enableQueryLog();    
 
-                    $state->regions = \App\Models\PrnRegionDetail::query()
+                    $state->regions = \App\Models\PrnRegion::query()
                         ->where('state_name','=', $state->name)  
-                        ->whereNotNull('region_name') 
+                        ->whereNotNull('name') 
                         ->count('id');
                         
                     //\Log::info(DB::getQueryLog());
