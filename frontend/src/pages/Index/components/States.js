@@ -40,20 +40,11 @@ const States = (state) => {
             <Row>
                 <Col>
                     <ul className="list-group">
-                        {/* <li className="list-group-item d-flex justify-content-between align-items-center border-0">
-                            Pengundi Berdaftar
-                            <span className="badge bg-primary rounded-pill">{state.data.voters}</span>
-                        </li> */}
           
                         <li className="list-group-item d-flex justify-content-between align-items-center border-0">
                         Calon bertanding
                             <span className="badge bg-primary rounded-pill">{state.data.candidates}</span>
                         </li>
-           
-                    </ul>
-                </Col>
-                <Col>
-                <ul className="list-group">
                         <li className="list-group-item d-flex justify-content-between align-items-center border-0">
                             Undi sehingga kini
                             <span className="badge bg-primary rounded-pill">{state.data.votes}</span>
@@ -62,21 +53,9 @@ const States = (state) => {
                             Jumlah kerusi
                             <span className="badge bg-primary rounded-pill">{state.data.regions}</span>
                         </li>
-               
+           
                     </ul>
                 </Col>
-                <Row>
-                    <Col>
-                    {/* <div className="progress mt-3">
-                        <div className="progress-bar bg-success"
-                             role="progressbar" 
-                             style={{ width: `${state.data.percentage}%` }}
-                        >
-                            {state.data.percentage}% keluar mengundi 
-                        </div>
-                    </div> */}
-                    </Col>
-                </Row>
 
                 <Row>
                     <Col>

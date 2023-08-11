@@ -20,9 +20,9 @@ const Candidate = () => {
     const { stateName } = useParams()
     const { regionCode } = useParams()
     const { regionName} = useParams()
-
     const { candidateId } = useParams()
     const [ candidate, setCandidate] = useState(null)
+    const [ logs, setLogs] = useState([])
 
     /**
      * To fetch data from API
@@ -36,10 +36,10 @@ const Candidate = () => {
     useEffect(() => {
        
         // loading for 1st time
-       getCandidateData(candidateId, setCandidate)
+       getCandidateData(candidateId, setCandidate, setLogs)
         
         const intervalId = setInterval(() => {
-           getCandidateData(candidateId, setCandidate)
+           getCandidateData(candidateId, setCandidate, setLogs)
         }, 1000 * 5) // in milliseconds
 
     
@@ -125,9 +125,9 @@ const Candidate = () => {
                             
                             <Col md={3} className='mt-2'>
                                 {candidate.url ? (
-                                    <Image src={candidate.url} style={{ width:'200px', border: '1px solid #DCDCDC'}} thumbnails />
+                                    <Image alt={candidate.candidate_name?.toUpperCase()} src={candidate.url} style={{ width:'200px', border: '1px solid #DCDCDC'}} thumbnails />
                                 ) : (
-                                    <Image src="/img/no-image.png" style={{ width:'200px', border: '1px solid #DCDCDC'}} thumbnails />
+                                    <Image alt={candidate.candidate_name?.toUpperCase()} src="/img/no-image.png" style={{ width:'200px', border: '1px solid #DCDCDC'}} thumbnails />
                                 )}
                             </Col>
 
@@ -144,7 +144,29 @@ const Candidate = () => {
                 }
             </div>
         </div>
+
+        { logs && 
+        <div className="card mt-3">
+            <div className="card-body">
+                <Row>
+                    <Col><strong>KEMASKINI</strong></Col>
+                    <Col><strong>JUMLAH UNDI</strong></Col>
+                </Row>
+                    
+                { logs.map(log => 
+              
+                    <Row>
+                        <Col>{log.last_updated}</Col>
+                        <Col>{log.official_count}</Col>
+                    </Row>
+                    
+                )}
+                
+            </div>
+        </div>
+        }
         </Container>
+        
     </>
     )
 }
@@ -161,7 +183,7 @@ const Candidate = () => {
  * @return JSON 
  * 
  */
-function getCandidateData(candidateId, setCandidate){
+function getCandidateData(candidateId, setCandidate, setLogs){
     //console.log(`get candidate from server - ${candidateId}`)
     axios({
         url:  `${process.env.REACT_APP_BACKEND_URL}/prn-nominations/${candidateId}/show-candidate-data`,   
@@ -171,8 +193,9 @@ function getCandidateData(candidateId, setCandidate){
         }
     })
     .then( function(json){
-        //console.log(json.data.data)
-        setCandidate(json.data.data)
+        //console.log(json.data.logs)
+        setCandidate(json.data.candidate)
+        setLogs(json.data.logs)
     })
     .catch ( function(error){
         //console.log(error.response.data)
