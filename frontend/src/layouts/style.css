@@ -149,3 +149,16 @@ a {
   text-decoration: none;
 }
 
+.rotated-div {
+  width: 500px;
+  height: 500px;
+  background-color: #E5E4E2; 
+  opacity: 0.5; 
+  transform: rotate(-45deg); 
+  transform-origin: top left; 
+  position: fixed;
+  top: 50%; 
+  left: 50%; 
+  margin-top: 50px; 
+  margin-left: -320px; 
+}
