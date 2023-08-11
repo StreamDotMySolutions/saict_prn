@@ -142,8 +142,12 @@ const Candidate = () => {
                             <Col md={8} className='mt-2'>
                                 <ListItem item='Wakil' value={`${stateName?.toUpperCase()} - ${regionCode} - ${regionName?.toUpperCase()}`} />
                                 <ListItem item='Parti' value={candidate.party_name?.toUpperCase()} />
+
+                                { candidate.party_coalition_url ?
                                 <ListItem item='Calon' value={<Image alt={candidate.candidate_name?.toUpperCase()} src={candidate.party_coalition_url} style={{ width:'70px', border: '1px solid #DCDCDC'}} thumbnails />} />
-                             
+                                :
+                                <ListItem item='Parti' value={candidate.party_coalition?.toUpperCase()} />
+                                }
                             </Col>
                         </Row>
             
@@ -161,14 +165,14 @@ const Candidate = () => {
                     <Col><strong>JUMLAH UNDI</strong></Col>
                 </Row>
                     
-                { logs.map(log => 
+                {/* { logs.map(log => 
               
                     <Row>
                         <Col>{log.last_updated}</Col>
                         <Col>{log.official_count}</Col>
                     </Row>
                     
-                )}
+                )} */}
                 
             </div>
         </div>
