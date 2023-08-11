@@ -95,6 +95,12 @@ const Teknologi = () => {
                             <strong>https://observatory.mozilla.org/analyze/pilihanraya.rtm.gov.my</strong>
                             </a>
                         </Card.Text>
+
+                        <Card.Text>
+                            <h2>Server</h2>
+                            Server dibekalkan oleh pihak MAMPU ( PDSA )
+                        </Card.Text>
+
                     </Card.Body>
                 </Card>
        
