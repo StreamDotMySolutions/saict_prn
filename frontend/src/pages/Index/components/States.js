@@ -49,10 +49,10 @@ const States = (state) => {
                             Undi sehingga kini
                             <span className="badge bg-primary rounded-pill">{state.data.votes}</span>
                         </li>
-                        <li className="list-group-item d-flex justify-content-between align-items-center border-0">
+                        {/* <li className="list-group-item d-flex justify-content-between align-items-center border-0">
                             Jumlah kerusi
                             <span className="badge bg-primary rounded-pill">{state.data.regions}</span>
-                        </li>
+                        </li> */}
            
                     </ul>
                 </Col>
