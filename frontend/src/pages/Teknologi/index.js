@@ -28,12 +28,12 @@ const Teknologi = () => {
                     </Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            Sistem memaparkan maklumat data PRUDUN15 ini menggunakan teknologi <i>Open Source</i>. Seksyen Aplikasi ICT (SAICT) mendapat
-                            mandat dari SEKSYEN EHWAL SEMASA (SES) untuk menyediakan satu laman web yang mesra paparan <i>MOBILE</i> dan juga <i>DESKTOP</i> bagi memaparkan maklumat pilihanraya secara <i>REALTIME</i> dari bilik gerakan.
+                            Sistem memaparkan maklumat data PRU DUN Ke-15 ini menggunakan teknologi <i>Open Source</i>. Seksyen Aplikasi ICT (SAICT) diamanahkan
+                            oleh Jabatan Penyiaran Malaysia untuk menyediakan satu laman web yang mesra paparan <i>MOBILE</i> dan juga <i>DESKTOP</i> bagi memaparkan maklumat pilihanraya secara <i>REALTIME</i> dari bilik gerakan.
                         </Card.Text>
 
                         <Card.Text>
-                            Latensi data telah diuji agar tidak melebihi 5 saat dari bilik gerakan ke portal. Pelapor RTM di bilik gerakan akan melaporkan menggunakan 
+                            Latensi data telah diuji agar tidak melebihi 5 saat dari bilik gerakan ke portal. Pengisi Data RTM di bilik gerakan akan mengisi maklumat menggunakan 
                             teknologi GOOGLE CLOUD iaitu :
                             <ul>
                                 <li>GOOGLE SHEET</li>
@@ -43,7 +43,7 @@ const Teknologi = () => {
                             <br />
                             <br />
                             Sebelum data dikeluarkan ke PORTAL, ianya perlu melalui beberapa fasa pengesahan dari <i>VERIFIER</i> untuk memastikan data adalah tepat
-                            dengan merujuk pangkalan Suruhanjaya Pilhanraya (SPR).
+                            dengan merujuk sumber pelapor di lokasi serta pangkalan Suruhanjaya Pilhanraya (SPR).
                         
                         </Card.Text>
 
