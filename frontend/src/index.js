@@ -18,6 +18,7 @@ import Regions from "./pages/Regions"
 import Candidate from "./pages/Candidates"
 import Dashboard from "./pages/Dashboard"
 import Penafian from "./pages/Penafian"
+import Teknologi from "./pages/Teknologi"
 import Keselamatan from "./pages/Keselamatan"
 import Privasi from "./pages/Privasi"
 
@@ -43,6 +44,7 @@ export default function App() {
             <Route path="/:stateName/:regionCode/:regionName" element={<Regions />} />
             <Route path="/:stateName/:regionCode/:regionName/:candidateId/:slug" element={<Candidate />} />
             <Route path="/penafian" element={<Penafian />} />
+            <Route path="/teknologi" element={<Teknologi />} />
             <Route path="/keselamatan" element={<Keselamatan />} />
             <Route path="/privasi" element={<Privasi />} />
             <Route path="/index" element={<Index />} />
