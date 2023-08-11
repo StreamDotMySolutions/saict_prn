@@ -45,6 +45,11 @@ const Footer = () => {
               <FontAwesomeIcon icon="fa-solid fa-user-lock" />{' '}Dasar Privasi
               </NavLink>
             </li>
+            <li>
+              <NavLink extact className="text-dark text-decoration-none hover-link" to="/teknologi" activeClassName="active-link">
+              <FontAwesomeIcon icon="fa-solid fa-computer" />{' '}Teknologi
+              </NavLink>
+            </li>
           </ul>
         </Col>
         <Col md={4}>
