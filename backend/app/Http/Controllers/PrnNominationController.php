@@ -282,7 +282,9 @@ class PrnNominationController extends Controller
             $logs = \App\Models\PrnNominationResultLog::query()
                     ->where('prn_nomination_id','=', $candidate->id)
                     ->orderBy('id','DESC')
-                    ->get();
+                    ->get()
+                    ->unique('last_updated');
+
             //\Log::info($candidate); 
         }
 
