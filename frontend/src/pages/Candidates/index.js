@@ -157,7 +157,7 @@ const Candidate = () => {
             </div>
         </div>
 
-        { logs && 
+        {/* { logs && 
         <div className="card mt-3">
             <div className="card-body">
                 <Row>
@@ -165,18 +165,18 @@ const Candidate = () => {
                     <Col><strong>JUMLAH UNDI</strong></Col>
                 </Row>
                     
-                {/* { logs.map(log => 
+                { logs.map(log => 
               
                     <Row>
                         <Col>{log.last_updated}</Col>
                         <Col>{log.official_count}</Col>
                     </Row>
                     
-                )} */}
+                )}
                 
             </div>
         </div>
-        }
+        } */}
         </Container>
         
     </>
