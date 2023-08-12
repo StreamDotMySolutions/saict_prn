@@ -178,6 +178,7 @@ class DashboardController extends Controller
                     $state->latest = \App\Models\PrnRegionDetail::query()
                         ->where('state_name','=', $state->name)  
                         ->whereNotNull('region_name')
+                        ->whereNotNull('last_updated')
                         ->whereNotNull('status')
                         ->orderBy('id','DESC')
                         ->limit(10)
