@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react';
 import axios from '../../../libs/axios';
 import { Link, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'react-bootstrap/esm/Image';
 
 /**
  * @return JSX
@@ -26,6 +27,17 @@ const LatestCandidate = () => {
     <tr key={item.id}>
         <td className="text-center">
         {item.url !== '' && <img src={item.url} className="rounded" style={{ width: '50px' }} />}
+        </td>
+
+        <td>
+            <span className='text-muted '>
+                      
+                      {item.party_coalition_url ?
+                      <Image alt={item.item_name?.toUpperCase()} src={item.party_coalition_url} style={{ width:'50px', border: '1px solid #DCDCDC'}} thumbnails />
+                      : 
+                      item.party_coalition }
+
+            </span>
         </td>
         <td>
             <small>
