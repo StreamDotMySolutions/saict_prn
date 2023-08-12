@@ -39,7 +39,7 @@ const Candidates = ({candidates, candidateDataUrl}) => {
             </div>
 
  
-            <div className="col-sm-4 d-flex align-items-center justify-content-center">
+            <div className="col-sm-3 d-flex align-items-center justify-content-center">
                 <div className="p-3">
                     <strong>{candidate.candidate_title?.toUpperCase()} {candidate.candidate_name?.toUpperCase()}</strong>
                      <br />
@@ -68,9 +68,9 @@ const Candidates = ({candidates, candidateDataUrl}) => {
             <div className="col-sm-3 d-flex align-items-center justify-content-center">
                 <div className="card text-center pe-2 ps-2 pt-2 m-3 ">
                     
-                    <h4 className='pt-1 pb-1 ps-2 pe-2'>
+                    <h5 className='pt-1 pb-1 ps-2 pe-2'>
                         { candidate.official_count ? candidate.official_count : 0 }
-                    </h4>    
+                    </h5>    
                 </div>
 
                 <div className="text-center ms-3 me-3">
