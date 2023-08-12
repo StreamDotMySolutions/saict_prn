@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/esm/Row';
 
 const LatestNews = ({ logs }) => {
     if (!Array.isArray(logs)) {
-        return <p>Invalid news data.</p>;
+        return <p></p>;
     }
     const listItems = logs.map((log) => (
         <Row key={log.id}>
