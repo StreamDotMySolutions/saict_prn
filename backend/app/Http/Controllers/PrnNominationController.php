@@ -287,6 +287,7 @@ class PrnNominationController extends Controller
 
             $userLogs = \App\Models\PrnNominationResultLog::query()
                 ->selectRaw('MAX(id) as id') // Select the latest id for each unique last_updated value
+                ->whereNotNull('last_updated')
                 ->where('prn_nomination_id', '=', $candidate->id)
                 ->groupBy('last_updated') // Group by unique last_updated values
                 ->orderBy('last_updated', 'DESC') // Order by last_updated in descending order
