@@ -278,11 +278,26 @@ class PrnNominationController extends Controller
         //\Log::info($candidate);                    
     
 
+        $logs = null;
         if($candidate){
-            $logs = \App\Models\PrnNominationResultLog::query()
-                    ->where('prn_nomination_id','=', $candidate->id)
-                    ->orderBy('id','DESC')
-                    ->get();
+            // $logs = \App\Models\PrnNominationResultLog::query()
+            //         ->where('prn_nomination_id','=', $candidate->id)
+            //         ->orderBy('id','DESC')
+            //         ->get();
+
+            $userLogs = \App\Models\PrnNominationResultLog::query()
+                ->selectRaw('MAX(id) as id') // Select the latest id for each unique last_updated value
+                ->whereNotNull('last_updated')
+                ->where('prn_nomination_id', '=', $candidate->id)
+                ->groupBy('last_updated') // Group by unique last_updated values
+                ->orderBy('last_updated', 'DESC') // Order by last_updated in descending order
+                ->get();
+
+            // Now fetch the full log records based on the selected ids
+            $logs = \App\Models\PrnNominationResultLog::whereIn('id', $userLogs->pluck('id'))->get();
+
+                        
+
             //\Log::info($candidate); 
         }
 

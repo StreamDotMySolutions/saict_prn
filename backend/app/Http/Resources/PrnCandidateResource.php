@@ -34,7 +34,7 @@ class PrnCandidateResource extends JsonResource
         // Perform the replacement
         //$url = preg_replace($pattern, $replacement, $input_url);
 
-        $url = $this->url;
+        $url = $this->url ?? null;
         $party_coalition_url = null;
 
         $pattern1 = '#^(https://)drive\.google\.com/file/d/([a-zA-Z0-9_-]+)/view\?usp=drive_link$#';

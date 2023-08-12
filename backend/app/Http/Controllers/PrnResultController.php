@@ -557,7 +557,9 @@ class PrnResultController extends Controller
                 $log->status = $c['status'];
                 $log->party_name = $c['party_name'];
                 $log->official_count = $c['official_count'];
-                $log->last_updated = $verify['last_updated'] ?  $verify['last_updated'] : null;
+                //$log->last_updated = $verify['last_updated'] ?  $verify['last_updated'] : null;
+                $log->last_updated = isset($verify['last_updated']) ? $verify['last_updated'] : null;
+
                 $log->save();
             }
 
