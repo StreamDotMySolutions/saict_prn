@@ -33,7 +33,7 @@ class PrnClearData extends Command
 
     function clearData(){
  
-        \App\Models\PrnNominationResult::truncate();
+        \App\Models\PrnLog::truncate();
         \App\Models\PrnNominationResult::truncate();
         \App\Models\PrnNominationResultLog::truncate();
         \App\Models\PrnRegionDetail::query()
