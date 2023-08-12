@@ -230,11 +230,22 @@ class PrnVariableController extends Controller
                     ->first();
 
         if($details){            
-            $logs = \App\Models\PrnLog::query()
+            // $logs = \App\Models\PrnLog::query()
+            //             ->where('prn_region_detail_id','=' , $details->id)
+            //             ->orderBy('id','DESC')
+            //             ->limit(10)
+            //             ->get();
+
+            $userLogs = \App\Models\PrnLog::query()
+                        ->selectRaw('MAX(id) as id') // Select the latest id for each unique last_updated value
+                        ->whereNotNull('last_updated')
                         ->where('prn_region_detail_id','=' , $details->id)
-                        ->orderBy('id','DESC')
-                        ->limit(10)
+                        ->groupBy('last_updated') // Group by unique last_updated values
+                        ->orderBy('last_updated', 'DESC') // Order by last_updated in descending order
                         ->get();
+        
+                    // Now fetch the full log records based on the selected ids
+             $logs = \App\Models\PrnLog::whereIn('id', $userLogs->pluck('id'))->get();
              
         }
             
