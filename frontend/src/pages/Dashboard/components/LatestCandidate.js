@@ -74,7 +74,7 @@ const LatestCandidate = () => {
         <table className="w-100 table table-striped">
             <thead>
                 <tr>
-                    <th colSpan="2">
+                    <th colSpan="3">
                     <FontAwesomeIcon icon="fas fa-user" /> CALON &nbsp;{' '}
                     {isLoading ? <FontAwesomeIcon icon="fa-solid fa-spinner" /> : null}
                     </th>
