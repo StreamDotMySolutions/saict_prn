@@ -157,7 +157,7 @@ const Candidate = () => {
             </div>
         </div>
 
-        {/* { logs && 
+        { logs && 
         <div className="card mt-3">
             <div className="card-body">
                 <Row>
@@ -176,7 +176,7 @@ const Candidate = () => {
                 
             </div>
         </div>
-        } */}
+        }
         </Container>
         
     </>
