@@ -28,28 +28,19 @@ const Teknologi = () => {
                     </Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            Sistem memaparkan maklumat data PRU DUN Ke-15 ini menggunakan teknologi <i>Open Source</i>. Seksyen Aplikasi ICT (SAICT) diamanahkan
-                            oleh Jabatan Penyiaran Malaysia untuk menyediakan satu laman web yang mesra paparan <i>MOBILE</i> dan juga <i>DESKTOP</i> bagi memaparkan maklumat pilihanraya secara <i>REALTIME</i> dari bilik gerakan.
+                        Dalam usaha menyampaikan maklumat data PRU DUN Ke-15, portal ini menjadikan teknologi <i>Open Source</i> sebagai asas yang inovatif.  Jabatan Penyiaran Malaysia melalui Bahagian Berita dan Ehwal Semasa (BES) telah menyerahkan tanggungjawab dan kepercayaan kepada Seksyen Aplikasi ICT (SAICT) untuk membangunkan laman web yang memberikan paparan mesra MOBILE dan DESKTOP, memungkinkan penyampaian maklumat pilihanraya secara <i>REALTIME</i> dari Bilik Gerakan PRU15 RTM.
                         </Card.Text>
 
                         <Card.Text>
-                            Latensi data telah diuji agar tidak melebihi 5 saat dari bilik gerakan ke portal. Pengisi Data RTM di bilik gerakan akan mengisi maklumat menggunakan 
-                            teknologi GOOGLE CLOUD iaitu :
-                            <ul>
-                                <li>GOOGLE SHEET</li>
-                                <li>GOOGLE DRIVE</li>
-                            </ul>
-                            Kemudian data akan dihantar menggunakan GOOGLE SCRIPT ke Pangkalan Data Utama di RTM sebelum di paparkan ke PORTAL rasmi di https://pilihanraya.rtm.gov.my.
+                        Ketepatan masa dalam pemaparan data diutamakan, dan sebagai langkah untuk mencapainya, latensi data dikekalkan di bawah 5 saat dari bilik gerakan ke portal. Bagi memudahkan pengisian maklumat, Pengisi Data RTM di bilik gerakan memanfaatkan teknologi GOOGLE CLOUD PLATFORM, sebelum dipaparkan di PORTAL rasmi di https://pilihanraya.rtm.gov.my.
                             <br />
                             <br />
-                            Sebelum data dikeluarkan ke PORTAL, ianya perlu melalui beberapa fasa pengesahan dari <i>VERIFIER</i> untuk memastikan data adalah tepat
-                            dengan merujuk sumber pelapor di lokasi serta pangkalan Suruhanjaya Pilhanraya (SPR).
-                        
+                            Kolaborasi antara pelapor petugas RTM di lapangan dan pusat data Suruhanjaya Pilihanraya (SPR) diperlukan untuk menjamin integriti data di dalam PORTAL.
                         </Card.Text>
 
                         <h2>Perisian</h2>
                         <Card.Text>
-                            Sistem laman web ini dibina menggunakan teknologi <i>OPEN SOURCE</i> seperti berikut :
+                            Pembinaan laman web ini dilakukan dengan mengaplikasikan teknologi OPEN SOURCE seperti berikut:
                             <ol>
                                 <li>Frontend menggunakan teknologi SpA ( Single Page Action ) dari ReactJS.</li>
                                 <li>API Backend menggunakan teknologi RESTful dari perisian <i>framework</i> LARAVEL.</li>
@@ -86,17 +77,12 @@ const Teknologi = () => {
 
                         <Card.Text>
                             <h2>Keselamatan</h2>
-                            SAICT menggunakan <i>security ranking</i> dari Mozilla Observatory untuk menilai tahap keselamatan laman web ini
-                            dan telah memperolehi gred <strong>B+</strong>.
-                            <br />
-                            Rujuk pautan berikut: <a target="_blank" href="https://observatory.mozilla.org/analyze/pilihanraya.rtm.gov.my">
+                            Keutamaan keselamatan ditekankan melalui penarafan keselamatan dari Mozilla Observatory, yang memberikan penilaian terhadap tahap keselamatan laman web ini dan berjaya memperoleh gred <strong>B+</strong>. Anda boleh merujuk penilaian keselamatan di pautan berikut: <a target="_blank" href="https://observatory.mozilla.org/analyze/pilihanraya.rtm.gov.my">
                             <strong>https://observatory.mozilla.org/analyze/pilihanraya.rtm.gov.my</strong>
-                            </a>
-                        </Card.Text>
-
-                        <Card.Text>
-                            <h2>Server</h2>
-                            Menggunakan perkhidmatan <i>Server</i> Pusat Data Sentral Awam (PDSA MAMPU)
+                            </a>. Seterusnya, untuk memastikan kestabilan dan kebolehpercayaan portal ini, semua perkhidmatan server dijalankan melalui Pusat Data Sektor Awam (PDSA, MAMPU).
+                            <br/>
+                            <br/>
+                            Secara keseluruhan, pelaksanaan teknologi ini merupakan hasil dari inovasi dalam bidang teknologi maklumat yang telah disesuaikan dengan keperluan penyampaian maklumat melalui platform RTM. Ia juga mampu menonjolkan kemampuan Jabatan Penyiaran secara dalaman melalui koordinasi berkesan dalam perancangan dan pelaksanaan teknologi oleh pihak SAICT, khususnya dalam konteks teknologi cloud computing.
                         </Card.Text>
 
                     </Card.Body>
