@@ -52,7 +52,7 @@ const Candidates = ({candidates, candidateDataUrl}) => {
                     </span>  
                 </div>
             </div>
-            <div className="col-sm-3 d-flex align-items-center justify-content-center">
+            <div className="col-sm-1 d-flex align-items-center justify-content-center">
                 <h2>
                     <span className='text-muted '>
                       
@@ -65,7 +65,7 @@ const Candidates = ({candidates, candidateDataUrl}) => {
                 </h2>  
             </div>
 
-            <div className="col-sm-3 d-flex align-items-center justify-content-center">
+            <div className="col-sm-4 d-flex align-items-center justify-content-center">
                 <div className="card text-center pe-2 ps-2 pt-2 m-3 ">
                     
                     <h4 className='pt-1 pb-1 ps-2 pe-2'>
