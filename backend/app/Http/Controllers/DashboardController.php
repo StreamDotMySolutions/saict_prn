@@ -136,7 +136,7 @@ class DashboardController extends Controller
      * @return JSON $states
      */
     function getStates(){
-        \Cache::flush();
+        //\Cache::flush();
         $states = \Cache::rememberForever('dashboard_states', function () {
           
             return \App\Models\State::query()
@@ -150,13 +150,13 @@ class DashboardController extends Controller
                         ->where('state_name','=', $state->name)    
                         ->sum('registered_voters');
 
-                    $state->voters =    number_format((float) $voters, 0);
+                    $state->voters = number_format((float) $voters, 0);
 
                     // Add votes
                     $votes = \App\Models\PrnNominationResult::query()
                         ->where('state_name','=', $state->name)    
                         ->sum('official_count');
-                    $state->votes =    number_format((float) $votes, 0);
+                    $state->votes = number_format((float) $votes, 0);
 
                     // candidates
                     $state->candidates = \App\Models\PrnNomination::query()
@@ -180,7 +180,7 @@ class DashboardController extends Controller
                         ->whereNotNull('region_name')
                         ->whereNotNull('status')
                         ->orderBy('id','DESC')
-                        ->limit(5)
+                        ->limit(10)
                         ->get();
          
                     // Calculate percentage
@@ -209,7 +209,7 @@ class DashboardController extends Controller
         // registered voters
         $votes = \App\Models\PrnNominationResult::query()
                     ->where('state_name','=', $state->name)    
-                    >sum('official_count');
+                    ->sum('official_count');
 
         // number of regions
 

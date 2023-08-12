@@ -234,7 +234,8 @@ class PrnVariableController extends Controller
                         ->where('prn_region_detail_id','=' , $details->id)
                         ->orderBy('id','DESC')
                         ->limit(10)
-                        ->get();
+                        ->get()
+                        ->unique('last_updated');
         }
             
         return \Response::json([
