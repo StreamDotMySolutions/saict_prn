@@ -278,6 +278,7 @@ class PrnNominationController extends Controller
         //\Log::info($candidate);                    
     
 
+        $logs = null;
         if($candidate){
             $logs = \App\Models\PrnNominationResultLog::query()
                     ->where('prn_nomination_id','=', $candidate->id)
