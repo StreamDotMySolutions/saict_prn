@@ -7,7 +7,7 @@ const Candidates = ({candidates, candidateDataUrl}) => {
     
     const highestVote = Math.max(...candidates.map(candidate => candidate.official_count));
 
-    const listItems = candidates.map((candidate) =>
+    const listItems = candidates?.map((candidate) =>
         <>
         <Link 
             key={candidate.id} 
