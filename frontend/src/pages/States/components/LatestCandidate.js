@@ -59,7 +59,7 @@ const LatestCandidate = () => {
 
     const listItems = candidates?.map( (c,index) => 
        
-            <Link key={c.id} className='list-group-item list-group-item-action' to={ '/' + stateName + '/' + c.region_code + '/' + c.region_name + '/' + c.id + '/' +  c.slug }>
+            <Link key={c.id} className='list-group-item list-group-item-action' to={ '/' + stateName + '/' + c.region_code + '/' + c.region_name_slug + '/' + c.id + '/' +  c.slug }>
                 
                 <div className="d-flex w-100 justify-content-between">
                     <h5 className="mb-1">{c.candidate_title?.toUpperCase()} {c.candidate_name?.toUpperCase()}</h5>

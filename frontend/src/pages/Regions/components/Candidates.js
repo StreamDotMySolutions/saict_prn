@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Image from 'react-bootstrap/esm/Image';
+
 const Candidates = ({candidates, candidateDataUrl}) => {
 
     
@@ -53,13 +55,18 @@ const Candidates = ({candidates, candidateDataUrl}) => {
             <div className="col-sm-3 d-flex align-items-center justify-content-center">
                 <h2>
                     <span className='text-muted '>
-                        {candidate.party_coalition }
+                      
+                        {candidate.party_coalition_url ?
+                        <Image alt={candidate.candidate_name?.toUpperCase()} src={candidate.party_coalition_url} style={{ width:'70px', border: '1px solid #DCDCDC'}} thumbnails />
+                        : 
+                        candidate.party_coalition }
+
                     </span>
                 </h2>  
             </div>
 
             <div className="col-sm-3 d-flex align-items-center justify-content-center">
-                <div className="card text-center pe-2 ps-2 pt-2 m-3 ">
+                {/* <div className="card text-center pe-2 ps-2 pt-2 m-3 ">
                     
                     <h4 className='pt-1 pb-1 ps-2 pe-2'>
                         { candidate.official_count ? candidate.official_count : 0 }
@@ -72,7 +79,7 @@ const Candidates = ({candidates, candidateDataUrl}) => {
                  
                         <h1 className='text-success'><FontAwesomeIcon icon="fa-solid fa-check" /></h1>
                     }  
-                </div>
+                </div> */}
             </div>
         </Link>
         </>
