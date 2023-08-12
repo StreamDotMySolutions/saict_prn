@@ -50,6 +50,9 @@ class PrnNominationResource extends JsonResource
             'region_name_slug' => Str::slug($this->region_name, '-'),
             'slug' => Str::slug($this->candidate_name, '-'),
             'when' => $this->updated_at->diffForHumans(),
+            'official_count' => $this->prn_nomination_result ? $this->prn_nomination_result->official_count : 0 ,
+            'unofficial_count' => $this->prn_nomination_result ?  $this->prn_nomination_result->unofficial_count : 0,
+            'status' => $this->prn_nomination_result ? $this->prn_nomination_result->status : null ,
 
         ];
     }

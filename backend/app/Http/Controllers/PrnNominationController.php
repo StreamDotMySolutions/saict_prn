@@ -349,12 +349,13 @@ class PrnNominationController extends Controller
      public function latestCandidates()
      {
         //\DB::enableQueryLog();
-
+        \Cache::flush();
         $candidates = \Cache::rememberForever('candidates', function () {
             return PrnNomination::query()
                 ->orderBy('updated_at', 'DESC')
                 ->where('candidate_name','!=', null)
                 ->where('party_name','!=', null)
+                ->with('prn_nomination_result')
                 ->limit(50)
                 ->get();
         });

@@ -45,6 +45,8 @@ const LatestCandidate = () => {
                 </Link> {''}
                 telah dikemaskini
                 <br />
+                 UNDI - <strong>{item.official_count}</strong>
+                <br />
                 <span className="text-muted">
                 <FontAwesomeIcon icon="fas fa-clock" />
                 <i>&nbsp;{item.when}</i>
