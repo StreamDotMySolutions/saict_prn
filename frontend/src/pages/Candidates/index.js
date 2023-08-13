@@ -17,13 +17,18 @@ import { Helmet } from 'react-helmet-async';
 
 
 const Candidate = () => {
-    const { stateName } = useParams()
+    let { stateName } = useParams()
     const { regionCode } = useParams()
-    const { regionName} = useParams()
+    let { regionName} = useParams()
     const { candidateId } = useParams()
     const [ candidate, setCandidate] = useState(null)
     const [ logs, setLogs] = useState([])
 
+    //let { state, district, area, number, name } = useParams();
+
+    // Convert to lowercase and replace spaces with hyphens
+    stateName = stateName.toLowerCase().replace(/ /g, '-');
+    regionName = regionName.toLowerCase().replace(/ /g, '-');
     /**
      * To fetch data from API
      * @param Int candidateId

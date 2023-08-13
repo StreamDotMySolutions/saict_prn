@@ -18,12 +18,15 @@ import LatestNews from './components/LatestNews';
  * @returns HTML
  */
 const Regions = () => {
-    const { stateName } = useParams()
+    let { stateName } = useParams()
     const { regionCode } = useParams()
-    const { regionName} = useParams()
+    let { regionName} = useParams()
     const [ candidates, setCandidates] = useState([])
     const [ details, setDetails] = useState([])
     const [ logs, setLogs] = useState([])
+
+    stateName = stateName.toLowerCase().replace(/ /g, '-');
+    regionName = regionName.toLowerCase().replace(/ /g, '-');
 
     useEffect(() => {
        
