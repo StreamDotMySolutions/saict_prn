@@ -25,8 +25,8 @@ const Regions = () => {
     const [ details, setDetails] = useState([])
     const [ logs, setLogs] = useState([])
 
-    stateName = stateName.toLowerCase().replace(/ /g, '-');
-    regionName = regionName.toLowerCase().replace(/ /g, '-');
+    const stateNameUrl = stateName.toLowerCase().replace(/ /g, '-');
+    const regionNameUrl = regionName.toLowerCase().replace(/ /g, '-');
 
     useEffect(() => {
        
@@ -43,10 +43,10 @@ const Regions = () => {
 
     const flag = (stateName) => {
         return (
-            <img alt={stateName}  src={'/img/flags/' + stateName + '.png' }  className="img-fluid" width="60px" />
+            <img alt={stateName}  src={'/img/flags/' + stateNameUrl + '.png' }  className="img-fluid" width="60px" />
         )
     }
-    const candidateDataUrl = '/' + stateName + '/' + regionCode + '/' + regionName + '/'
+    const candidateDataUrl = '/' + stateNameUrl + '/' + regionCode + '/' + regionNameUrl + '/'
 
     return (
     <>
@@ -56,7 +56,7 @@ const Regions = () => {
                     <FontAwesomeIcon icon="fas fa-home" />
                 </Breadcrumb.Item>
 
-                <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" + stateName }}>
+                <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" + stateNameUrl }}>
                     {stateName.toUpperCase()}
                 </Breadcrumb.Item>
 

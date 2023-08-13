@@ -27,8 +27,8 @@ const Candidate = () => {
     //let { state, district, area, number, name } = useParams();
 
     // Convert to lowercase and replace spaces with hyphens
-    stateName = stateName.toLowerCase().replace(/ /g, '-');
-    regionName = regionName.toLowerCase().replace(/ /g, '-');
+    const stateNameUrl = stateName.toLowerCase().replace(/ /g, '-');
+    const regionNameUrl = regionName.toLowerCase().replace(/ /g, '-');
     /**
      * To fetch data from API
      * @param Int candidateId
@@ -56,7 +56,7 @@ const Candidate = () => {
 
     const flag = (stateName) => {
         return (
-            <img alt={stateName}  src={'/img/flags/' + stateName + '.png' }  className="img-fluid" width="60px" />
+            <img alt={stateName}  src={'/img/flags/' + stateNameUrl + '.png' }  className="img-fluid" width="60px" />
         )
     }
 
@@ -71,12 +71,12 @@ const Candidate = () => {
                     <FontAwesomeIcon icon="fas fa-home" />
             </Breadcrumb.Item>
 
-            <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" + stateName }}>
+            <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" + stateNameUrl }}>
                 {stateName.toLocaleUpperCase()}
             </Breadcrumb.Item>
 
             
-            <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" + stateName  + "/" + regionCode + "/" + regionName }}>
+            <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" + stateNameUrl  + "/" + regionCode + "/" + regionNameUrl }}>
                 {regionCode} {regionName.toUpperCase()}
             </Breadcrumb.Item>
 
